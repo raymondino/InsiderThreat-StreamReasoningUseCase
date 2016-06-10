@@ -1,4 +1,7 @@
-user = "ACM2278";
+user = "MBG3183";
+#ACM2278 - scenario 1
+#MBG3183 - scenario 5
+
 
 usr_device = open(user+"_device.csv", 'w+');
 usr_email = open(user+"_email.csv", 'w+');

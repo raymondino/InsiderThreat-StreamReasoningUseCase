@@ -50,7 +50,9 @@ def combine(f1, f2, read_file1, read_file2, write_file):
 
 	return write_file; # return merged file
 
-user = "ACM2278";
+user = "MBG3183";
+#ACM2278 - scenario 1
+#MBG3183 - scenario 5
 
 # temp1 = combine(False, False, open(user + "_device.csv", 'r'), open(user + "_logon.csv", 'r'), open(user + "_temp1.csv", 'w'))
 # print "temp1 done"
