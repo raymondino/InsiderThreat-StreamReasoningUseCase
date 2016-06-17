@@ -67,7 +67,6 @@ def email(record):
             filename = attachmentList[i][:attachmentList[i].find('(')].replace('\\','_')
             attachmentSize = attachmentList[i][attachmentList[i].find('(')+1:item.find(')')]
             print '<%semail_%s> <%shasEmailAttachment> <%s%s>.'%(ex,id,ex,ex,filename)
-            # print '<%sattachment%s> <%shasFileName> "%s"^^<%sstring>.'%(ex,str(i+1),ex,filename,xsd)
             print '<%sattachment%s> <%shasSize> "%s bytes"^^<%sstring>.'%(ex,str(i+1),ex,attachmentSize,xsd)
     print '<%semail_%s> <%shasContent> "%s"^^<%sstring>.'%(ex,id,ex,content,xsd)
 
@@ -88,7 +87,6 @@ def file(record):
     print '<%sfile_%s> <%sisPerformedOnPC> <%s%s>.' %(ex,id,ex,ex,record[4])
     filename = record[5].replace('\\','_')
     print '<%sfile_%s> <%shasFile> <%s%s>.'%(ex,id,ex,ex,filename)
-    # print '<%sfile_%s_file> <%shasFileName> "%s"^^<%sstring>.'%(ex,id,ex,filename,xsd)
     if record[7]=='True':
         print '<%sfile_%s_file> <%s> <%sFileToRemovableMedia>.' %(ex,id,a,ex)
     else:
