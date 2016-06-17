@@ -1,0 +1,582 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://tw.rpi.edu/ontology/DataExfiltration/"
+     xml:base="http://tw.rpi.edu/ontology/DataExfiltration/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/bcc -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/bcc">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/cc -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/cc">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/from -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/from">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasActor -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasActor">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasFile -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasFile">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasURL -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasURL">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/isPerformedWithRemovableDisk -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedWithRemovableDisk">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/USBDriveAsset"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/to -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/to">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasContent -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasContent">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="&xsd;byte"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasFileName -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasFileName">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasFileTree -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasFileTree">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasSize -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasSize">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment"/>
+        <rdfs:range rdf:resource="&xsd;byte"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasTimestamp -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasTimestamp">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="&xsd;dateTimeStamp"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/AccessAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Action -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Actor -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Asset -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Asset"/>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ConnectionAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ConnectionAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/CopyAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/CopyAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/DataExfiltrationEvent -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DataExfiltrationEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasURL"/>
+                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedWithRemovableDisk"/>
+                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/USBDriveAsset"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/DeleteAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DeleteAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ModificationAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/DigitAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DigitAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/DigitalAsset -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DigitalAsset">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Asset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/DiskConnectionAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskConnectionAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ConnectionAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/DiskDisconnectionAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskDisconnectionAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ConnectionAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Email -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Email"/>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Email"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Email"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailContent -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailContent">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Email"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailViewAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailViewAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Event -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Event"/>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileAsset -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitalAsset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/CopyAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileDeleteAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileDeleteAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DeleteAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileFromRemovableMedia -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileFromRemovableMedia">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileOpenAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileOpenAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileWriteAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileWriteAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WriteAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/InHourAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InHourAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ModificationAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ModificationAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NeutralWebsite -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NeutralWebsite">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Asset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/USBDriveAsset -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/USBDriveAsset">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WWWAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WWWDownloadAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWDownloadAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WWWVisitAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWVisitAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Website -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WriteAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WriteAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ModificationAction"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
