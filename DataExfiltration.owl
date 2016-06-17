@@ -66,6 +66,15 @@
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAddress -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAddress">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment -->
 
     <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment">
@@ -80,6 +89,25 @@
     <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasFile">
         <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
         <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasRole -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasRole">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasSupervisor -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasSupervisor">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Supervisor"/>
     </owl:ObjectProperty>
     
 
@@ -131,10 +159,28 @@
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasBusinessUnit -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasBusinessUnit">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasContent -->
 
     <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasContent">
         <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasDepartment -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasDepartment">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -167,11 +213,29 @@
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasFunctionalUnit -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasFunctionalUnit">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasSize -->
 
     <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasSize">
         <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment"/>
         <rdfs:range rdf:resource="&xsd;byte"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasTeam -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasTeam">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 
@@ -200,13 +264,18 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitAction"/>
+        <rdfs:comment>originated from CMU CERT ontology
+</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Action -->
 
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Action">
+        <rdfs:comment>originated from CMU CERT ontology
+</rdfs:comment>
+    </owl:Class>
     
 
 
@@ -214,13 +283,17 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:comment>originated from CMU CERT ontology
+</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Actor -->
 
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Actor">
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
+    </owl:Class>
     
 
 
@@ -228,13 +301,16 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier"/>
+        <rdfs:comment>new class added.  This class describes employee&apos;s actions after working hours. </rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Asset -->
 
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Asset"/>
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Asset">
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
+    </owl:Class>
     
 
 
@@ -242,6 +318,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <rdfs:comment>newly added class. describes cloud storage website</rdfs:comment>
     </owl:Class>
     
 
@@ -250,6 +327,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset"/>
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
     </owl:Class>
     
 
@@ -258,6 +336,8 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ConnectionAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction"/>
+        <rdfs:comment>originated from CMU CERT ontology
+</rdfs:comment>
     </owl:Class>
     
 
@@ -266,6 +346,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/CopyAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitAction"/>
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
     </owl:Class>
     
 
@@ -295,6 +376,7 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Event"/>
+        <rdfs:comment>DataExfiltrationEvent is defined by several Action classes in this ontology (including both actions from original CMU CERT ontology and newly added actions). Current definition describes an employee uses removable disk after working hours to upload data to wikileaks.org (a Hacktivist website) or dropbox (a cloud storage website). More different triggers of this class will be added in the future.</rdfs:comment>
     </owl:Class>
     
 
@@ -303,6 +385,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DeleteAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ModificationAction"/>
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
     </owl:Class>
     
 
@@ -311,6 +394,8 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DigitAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:comment>originated from CMU CERT ontology
+</rdfs:comment>
     </owl:Class>
     
 
@@ -319,6 +404,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DigitalAsset">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Asset"/>
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
     </owl:Class>
     
 
@@ -327,6 +413,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskConnectionAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ConnectionAction"/>
+        <rdfs:comment>newly added classes. describes removable disk connect to pc</rdfs:comment>
     </owl:Class>
     
 
@@ -335,13 +422,16 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskDisconnectionAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ConnectionAction"/>
+        <rdfs:comment>newly added class. describes removable disk disconnects to pc.</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Email -->
 
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Email"/>
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Email">
+        <rdfs:comment>newly added class. describes email related things. </rdfs:comment>
+    </owl:Class>
     
 
 
@@ -349,6 +439,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitAction"/>
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
     </owl:Class>
     
 
@@ -357,6 +448,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Email"/>
+        <rdfs:comment>newly added class, describes email address. </rdfs:comment>
     </owl:Class>
     
 
@@ -365,14 +457,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Email"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailContent -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailContent">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Email"/>
+        <rdfs:comment>newly added class, describes email attachments. </rdfs:comment>
     </owl:Class>
     
 
@@ -381,6 +466,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAction"/>
+        <rdfs:comment>newly added action, describes email sending action</rdfs:comment>
     </owl:Class>
     
 
@@ -389,13 +475,16 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailViewAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAction"/>
+        <rdfs:comment>newly added actions, describes email viewing action</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Event -->
 
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Event"/>
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Event">
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
+    </owl:Class>
     
 
 
@@ -403,6 +492,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitalAsset"/>
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
     </owl:Class>
     
 
@@ -411,6 +501,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/CopyAction"/>
+        <rdfs:comment>newly added action. describes file copy action</rdfs:comment>
     </owl:Class>
     
 
@@ -419,6 +510,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileDeleteAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DeleteAction"/>
+        <rdfs:comment>newly added class, describes file deletion action.</rdfs:comment>
     </owl:Class>
     
 
@@ -430,6 +522,7 @@
         <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia"/>
         <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia"/>
         <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia"/>
+        <rdfs:comment>newly added class, describes a file that is from removable disk. </rdfs:comment>
     </owl:Class>
     
 
@@ -438,6 +531,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileOpenAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction"/>
+        <rdfs:comment>newly added action. describes file open action</rdfs:comment>
     </owl:Class>
     
 
@@ -447,6 +541,7 @@
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
         <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia"/>
+        <rdfs:comment>newly added class, describes a file that is to  removable disk. </rdfs:comment>
     </owl:Class>
     
 
@@ -455,6 +550,8 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileWriteAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WriteAction"/>
+        <rdfs:comment>newly added action, describes file write action
+</rdfs:comment>
     </owl:Class>
     
 
@@ -463,6 +560,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <rdfs:comment>newly added class. describes hacktivist website</rdfs:comment>
     </owl:Class>
     
 
@@ -471,6 +569,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InHourAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier"/>
+        <rdfs:comment>newly added class. Describes the during working hours actions. </rdfs:comment>
     </owl:Class>
     
 
@@ -479,6 +578,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <rdfs:comment>newly added class. describes job hunting website</rdfs:comment>
     </owl:Class>
     
 
@@ -487,6 +587,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ModificationAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitAction"/>
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
     </owl:Class>
     
 
@@ -495,6 +596,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NeutralWebsite">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <rdfs:comment>newly added class. describes neutral website</rdfs:comment>
     </owl:Class>
     
 
@@ -503,6 +605,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+        <rdfs:comment>newly added class, describes a file that is not  from removable disk. </rdfs:comment>
     </owl:Class>
     
 
@@ -511,6 +614,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+        <rdfs:comment>newly added class, describes a file that is not to removable disk. </rdfs:comment>
     </owl:Class>
     
 
@@ -519,6 +623,24 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Asset"/>
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Role -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Role">
+        <rdfs:comment>Role class describes the role of an employee, e.g. &quot;ITAdmin&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Supervisor -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Supervisor">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:comment>newly added class, describes the supervisor class.</rdfs:comment>
     </owl:Class>
     
 
@@ -527,6 +649,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/USBDriveAsset">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset"/>
+        <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
     </owl:Class>
     
 
@@ -535,6 +658,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction"/>
+        <rdfs:comment>newly added action, describes www related action</rdfs:comment>
     </owl:Class>
     
 
@@ -543,6 +667,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWDownloadAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction"/>
+        <rdfs:comment>newly added action, describes www download related action</rdfs:comment>
     </owl:Class>
     
 
@@ -551,6 +676,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction"/>
+        <rdfs:comment>newly added action, describes www upload related action</rdfs:comment>
     </owl:Class>
     
 
@@ -559,13 +685,16 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWVisitAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction"/>
+        <rdfs:comment>newly added action, describes www visit related action</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Website -->
 
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Website">
+        <rdfs:comment>newly added class. describes website</rdfs:comment>
+    </owl:Class>
     
 
 
@@ -573,6 +702,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WriteAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ModificationAction"/>
+        <rdfs:comment>newly added action, describes wirte action</rdfs:comment>
     </owl:Class>
 </rdf:RDF>
 
