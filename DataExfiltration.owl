@@ -190,7 +190,7 @@
 
     <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize">
         <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
-        <rdfs:range rdf:resource="&xsd;byte"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 
@@ -226,7 +226,7 @@
 
     <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasSize">
         <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment"/>
-        <rdfs:range rdf:resource="&xsd;byte"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 
@@ -377,6 +377,15 @@
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Event"/>
         <rdfs:comment>DataExfiltrationEvent is defined by several Action classes in this ontology (including both actions from original CMU CERT ontology and newly added actions). Current definition describes an employee uses removable disk after working hours to upload data to wikileaks.org (a Hacktivist website) or dropbox (a cloud storage website). More different triggers of this class will be added in the future.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/DecoyFile -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DecoyFile">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
+        <rdfs:comment>newly added class, to describe the decoy files deliberately implanted in the employee&apos;s pc. </rdfs:comment>
     </owl:Class>
     
 
@@ -650,6 +659,15 @@
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/USBDriveAsset">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset"/>
         <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Unmployee -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Unmployee">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:comment>newly added class. describe previous employees who left the job (either resignation, or laid-off). User who is not in current month LDAP list will be annotated as Unemployee</rdfs:comment>
     </owl:Class>
     
 
