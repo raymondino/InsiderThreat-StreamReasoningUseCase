@@ -115,11 +115,11 @@ def http(record):
     print '<%shttp_%s> <%shasURL> <%s>.' %(ex,id,ex,record[5])
     domainName = record[5][:record[5].find('/',7)+1]
     if domainName in cloudStorageWebsites:
-        print '<%s> <%s> <%sCloudStorageWebsite>.' %(record[5],ex+'whoseDomainNameIsA',ex)
+        print '<%s> <%s> <%sCloudStorageWebsite>.' %(record[5],ex'whoseDomainNameIsA',ex)
     elif domainName in hacktivistWebsites:
-        print '<%s> <%s> <%sHacktivistWebsite>.' %(record[5],ex+'whoseDomainNameIsA',ex)
+        print '<%s> <%s> <%sHacktivistWebsite>.' %(record[5],ex'whoseDomainNameIsA',ex)
     elif domainName in jobHuntingWebsites:
-        print '<%s> <%s> <%sJobHuntingWebsite>.' %(record[5],ex+'whoseDomainNameIsA',ex)
+        print '<%s> <%s> <%sJobHuntingWebsite>.' %(record[5],ex'whoseDomainNameIsA',ex)
     else:
         print '<%s> <%s> <%sNeuturalWebsite>.' %(record[5],a,ex)
     print '<%shttp_%s> <%shasContent> "%s"^^<%sstring>.' %(ex,id,ex,content,xsd)
