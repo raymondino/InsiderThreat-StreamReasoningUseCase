@@ -145,6 +145,15 @@
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasUserID -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasUserID">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UserID"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasWebsite -->
 
     <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasWebsite">
@@ -163,6 +172,16 @@
 
     <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isActorOf">
         <owl:inverseOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasActor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/isIn -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isIn">
+        <rdfs:comment>describes a decoy file in a computer pc</rdfs:comment>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset"/>
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DecoyFile"/>
     </owl:ObjectProperty>
     
 
@@ -939,6 +958,15 @@ paceTime.owl)</rdfs:comment>
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Unmployee">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
         <rdfs:comment>newly added class. describe previous employees who left the job (either resignation, or laid-off). User who is not in current month LDAP list will be annotated as Unemployee</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/UserID -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/UserID">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitalAsset"/>
+        <rdfs:comment>newly added class. a user id should be a digital asset for the organization.</rdfs:comment>
     </owl:Class>
     
 
