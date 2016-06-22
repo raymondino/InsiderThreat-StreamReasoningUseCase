@@ -64,6 +64,6 @@ user = "CDE1846";
 # temp3 = combine(False, False, open(user + "_email.csv", 'r'), open(user + "_temp2.csv", 'r'), open(user + "_temp3.csv", 'w'))
 # print "temp3 done"
 # temp3.close();
-temp4 = combine(False, False, open(user + "_http.csv", 'r'), open(user + "_temp3.csv", 'r'), open(user + "-aggregated.csv", 'w'))
+temp4 = combine(False, False, open(user + "_http.csv", 'r'), open(user + "_temp3.csv", 'r'), open(user + "_aggregated.csv", 'w'))
 temp4.close();
 print "temp4 done"
