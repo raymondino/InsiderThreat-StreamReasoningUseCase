@@ -147,17 +147,30 @@ def http(record):
 
 if __name__ == '__main__':
     f = open('ACM2278-aggregate.csv')
-    deviceUsageCounter = 0
     userID = f.readline().split(',')[3]
     print '<%s%s> <%sisInvolvedIn> <%sevent%s>.' %(ex,userID,ex,ex,userID)
     f.seek(0,0)
+
+    deviceUsageCounter = 0
+    isDeviceConnected = False
+    connectedDevice = ''
     for record in f:
         type = record[:record.find(',')]
         if type == 'logon':
             record = record.strip().split(',')
+            if record[5] == 'Logoff':
+                connectedDevice = ''
             logon(record)
         elif type == 'device':
             record = record.strip().split(',')
+            if record[6] == 'Connect':
+                deviceUsageCounter += 1
+                if deviceUsageCounter > usbDriveUsageFrequency:
+                    print '<%s%s> <%s> <%sExcessiveRemovableDriveUser>' %(ex,userID,a,ex)
+                    # the previous line might be printed many times
+                connectedDevice = record[1][1:len(record[1])-1]  # id of this record
+            elif record[6] == 'Disconnect':
+                connectedDevice = ''
             device(record)
         elif type == 'email':
             content = record[record.find('"'):len(record)-1].replace('"','')
@@ -169,6 +182,9 @@ if __name__ == '__main__':
             record = record[:record.find('"')].split(',')
             record.append(content)
             file(record)
+            if connectedDevice:
+                id = record[1][1:len(record[1])-1]
+                print '<%s%s> <%sstartsNoEarlierThanEndingOf> <%s%s>' %(ex,id,ex,ex,connectedDevice)
         elif type == 'http':
             content = record[record.find('"'):len(record)-1].replace('"','')
             record = record[:record.find('"')].split(',')
