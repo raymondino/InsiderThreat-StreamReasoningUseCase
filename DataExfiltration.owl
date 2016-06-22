@@ -558,7 +558,7 @@ paceTime.owl)</rdfs:comment>
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Email"/>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
         <rdfs:comment>newly added class, describes email attachments. </rdfs:comment>
     </owl:Class>
     
@@ -814,25 +814,33 @@ paceTime.owl)</rdfs:comment>
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction">
         <owl:equivalentClass>
             <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction"/>
+                <owl:unionOf rdf:parseType="Collection">
                     <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/bcc"/>
-                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/cc"/>
-                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/to"/>
-                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
-                            </owl:Restriction>
-                        </owl:unionOf>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction"/>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/bcc"/>
+                                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/cc"/>
+                                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/to"/>
+                                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+                                    </owl:Restriction>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:intersectionOf>
                     </owl:Class>
-                </owl:intersectionOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment"/>
+                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DecoyFile"/>
+                    </owl:Restriction>
+                </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction"/>
@@ -846,10 +854,18 @@ paceTime.owl)</rdfs:comment>
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileCopyAction">
         <owl:equivalentClass>
             <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
-                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
-                </owl:intersectionOf>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasFile"/>
+                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DecoyFile"/>
+                    </owl:Restriction>
+                </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
