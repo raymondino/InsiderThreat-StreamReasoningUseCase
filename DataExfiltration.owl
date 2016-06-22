@@ -39,6 +39,21 @@
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/browseWebsite -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/browseWebsite">
+        <rdfs:comment>This is a property chain that describes an actor browse a website</rdfs:comment>
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isActorOf"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasURL"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/whoseDomainNameIsA"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/cc -->
 
     <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/cc">
@@ -53,6 +68,15 @@
     <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/from">
         <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
         <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasAction -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasAction">
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Event"/>
     </owl:ObjectProperty>
     
 
@@ -116,7 +140,38 @@
 
     <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasURL">
         <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/URL"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasWebsite -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasWebsite">
+        <rdfs:comment>action haswebsite website</rdfs:comment>
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
         <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasURL"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/whoseDomainNameIsA"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/isActorOf -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isActorOf">
+        <owl:inverseOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasActor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/isInvolvedIn -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isInvolvedIn">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Event"/>
     </owl:ObjectProperty>
     
 
@@ -139,11 +194,48 @@
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/startsNoEarlierThanEndingOf -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/startsNoEarlierThanEndingOf">
+        <rdfs:comment>This predicate means that the
+TemporalThing subject starts
+immediately following the
+TemporalThing object. subject
+and object have no time points
+in common, but there is also no
+time point between the ending of
+object and the starting of
+subject. Derived from OpenCyc
+1.0. (Adapted from Eric
+Peterson&apos;s SpaceTime ontology:
+http://semanic.org/OntDef/Cur/S
+paceTime.owl)</rdfs:comment>
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/TemporalThing"/>
+        <rdfs:subPropertyOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/temporallyRelatedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/temporallyRelatedTo -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/temporallyRelatedTo"/>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/to -->
 
     <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/to">
         <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
         <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/whoseDomainNameIsA -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/whoseDomainNameIsA">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/URL"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
     </owl:ObjectProperty>
     
 
@@ -273,6 +365,7 @@
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Action -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Action">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/TemporalThing"/>
         <rdfs:comment>originated from CMU CERT ontology
 </rdfs:comment>
     </owl:Class>
@@ -356,27 +449,27 @@
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DataExfiltrationEvent">
         <owl:equivalentClass>
             <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
-                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction"/>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasURL"/>
-                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite"/>
-                            </owl:Restriction>
-                        </owl:unionOf>
-                    </owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedWithRemovableDisk"/>
-                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/USBDriveAsset"/>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
+                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction"/>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
                     </owl:Restriction>
-                </owl:intersectionOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
+                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileCopyAction"/>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
+                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction"/>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Event"/>
-        <rdfs:comment>DataExfiltrationEvent is defined by several Action classes in this ontology (including both actions from original CMU CERT ontology and newly added actions). Current definition describes an employee uses removable disk after working hours to upload data to wikileaks.org (a Hacktivist website) or dropbox (a cloud storage website). More different triggers of this class will be added in the future.</rdfs:comment>
+        <rdfs:comment>DataExfiltrationEvent is defined by several Action classes in this ontology (including both actions from original CMU CERT ontology and newly added actions). An event belongs to a user id, and records the user&apos;s actions from time to time. In the data annotation, a user&apos;s event is defined as ex:EventUSERID. When a suspicious action is detected, a triple is added as ex:EventUSERID ex:hasAction ex:someAction. The owl syntax definition of DataExfiltrationEvent basically says that if there are at least 3 suspicious www upload action, or 3 suspicisou file copy action or 1 suspicious email send action, it is an data exfiltration event already. </rdfs:comment>
     </owl:Class>
     
 
@@ -492,7 +585,17 @@
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Event -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Event">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/TemporalThing"/>
         <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:comment>newly added class, describes a user who excessively uses the removable disk, compared to his/her normal daily removable disk usage. during data annotation process, a user will be annotated as a ExcessiveRemovableDriverUser if his/her removable disk usage exceeds his/her routine usage.  </rdfs:comment>
     </owl:Class>
     
 
@@ -583,6 +686,15 @@
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+    </owl:Class>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite">
@@ -628,11 +740,54 @@
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+    </owl:Class>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Asset"/>
         <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/PotentialJobHunter -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PotentialJobHunter">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/browseWebsite"/>
+                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:comment>newly added class. describes an employee who browsed some job hunting website. It&apos;s not necessary for an employee to be a jobhunter if he browses job-related website, but the system should be able to record it, then fire an alarm if further suspicious events are detected. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/PotentialThreateningInsider -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PotentialThreateningInsider">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isInvolvedIn"/>
+                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DataExfiltrationEvent"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:comment>newly added class, describes a potential threatening insider. The reason not to name it &quot;a threatening insider&quot; is because we still need human to make the final decision. </rdfs:comment>
     </owl:Class>
     
 
@@ -650,6 +805,106 @@
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Supervisor">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
         <rdfs:comment>newly added class, describes the supervisor class.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/bcc"/>
+                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/cc"/>
+                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/to"/>
+                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction"/>
+        <rdfs:comment>newly added class. describes a suspicious email send action which the email is sent to a non-internal email address. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileCopyAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileCopyAction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
+        <rdfs:comment>newly added classes, describes a suspcious copy action that is performed after hours. (this class definition might not be full-fledged)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasWebsite"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:unionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite"/>
+                                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite"/>
+                                        </owl:unionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction"/>
+        <rdfs:comment>newly added class. describes a suspicious upload action that is either performed after hours or upload files to some cloud storage or hacktivist website.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/TemporalThing -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/TemporalThing"/>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/URL -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/URL">
+        <rdfs:comment>newly added class. describes an actual url</rdfs:comment>
     </owl:Class>
     
 
