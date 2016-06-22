@@ -5,9 +5,9 @@ dailyStart = datetime.time(7,27-15,12)
 dailyEnd = datetime.time(17,34+15,48)
 
 def logon(record):
-    record = record.strip().split(',')
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+    print '<%sevent%s> <%shasAction> <%s%s>.' %(ex,record[3],ex,ex,id)
     print '<%slogon_%s> <%s> <%s%sAction>.' %(ex,id,a,ex,record[5])
     print '<%slogon_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTimeStamp>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
@@ -18,9 +18,9 @@ def logon(record):
     print '<%slogon_%s> <%sisPerformedOnPC> <%s%s>.' %(ex,id,ex,ex,record[4])
 
 def device(record):
-    record = record.strip().split(',')
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+    print '<%sevent%s> <%shasAction> <%s%s>.' %(ex,record[3],ex,ex,id)
     print '<%sdevice_%s> <%s> <%s%sAction>.' %(ex,id,a,ex,record[6]+'ion')
     print '<%sdevice_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTimeStamp>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
@@ -34,11 +34,12 @@ def device(record):
         print '<%sdevice_%s_disk> <%shasFileTree> "%s"^^<%sstring>.' %(ex,id,ex,record[5].replace('\\','_'),xsd)
 
 # email, id, date, user, pc, to, cc, bcc, from, activity, size, attachment, content
+#   0,    1,   2,    3,   4,  5,  6,  7,    8,       9,    10,      11
 def email(record):
-    content = record[record.find('"'):len(record)-1].replace('"','')
-    record = record[:record.find('"')].split(',')
+    content = record[-1]
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+    print '<%sevent%s> <%shasAction> <%s%s>.' %(ex,record[3],ex,ex,id)
     print '<%semail_%s> <%s> <%sEmail%sAction>.' %(ex,id,a,ex,record[9])
     print '<%semail_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTimeStamp>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
@@ -51,15 +52,33 @@ def email(record):
         toList = record[5].split(';')
         for item in toList:
             print '<%semail_%s> <%sto> <%s%s>.'%(ex,id,ex,ex,item)
+            if item[item.find('@'):] == '@dtaa.com':
+                print '<%semail_%s> <%s> <%sInternalEmailAddress>.' %(ex,item,a,ex)
+            else:
+                print '<%semail_%s> <%s> <%sNotInternalEmailAddress>.' %(ex,item,a,ex)
     if record[6]:
         ccList = record[6].split(';')
         for item in ccList:
             print '<%semail_%s> <%scc> <%s%s>.'%(ex,id,ex,ex,item)
+            if item[item.find('@'):] == '@dtaa.com':
+                print '<%semail_%s> <%s> <%sInternalEmailAddress>.' %(ex,item,a,ex)
+            else:
+                print '<%semail_%s> <%s> <%sNotInternalEmailAddress>.' %(ex,item,a,ex)
     if record[7]:
         bccList = record[7].split(';')
         for item in bccList:
             print '<%semail_%s> <%sbcc> <%s%s>.'%(ex,id,ex,ex,item)
+            if item[item.find('@'):] == '@dtaa.com':
+                print '<%semail_%s> <%s> <%sInternalEmailAddress>.' %(ex,item,a,ex)
+            else:
+                print '<%semail_%s> <%s> <%sNotInternalEmailAddress>.' %(ex,item,a,ex)
+
     print '<%semail_%s> <%sfrom> <%s%s>.'%(ex,id,ex,ex,record[8])
+    if record[8][record[8].find('@'):] == '@dtaa.com':
+        print '<%semail_%s> <%s> <%sInternalEmailAddress>.' %(ex,record[8],a,ex)
+    else:
+        print '<%semail_%s> <%s> <%sNotInternalEmailAddress>.' %(ex,record[8],a,ex)
+
     print '<%semail_%s> <%shasEmailSize> "%s bytes"^^<%sstring>.'%(ex,id,ex,record[10],xsd)
     if record[11]:
         attachmentList = record[11].split(';')
@@ -73,10 +92,10 @@ def email(record):
 # file, id, date, user, pc, filename, activity, to_removable_media, from_removable_media, content
 #    0,  1,   2,   3,   4,    5,         6,               7,                8,               9
 def file(record):
-    content = record[record.find('"'):len(record)-1].replace('"','')
-    record = record[:record.find('"')].split(',')
+    content = record[-1]
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+    print '<%sevent%s> <%shasAction> <%s%s>.' %(ex,record[3],ex,ex,id)
     print '<%sfile_%s> <%s> <%sFile%sAction>.' %(ex,id,a,ex,record[6][5:])
     print '<%sfile_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTimeStamp>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
@@ -100,10 +119,10 @@ def file(record):
 # http, id, date, user, pc, url, activity, content
 #  0,    1,   2,   3,   4,   5,     6,        7
 def http(record):
-    content = record[record.find('"'):len(record)-1].replace('"','')
-    record = record[:record.find('"')].split(',')
+    content = record[-1]
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+    print '<%sevent%s> <%shasAction> <%s%s>.' %(ex,record[3],ex,ex,id)
     print '<%shttp_%s> <%s> <%s%sAction>.' %(ex,id,a,ex,record[6].replace(' ',''))
     print '<%shttp_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTimeStamp>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
@@ -115,33 +134,46 @@ def http(record):
     print '<%shttp_%s> <%shasURL> <%s>.' %(ex,id,ex,record[5])
     domainName = record[5][:record[5].find('/',7)+1]
     if domainName in cloudStorageWebsites:
-        print '<%s> <%s> <%sCloudStorageWebsite>.' %(record[5],ex'whoseDomainNameIsA',ex)
+        print '<%s> <%swhoseDomainNameIsA> <%sCloudStorageWebsite>.' %(record[5],ex,ex)
     elif domainName in hacktivistWebsites:
-        print '<%s> <%s> <%sHacktivistWebsite>.' %(record[5],ex'whoseDomainNameIsA',ex)
+        print '<%s> <%swhoseDomainNameIsA> <%sHacktivistWebsite>.' %(record[5],ex,ex)
     elif domainName in jobHuntingWebsites:
-        print '<%s> <%s> <%sJobHuntingWebsite>.' %(record[5],ex'whoseDomainNameIsA',ex)
+        print '<%s> <%swhoseDomainNameIsA> <%sJobHuntingWebsite>.' %(record[5],ex,ex)
     else:
         print '<%s> <%s> <%sNeuturalWebsite>.' %(record[5],a,ex)
     print '<%shttp_%s> <%shasContent> "%s"^^<%sstring>.' %(ex,id,ex,content,xsd)
 
 
 
-
-
 if __name__ == '__main__':
-    f = open('ACM2278-aggregated.csv')
-    for line in f:
-        type = line[:line.find(',')]
+    f = open('ACM2278-aggregate.csv')
+    deviceUsageCounter = 0
+    userID = f.readline().split(',')[3]
+    print '<%s%s> <%sisInvolvedIn> <%sevent%s>.' %(ex,userID,ex,ex,userID)
+    f.seek(0,0)
+    for record in f:
+        type = record[:record.find(',')]
         if type == 'logon':
-            logon(line)
+            record = record.strip().split(',')
+            logon(record)
         elif type == 'device':
-            device(line)
+            record = record.strip().split(',')
+            device(record)
         elif type == 'email':
-            email(line)
+            content = record[record.find('"'):len(record)-1].replace('"','')
+            record = record[:record.find('"')].split(',')
+            record.append(content)
+            email(record)
         elif type == 'file':
-            file(line)
+            content = record[record.find('"'):len(record)-1].replace('"','')
+            record = record[:record.find('"')].split(',')
+            record.append(content)
+            file(record)
         elif type == 'http':
-            http(line)
+            content = record[record.find('"'):len(record)-1].replace('"','')
+            record = record[:record.find('"')].split(',')
+            record.append(content)
+            http(record)
         else:
             print 'unknown type:', type
 

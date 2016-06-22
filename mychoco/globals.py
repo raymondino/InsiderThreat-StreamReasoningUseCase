@@ -6,3 +6,4 @@ jobHuntingWebsites = ['http://careerbuilder.com/','http://craigslist.org/','http
 ex = 'http://tw.rpi.edu/ontology/DataExfiltration/'
 a = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
 xsd = 'http://www.w3.org/2001/XMLSchema#'
+usbDriveUsageFrequency = 0  # ACM2278's routine usb drive usage frequency is 0
