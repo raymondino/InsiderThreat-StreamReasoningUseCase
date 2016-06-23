@@ -72,6 +72,16 @@
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasAccessToPC -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasAccessToPC">
+        <rdfs:comment>describes an actor has access to a pc that&apos;s assigned for work use. </rdfs:comment>
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasAction -->
 
     <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasAction">
