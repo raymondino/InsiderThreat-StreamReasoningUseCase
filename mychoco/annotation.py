@@ -149,7 +149,7 @@ def http(record):
 
 
 if __name__ == '__main__':
-    f = open('ACM2278-aggregate.csv')
+    f = open('test.csv')
     userID = f.readline().split(',')[3]
     print '<%s%s> <%sisInvolvedIn> <%sevent%s>.' %(ex,userID,ex,ex,userID)
     f.seek(0,0)
@@ -184,6 +184,7 @@ if __name__ == '__main__':
             file(record)
             if connectedDevice:
                 id = record[1][1:len(record[1])-1]
+                timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
                 print '<%s%s> <%sstartsNoEarlierThanEndingOf> <%s%s>.|%s' %(ex,id,ex,ex,connectedDevice,tsToStr(timestamp))
         elif type == 'http':
             content = record[record.find('"'):len(record)-1].replace('"','')
