@@ -9,7 +9,7 @@ def logon(record):
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print '<%sevent%s> <%shasAction> <%s%s>.' %(ex,record[3],ex,ex,id)
     print '<%slogon_%s> <%s> <%s%sAction>.' %(ex,id,a,ex,record[5])
-    print '<%slogon_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTimeStamp>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
+    print '<%slogon_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
         print '<%slogon_%s> <%s> <%sAfterHourAction>.' %(ex,id,a,ex)
     else:
@@ -22,7 +22,7 @@ def device(record):
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print '<%sevent%s> <%shasAction> <%s%s>.' %(ex,record[3],ex,ex,id)
     print '<%sdevice_%s> <%s> <%s%sAction>.' %(ex,id,a,ex,record[6]+'ion')
-    print '<%sdevice_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTimeStamp>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
+    print '<%sdevice_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
         print '<%sdevice_%s> <%s> <%sAfterHourAction>.' %(ex,id,a,ex)
     else:
@@ -41,7 +41,7 @@ def email(record):
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print '<%sevent%s> <%shasAction> <%s%s>.' %(ex,record[3],ex,ex,id)
     print '<%semail_%s> <%s> <%sEmail%sAction>.' %(ex,id,a,ex,record[9])
-    print '<%semail_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTimeStamp>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
+    print '<%semail_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
         print '<%semail_%s> <%s> <%sAfterHourAction>.' %(ex,id,a,ex)
     else:
@@ -97,7 +97,7 @@ def file(record):
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print '<%sevent%s> <%shasAction> <%s%s>.' %(ex,record[3],ex,ex,id)
     print '<%sfile_%s> <%s> <%sFile%sAction>.' %(ex,id,a,ex,record[6][5:])
-    print '<%sfile_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTimeStamp>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
+    print '<%sfile_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
         print '<%sfile_%s> <%s> <%sAfterHourAction>.' %(ex,id,a,ex)
     else:
@@ -124,7 +124,7 @@ def http(record):
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print '<%sevent%s> <%shasAction> <%s%s>.' %(ex,record[3],ex,ex,id)
     print '<%shttp_%s> <%s> <%s%sAction>.' %(ex,id,a,ex,record[6].replace(' ',''))
-    print '<%shttp_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTimeStamp>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
+    print '<%shttp_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.' %(ex,id,ex,str(timestamp.date())+'T'+str(timestamp.time()),xsd )
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
         print '<%shttp_%s> <%s> <%sAfterHourAction>.' %(ex,id,a,ex)
     else:
