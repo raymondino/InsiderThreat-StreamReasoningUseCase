@@ -365,7 +365,7 @@ paceTime.owl)</rdfs:comment>
 
     <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasTimestamp">
         <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
-        <rdfs:range rdf:resource="&xsd;dateTimeStamp"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
 
