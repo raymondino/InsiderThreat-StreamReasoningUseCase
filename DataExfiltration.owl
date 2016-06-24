@@ -846,6 +846,7 @@ paceTime.owl)</rdfs:comment>
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ITAdmin">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+        <rdfs:comment>can have access to any pc</rdfs:comment>
     </owl:Class>
     
 
@@ -897,6 +898,23 @@ paceTime.owl)</rdfs:comment>
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LabManager">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/LoginAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LoginAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/LogoffAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/LogoffAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LogoffAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction"/>
     </owl:Class>
     
 
@@ -1235,6 +1253,14 @@ paceTime.owl)</rdfs:comment>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
         <rdfs:comment>newly added classes, describes a suspcious copy action that is performed after hours. (this class definition might not be full-fledged)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousLoginAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousLoginAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/LoginAction"/>
     </owl:Class>
     
 
