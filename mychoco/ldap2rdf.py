@@ -4,7 +4,7 @@ from globals import *
 #      0,          1,     2,   3,    4,         5,              6,            7,      8,    9
 def ldapToRDF(record):
     record = record.strip().split(',')
-    print '<%s%s> <%shasUserID> <%s%s>.' %(ex,record[0].replace(' ','_'),ex,ex,record[1])
+    print '<%s%s> <%shasName> <%s%s>.' %(ex,record[1],ex,ex,record[0].replace(' ','_'))
     print '<%s%s> <%shasEmailAddress> <%s%s>.' %(ex,record[1],ex,ex,record[2])
     if record[3]:
         print '<%s%s> <%shasRole> <%s%s>.' %(ex,record[1],ex,ex,record[3])

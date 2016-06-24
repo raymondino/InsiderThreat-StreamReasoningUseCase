@@ -716,6 +716,15 @@ paceTime.owl)</rdfs:comment>
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ITAdmin -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ITAdmin">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+        <rdfs:comment>new class, descrbes an employee&apos;s role is an ITAdmin, who can logon to any pc.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/InHourAction -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InHourAction">
@@ -815,6 +824,21 @@ paceTime.owl)</rdfs:comment>
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PotentialThreateningInsider">
         <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasUserID"/>
+                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PotentialThreateningInsiderUserID"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
+        <rdfs:comment>newly added class, describes a potential threatening insider. The reason not to name it &quot;a threatening insider&quot; is because we still need human to make the final decision. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/PotentialThreateningInsiderUserID -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PotentialThreateningInsiderUserID">
+        <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser"/>
@@ -825,8 +849,7 @@ paceTime.owl)</rdfs:comment>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Actor"/>
-        <rdfs:comment>newly added class, describes a potential threatening insider. The reason not to name it &quot;a threatening insider&quot; is because we still need human to make the final decision. </rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UserID"/>
     </owl:Class>
     
 
