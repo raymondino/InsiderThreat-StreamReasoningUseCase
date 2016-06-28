@@ -1,5 +1,5 @@
-from datetime import datetime
-MAXTIME = datetime(9999, 12, 31, 23, 59, 59)
+import datetime
+MAXTIME = datetime.datetime(9999, 12, 31, 23, 59, 59)
 
 def findEarliest(firstLines):
     minIndex = -1
@@ -7,7 +7,7 @@ def findEarliest(firstLines):
     for i in range(len(firstLines)):
         if (firstLines[i]):
             line = firstLines[i].strip().split(',')
-            timestamp = datetime.strptime(line[2],'%m/%d/%Y %H:%M:%S')
+            timestamp = datetime.datetime.strptime(line[2],'%m/%d/%Y %H:%M:%S')
             if timestamp < minTime:
                 minTime = timestamp
                 minIndex = i
@@ -35,3 +35,4 @@ if __name__ == '__main__':
     combine(fileList,outfile)
     for f in fileList:
         f.close()
+    outfile.close()
