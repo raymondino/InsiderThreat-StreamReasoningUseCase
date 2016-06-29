@@ -59,7 +59,8 @@ def extract(user):
 
 def combine(user):
 	fileList = [open('intermediate/'+user+'_device.csv'),open('intermediate/'+user+'_email.csv'),\
-				open('intermediate/'+user+'_file.csv'),open('intermediate/'+user+'_http.csv'),open('intermediate/'+user+'_logon.csv')]
+			open('intermediate/'+user+'_file.csv'),open('intermediate/'+user+'_http.csv'),\
+			open('intermediate/'+user+'_logon.csv')]
 	outfile = open('intermediate/'+user+'_aggregated.csv','w')
 	combinator.combine(fileList,outfile)
 	for f in fileList:
@@ -130,4 +131,4 @@ if __name__ == '__main__':
 	combine(userid)
 	print 'Combine done.'
 	annotate(userid)
-	print 'Annotate done'
+	print 'Annotate done.'
