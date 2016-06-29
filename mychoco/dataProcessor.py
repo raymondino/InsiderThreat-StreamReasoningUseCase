@@ -1,4 +1,8 @@
 # dataProcessor.py
+# Extracts, combines, and annotates data in one step
+# Run this script with command line input UserID
+# Generates results.nt
+
 import sys
 import data_combinator_new as combinator
 import annotation as annotator
@@ -121,9 +125,9 @@ if __name__ == '__main__':
 		sys.exit(0)
 
 	userid = sys.argv[1]
-	# extract(userid)
+	extract(userid)
 	print 'Extract done.'
-	# combine(userid)
+	combine(userid)
 	print 'Combine done.'
 	annotate(userid)
 	print 'Annotate done'
