@@ -5,7 +5,7 @@ path = '../data-r6.2/'
 
 def decoyFileToRDF():
     f = open(path+'decoy_file.csv')
-    outfile = open('decoy.nt','w')
+    outfile = open('background/decoy.nt','w')
     f.readline()
     for record in f:
         record = record.strip().split(',')
@@ -23,25 +23,25 @@ def ldapToRDF():
         infile = open(path+'LDAP/'+filename)
         infile.readline()
         date = filename[:filename.find('.')]
-        outfile = open(date+'.nq','w')
+        outfile = open('background/'+date+'.nq','w')
         for record in infile:
             record = record.strip().split(',')
-            print >>outfile, '<%s%s> <%shasName> <%s%s> <%s>.' %(ex,record[1],ex,ex,record[0].replace(' ','_'),date)
-            print >>outfile, '<%s%s> <%shasEmailAddress> <%s%s> <%s>.' %(ex,record[1],ex,ex,record[2],date)
+            print >>outfile, '<%s%s> <%shasName> <%s%s> <%s%s>.' %(ex,record[1],ex,ex,record[0].replace(' ','_'),ex,date)
+            print >>outfile, '<%s%s> <%shasEmailAddress> <%s%s> <%s%s>.' %(ex,record[1],ex,ex,record[2],ex,date)
             if record[3]:
-                print >>outfile, '<%s%s> <%shasRole> <%s%s> <%s>.' %(ex,record[1],ex,ex,record[3],date)
+                print >>outfile, '<%s%s> <%shasRole> <%s%s> <%s%s>.' %(ex,record[1],ex,ex,record[3],ex,date)
             if record[4]:
-                print >>outfile, '<%s%s> <%shasProjects> <%s%s> <%s>.' %(ex,record[1],ex,ex,record[4].replace(' ',''),date)
+                print >>outfile, '<%s%s> <%shasProjects> <%s%s> <%s%s>.' %(ex,record[1],ex,ex,record[4].replace(' ',''),ex,date)
             if record[5]:
-                print >>outfile, '<%s%s> <%shasBussinessUnit> "%s"^^<%sstring> <%s>.' %(ex,record[1],ex,record[5].replace(' ',''),xsd,date)
+                print >>outfile, '<%s%s> <%shasBussinessUnit> "%s"^^<%sstring> <%s%s>.' %(ex,record[1],ex,record[5].replace(' ',''),xsd,ex,date)
             if record[6]:
-                print >>outfile, '<%s%s> <%shasFunctionalUnit> "%s"^^<%sstring> <%s>.' %(ex,record[1],ex,record[6].replace(' ',''),xsd,date)
+                print >>outfile, '<%s%s> <%shasFunctionalUnit> "%s"^^<%sstring> <%s%s>.' %(ex,record[1],ex,record[6].replace(' ',''),xsd,ex,date)
             if record[7]:
-                print >>outfile, '<%s%s> <%shasDepartment> "%s"^^<%sstring> <%s>.' %(ex,record[1],ex,record[7].replace(' ',''),xsd,date)
+                print >>outfile, '<%s%s> <%shasDepartment> "%s"^^<%sstring> <%s%s>.' %(ex,record[1],ex,record[7].replace(' ',''),xsd,ex,date)
             if record[8]:
-                print >>outfile, '<%s%s> <%shasTeam> "%s"^^<%sstring> <%s>.' %(ex,record[1],ex,record[8].replace(' ',''),xsd,date)
+                print >>outfile, '<%s%s> <%shasTeam> "%s"^^<%sstring> <%s%s>.' %(ex,record[1],ex,record[8].replace(' ',''),xsd,ex,date)
             if record[9]:
-                print >>outfile, '<%s%s> <%shasSupervisor> <%s%s> <%s>.' %(ex,record[1],ex,ex,record[9].replace(' ','_'),date)
+                print >>outfile, '<%s%s> <%shasSupervisor> <%s%s> <%s%s>.' %(ex,record[1],ex,ex,record[9].replace(' ','_'),ex,date)
         infile.close()
         outfile.close()
 
@@ -120,14 +120,15 @@ def userPCtimes(minUses=0):
 # Annotates each pc, whether it is assigned to a user or it its a share pc.
 # Output is stored in pc.nt
 def PCannotation():
-    PCusertimes(10)   # comment out this line if PCusertimes.csv is already created
+    # PCusertimes(10)   # comment out this line if PCusertimes.csv is already created
     infile = open('intermediate/PCusertimes.csv')
-    outfile = open('pc.nt','w')
+    outfile = open('background/pc.nt','w')
     for line in infile:
         line = line.strip().split(',')
         pc = line[0]
         if len(line)>1:
             userid = line[1][:line[1].find('(')]
+            print >>outfile, '<%s%s> <%s> <%sAssignedPC>.' %(ex,pc,a,ex)
             print >>outfile, '<%s%s> <%shasAccessToPC> <%s%s>.' %(ex,userid,ex,ex,pc)
         else:
             print >>outfile, '<%s%s> <%s> <%sSharedPC>.' %(ex,pc,a,ex)
