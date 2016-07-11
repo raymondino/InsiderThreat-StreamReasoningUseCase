@@ -129,9 +129,7 @@
 
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasName -->
 
-    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasName">
-        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Person"/>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasName"/>
     
 
 
