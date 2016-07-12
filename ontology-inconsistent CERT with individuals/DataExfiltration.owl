@@ -1,0 +1,1189 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://tw.rpi.edu/ontology/DataExfiltration/"
+     xml:base="http://tw.rpi.edu/ontology/DataExfiltration/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/">
+        <owl:imports rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/bcc -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/bcc">
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/browseWebsite -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/browseWebsite">
+        <rdfs:comment>This is a property chain that describes an actor browse a website</rdfs:comment>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isActorOf"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasURL"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/whoseDomainNameIsA"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/cc -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/cc">
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/from -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/from">
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasAccessToPC -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasAccessToPC">
+        <rdfs:comment>describes an actor has access to a pc that&apos;s assigned for work use. </rdfs:comment>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/AssignedPC"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAddress -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAddress">
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment">
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasFile -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasFile">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FileAsset"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasName -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasName"/>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasRole -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasRole">
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasSupervisor -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasSupervisor">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasURL -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasURL">
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/URL"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasWebsite -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasWebsite">
+        <rdfs:comment>action haswebsite website</rdfs:comment>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasURL"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/whoseDomainNameIsA"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/isIn -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isIn">
+        <rdfs:comment>describes a decoy file in a computer pc</rdfs:comment>
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DecoyFile"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/isInvolvedIn -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isInvolvedIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/isPerformedWithRemovableDisk -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedWithRemovableDisk">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#USBDriveAsset"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/to -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/to">
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/whoseDomainNameIsA -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/whoseDomainNameIsA">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/URL"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasBusinessUnit -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasBusinessUnit">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasContent -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasContent">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasDepartment -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasDepartment">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasFileName -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasFileName">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasFileTree -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasFileTree">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasFunctionalUnit -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasFunctionalUnit">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasSize -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasSize">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasTeam -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasTeam">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hasTimestamp -->
+
+    <owl:DatatypeProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasTimestamp">
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Accountant -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Accountant">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeAssistant -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeAssistant">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeStaff -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeStaff">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ActionModifier"/>
+        <rdfs:comment>new class added.  This class describes employee&apos;s actions after working hours. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/AssignedPC -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AssignedPC">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SharedPC"/>
+        <rdfs:comment>newly aded class. * 4k users, each with an assigned PC</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Attorney -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Attorney">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ChiefEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ChiefEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <rdfs:comment>newly added class. describes cloud storage website</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ComputerProgrammer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ComputerProgrammer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ComputerScientist -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ComputerScientist">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/DecoyFile -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DecoyFile">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FileAsset"/>
+        <rdfs:comment>newly added class, to describe the decoy files deliberately implanted in the employee&apos;s pc. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Director -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Director">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/DiskConnectionAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskConnectionAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ConnectAction"/>
+        <rdfs:comment>newly added classes. describes removable disk connect to pc</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/DiskDisconnectionAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskDisconnectionAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ConnectAction"/>
+        <rdfs:comment>newly added class. describes removable disk disconnects to pc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Economist -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Economist">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ElectricalEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ElectricalEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAsset"/>
+        <rdfs:comment>newly added class, describes email address. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailAsset -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAsset">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DigitalAsset"/>
+        <rdfs:comment>newly added class. describes email related things. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAttachment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FileAsset"/>
+        <rdfs:comment>newly added class, describes email attachments. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#EmailAction"/>
+        <rdfs:comment>newly added action, describes email sending action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailViewAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailViewAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#EmailAction"/>
+        <rdfs:comment>newly added actions, describes email viewing action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Engineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Engineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:comment>newly added class, describes a user who excessively uses the removable disk, compared to his/her normal daily removable disk usage. during data annotation process, a user will be annotated as a ExcessiveRemovableDriverUser if his/her removable disk usage exceeds his/her routine usage.  </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FieldServiceEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FieldServiceEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#CopyAction"/>
+        <rdfs:comment>newly added action. describes file copy action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileDeleteAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileDeleteAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DeleteAction"/>
+        <rdfs:comment>newly added class, describes file deletion action.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileFromRemovableMedia -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileFromRemovableMedia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FileAsset"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia"/>
+        <rdfs:comment>newly added class, describes a file that is from removable disk. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileOpenAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileOpenAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#AccessAction"/>
+        <rdfs:comment>newly added action. describes file open action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FileAsset"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia"/>
+        <rdfs:comment>newly added class, describes a file that is to  removable disk. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FileWriteAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileWriteAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WriteAction"/>
+        <rdfs:comment>newly added action, describes file write action
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FinancialAnalyst -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FinancialAnalyst">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <rdfs:comment>newly added class. describes hacktivist website</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HardwareEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HardwareEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HealthSafetyEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HealthSafetyEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HumanResourceSpecialist -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HumanResourceSpecialist">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ITAdmin -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ITAdmin">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+        <rdfs:comment>can have access to any pc</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/InHourAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InHourAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ActionModifier"/>
+        <rdfs:comment>newly added class. Describes the during working hours actions. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/IndustrialEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/IndustrialEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/InstructionalCoordinator -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InstructionalCoordinator">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <rdfs:comment>newly added class. describes job hunting website</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/LabManager -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LabManager">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Manager -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Manager">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/MaterialsEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/MaterialsEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Mathematician -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Mathematician">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/MechanicalEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/MechanicalEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NeutralWebsite -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NeutralWebsite">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
+        <rdfs:comment>newly added class. describes neutral website</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FileAsset"/>
+        <rdfs:comment>newly added class, describes a file that is not  from removable disk. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FileAsset"/>
+        <rdfs:comment>newly added class, describes a file that is not to removable disk. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Nurse -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Nurse">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NursePractitioner -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NursePractitioner">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Physicist -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Physicist">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/PotentialJobHunter -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PotentialJobHunter">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/browseWebsite"/>
+                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:comment>newly added class. describes an employee who browsed some job hunting website. It&apos;s not necessary for an employee to be a jobhunter if he browses job-related website, but the system should be able to record it, then fire an alarm if further suspicious events are detected. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/PotentialThreateningInsider -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PotentialThreateningInsider">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isInvolvedIn"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DataExfiltrationEvent"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:comment>newly added class, describes a potential threatening insider. The reason not to name it &quot;a threatening insider&quot; is because we still need human to make the final decision. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/President -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/President">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ProductionLineWorker -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ProductionLineWorker">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ProjectManager -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ProjectManager">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/PurchasingClerk -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PurchasingClerk">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Role -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Role">
+        <rdfs:comment>Role class describes the role of an employee, e.g. &quot;ITAdmin&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Salesman -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Salesman">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Scientist -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Scientist">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SecurityGuard -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SecurityGuard">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SharedPC -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SharedPC">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset"/>
+        <rdfs:comment>newly added classes.  400 shared machines used by some of the users in addition to their assigned PC. These are shared in the sense of a computer lab, not in the sense of a Unix server or Windows Terminal Server.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SoftwareDeveloper -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SoftwareDeveloper">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SoftwareEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SoftwareEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SoftwareQualityEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SoftwareQualityEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Statistician -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Statistician">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/StockroomClerk -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/StockroomClerk">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Supervisor -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Supervisor">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction"/>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/bcc"/>
+                                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/cc"/>
+                                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/to"/>
+                                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+                                    </owl:Restriction>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment"/>
+                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DecoyFile"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction"/>
+        <rdfs:comment>newly added class. describes a suspicious email send action which the email is sent to a non-internal email address. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileCopyAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileCopyAction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasFile"/>
+                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DecoyFile"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
+        <rdfs:comment>newly added classes, describes a suspcious copy action that is performed after hours. (this class definition might not be full-fledged)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousLoginAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousLoginAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#LoginAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasWebsite"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:unionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite"/>
+                                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite"/>
+                                        </owl:unionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction"/>
+        <rdfs:comment>newly added class. describes a suspicious upload action that is either performed after hours or upload files to some cloud storage or hacktivist website.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SystemsEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SystemsEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/TechnicalWriter -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/TechnicalWriter">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Technician -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Technician">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/TestEngineer -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/TestEngineer">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/URL -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/URL">
+        <rdfs:comment>newly added class. describes an actual url</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Unmployee -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Unmployee">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:comment>newly added class. describe previous employees who left the job (either resignation, or laid-off). User who is not in current month LDAP list will be annotated as Unemployee</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/VicePresident -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/VicePresident">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WWWAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#AccessAction"/>
+        <rdfs:comment>newly added action, describes www related action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WWWDownloadAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWDownloadAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction"/>
+        <rdfs:comment>newly added action, describes www download related action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction"/>
+        <rdfs:comment>newly added action, describes www upload related action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WWWVisitAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWVisitAction">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWAction"/>
+        <rdfs:comment>newly added action, describes www visit related action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WebDeveloper -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WebDeveloper">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Website -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Website">
+        <rdfs:comment>newly added class. describes website</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WriteAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WriteAction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ModificationAction"/>
+        <rdfs:comment>newly added action, describes wirte action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#DataExfiltrationEvent -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DataExfiltrationEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasAction"/>
+                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction"/>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasAction"/>
+                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileCopyAction"/>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasAction"/>
+                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction"/>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
