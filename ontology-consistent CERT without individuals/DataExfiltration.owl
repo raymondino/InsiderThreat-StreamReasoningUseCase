@@ -344,6 +344,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ActionModifier"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/InHourAction"/>
         <rdfs:comment>new class added.  This class describes employee&apos;s actions after working hours. </rdfs:comment>
     </owl:Class>
     
@@ -508,7 +509,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:comment>newly added class, describes a user who excessively uses the removable disk, compared to his/her normal daily removable disk usage. during data annotation process, a user will be annotated as a ExcessiveRemovableDriverUser if his/her removable disk usage exceeds his/her routine usage.  </rdfs:comment>
+        <rdfs:comment xml:lang="en">describes a user who excessively uses the removable disk, compared to his/her normal daily removable disk usage. during data annotation process, a user will be annotated as a ExcessiveRemovableDriverUser if his/her removable disk usage exceeds his/her routine usage.  </rdfs:comment>
     </owl:Class>
     
 
@@ -543,9 +544,7 @@
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileFromRemovableMedia">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FileAsset"/>
-        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia"/>
         <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia"/>
-        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia"/>
         <rdfs:comment>newly added class, describes a file that is from removable disk. </rdfs:comment>
     </owl:Class>
     
@@ -782,7 +781,7 @@
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:comment>newly added class. describes an employee who browsed some job hunting website. It&apos;s not necessary for an employee to be a jobhunter if he browses job-related website, but the system should be able to record it, then fire an alarm if further suspicious events are detected. </rdfs:comment>
+        <rdfs:comment xml:lang="en">newly added classes. describes an employee who browsed some job hunting website. It&apos;s not necessary for an employee to be a jobhunter if he browses job-related website, but the system should be able to record it, then fire an alarm if further suspicious events are detected. </rdfs:comment>
     </owl:Class>
     
 
@@ -1078,9 +1077,9 @@
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Unmployee -->
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Unemployee -->
 
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Unmployee">
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Unemployee">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:comment>newly added class. describe previous employees who left the job (either resignation, or laid-off). User who is not in current month LDAP list will be annotated as Unemployee</rdfs:comment>
     </owl:Class>

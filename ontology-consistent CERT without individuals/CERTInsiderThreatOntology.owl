@@ -1,30 +1,29 @@
 <?xml version="1.0"?>
-<!--
-Copyright 2016 Carnegie Mellon University
-This material is based upon work funded and supported by Federal Bureau of Investigation  Defense Advanced Research Projects Agents under Contract No. FA8721-05-C-0003 with Carnegie Mellon University for the operation of the Software Engineering Institute, a federally funded research and development center sponsored by the United States Department of Defense.
-Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of Federal Bureau of Investigation  Defense Advanced Research Projects Agents or the United States Department of Defense.
-NO WARRANTY. THIS CARNEGIE MELLON UNIVERSITY AND SOFTWARE ENGINEERING INSTITUTE MATERIAL IS FURNISHED ON AN “AS-IS” BASIS. CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, AS TO ANY MATTER INCLUDING, BUT NOT LIMITED TO, WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY, OR RESULTS OBTAINED FROM USE OF THE MATERIAL. CARNEGIE MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.
-[Distribution Statement A] This material has been approved for public release and unlimited distribution.  Please see Copyright notice for non-US Government use and distribution.
-Internal use:* Permission to reproduce this material and to prepare derivative works from this material for internal use is granted, provided the copyright and “No Warranty” statements are included with all reproductions and derivative works.
-External use:* This material may be reproduced in its entirety, without modification, and freely distributed in written or electronic form without requesting formal permission. Permission is required for any other external and/or commercial use. Requests for permission should be directed to the Software Engineering Institute at permission@sei.cmu.edu.
-* These restrictions do not apply to U.S. government entities.
-Carnegie Mellon® and CERT® are registered marks of Carnegie Mellon University.
-DM-0003791
--->
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY webprotege "http://protege.stanford.edu/webprotege/" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
 <rdf:RDF xmlns="http://www.semanticweb.org/cert-itc/ontologies/itio#"
      xml:base="http://www.semanticweb.org/cert-itc/ontologies/itio"
-     xmlns:webprotege="http://protege.stanford.edu/webprotege/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:dc="http://purl.org/dc/elements/1.1/">
+     xmlns:webprotege="http://protege.stanford.edu/webprotege/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio">
-        <webprotege:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</webprotege:revision>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Insider Threat Indicator Ontology</rdfs:label>
-        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CERT Insider Threat Center</dc:creator>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This ontology is designed to provide an expression mechanism for potential indicators of malicious insider activity.</rdfs:comment>
+        <rdfs:label rdf:datatype="&xsd;string">Insider Threat Indicator Ontology</rdfs:label>
+        <webprotege:revision rdf:datatype="&xsd;integer">1</webprotege:revision>
+        <dc:creator rdf:datatype="&xsd;string">CERT Insider Threat Center</dc:creator>
+        <rdfs:comment rdf:datatype="&xsd;string">This ontology is designed to provide an expression mechanism for potential indicators of malicious insider activity.</rdfs:comment>
     </owl:Ontology>
     
 
@@ -59,19 +58,19 @@ DM-0003791
 
     <!-- http://www.w3.org/2001/XMLSchema#date -->
 
-    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:Datatype rdf:about="&xsd;date"/>
     
 
 
     <!-- http://www.w3.org/2001/XMLSchema#gYear -->
 
-    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
+    <rdfs:Datatype rdf:about="&xsd;gYear"/>
     
 
 
     <!-- http://www.w3.org/2001/XMLSchema#gYearMonth -->
 
-    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYearMonth"/>
+    <rdfs:Datatype rdf:about="&xsd;gYearMonth"/>
     
 
 
@@ -89,12 +88,12 @@ DM-0003791
     <!-- http://semanic.org/OntDef/SpaceTime#endMeetsBeginningOf -->
 
     <owl:ObjectProperty rdf:about="http://semanic.org/OntDef/SpaceTime#endMeetsBeginningOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <owl:inverseOf rdf:resource="http://semanic.org/OntDef/SpaceTime#startMeetsEndingOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
         <rdfs:isDefinedBy>This property links a temporal thing that follows immediatly after a second temporal thing.
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <owl:inverseOf rdf:resource="http://semanic.org/OntDef/SpaceTime#startMeetsEndingOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -102,11 +101,11 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://semanic.org/OntDef/SpaceTime#startMeetsEndingOf -->
 
     <owl:ObjectProperty rdf:about="http://semanic.org/OntDef/SpaceTime#startMeetsEndingOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
         <rdfs:isDefinedBy>This predicate means that the TemporalThing subject starts immediately following the TemporalThing object. subject and object have no time points in common, but there is also no time point between the ending of object and the starting of subject.  -Derived from OpenCyc 1.0.
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -114,15 +113,15 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#cotemporalWith -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#cotemporalWith">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#cotemporalWith"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
         <rdfs:isDefinedBy>This property means that the two temporal things have precisely the same temporal extent (see temporalExtent).
   -Derived from OpenCyc 1.0
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#cotemporalWith"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -130,13 +129,13 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#finishedBy -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#finishedBy">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#finishes"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
         <rdfs:isDefinedBy>See inverse.
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#finishes"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -144,12 +143,12 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#finishes -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#finishes">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
         <rdfs:isDefinedBy>This predicate means that subject and object end at the same time and that the subject starts after the object.
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -157,9 +156,9 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasAccessTo -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasAccessTo">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAccountAsset"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
         <rdfs:isDefinedBy>describes a computer account&apos;s access to an asset.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAccountAsset"/>
     </owl:ObjectProperty>
     
 
@@ -167,13 +166,13 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasAccomplice -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasAccomplice">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEventRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isAccompliceOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>This relation defines an accomplice to the insider during the event.
 
 An accomplice is a person who helps another commit a crime</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEventRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isAccompliceOf"/>
     </owl:ObjectProperty>
     
 
@@ -181,9 +180,9 @@ An accomplice is a person who helps another commit a crime</rdfs:isDefinedBy>
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasAction -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasAction">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
         <rdfs:isDefinedBy>This property links an event to its action(s).</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
     </owl:ObjectProperty>
     
 
@@ -191,10 +190,10 @@ An accomplice is a person who helps another commit a crime</rdfs:isDefinedBy>
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasActor -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasActor">
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isActorOf"/>
+        <rdfs:isDefinedBy>This property links an action to its actor(s).</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:isDefinedBy>This property links an action to its actor(s).</rdfs:isDefinedBy>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isActorOf"/>
     </owl:ObjectProperty>
     
 
@@ -202,13 +201,13 @@ An accomplice is a person who helps another commit a crime</rdfs:isDefinedBy>
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasAdministrativeAssistant -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasAdministrativeAssistant">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isAdministrativeAssistantOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>This property links an organization to one of its administrative assistants.
 
 An administrative assistant is defined as an individual who provides various kinds of administrative support to people and groups in organizations.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isAdministrativeAssistantOf"/>
     </owl:ObjectProperty>
     
 
@@ -216,13 +215,13 @@ An administrative assistant is defined as an individual who provides various kin
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasAnalyst -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasAnalyst">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isAnalystOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>Links an organization to an analyst.
 
 An analyst is defined as an employee who analyzes or is skilled in analysis.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isAnalystOf"/>
     </owl:ObjectProperty>
     
 
@@ -230,9 +229,9 @@ An analyst is defined as an employee who analyzes or is skilled in analysis.</rd
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasAsset -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasAsset">
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isAssetOf"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
         <rdfs:isDefinedBy>This property links an asset or actor to an asset it owns.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isAssetOf"/>
     </owl:ObjectProperty>
     
 
@@ -240,13 +239,13 @@ An analyst is defined as an employee who analyzes or is skilled in analysis.</rd
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasBeneficiaryOrganization -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasBeneficiaryOrganization">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEventRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isBeneficiaryOrganizationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>This links an event to the beneficiary organization for the event. 
 
 The beneficiary organization is defined as the organization that the insider intended to provide some benefit to through their malicious actions. The beneficiary organization may or may not have been knowingly involved in the incident.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEventRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isBeneficiaryOrganizationOf"/>
     </owl:ObjectProperty>
     
 
@@ -254,11 +253,11 @@ The beneficiary organization is defined as the organization that the insider int
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasBoyfriend -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasBoyfriend">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFriendRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isBoyfriendOf"/>
+        <rdfs:isDefinedBy>Relates a person to a male friend with whom that person has a romantic relationship.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Relates a person to a male friend with whom that person has a romantic relationship.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFriendRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isBoyfriendOf"/>
     </owl:ObjectProperty>
     
 
@@ -266,11 +265,11 @@ The beneficiary organization is defined as the organization that the insider int
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasBrother -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasBrother">
+        <rdfs:isDefinedBy>Relates a male to other sons and daughters of his parents.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFamilyRelation"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isBrotherOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Relates a male to other sons and daughters of his parents.</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -278,13 +277,13 @@ The beneficiary organization is defined as the organization that the insider int
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasChiefExecutiveOfficer -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasChiefExecutiveOfficer">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasUppermanagementEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefExecutiveOfficerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>Links an organization to a chief executive officer.
 
 A chief executive officer is defined as a top executive in an organization.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasUppermanagementEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefExecutiveOfficerOf"/>
     </owl:ObjectProperty>
     
 
@@ -292,13 +291,13 @@ A chief executive officer is defined as a top executive in an organization.</rdf
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasChiefFinancialOfficer -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasChiefFinancialOfficer">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasUppermanagementEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefFinancialOfficerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>Links an organization to a chief financial officer.
 
 A chief financial officer is a top executive who manages the finances of an organization.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasUppermanagementEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefFinancialOfficerOf"/>
     </owl:ObjectProperty>
     
 
@@ -306,13 +305,13 @@ A chief financial officer is a top executive who manages the finances of an orga
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasChiefTechnicalOfficer -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasChiefTechnicalOfficer">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasUppermanagementEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefTechnicalOfficerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>Links an organization to a chief technical officer.
 
 A chief technical officer is defined as a top executive who runs the technology groups within an organization.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasUppermanagementEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefTechnicalOfficerOf"/>
     </owl:ObjectProperty>
     
 
@@ -320,13 +319,13 @@ A chief technical officer is defined as a top executive who runs the technology 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasColleague -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasColleague">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isColleagueOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>This property links colleagues.
 
 A colleague is defined as a fellow worker or member of a staff, department, profession, etc.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isColleagueOf"/>
     </owl:ObjectProperty>
     
 
@@ -334,11 +333,11 @@ A colleague is defined as a fellow worker or member of a staff, department, prof
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasCompetitor -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasCompetitor">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <definitionReferences>http://dictionary.reference.com/browse/colleague?s=t</definitionReferences>
         <rdfs:isDefinedBy>This property links competing individuals or organizations.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
     </owl:ObjectProperty>
     
 
@@ -346,13 +345,13 @@ A colleague is defined as a fellow worker or member of a staff, department, prof
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasConspirator -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasConspirator">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEventRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isConspiratorOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>This relation defines conspirator for the insider during the event.
 
 A conspirator is a person who is involved in a secret plan to do something harmful or illegal.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEventRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isConspiratorOf"/>
     </owl:ObjectProperty>
     
 
@@ -360,14 +359,14 @@ A conspirator is a person who is involved in a secret plan to do something harmf
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasConsultant -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasConsultant">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isConsultantOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <definitionReferences>http://www.shrm.org/TemplatesTools/Glossaries/HRTerms/Pages/c.aspx</definitionReferences>
         <rdfs:isDefinedBy>This property links a consulant to a customer.
 
 A consultant is defined as an individual who works independently to assist and advise client organizations with various organizational functions and responsibilities on a fee-for-service basis.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.shrm.org/TemplatesTools/Glossaries/HRTerms/Pages/c.aspx</definitionReferences>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isConsultantOf"/>
     </owl:ObjectProperty>
     
 
@@ -375,13 +374,13 @@ A consultant is defined as an individual who works independently to assist and a
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasContractor -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasContractor">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasExternalEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isContractorOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <definitionReferences>Links an organization to a contractor.
 
 A contractor is defined as a person or company that undertakes a contract to provide materials or labor to perform a service or do a job.</definitionReferences>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasExternalEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isContractorOf"/>
     </owl:ObjectProperty>
     
 
@@ -389,13 +388,13 @@ A contractor is defined as a person or company that undertakes a contract to pro
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasCustomer -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasCustomer">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isCustomerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <rdfs:isDefinedBy>This property links an actor to a customer.
 
 A customer is defined as person or organization that buys goods or services from a business or an organization.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isCustomerOf"/>
     </owl:ObjectProperty>
     
 
@@ -403,14 +402,14 @@ A customer is defined as person or organization that buys goods or services from
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasCustomerServiceRepresentative -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasCustomerServiceRepresentative">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasRepresentative"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isCustomerServiceRepresentativeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <definitionReferences>http://www.onetonline.org/link/summary/43-4051.00</definitionReferences>
         <rdfs:isDefinedBy>Links an organization to a customer service representative.
 
 A customer service representative is defined as an individual who interacts with customers to provide information in response to inquiries about products and services and to handle and resolve complaints.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.onetonline.org/link/summary/43-4051.00</definitionReferences>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasRepresentative"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isCustomerServiceRepresentativeOf"/>
     </owl:ObjectProperty>
     
 
@@ -418,10 +417,10 @@ A customer service representative is defined as an individual who interacts with
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasDestination -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasDestination">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasLocation"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DigitalAction"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
         <rdfs:isDefinedBy>See parent definition</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DigitalAction"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasLocation"/>
     </owl:ObjectProperty>
     
 
@@ -429,11 +428,11 @@ A customer service representative is defined as an individual who interacts with
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasEducationEmployee -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEducationEmployee">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEducationEmployeeOf"/>
+        <rdfs:isDefinedBy>This property links an organization to an employee in the education system.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>This property links an organization to an employee in the education system.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEducationEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -441,14 +440,14 @@ A customer service representative is defined as an individual who interacts with
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <definitionReferences>http://dictionary.reference.com/browse/employee?s=t</definitionReferences>
         <rdfs:isDefinedBy>This property links an organization to one of its employees.
 
 An employee is defined as a person working for another person or an organization for pay.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -456,10 +455,10 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasEventRelation -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEventRelation">
+        <rdfs:isDefinedBy>This property describes an actor&apos;s role in the insider event. This role can be in relation to the event itself or to another actor in the event.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasRelation"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:isDefinedBy>This property describes an actor&apos;s role in the insider event. This role can be in relation to the event itself or to another actor in the event.</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -467,11 +466,11 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasExternalEmployee -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasExternalEmployee">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isExternalEmployeeOf"/>
+        <definitionReferences>Links an organization to an individual who is not a direct employee of the organization.</definitionReferences>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <definitionReferences>Links an organization to an individual who is not a direct employee of the organization.</definitionReferences>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isExternalEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -479,11 +478,11 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasFamilyRelation -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFamilyRelation">
+        <rdfs:isDefinedBy>A connection between two people associated with familial ties.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasRelation"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>A connection between two people associated with familial ties.</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -491,9 +490,9 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasFather -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFather">
+        <rdfs:isDefinedBy>Relates a male to his child or children.</rdfs:isDefinedBy>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFamilyRelation"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFatherOf"/>
-        <rdfs:isDefinedBy>Relates a male to his child or children.</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -501,11 +500,11 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasFriend -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFriend">
+        <rdfs:isDefinedBy>See parent definition.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFriendRelation"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>See parent definition.</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -513,11 +512,11 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasFriendRelation -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFriendRelation">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendRelationOf"/>
+        <rdfs:isDefinedBy>This defines friends of the insider who may have knowingly or unknowingly been involved in the event.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>This defines friends of the insider who may have knowingly or unknowingly been involved in the event.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -525,11 +524,11 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasGirlfriend -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasGirlfriend">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFriendRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isGirlfriendOf"/>
+        <rdfs:isDefinedBy>Relates a person to a female friend with whom that person has a romantic relationship.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Relates a person to a female friend with whom that person has a romantic relationship.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFriendRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isGirlfriendOf"/>
     </owl:ObjectProperty>
     
 
@@ -537,11 +536,11 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasHusband -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasHusband">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSpouse"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isHusbandOf"/>
+        <rdfs:isDefinedBy>Relates a married man to his spouse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Relates a married man to his spouse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSpouse"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isHusbandOf"/>
     </owl:ObjectProperty>
     
 
@@ -549,9 +548,9 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasInformation -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasInformation">
+        <rdfs:isDefinedBy>This property links an asset to the information it contains.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Information"/>
-        <rdfs:isDefinedBy>This property links an asset to the information it contains.</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -559,9 +558,9 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasInstrument -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasInstrument">
+        <rdfs:isDefinedBy>This links an action to an asset used in the action. This fits into an action as follows: &quot;An actor performs an action on an object with an instrument.&quot;</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
-        <rdfs:isDefinedBy>This links an action to an asset used in the action. This fits into an action as follows: &quot;An actor performs an action on an object with an instrument.&quot;</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -569,8 +568,8 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasLocation -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasLocation">
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
         <rdfs:isDefinedBy>This property defines the logical or physical locations of information, an asset, or an actor.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
     </owl:ObjectProperty>
     
 
@@ -578,13 +577,13 @@ An employee is defined as a person working for another person or an organization
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasManager -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasManager">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isManagerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>LInks an organization to a manager.
 
 A manager is defined as an employee who manages a group within an organization.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isManagerOf"/>
     </owl:ObjectProperty>
     
 
@@ -592,9 +591,9 @@ A manager is defined as an employee who manages a group within an organization.<
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasMother -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasMother">
+        <rdfs:isDefinedBy>Relates a female to her child or children.</rdfs:isDefinedBy>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFamilyRelation"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isMotherOf"/>
-        <rdfs:isDefinedBy>Relates a female to her child or children.</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -602,13 +601,13 @@ A manager is defined as an employee who manages a group within an organization.<
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasNetworkAdministrator -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasNetworkAdministrator">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isNetworkAdministratorOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>Links an organization to a network administrator.
 
 A network administrator is defined as an employee who is responsible for upkeep, configuration, and reliable operation of a network.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isNetworkAdministratorOf"/>
     </owl:ObjectProperty>
     
 
@@ -616,10 +615,10 @@ A network administrator is defined as an employee who is responsible for upkeep,
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasObject -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasObject">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:isDefinedBy>This links an action to the object that was acted upon. This fits into an action as follows: &quot;An actor performs an action on an object with an instrument.&quot;</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
-        <rdfs:isDefinedBy>This links an action to the object that was acted upon. This fits into an action as follows: &quot;An actor performs an action on an object with an instrument.&quot;</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
     
 
@@ -627,13 +626,13 @@ A network administrator is defined as an employee who is responsible for upkeep,
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasOfficeManager -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasOfficeManager">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasManager"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isOfficeManagerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>Links an organization to an office manager.
 
 An office manager is defined as an employee that runs day-to-day operations within an office.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasManager"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isOfficeManagerOf"/>
     </owl:ObjectProperty>
     
 
@@ -641,14 +640,14 @@ An office manager is defined as an employee that runs day-to-day operations with
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasPoliceOfficer -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasPoliceOfficer">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSecurityEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isPoliceOfficerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <definitionReferences>http://www.onetonline.org/link/summary/33-3051.00</definitionReferences>
         <rdfs:isDefinedBy>Links an organization to a a police officer.
 
 A police officer is defined as a person who maintains order and protects life and property by enforcing local, tribal, State, or Federal laws and ordinances. Performs a combination of the following duties: patrol a specific area; direct traffic; issue traffic summonses; investigate accidents; apprehend and arrest suspects, or serve legal processes of courts.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.onetonline.org/link/summary/33-3051.00</definitionReferences>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSecurityEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isPoliceOfficerOf"/>
     </owl:ObjectProperty>
     
 
@@ -656,12 +655,12 @@ A police officer is defined as a person who maintains order and protects life an
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasProfessor -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasProfessor">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEducationEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isProfessorOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <definitionReferences>http://dictionary.reference.com/browse/professor</definitionReferences>
         <rdfs:isDefinedBy>A teacher of the highest academic rank in a college or university.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEducationEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isProfessorOf"/>
     </owl:ObjectProperty>
     
 
@@ -669,9 +668,9 @@ A police officer is defined as a person who maintains order and protects life an
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasReferenceTo -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasReferenceTo">
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isReferencedBy"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Information"/>
         <rdfs:isDefinedBy>This property links a piece of information to a thing that it describes, is about, references, or makes mention to.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Information"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isReferencedBy"/>
     </owl:ObjectProperty>
     
 
@@ -679,9 +678,9 @@ A police officer is defined as a person who maintains order and protects life an
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasRelation -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasRelation">
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRelationOf"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <rdfs:isDefinedBy>This property describes how an actor or event is related to another actor.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -689,13 +688,13 @@ A police officer is defined as a person who maintains order and protects life an
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasRepresentative -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasRepresentative">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRepresentativeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>Links an organization to a representative.
 
 A representative is defined as an employee who is chosen or appointed to act or speak for another or others, in particular.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRepresentativeOf"/>
     </owl:ObjectProperty>
     
 
@@ -703,13 +702,13 @@ A representative is defined as an employee who is chosen or appointed to act or 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasResearcher -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasResearcher">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isResearcherOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>Links an organization to a researcher.
 
 A researcher is defined as an employee who investigates new areas of study and applications of technology.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isResearcherOf"/>
     </owl:ObjectProperty>
     
 
@@ -717,14 +716,14 @@ A researcher is defined as an employee who investigates new areas of study and a
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasRetailer -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasRetailer">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSalesEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRetailerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <definitionReferences>http://www.thefreedictionary.com/retailer</definitionReferences>
         <definitionReferences>Links an organization to a retailer.
 
 A retailer is defined as a seller of goods or commodities in small quantities directly to consumers.</definitionReferences>
-        <definitionReferences>http://www.thefreedictionary.com/retailer</definitionReferences>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSalesEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRetailerOf"/>
     </owl:ObjectProperty>
     
 
@@ -732,11 +731,11 @@ A retailer is defined as a seller of goods or commodities in small quantities di
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasSalesEmployee -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSalesEmployee">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSalesEmployeeOf"/>
+        <rdfs:isDefinedBy>Links an organization to an employee that sells a product or service provided by the organization</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Links an organization to an employee that sells a product or service provided by the organization</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSalesEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -744,11 +743,11 @@ A retailer is defined as a seller of goods or commodities in small quantities di
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasSecurityEmployee -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSecurityEmployee">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityEmployeeOf"/>
+        <rdfs:isDefinedBy>Links an organization to a person who ensures the physical safety of people or assets.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Links an organization to a person who ensures the physical safety of people or assets.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -756,14 +755,14 @@ A retailer is defined as a seller of goods or commodities in small quantities di
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasSecurityGuard -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSecurityGuard">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSecurityEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityGuardOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <definitionReferences>http://www.onetonline.org/link/summary/33-9032.00</definitionReferences>
         <rdfs:isDefinedBy>Links an organization to a security guard.
 
 A security guard is defined as an employee who guard, patrols, or monitors premises to prevent theft, violence, or infractions of rules.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.onetonline.org/link/summary/33-9032.00</definitionReferences>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSecurityEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityGuardOf"/>
     </owl:ObjectProperty>
     
 
@@ -771,11 +770,11 @@ A security guard is defined as an employee who guard, patrols, or monitors premi
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasSister -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSister">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFamilyRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSisterOf"/>
+        <rdfs:isDefinedBy>Relates a female to other sons and daughters of her parents.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Relates a female to other sons and daughters of her parents.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFamilyRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSisterOf"/>
     </owl:ObjectProperty>
     
 
@@ -783,11 +782,11 @@ A security guard is defined as an employee who guard, patrols, or monitors premi
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasSoftwareDeveloper -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSoftwareDeveloper">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSoftwareDeveloperOf"/>
+        <rdfs:isDefinedBy>Links an organization to an individual who creates software.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Links an organization to an individual who creates software.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSoftwareDeveloperOf"/>
     </owl:ObjectProperty>
     
 
@@ -795,10 +794,10 @@ A security guard is defined as an employee who guard, patrols, or monitors premi
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasSource -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSource">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasLocation"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DigitalAction"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
         <rdfs:isDefinedBy>See parent definition</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DigitalAction"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasLocation"/>
     </owl:ObjectProperty>
     
 
@@ -806,11 +805,11 @@ A security guard is defined as an employee who guard, patrols, or monitors premi
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasSpouse -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSpouse">
+        <rdfs:isDefinedBy>Relates a husband or wife to their partner.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasFamilyRelation"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSpouseOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Relates a husband or wife to their partner.</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -818,12 +817,12 @@ A security guard is defined as an employee who guard, patrols, or monitors premi
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasSubcontractor -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSubcontractor">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasExternalEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSubcontractorOf"/>
+        <rdfs:isDefinedBy>Links an organization to a subcontractor. A subcontractor is defined as a person or business that contracts to provide some service or material necessary for the performance of another&apos;s contract.</rdfs:isDefinedBy>
+        <definitionReferences>http://dictionary.reference.com/browse/subcontractor?s=t</definitionReferences>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <definitionReferences>http://dictionary.reference.com/browse/subcontractor?s=t</definitionReferences>
-        <rdfs:isDefinedBy>Links an organization to a subcontractor. A subcontractor is defined as a person or business that contracts to provide some service or material necessary for the performance of another&apos;s contract.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasExternalEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSubcontractorOf"/>
     </owl:ObjectProperty>
     
 
@@ -831,13 +830,13 @@ A security guard is defined as an employee who guard, patrols, or monitors premi
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasSystemAdministrator -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSystemAdministrator">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSystemAdministratorOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>Links an organization to a system administrator.
 
 A system administrator is defined as an employee who is responsible for upkeep, configuration, and reliable operation of computer systems.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSystemAdministratorOf"/>
     </owl:ObjectProperty>
     
 
@@ -845,11 +844,11 @@ A system administrator is defined as an employee who is responsible for upkeep, 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
+        <rdfs:isDefinedBy>Links an organization to an employee whose duties typically involve copmuters or computer networks.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Links an organization to an employee whose duties typically involve copmuters or computer networks.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -857,13 +856,13 @@ A system administrator is defined as an employee who is responsible for upkeep, 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalManager -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalManager">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasManager"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalManagerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>Links an organization to a technical manager.
 
 A technical manager is defined as an employee that provides technical direction and leadership for the development of products and projects.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasManager"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalManagerOf"/>
     </owl:ObjectProperty>
     
 
@@ -871,14 +870,14 @@ A technical manager is defined as an employee that provides technical direction 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnician -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnician">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicianOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <definitionReferences>http://dictionary.reference.com/browse/technician?s=t</definitionReferences>
         <rdfs:isDefinedBy>Links an organization to a technician.
 
 A technicial is defined as a person who is trained or skilled in the technicalities of a subject.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTechnicalEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicianOf"/>
     </owl:ObjectProperty>
     
 
@@ -886,11 +885,11 @@ A technicial is defined as a person who is trained or skilled in the technicalit
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasTrustedBusinessPartner -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasTrustedBusinessPartner">
+        <rdfs:isDefinedBy>This property defines a collaborative professional relationship between organizations or people involving some level of mutual trust.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTrustedBusinessPartnerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:isDefinedBy>This property defines a collaborative professional relationship between organizations or people involving some level of mutual trust.</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -898,11 +897,11 @@ A technicial is defined as a person who is trained or skilled in the technicalit
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasUppermanagementEmployee -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasUppermanagementEmployee">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isUppermanagementEmployeeOf"/>
+        <rdfs:isDefinedBy>Links an organization to an employee who holds an upper management position within the organization.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Links an organization to an employee who holds an upper management position within the organization.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isUppermanagementEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -910,14 +909,14 @@ A technicial is defined as a person who is trained or skilled in the technicalit
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasVendor -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasVendor">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSalesEmployee"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isVendorOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <definitionReferences>http://dictionary.reference.com/browse/vendor?s=t</definitionReferences>
         <rdfs:isDefinedBy>Links an organization to a vendor.
 
 A vendor is defined as a person that sells something.</rdfs:isDefinedBy>
+        <definitionReferences>http://dictionary.reference.com/browse/vendor?s=t</definitionReferences>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSalesEmployee"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isVendorOf"/>
     </owl:ObjectProperty>
     
 
@@ -925,13 +924,13 @@ A vendor is defined as a person that sells something.</rdfs:isDefinedBy>
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasVictimOrganization -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasVictimOrganization">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEventRelation"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isVictimOrganizationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>This links an event to the victim organization for the event.
 
 A victim organization is an organization who suffers from the malicious actions of an insider.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasEventRelation"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isVictimOrganizationOf"/>
     </owl:ObjectProperty>
     
 
@@ -939,11 +938,11 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasWife -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWife">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSpouse"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWifeOf"/>
+        <rdfs:isDefinedBy>Relates a married woman to her spouse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>Relates a married woman to her spouse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasSpouse"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWifeOf"/>
     </owl:ObjectProperty>
     
 
@@ -951,11 +950,11 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasWorkRelation">
+        <rdfs:isDefinedBy>This describes a professional relationship.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#hasRelation"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:isDefinedBy>This describes a professional relationship.</rdfs:isDefinedBy>
     </owl:ObjectProperty>
     
 
@@ -963,10 +962,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isAccompliceOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isAccompliceOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf"/>
+        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -974,9 +973,9 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isActorOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isActorOf">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
     </owl:ObjectProperty>
     
 
@@ -984,10 +983,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isAdministrativeAssistantOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isAdministrativeAssistantOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -995,10 +994,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isAnalystOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isAnalystOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1006,8 +1005,8 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isAssetOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isAssetOf">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
     </owl:ObjectProperty>
     
 
@@ -1015,10 +1014,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isBeneficiaryOrganizationOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isBeneficiaryOrganizationOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1026,10 +1025,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isBoyfriendOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isBoyfriendOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendRelationOf"/>
+        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1037,10 +1036,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isBrotherOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isBrotherOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
+        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1048,10 +1047,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefExecutiveOfficerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefExecutiveOfficerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isUppermanagementEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isUppermanagementEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1059,10 +1058,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefFinancialOfficerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefFinancialOfficerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isUppermanagementEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isUppermanagementEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1070,10 +1069,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefTechnicalOfficerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isChiefTechnicalOfficerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isUppermanagementEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isUppermanagementEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1081,10 +1080,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isColleagueOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isColleagueOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1092,10 +1091,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isConspiratorOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isConspiratorOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1103,10 +1102,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isConsultantOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isConsultantOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
+        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1114,10 +1113,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isContractorOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isContractorOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isExternalEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isExternalEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1125,10 +1124,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isCustomerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isCustomerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
+        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1136,10 +1135,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isCustomerServiceRepresentativeOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isCustomerServiceRepresentativeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRepresentativeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRepresentativeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1147,10 +1146,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isEducationEmployeeOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isEducationEmployeeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1158,11 +1157,11 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1170,9 +1169,9 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1180,10 +1179,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isExternalEmployeeOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isExternalEmployeeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1191,10 +1190,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRelationOf"/>
+        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1202,10 +1201,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isFatherOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isFatherOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1213,10 +1212,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1224,10 +1223,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendRelationOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendRelationOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1235,10 +1234,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isGirlfriendOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isGirlfriendOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendRelationOf"/>
+        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFriendRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1246,10 +1245,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isHusbandOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isHusbandOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSpouseOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSpouseOf"/>
     </owl:ObjectProperty>
     
 
@@ -1257,10 +1256,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isManagerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isManagerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1268,10 +1267,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isMotherOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isMotherOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1279,10 +1278,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isNetworkAdministratorOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isNetworkAdministratorOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1290,10 +1289,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isOfficeManagerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isOfficeManagerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isManagerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isManagerOf"/>
     </owl:ObjectProperty>
     
 
@@ -1301,10 +1300,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isPartnerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isPartnerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1312,10 +1311,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isPoliceOfficerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isPoliceOfficerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1323,10 +1322,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isProfessorOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isProfessorOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEducationEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEducationEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1334,8 +1333,8 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isReferencedBy -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isReferencedBy">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
     
 
@@ -1351,10 +1350,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isRepresentativeOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isRepresentativeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1362,10 +1361,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isResearcherOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isResearcherOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1373,10 +1372,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isRetailerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isRetailerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSalesEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSalesEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1384,10 +1383,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isSalesEmployeeOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isSalesEmployeeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1395,10 +1394,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityEmployeeOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityEmployeeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1406,10 +1405,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityGuardOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityGuardOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSecurityEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1417,10 +1416,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isSisterOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isSisterOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
+        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1428,10 +1427,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isSoftwareDeveloperOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isSoftwareDeveloperOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1439,10 +1438,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isSpouseOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isSpouseOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isFamilyRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1450,10 +1449,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isSubcontractorOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isSubcontractorOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isExternalEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isExternalEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1469,10 +1468,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isSystemAdministratorOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isSystemAdministratorOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1480,10 +1479,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1491,10 +1490,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalManagerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalManagerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isManagerOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isManagerOf"/>
     </owl:ObjectProperty>
     
 
@@ -1502,10 +1501,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicianOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicianOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isTechnicalEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1513,10 +1512,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isTrustedBusinessPartnerOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isTrustedBusinessPartnerOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
+        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1524,10 +1523,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isUppermanagementEmployeeOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isUppermanagementEmployeeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1535,10 +1534,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isVendorOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isVendorOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSalesEmployeeOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSalesEmployeeOf"/>
     </owl:ObjectProperty>
     
 
@@ -1546,10 +1545,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isVictimOrganizationOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isVictimOrganizationOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isEventRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1557,10 +1556,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isWifeOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isWifeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSpouseOf"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
         <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isSpouseOf"/>
     </owl:ObjectProperty>
     
 
@@ -1568,10 +1567,10 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isWorkRelationOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRelationOf"/>
+        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-        <rdfs:isDefinedBy>See inverse.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#isRelationOf"/>
     </owl:ObjectProperty>
     
 
@@ -1579,12 +1578,12 @@ A victim organization is an organization who suffers from the malicious actions 
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#istemporallySubsumedBy -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#istemporallySubsumedBy">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallySubsumes"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
         <rdfs:isDefinedBy>See inverse.
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallySubsumes"/>
     </owl:ObjectProperty>
     
 
@@ -1592,12 +1591,12 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#overlapsEnd -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#overlapsEnd">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#overlapsStart"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
         <rdfs:isDefinedBy>This property defines a temporal thing that starts after, partially occurs during, and ends after another temporal thing.
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#overlapsStart"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -1605,11 +1604,11 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#overlapsStart -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#overlapsStart">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
         <rdfs:isDefinedBy>This property defines a temporal thing that starts before, partially occurs during, and ends before another temporal thing.
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -1617,13 +1616,13 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#startedBy -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#startedBy">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#starts"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
         <rdfs:isDefinedBy>This predicate means that subject and object start to occur or exist at the same time point (see startingPoint) and that subject ends or ceases to exist (see endingPoint) after object ends or ceases to exist. For example, subject might be a WeddingCeremony and object might be the bride&apos;s walk down the aisle.  -Derived from OpenCyc 1.0
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#starts"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -1631,12 +1630,12 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#starts -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#starts">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
         <rdfs:isDefinedBy>See inverse.
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -1644,12 +1643,12 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#takesPlaceAfter -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#takesPlaceAfter">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#takesPlaceBefore"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
         <rdfs:isDefinedBy>See inverse.
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#takesPlaceBefore"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -1657,12 +1656,12 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#takesPlaceBefore -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#takesPlaceBefore">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
         <rdfs:isDefinedBy>This property links a subject to an object such that the subject starts and ends before the object starts.
 
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -1670,11 +1669,11 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo">
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:isDefinedBy>This property links two entities so as to characterize their overlap in time.</rdfs:isDefinedBy>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
-        <rdfs:isDefinedBy>This property links two entities so as to characterize their overlap in time.</rdfs:isDefinedBy>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -1682,11 +1681,11 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#temporallySubsumes -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallySubsumes">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
         <rdfs:isDefinedBy>This property defines a relationship between subject and object where the subject starts after and ends before the subject.
 
 Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/Cur/SpaceTime.owl</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#temporallyRelatedTo"/>
     </owl:ObjectProperty>
     
 
@@ -1706,7 +1705,7 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#dateValue">
         <rdfs:domain rdf:resource="http://semanic.org/OntDef/SpaceTime#Date"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
     </owl:DatatypeProperty>
     
 
@@ -1714,10 +1713,10 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#duration -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#duration">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
         <rdfs:isDefinedBy>This property links a temporal thing with a non-reified float representing duration.   It needn&apos;t be reified, because the temporal thing is a durational thing.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -1725,8 +1724,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#hasQuantity -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#hasQuantity">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
     </owl:DatatypeProperty>
     
 
@@ -1734,9 +1733,9 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#monthValue -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#monthValue">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:domain rdf:resource="http://semanic.org/OntDef/SpaceTime#Month"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYearMonth"/>
+        <rdfs:range rdf:resource="&xsd;gYearMonth"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -1745,7 +1744,7 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#time">
         <rdfs:domain rdf:resource="http://semanic.org/OntDef/SpaceTime#TimePoint"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
 
@@ -1754,7 +1753,7 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#yearValue">
         <rdfs:domain rdf:resource="http://semanic.org/OntDef/SpaceTime#Year"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+        <rdfs:range rdf:resource="&xsd;gYear"/>
     </owl:DatatypeProperty>
     
 
@@ -1888,8 +1887,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#Asset -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset">
-        <definitionReferences>http://schema.org/Intangible</definitionReferences>
         <rdfs:isDefinedBy>A utility class that serves as the umbrella for a number of tangible and intangible things, such as data, hardware, personally identifiable information (PII), software, etc.</rdfs:isDefinedBy>
+        <definitionReferences>http://schema.org/Intangible</definitionReferences>
     </owl:Class>
     
 
@@ -1922,8 +1921,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#BankAccountInformation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <definitionReferences>http://www.investopedia.com/terms/a/account.asp</definitionReferences>
         <rdfs:isDefinedBy>An arrangement by which an organization accepts a customer&apos;s financial assets and holds them on behalf of the customer at his or her discretion.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.investopedia.com/terms/a/account.asp</definitionReferences>
     </owl:Class>
     
 
@@ -1998,8 +1997,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#CompressAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ModificationAction"/>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DecompressAction"/>
-        <definitionReferences>http://searchstorage.techtarget.com/definition/compression</definitionReferences>
         <rdfs:isDefinedBy>The reduction in size of data in order to save space or transmission time.</rdfs:isDefinedBy>
+        <definitionReferences>http://searchstorage.techtarget.com/definition/compression</definitionReferences>
     </owl:Class>
     
 
@@ -2022,8 +2021,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
                 </owl:intersectionOf>
             </owl:Class>
         </rdfs:subClassOf>
-        <definitionReferences>http://msdn.microsoft.com/en-us/library/cc759279</definitionReferences>
         <rdfs:isDefinedBy>A means for authenticating and auditing computer access to a network or domain resources.</rdfs:isDefinedBy>
+        <definitionReferences>http://msdn.microsoft.com/en-us/library/cc759279</definitionReferences>
     </owl:Class>
     
 
@@ -2041,8 +2040,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ConnectAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#AccessAction"/>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#LoginAction"/>
-        <definitionReferences>http://www.merriam-webster.com/dictionary/connect</definitionReferences>
         <rdfs:isDefinedBy>To establish a communications connection.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.merriam-webster.com/dictionary/connect</definitionReferences>
     </owl:Class>
     
 
@@ -2078,8 +2077,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#CreditCardNumber"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <definitionReferences>http://www.investopedia.com/terms/c/creditcard.asp</definitionReferences>
         <rdfs:isDefinedBy>A card issued by a financial company giving the holder an option to borrow funds, usually at point of sale.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.investopedia.com/terms/c/creditcard.asp</definitionReferences>
     </owl:Class>
     
 
@@ -2126,8 +2125,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DataModificationEvent">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
-        <definitionReferences>http://www.merriam-webster.com/dictionary/modification</definitionReferences>
         <rdfs:isDefinedBy>The act or process of changing parts of data.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.merriam-webster.com/dictionary/modification</definitionReferences>
     </owl:Class>
     
 
@@ -2145,8 +2144,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DataStoreAsset">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DigitalAsset"/>
-        <definitionReferences>http://searchsqlserver.techtarget.com/definition/database</definitionReferences>
         <rdfs:isDefinedBy>A collection of information that is organized so that it can easily be accessed, managed, and updated.</rdfs:isDefinedBy>
+        <definitionReferences>http://searchsqlserver.techtarget.com/definition/database</definitionReferences>
     </owl:Class>
     
 
@@ -2155,8 +2154,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DecompressAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ModificationAction"/>
-        <definitionReferences>http://whatis.techtarget.com/definition/uncompressing-or-decompressing</definitionReferences>
         <rdfs:isDefinedBy>The act of expanding a compressed file back into its original form.</rdfs:isDefinedBy>
+        <definitionReferences>http://whatis.techtarget.com/definition/uncompressing-or-decompressing</definitionReferences>
     </owl:Class>
     
 
@@ -2195,8 +2194,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DepositAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FinancialTransactionAction"/>
-        <definitionReferences>https://www.bankofamerica.com/deposits/manage/glossary.go#alp-D</definitionReferences>
         <rdfs:isDefinedBy>To add money to a customer’s bank account.</rdfs:isDefinedBy>
+        <definitionReferences>https://www.bankofamerica.com/deposits/manage/glossary.go#alp-D</definitionReferences>
     </owl:Class>
     
 
@@ -2327,8 +2326,8 @@ Adapted from Eric Peterson&apos;s SpaceTime ontology: http://semanic.org/OntDef/
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#FirewallAsset">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#SoftwareAsset"/>
-        <definitionReferences>http://www.webopedia.com/TERM/F/firewall.html</definitionReferences>
         <rdfs:isDefinedBy>A system designed to prevent unauthorized connections to or from a private network.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.webopedia.com/TERM/F/firewall.html</definitionReferences>
     </owl:Class>
     
 
@@ -2405,8 +2404,8 @@ Examples include forging signatures on documents or falsifying PII.</rdfs:isDefi
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#InstallAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DigitalAction"/>
-        <definitionReferences>http://en.wikipedia.org/wiki/Installation_(computer_programs)</definitionReferences>
         <rdfs:isDefinedBy>The act of making a program ready for execution.</rdfs:isDefinedBy>
+        <definitionReferences>http://en.wikipedia.org/wiki/Installation_(computer_programs)</definitionReferences>
     </owl:Class>
     
 
@@ -2460,8 +2459,8 @@ Examples include forging signatures on documents or falsifying PII.</rdfs:isDefi
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#KeyLoggerAsset">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#SoftwareAsset"/>
-        <definitionReferences>http://www.webopedia.com/TERM/K/keylogger.html</definitionReferences>
         <rdfs:isDefinedBy>A type of surveillance software that has the capability to record every keystroke made to a log file, usually encrypted.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.webopedia.com/TERM/K/keylogger.html</definitionReferences>
     </owl:Class>
     
 
@@ -2576,8 +2575,8 @@ Examples include forging signatures on documents or falsifying PII.</rdfs:isDefi
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#MoneyAsset">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FinancialAsset"/>
-        <definitionReferences>http://www.investopedia.com/terms/m/money.asp</definitionReferences>
         <rdfs:isDefinedBy>An officially-issued legal tender generally consisting of currency and coin. Money is the circulating medium of exchange as defined by a government.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.investopedia.com/terms/m/money.asp</definitionReferences>
     </owl:Class>
     
 
@@ -2595,8 +2594,8 @@ Examples include forging signatures on documents or falsifying PII.</rdfs:isDefi
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#NetworkAsset">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#PhysicalAsset"/>
-        <definitionReferences>http://en.wikipedia.org/wiki/Computer_network</definitionReferences>
         <rdfs:isDefinedBy>A collection of computers and other hardware components interconnected by communication channels that allow sharing of resources and information.</rdfs:isDefinedBy>
+        <definitionReferences>http://en.wikipedia.org/wiki/Computer_network</definitionReferences>
     </owl:Class>
     
 
@@ -2625,8 +2624,8 @@ Examples include forging signatures on documents or falsifying PII.</rdfs:isDefi
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#PasswordCrackerAsset">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#SoftwareAsset"/>
-        <definitionReferences>http://searchfinancialsecurity.techtarget.com/definition/password-cracker</definitionReferences>
         <rdfs:isDefinedBy>A program that is used to identify an unknown or forgotten password to a computer or network resource.</rdfs:isDefinedBy>
+        <definitionReferences>http://searchfinancialsecurity.techtarget.com/definition/password-cracker</definitionReferences>
     </owl:Class>
     
 
@@ -2712,8 +2711,8 @@ Examples include forging signatures on documents or falsifying PII.</rdfs:isDefi
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#RecruitmentEvent">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
-        <definitionReferences>http://www.shrm.org/TemplatesTools/Glossaries/HRTerms/Pages/r.aspx</definitionReferences>
         <rdfs:isDefinedBy>The practice of soliciting and actively seeking applicants to fill recently vacated or newly created positions using a variety of methods.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.shrm.org/TemplatesTools/Glossaries/HRTerms/Pages/r.aspx</definitionReferences>
     </owl:Class>
     
 
@@ -2895,8 +2894,8 @@ Examples include forging signatures on documents or falsifying PII.</rdfs:isDefi
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#TerminateAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#JobChangeAction"/>
-        <definitionReferences>http://www.shrm.org/templatestools/glossaries/hrterms/pages/t.aspx</definitionReferences>
         <rdfs:isDefinedBy>Separation from employment due to a voluntary resignation, layoff, retirement or dismissal.</rdfs:isDefinedBy>
+        <definitionReferences>http://www.shrm.org/templatestools/glossaries/hrterms/pages/t.aspx</definitionReferences>
     </owl:Class>
     
 
@@ -2905,9 +2904,9 @@ Examples include forging signatures on documents or falsifying PII.</rdfs:isDefi
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#TheftEvent">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
+        <rdfs:isDefinedBy>The act of taking something that does not belong to you in a way that is wrong or illegal.</rdfs:isDefinedBy>
         <definitionReferences>http://www.merriam-webster.com/dictionary/theft
 http://www.merriam-webster.com/dictionary/stealing</definitionReferences>
-        <rdfs:isDefinedBy>The act of taking something that does not belong to you in a way that is wrong or illegal.</rdfs:isDefinedBy>
     </owl:Class>
     
 
@@ -2924,8 +2923,8 @@ http://www.merriam-webster.com/dictionary/stealing</definitionReferences>
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#USBDriveAsset">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#PhysicalAsset"/>
-        <definitionReferences>http://searchstorage.techtarget.com/definition/USB-drive</definitionReferences>
         <rdfs:isDefinedBy>A plug-and-play portable storage device that uses flash memory and is lightweight enough to attach to a key chain.</rdfs:isDefinedBy>
+        <definitionReferences>http://searchstorage.techtarget.com/definition/USB-drive</definitionReferences>
     </owl:Class>
     
 
@@ -2980,222 +2979,9 @@ http://www.merriam-webster.com/dictionary/stealing</definitionReferences>
 
     <owl:Class rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#WithdrawAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#FinancialTransactionAction"/>
-        <definitionReferences>https://www.bankofamerica.com/deposits/manage/glossary.go#alp-D</definitionReferences>
         <rdfs:isDefinedBy>The removal of funds from an account.</rdfs:isDefinedBy>
+        <definitionReferences>https://www.bankofamerica.com/deposits/manage/glossary.go#alp-D</definitionReferences>
     </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#BeneficiaryOrgJobOffer -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#BeneficiaryOrgJobOffer">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#JobOfferAction"/>
-        <hasActor rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#BeneficiaryOrganization"/>
-        <hasObject rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#BeneficiaryOrgJobSeekingAction -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#BeneficiaryOrgJobSeekingAction">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ApplyAction"/>
-        <hasActor rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider"/>
-        <hasObject rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#BeneficiaryOrganization"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#BeneficiaryOrganization -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#BeneficiaryOrganization">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#CustomerExtranet -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#CustomerExtranet">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#DataStoreAsset"/>
-        <hasInformation rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TradeSecretInformation"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#DownloadAction -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DownloadAction">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#CopyAction"/>
-        <hasActor rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider"/>
-        <hasDestination rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#InsiderOwnedDevice"/>
-        <hasInstrument rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#OriginalEmployerComputerAccount"/>
-        <hasObject rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TradeSecretInformation"/>
-        <hasSource rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#CustomerExtranet"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#EmailAction -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#EmailAction">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#EmailAction"/>
-        <hasActor rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider"/>
-        <hasDestination rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Employee"/>
-        <hasObject rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TradeSecretInformation"/>
-        <hasSource rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#Employee -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#Employee">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#Insider -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Person"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#InsiderOwnedDevice -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#InsiderOwnedDevice">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#OfferAcceptance -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#OfferAcceptance">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#AcceptAction"/>
-        <hasActor rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider"/>
-        <hasObject rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#BeneficiaryOrgJobOffer"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#OfferRejection -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#OfferRejection">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#RejectAction"/>
-        <hasActor rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider"/>
-        <hasObject rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#VictimOrgJobOffer"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#OriginalEmployer -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#OriginalEmployer">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <hasTechnicalManager rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#OriginalEmployerComputerAccount -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#OriginalEmployerComputerAccount">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAccountAsset"/>
-        <hasAccessTo rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#CustomerExtranet"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#TradeSecretInformation -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#TradeSecretInformation">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#BusinessInformation"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#UploadAction -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#UploadAction">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#CopyAction"/>
-        <hasActor rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider"/>
-        <hasDestination rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset"/>
-        <hasObject rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#TradeSecretInformation"/>
-        <hasSource rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#InsiderOwnedDevice"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#VictimOrgJobOffer -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#VictimOrgJobOffer">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#JobOfferAction"/>
-        <hasActor rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#VictimOrganization"/>
-        <hasObject rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#VictimOrgJobSeekingAction -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#VictimOrgJobSeekingAction">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#ApplyAction"/>
-        <hasActor rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Insider"/>
-        <hasObject rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#VictimOrganization"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/cert-itc/ontologies/itio#VictimOrganization -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#VictimOrganization">
-        <rdf:type rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Organization"/>
-        <hasAsset rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#CustomerExtranet"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAsset">
-        <definitionReferences>http://www.oed.com/view/Entry/37975</definitionReferences>
-        <rdfs:isDefinedBy>An electronic device (or system of devices) that is used to store, manipulate, and communicate information, perform complex calculations, or control or regulate other devices or machines and is capable of receiving information (data) and of processing it in accordance with variable procedural instructions (programs or software).</rdfs:isDefinedBy>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#EmailAction">
-        <rdfs:isDefinedBy>To send an email.</rdfs:isDefinedBy>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#TradeSecretInformation">
-        <rdfs:isDefinedBy>Information that is kept secret by the organization and is intended to provide some competitive advantage.</rdfs:isDefinedBy>
-    </rdf:Description>
     
 
 
@@ -3208,7 +2994,7 @@ http://www.merriam-webster.com/dictionary/stealing</definitionReferences>
      -->
 
     <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="http://semanic.org/OntDef/SpaceTime#AllTime"/>
             <rdf:Description rdf:about="http://semanic.org/OntDef/SpaceTime#Date"/>
@@ -3217,66 +3003,7 @@ http://www.merriam-webster.com/dictionary/stealing</definitionReferences>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#AcceptAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ApplyAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#BreachAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DemoteAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#JobOfferAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#PromoteAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ReassignAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#RejectAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ReprimandAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ResignationAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#SuspendAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#TerminateAction"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#AccessAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#CopyAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#EmailAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#InstallAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ModificationAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#PrintAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#SearchAction"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalInterval"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#Asset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#Information"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalThing"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#BackdoorSoftwareAsset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#FirewallAsset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#KeyLoggerAsset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#LogicBombAsset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#PasswordCrackerAsset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ServiceAsset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#VirtualMachineAsset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#VirusAsset"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#BankAccountAsset"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#CreditCardAsset"/>
@@ -3284,24 +3011,15 @@ http://www.merriam-webster.com/dictionary/stealing</definitionReferences>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#BankAccountInformation"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#CreditCardNumber"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#CreditReportInformation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DepositAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#LoanAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#WithdrawAction"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAccountAsset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DataStoreAsset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#FileAsset"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#SoftwareAsset"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DataDeletionEvent"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DataExfiltrationEvent"/>
@@ -3317,24 +3035,83 @@ http://www.merriam-webster.com/dictionary/stealing</definitionReferences>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DepositAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#LoanAction"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#WithdrawAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#BackdoorSoftwareAsset"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#FirewallAsset"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#KeyLoggerAsset"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#LogicBombAsset"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#PasswordCrackerAsset"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ServiceAsset"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#VirtualMachineAsset"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#VirusAsset"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#Action"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#Event"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#TemporalInterval"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#AccessAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#CopyAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#EmailAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#InstallAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ModificationAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#PrintAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#SearchAction"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#NetworkInformation"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#SourceCodeInformation"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#SystemInformation"/>
         </owl:members>
     </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#BankAccountInformation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#CreditCardNumber"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#CreditReportInformation"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ComputerAccountAsset"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DataStoreAsset"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#FileAsset"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#SoftwareAsset"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#AcceptAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ApplyAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#BreachAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#DemoteAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#JobOfferAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#PromoteAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ReassignAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#RejectAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ReprimandAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#ResignationAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#SuspendAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#TerminateAction"/>
+        </owl:members>
+    </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 4.1.3.20151118-2017) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
 
