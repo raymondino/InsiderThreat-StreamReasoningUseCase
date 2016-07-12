@@ -461,6 +461,7 @@ paceTime.owl)</rdfs:comment>
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AssignedPC">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset"/>
         <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SharedPC"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC"/>
         <rdfs:comment>newly aded class. * 4k users, each with an assigned PC</rdfs:comment>
     </owl:Class>
     
@@ -1137,6 +1138,7 @@ paceTime.owl)</rdfs:comment>
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SharedPC">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset"/>
+        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC"/>
         <rdfs:comment>newly added classes.  400 shared machines used by some of the users in addition to their assigned PC. These are shared in the sense of a computer lab, not in the sense of a Unix server or Windows Terminal Server.</rdfs:comment>
     </owl:Class>
     
@@ -1258,6 +1260,27 @@ paceTime.owl)</rdfs:comment>
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousLoginAction -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousLoginAction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LoginAction"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LoginAction"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC"/>
+                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/LoginAction"/>
     </owl:Class>
     
@@ -1351,6 +1374,15 @@ paceTime.owl)</rdfs:comment>
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/USBDriveAsset">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset"/>
         <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset"/>
+        <rdfs:comment xml:lang="en">newly added classes. describes the pc that is not assigned to this user but that user. This class can be used when another user login the pc that is not assigned to him/her to use. </rdfs:comment>
     </owl:Class>
     
 
