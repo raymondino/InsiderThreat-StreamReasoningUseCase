@@ -47,6 +47,11 @@
         <rdfs:comment>This is a property chain that describes an actor browse a website</rdfs:comment>
         <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Website"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/cert-itc/ontologies/itio#Actor"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/cert-itc/ontologies/itio#isActorOf"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hasURL"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/whoseDomainNameIsA"/>
+        </owl:propertyChainAxiom>
     </owl:ObjectProperty>
     
 
