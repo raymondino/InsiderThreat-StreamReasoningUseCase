@@ -645,14 +645,6 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Email -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Email">
-        <rdfs:comment>newly added class. describes email related things. </rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailAction -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAction">
@@ -665,8 +657,17 @@ paceTime.owl)</rdfs:comment>
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Email"/>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAsset"/>
         <rdfs:comment>newly added class, describes email address. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/EmailAsset -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/EmailAsset">
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DigitalAsset"/>
+        <rdfs:comment>newly added class. describes email related things. </rdfs:comment>
     </owl:Class>
     
 
@@ -763,9 +764,7 @@ paceTime.owl)</rdfs:comment>
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileFromRemovableMedia">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
-        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia"/>
         <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia"/>
-        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia"/>
         <rdfs:comment>newly added class, describes a file that is from removable disk. </rdfs:comment>
     </owl:Class>
     
@@ -880,6 +879,20 @@ paceTime.owl)</rdfs:comment>
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailAddress"/>
         <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingAction">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasActor"/>
+                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PotentialJobHunter"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
     </owl:Class>
     
 
@@ -1192,6 +1205,20 @@ paceTime.owl)</rdfs:comment>
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasActor"/>
+                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PotentialJobHunter"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier"/>
+    </owl:Class>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction">
@@ -1227,6 +1254,7 @@ paceTime.owl)</rdfs:comment>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction"/>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction"/>
         <rdfs:comment>newly added class. describes a suspicious email send action which the email is sent to a non-internal email address. </rdfs:comment>
     </owl:Class>
     
@@ -1252,6 +1280,7 @@ paceTime.owl)</rdfs:comment>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction"/>
         <rdfs:comment>newly added classes, describes a suspcious copy action that is performed after hours. (this class definition might not be full-fledged)</rdfs:comment>
     </owl:Class>
     
@@ -1282,6 +1311,7 @@ paceTime.owl)</rdfs:comment>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/LoginAction"/>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction"/>
     </owl:Class>
     
 
@@ -1317,6 +1347,7 @@ paceTime.owl)</rdfs:comment>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction"/>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction"/>
         <rdfs:comment>newly added class. describes a suspicious upload action that is either performed after hours or upload files to some cloud storage or hacktivist website.</rdfs:comment>
     </owl:Class>
@@ -1387,9 +1418,9 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Unmployee -->
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Unemployee -->
 
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Unmployee">
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Unemployee">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Person"/>
         <rdfs:comment>newly added class. describe previous employees who left the job (either resignation, or laid-off). User who is not in current month LDAP list will be annotated as Unemployee</rdfs:comment>
     </owl:Class>
@@ -1462,6 +1493,49 @@ paceTime.owl)</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ModificationAction"/>
         <rdfs:comment>newly added action, describes wirte action</rdfs:comment>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/cloudstoragewebsite -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/cloudstoragewebsite">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/hacktivistwebsite -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hacktivistwebsite">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/jobhuntingwebsite -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/jobhuntingwebsite">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/neutralwebsite -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/neutralwebsite">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NeutralWebsite"/>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
