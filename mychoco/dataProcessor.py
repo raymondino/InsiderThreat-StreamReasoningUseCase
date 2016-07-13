@@ -60,7 +60,7 @@ def device(record,outfile):
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print >>outfile, '<%sevent%s> <%shasAction> <%sdevice_%s>.' %(ex,record[3],ex,ex,id)
-    print >>outfile, '<%sdevice_%s> <%s> <%s%sAction>.|%s' %(ex,id,a,ex,record[6]+'ion',tsToStr(timestamp))
+    print >>outfile, '<%sdevice_%s> <%s> <%s%sAction>.|%s' %(ex,id,a,ex,'Disk'+record[6]+'ion',tsToStr(timestamp))
     print >>outfile, '<%sdevice_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.|%s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
     if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
         print >>outfile, '<%sdevice_%s> <%s> <%sAfterHourAction>.|%s' %(ex,id,a,ex,tsToStr(timestamp))
