@@ -173,13 +173,13 @@ def http(record,outfile):
     print >>outfile, '<%shttp_%s> <%shasURL> <%s>.|%s' %(ex,id,ex,record[5],tsToStr(timestamp))
     domainName = record[5][:record[5].find('/',7)+1]
     if domainName in cloudStorageWebsites:
-        print >>outfile, '<%s> <%swhoseDomainNameIsA> <%sCloudStorageWebsite>.|%s' %(record[5],ex,ex,tsToStr(timestamp))
+        print >>outfile, '<%s> <%swhoseDomainNameIsA> <%scloudstoragewebsite>.|%s' %(record[5],ex,ex,tsToStr(timestamp))
     elif domainName in hacktivistWebsites:
-        print >>outfile, '<%s> <%swhoseDomainNameIsA> <%sHacktivistWebsite>.|%s' %(record[5],ex,ex,tsToStr(timestamp))
+        print >>outfile, '<%s> <%swhoseDomainNameIsA> <%shacktivistwebsite>.|%s' %(record[5],ex,ex,tsToStr(timestamp))
     elif domainName in jobHuntingWebsites:
-        print >>outfile, '<%s> <%swhoseDomainNameIsA> <%sJobHuntingWebsite>.|%s' %(record[5],ex,ex,tsToStr(timestamp))
+        print >>outfile, '<%s> <%swhoseDomainNameIsA> <%sjobhuntingwebsite>.|%s' %(record[5],ex,ex,tsToStr(timestamp))
     else:
-        print >>outfile, '<%s> <%s> <%sNeuturalWebsite>.|%s' %(record[5],a,ex,tsToStr(timestamp))
+        print >>outfile, '<%s> <%s> <%sneuturalwebsite>.|%s' %(record[5],a,ex,tsToStr(timestamp))
     print >>outfile, '<%shttp_%s> <%shasContent> "%s"^^<%sstring>.|%s' %(ex,id,ex,content,xsd,tsToStr(timestamp))
 
 
