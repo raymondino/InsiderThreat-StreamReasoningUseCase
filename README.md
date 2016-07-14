@@ -29,5 +29,8 @@ The data and script directry tree is as follows:
 
 **background.py** extracts the background information, please refer to the above image for details. 
 
+# Data Annotation
+Please refer to our [task log](https://docs.google.com/document/d/1ixi-0bNbfmbNqd623x08u2_HILzQXJL5Cz66eBdt5XU/edit?usp=sharing) for all of the details of data annotation, please refer to 6/24/2016 - 6/16/2016 logs.
+
 # Stream Reasoning
 to be continued...
