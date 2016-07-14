@@ -550,12 +550,12 @@ paceTime.owl)</rdfs:comment>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
                         <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileCopyAction"/>
-                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
                         <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction"/>
-                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
                     </owl:Restriction>
                 </owl:unionOf>
             </owl:Class>
@@ -1536,6 +1536,26 @@ paceTime.owl)</rdfs:comment>
     <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/neutralwebsite">
         <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NeutralWebsite"/>
     </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/cloudstoragewebsite"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/hacktivistwebsite"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/jobhuntingwebsite"/>
+            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/neutralwebsite"/>
+        </owl:distinctMembers>
+    </rdf:Description>
 </rdf:RDF>
 
 
