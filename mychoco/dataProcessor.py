@@ -241,7 +241,7 @@ def combine(user):
 
 def annotate(user):
 	f = open('intermediate/'+user+'_aggregated.csv')
-	outfile = open('annotation.nt','w')
+	outfile = open('annotation.txt','w')
 	userID = f.readline().split(',')[3]
 	print >>outfile, '<%s%s> <%sisInvolvedIn> <%sevent%s>.' %(ex,userID,ex,ex,userID)
 	f.seek(0,0)
