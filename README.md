@@ -25,6 +25,6 @@ The ultimate plan is to merge both CERT and data exifiltration ontology together
 When using *dataProcessor.py*, you need to manually change the *dailyStart* and *dailyEnd* time in line 8 and 9. These two time can be obtained from the login.csv file in the synthesized data. What you can do is to extract the login information for the interested user, then use the first two weeks' starting and ending time to estimate the routine time. This is important for *dataProcessor.py* to determine the after hour actions. When extracting a specific user, you need to type *python dataProcessor.py userid*, where userid denodes the user's id, such as ACM2278. 
 The data and script directry tree is as follows:
 
-![alt text](http://imgur.com/Nsx5VYR "data and script directory")
+![alt text](http://i.imgur.com/Nsx5VYR.png "data and script directory")
 
 **background.py** extracts the background information, please refer to the above image for details. 
