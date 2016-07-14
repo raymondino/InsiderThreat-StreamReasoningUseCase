@@ -28,3 +28,6 @@ The data and script directry tree is as follows:
 ![alt text](http://i.imgur.com/Nsx5VYR.png "data and script directory")
 
 **background.py** extracts the background information, please refer to the above image for details. 
+
+# Code
+to be continued...
