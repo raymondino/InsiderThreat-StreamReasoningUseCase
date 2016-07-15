@@ -50,7 +50,7 @@ public class SnarlClient {
 	}
 	
 	// connection getter
-	public ReasoningConnection getAReasoningConn(){ return aReasoningConn; }
+	public ReasoningConnection getAReasoningConn() { return aReasoningConn;}
 	
 	public Connection getANonReasoningConn() { return aNonReasoningConn;}
 	
@@ -59,8 +59,7 @@ public class SnarlClient {
 		aNonReasoningConn.begin();
 		aNonReasoningConn.add().graph(m, Values.iri(graph_id));
 		aNonReasoningConn.commit();
-	}
-	
+	}	
 	
 	// empty triplestore
 	public void clearGraph() {
