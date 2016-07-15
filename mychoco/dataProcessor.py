@@ -46,6 +46,8 @@ def tsToStr(timestamp):
 def logon(record,outfile):
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+    dailyStart = dailyStartDic[record[3]]
+    dailyEnd = dailyEndDic[record[3]]
     print >>outfile, '<%sevent%s> <%shasAction> <%slogon_%s>.' %(ex,record[3],ex,ex,id)
     print >>outfile, '<%slogon_%s> <%s> <%s%sAction>.|%s' %(ex,id,a,ex,record[5],tsToStr(timestamp))
     print >>outfile, '<%slogon_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.|%s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
@@ -59,6 +61,8 @@ def logon(record,outfile):
 def device(record,outfile):
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+    dailyStart = dailyStartDic[record[3]]
+    dailyEnd = dailyEndDic[record[3]]
     print >>outfile, '<%sevent%s> <%shasAction> <%sdevice_%s>.' %(ex,record[3],ex,ex,id)
     print >>outfile, '<%sdevice_%s> <%s> <%s%sAction>.|%s' %(ex,id,a,ex,'Disk'+record[6]+'ion',tsToStr(timestamp))
     print >>outfile, '<%sdevice_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.|%s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
@@ -78,6 +82,8 @@ def email(record,outfile):
     content = record[-1]
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+    dailyStart = dailyStartDic[record[3]]
+    dailyEnd = dailyEndDic[record[3]]
     print >>outfile, '<%sevent%s> <%shasAction> <%semail_%s>.' %(ex,record[3],ex,ex,id)
     print >>outfile, '<%semail_%s> <%s> <%sEmail%sAction>.|%s' %(ex,id,a,ex,record[9],tsToStr(timestamp))
     print >>outfile, '<%semail_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.|%s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
@@ -134,6 +140,8 @@ def file(record,outfile):
     content = record[-1]
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+    dailyStart = dailyStartDic[record[3]]
+    dailyEnd = dailyEndDic[record[3]]
     print >>outfile, '<%sevent%s> <%shasAction> <%sfile_%s>.' %(ex,record[3],ex,ex,id)
     print >>outfile, '<%sfile_%s> <%s> <%sFile%sAction>.|%s' %(ex,id,a,ex,record[6][5:],tsToStr(timestamp))
     print >>outfile, '<%sfile_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.|%s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
@@ -161,6 +169,8 @@ def http(record,outfile):
     content = record[-1]
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+    dailyStart = dailyStartDic[record[3]]
+    dailyEnd = dailyEndDic[record[3]]
     print >>outfile, '<%sevent%s> <%shasAction> <%shttp_%s>.' %(ex,record[3],ex,ex,id)
     print >>outfile, '<%shttp_%s> <%s> <%s%sAction>.|%s' %(ex,id,a,ex,record[6].replace(' ',''),tsToStr(timestamp))
     print >>outfile, '<%shttp_%s> <%shasTimestamp> "%s-05:00"^^<%sdateTime>.|%s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
@@ -286,7 +296,7 @@ def annotate(user):
 	        print >>outfile, 'unknown type:', type
 	        raise
 
-	if deviceUsageCounter > usbDriveUsageFrequency:
+	if deviceUsageCounter > usbDriveUsageFrequency[user]:
 	    timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
 	    print >>outfile, '<%s%s> <%s> <%sExcessiveRemovableDriveUser>.|%s' %(ex,userID,a,ex,tsToStr(timestamp))
 	f.close()
