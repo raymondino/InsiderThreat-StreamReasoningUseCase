@@ -9,7 +9,7 @@ We only provide the link as the size is about 100GB.
 
 # Ontology
 There two ontology files in two different folders. 
-**ontology-data exfiltration alone** contains the knowledge specifically designed for **data exfiltration**, which is identified as one of the many attacking types of the insider threat. This ontology extends the [original cert ontology](http://resources.sei.cmu.edu/library/asset-view.cfm?assetID=454613) which includes the class hierarchy of insider threat indicators. However, right now (7/14/2016), the ontology is not consistant. 
+**ontology-data exfiltration alone** contains the knowledge specifically designed for **data exfiltration**, which is identified as one of the many attacking types of the insider threat. This ontology extends the [original cert ontology](http://resources.sei.cmu.edu/library/asset-view.cfm?assetID=454613) which includes the class hierarchy of insider threat indicators. However, right now (7/14/2016), the ontology is not consistent. 
 
 ![alt text](http://i.imgur.com/RI3nffZ.png "CERT ontology inconsistency explanation")
 
