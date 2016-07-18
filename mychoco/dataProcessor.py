@@ -70,7 +70,7 @@ def device(record,outfile):
     print >>outfile, '%sdevice_%s %sisPerformedOnPC %s%s .' %(ex,id,ex,ex,record[4])
     if (record[6]=='Connect'):
         print >>outfile, '%sdevice_%s %sisPerformedWithRemovableDisk %sdevice_%s_disk .' %(ex,id,ex,ex,id)
-        print >>outfile, '%sdevice_%s_disk %shasFileTree> "%s"^^<%sstring> .' %(ex,id,ex,record[5].replace('\\','_'),xsd)
+        print >>outfile, '%sdevice_%s_disk %shasFileTree> "%s" .' %(ex,id,ex,record[5].replace('\\','_'))
 
 # email, id, date, user, pc, to, cc, bcc, from, activity, size, attachment, content
 #   0,    1,   2,    3,   4,  5,  6,  7,    8,       9,    10,      11
@@ -118,15 +118,15 @@ def email(record,outfile):
     else:
         print >>outfile, '%semail_%s %s %sNotInternalEmailAddress .' %(ex,record[8],a,ex)
 
-    print >>outfile, '%semail_%s %shasEmailSize> "%s bytes"^^<%sstring> .'%(ex,id,ex,record[10],xsd)
+    print >>outfile, '%semail_%s %shasEmailSize> "%s bytes" .'%(ex,id,ex,record[10])
     if record[11]:
         attachmentList = record[11].split(';')
         for i in range(len(attachmentList)):
             filename = attachmentList[i][:attachmentList[i].find('(')].replace('\\','_')
             attachmentSize = attachmentList[i][attachmentList[i].find('(')+1:item.find(')')]
             print >>outfile, '%semail_%s %shasEmailAttachment %s%s .'%(ex,id,ex,ex,filename)
-            print >>outfile, '%sattachment%s %shasSize> "%s bytes"^^<%sstring> .'%(ex,str(i+1),ex,attachmentSize,xsd)
-    print >>outfile, '%semail_%s %shasContent> "%s"^^<%sstring> .'%(ex,id,ex,content,xsd)
+            print >>outfile, '%sattachment%s %shasSize> "%s bytes" .'%(ex,str(i+1),ex,attachmentSize)
+    print >>outfile, '%semail_%s %shasContent> "%s" .'%(ex,id,ex,content)
 
 # file, id, date, user, pc, filename, activity, to_removable_media, from_removable_media, content
 #    0,  1,   2,   3,   4,    5,         6,               7,                8,               9
@@ -153,7 +153,7 @@ def file(record,outfile):
         print >>outfile, '%sfile_%s_file %s %sFileFromRemovableMedia .' %(ex,id,a,ex)
     else:
         print >>outfile, '%sfile_%s_file %s %sNotFileFromRemovableMedia .' %(ex,id,a,ex)
-    print >>outfile, '%sfile_%s_file %shasContent> "%s"^^<%sstring> .' %(ex,id,ex,content,xsd)
+    print >>outfile, '%sfile_%s_file %shasContent> "%s" .' %(ex,id,ex,content)
 
 # http, id, date, user, pc, url, activity, content
 #  0,    1,   2,   3,   4,   5,     6,        7
@@ -180,7 +180,7 @@ def http(record,outfile):
         print >>outfile, '%s %swhoseDomainNameIsA %sjobhuntingwebsite .' %(record[5],ex,ex)
     else:
         print >>outfile, '%s %s %sneuturalwebsite .' %(record[5],a,ex)
-    print >>outfile, '%shttp_%s %shasContent> "%s"^^<%sstring> .' %(ex,id,ex,content,xsd)
+    print >>outfile, '%shttp_%s %shasContent> "%s" .' %(ex,id,ex,content)
 
 
 def extract(user):
