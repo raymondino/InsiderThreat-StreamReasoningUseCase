@@ -1,9 +1,11 @@
 package com.tw.rpi.edu.main;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.PrintWriter;
 
 import org.openrdf.rio.RDFFormat;
@@ -25,6 +27,8 @@ public class Main {
 	private static String data_scenario2 = "data/CMP2946-annotation.txt";
 	private static String data_scenario4 = "data/CDE1846-annotation.txt";
 	private static String data_scenario5 = "data/MBG3183-annotation.txt";
+	private static String individual_file1 = "data/different-individuals/text1.txt";
+	private static String individual_file2 = "data/different-individuals/text2.txt";
 	
 	// the client that talks to the back-end Stardog triple-store	
 	private static SnarlClient client = 
@@ -32,22 +36,44 @@ public class Main {
 
 	// main function
 	public static void main(String[] args) {
+		// get prepared for a new run
 		client.emptyDB();
+		File file1 = new File(individual_file1);
+		File file2 = new File(individual_file2);
+		try {
+			file1.delete();
+			file2.delete();
+			BufferedWriter out1 = new BufferedWriter(new FileWriter(file1));
+			BufferedWriter out2 = new BufferedWriter(new FileWriter(file2));
+			out1.write("@prefix owl: <http://www.w3.org/2002/07/owl#> .");
+			out1.newLine();
+			out1.write("<http://tw.rpi.edu/ontology/DataExfiltration/> a owl:Ontology .");
+			out1.newLine();
+			out1.close();
+			out2.write("[]");
+			out2.newLine();
+			out2.write("  a owl:AllDifferent ;");
+			out2.newLine();
+			out2.write("  owl:distinctMembers (");
+			out2.newLine();
+			out2.close();			
+		} catch (Exception e) { e.printStackTrace(); }
 		
-//		// load backgrounds
-//		client.getANonReasoningConn().begin();
-//		try {
-//			// ontology
-//			client.getANonReasoningConn().add().io().format(RDFFormat.RDFXML)
-//			  .stream(new FileInputStream(ontology));
-//			// decoy file info into prefix/decoy graph
-//			client.getANonReasoningConn().add().io()
-//			  .context(Values.iri(prefix+"decoy")).format(RDFFormat.N3)
-//			  .stream(new FileInputStream(background+"decoy.nt"));
-//			// pc-employee pair info into prefix/pc graph
-//			client.getANonReasoningConn().add().io()
-//			  .context(Values.iri(prefix+"pc")).format(RDFFormat.N3)
-//			  .stream(new FileInputStream(background+"pc.nt"));
+		
+		// load backgrounds
+		client.getANonReasoningConn().begin();
+		try {
+			// ontology
+			client.getANonReasoningConn().add().io().format(RDFFormat.RDFXML)
+			  .stream(new FileInputStream(ontology));
+			// decoy file info into prefix/decoy graph
+			client.getANonReasoningConn().add().io()
+			  .context(Values.iri(prefix+"decoy")).format(RDFFormat.N3)
+			  .stream(new FileInputStream(background+"decoy.nt"));
+			// pc-employee pair info into prefix/pc graph
+			client.getANonReasoningConn().add().io()
+			  .context(Values.iri(prefix+"pc")).format(RDFFormat.N3)
+			  .stream(new FileInputStream(background+"pc.nt"));
 //			// LDAP info
 //			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
 //			  .stream(new FileInputStream(background+"2009-12.nq"));
@@ -85,12 +111,12 @@ public class Main {
 //			  .stream(new FileInputStream(background+"2011-04.nq"));
 //			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
 //			  .stream(new FileInputStream(background+"2011-05.nq"));			
-//		} catch (StardogException | FileNotFoundException e) {
-//			System.out.println("[ERROR] background loading failed");
-//			e.printStackTrace();
-//		}
-//		client.getANonReasoningConn().commit();
-//		System.out.println("[INFO] background ontology loaded ... ");
+		} catch (StardogException | FileNotFoundException e) {
+			System.out.println("[ERROR] background loading failed");
+			e.printStackTrace();
+		}
+		client.getANonReasoningConn().commit();
+		System.out.println("[INFO] background ontology loaded ... ");
 		
 		// streaming file
 		String data = data_scenario1;

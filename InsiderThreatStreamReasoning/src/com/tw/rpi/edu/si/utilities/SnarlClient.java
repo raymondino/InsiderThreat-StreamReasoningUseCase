@@ -79,6 +79,7 @@ public class SnarlClient {
 		clearGraph();
 		String delete = "delete{?s ?p ?o} where {?s ?p ?o}";
 		this.aNonReasoningConn.update(delete).execute();
+		System.out.println("[INFO]: the database has been cleaned.");
 	}
 	
 	// drop triplestore

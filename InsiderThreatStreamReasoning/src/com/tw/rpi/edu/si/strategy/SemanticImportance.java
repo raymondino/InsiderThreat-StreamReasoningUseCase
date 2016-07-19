@@ -13,6 +13,8 @@ import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import org.openrdf.query.TupleQueryResult;
+
 import com.complexible.common.rdf.model.Values;
 import com.tw.rpi.edu.si.utilities.SnarlClient;
 import com.tw.rpi.edu.si.utilities.Window;
@@ -23,6 +25,7 @@ public class SemanticImportance {
 	private String data; // each line in the streaming data
 	private String prefix;
 	private String currentUserId;
+	private String currentPC;
 	private SnarlClient client;	
 	private LinkedHashMap<String, ZonedDateTime> actionTimePair;
 	private HashMap<String, Double> employeeTrust;
@@ -85,25 +88,27 @@ public class SemanticImportance {
 				else { // if object is a literal
 					client.addStatement(Values.statement(Values.iri(s), Values.iri(p), Values.literal(o)));
 				}
+								
+				// unassigned pc annotation
+				String query = "select distinct ?pc "
+						+ "where { graph <" + prefix + "pc> {"
+						+ "<" + prefix + currentUserId + "> "
+						+ "<" + prefix + "hasAccessToPC> ?pc}}";
+				TupleQueryResult result = client.getANonReasoningConn().select(query).execute();
+				String currentUserAssignedPC = null;
+				while(result.hasNext()) {
+					currentUserAssignedPC = result.next().getValue("pc").toString();
+				}
+				System.out.println(currentUserAssignedPC);
 			}			
 		} catch (IOException e) {
 			System.out.println("[ERROR] cannot read the streaming file" + data);
 			e.printStackTrace();
 		}
-		
-		// unassigned pc annotation
-		String query = "select distinct ?pc "
-				+ "where { graph <" + prefix + "pc> {"
-				+ "<" + prefix + currentUserId + "> "
-				+ "<" + prefix + "hasAccessToPC> ?pc}}";
-		// todo: 
-		// check ?pc equals to current pc <-- need to record from the streaming data
-		// if not match, annotate: action isPerformedOnUnassignedPC ?pc.
 	}
 	
 	// update different individuals
-	public static void update(String filePath1, String filePath2, String filePath3,	
-			String outFilePath, String action) {
+	public static void update(String filePath1, String filePath2, String filePath3,	String outFilePath, String action) {
 		File[] files = new File[3];
 		File outFile = null;
 		try {
@@ -111,12 +116,10 @@ public class SemanticImportance {
 			files[1] = new File(filePath2);
 			files[2] = new File(filePath3);
 			outFile = new File(outFilePath);
-		}
-		catch(Exception e) { e.printStackTrace(); }
-		try { outFile.delete(); }
-		catch(Exception e) { e.printStackTrace(); }
+		} catch(Exception e) { e.printStackTrace(); }
+		try { outFile.delete(); } catch(Exception e) { e.printStackTrace(); }
 		addContents(files[0],files[1],action);
-		mergeFiles(files,outFile);
+//		mergeFiles(files,outFile); // <-- merge file only when query is executed (need to update)
 	}
 	
 	// add different individuals content
@@ -134,7 +137,7 @@ public class SemanticImportance {
 		}
 	}
 	
-	// merge different individuals file into one turtle file <-- merge file only when query is executed (need to update)
+	// merge different individuals file into one turtle file 
 	public static void mergeFiles(File[] files, File mergedFile) {
 		FileWriter fstream = null;
 		BufferedWriter out = null;
@@ -142,25 +145,22 @@ public class SemanticImportance {
 			fstream = new FileWriter(mergedFile, true);
 			out = new BufferedWriter(fstream);
 		} catch (IOException e1) { e1.printStackTrace(); }
+		
 		for (File f : files) {
-			System.out.println("merging: " + f.getName());
+			System.out.println("[INFO]: individual files merging: " + f.getName());
 			FileInputStream fis;
 			try {
 				fis = new FileInputStream(f);
 				BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-
 				String aLine;
 				while ((aLine = in.readLine()) != null) {
-					out.write(aLine);
-					out.newLine();
+					out.write(aLine); out.newLine();
 				}
 				in.close();
 			} catch (IOException e) { e.printStackTrace();}
 		}
-		try {
-			out.close();
-		} catch (IOException e) { e.printStackTrace(); }
-	}	
+		try {out.close(); } catch (IOException e) { e.printStackTrace(); }
+	}
 	
 	
 	
