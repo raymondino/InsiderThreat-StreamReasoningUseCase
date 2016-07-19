@@ -210,6 +210,16 @@
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnUnassignedPC -->
+
+    <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnUnassignedPC">
+        <rdfs:domain rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Action"/>
+        <rdfs:range rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC"/>
+        <rdfs:subPropertyOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/isPerformedWithRemovableDisk -->
 
     <owl:ObjectProperty rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedWithRemovableDisk">
