@@ -33,61 +33,61 @@ public class Main {
 	public static void main(String[] args) {
 		client.emptyDB();
 		
-		// load backgrounds
-		client.getANonReasoningConn().begin();
-		try {
-			// ontology
-			client.getANonReasoningConn().add().io().format(RDFFormat.RDFXML)
-			  .stream(new FileInputStream(ontology));
-			// decoy file info
-			client.getANonReasoningConn().add().io().format(RDFFormat.N3)
-			  .stream(new FileInputStream(background+"decoy.nt"));
-			// pc-employee pair info
-			client.getANonReasoningConn().add().io().format(RDFFormat.N3)
-			  .stream(new FileInputStream(background+"pc.nt"));
-			// LDAP info
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2009-12.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-01.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-02.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-03.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-04.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-05.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-06.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-07.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-08.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-09.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-10.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-11.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2010-12.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2011-01.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2011-02.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2011-03.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2011-04.nq"));
-			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
-			  .stream(new FileInputStream(background+"2011-05.nq"));			
-		} catch (StardogException | FileNotFoundException e) {
-			System.out.println("[ERROR] background loading failed");
-			e.printStackTrace();
-		}
-		client.getANonReasoningConn().commit();
-		System.out.println("[INFO] background ontology loaded ... ");
+//		// load backgrounds
+//		client.getANonReasoningConn().begin();
+//		try {
+//			// ontology
+//			client.getANonReasoningConn().add().io().format(RDFFormat.RDFXML)
+//			  .stream(new FileInputStream(ontology));
+//			// decoy file info
+//			client.getANonReasoningConn().add().io().format(RDFFormat.N3)
+//			  .stream(new FileInputStream(background+"decoy.nt"));
+//			// pc-employee pair info
+//			client.getANonReasoningConn().add().io().format(RDFFormat.N3)
+//			  .stream(new FileInputStream(background+"pc.nt"));
+//			// LDAP info
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2009-12.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-01.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-02.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-03.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-04.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-05.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-06.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-07.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-08.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-09.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-10.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-11.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2010-12.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2011-01.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2011-02.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2011-03.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2011-04.nq"));
+//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)
+//			  .stream(new FileInputStream(background+"2011-05.nq"));			
+//		} catch (StardogException | FileNotFoundException e) {
+//			System.out.println("[ERROR] background loading failed");
+//			e.printStackTrace();
+//		}
+//		client.getANonReasoningConn().commit();
+//		System.out.println("[INFO] background ontology loaded ... ");
 		
 		// streaming file
 		String data = data_scenario1;

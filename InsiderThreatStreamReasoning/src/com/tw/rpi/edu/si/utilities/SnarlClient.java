@@ -1,6 +1,7 @@
 package com.tw.rpi.edu.si.utilities;
 
 import org.openrdf.model.Model;
+import org.openrdf.model.Statement;
 
 import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.api.Connection;
@@ -59,7 +60,13 @@ public class SnarlClient {
 		aNonReasoningConn.begin();
 		aNonReasoningConn.add().graph(m, Values.iri(graph_id));
 		aNonReasoningConn.commit();
-	}	
+	}
+	
+	public void addStatement(Statement s) {
+		aNonReasoningConn.begin();
+		aNonReasoningConn.add().statement(s);
+		aNonReasoningConn.commit();
+	}
 	
 	// empty triplestore
 	public void clearGraph() {
