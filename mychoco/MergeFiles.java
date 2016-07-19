@@ -18,8 +18,7 @@ public class MergeFiles {
 		update(filePath1,filePath2,filePath3,outFilePath,action);
 	}
 
-	public static void update(String filePath1, String filePath2, String filePath3,
-														String outFilePath, String action) {
+	public static void update(String filePath1, String filePath2, String filePath3,	String outFilePath, String action) {
 
 		File[] files = new File[3];
 		File outFile = null;

@@ -75,7 +75,7 @@ def device(record,outfile):
 # email, id, date, user, pc, to, cc, bcc, from, activity, size, attachment, content
 #   0,    1,   2,    3,   4,  5,  6,  7,    8,       9,    10,      11
 def email(record,outfile):
-    content = record[-1]
+    content = record[-1].replace(' ', '_');
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print >>outfile, '%s%s-event %shasAction %semail_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
@@ -131,7 +131,7 @@ def email(record,outfile):
 # file, id, date, user, pc, filename, activity, to_removable_media, from_removable_media, content
 #    0,  1,   2,   3,   4,    5,         6,               7,                8,               9
 def file(record,outfile):
-    content = record[-1]
+    content = record[-1].replace(' ','_')
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print >>outfile, '%s%s-event %shasAction %sfile_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
@@ -158,7 +158,7 @@ def file(record,outfile):
 # http, id, date, user, pc, url, activity, content
 #  0,    1,   2,   3,   4,   5,     6,        7
 def http(record,outfile):
-    content = record[-1]
+    content = record[-1].replace(' ', '_')
     id = record[1][1:len(record[1])-1]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print >>outfile, '%s%s-event %shasAction %shttp_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
