@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 
 import org.openrdf.rio.RDFFormat;
 
+import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.StardogException;
 import com.tw.rpi.edu.si.strategy.SemanticImportance;
 import com.tw.rpi.edu.si.utilities.SnarlClient;
@@ -39,11 +40,13 @@ public class Main {
 //			// ontology
 //			client.getANonReasoningConn().add().io().format(RDFFormat.RDFXML)
 //			  .stream(new FileInputStream(ontology));
-//			// decoy file info
-//			client.getANonReasoningConn().add().io().format(RDFFormat.N3)
+//			// decoy file info into prefix/decoy graph
+//			client.getANonReasoningConn().add().io()
+//			  .context(Values.iri(prefix+"decoy")).format(RDFFormat.N3)
 //			  .stream(new FileInputStream(background+"decoy.nt"));
-//			// pc-employee pair info
-//			client.getANonReasoningConn().add().io().format(RDFFormat.N3)
+//			// pc-employee pair info into prefix/pc graph
+//			client.getANonReasoningConn().add().io()
+//			  .context(Values.iri(prefix+"pc")).format(RDFFormat.N3)
 //			  .stream(new FileInputStream(background+"pc.nt"));
 //			// LDAP info
 //			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS)

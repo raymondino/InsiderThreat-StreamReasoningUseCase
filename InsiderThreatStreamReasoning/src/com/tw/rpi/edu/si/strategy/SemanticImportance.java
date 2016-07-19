@@ -22,6 +22,7 @@ public class SemanticImportance {
 	private String path; // streaming data path
 	private String data; // each line in the streaming data
 	private String prefix;
+	private String currentUserId;
 	private SnarlClient client;	
 	private LinkedHashMap<String, ZonedDateTime> actionTimePair;
 	private HashMap<String, Double> employeeTrust;
@@ -63,10 +64,10 @@ public class SemanticImportance {
 					if(data.charAt(data.length()-1) != '.') { // if data has a time-stamp
 						
 						// check if an employee is in the employeeTrust HashMap
-						String userid = s.substring(prefix.length(), prefix.length()+7);
-						if(!employeeTrust.containsKey(userid)) {
+						currentUserId = s.substring(prefix.length(), prefix.length()+7);
+						if(!employeeTrust.containsKey(currentUserId)) {
 							// initially every employee's trust score is 1.0
-							employeeTrust.put(userid, 1.0);
+							employeeTrust.put(currentUserId, 1.0);
 						}
 						
 						// put action-timestamp pair into actionTimePair
@@ -90,6 +91,14 @@ public class SemanticImportance {
 			e.printStackTrace();
 		}
 		
+		// unassigned pc annotation
+		String query = "select distinct ?pc "
+				+ "where { graph <" + prefix + "pc> {"
+				+ "<" + prefix + currentUserId + "> "
+				+ "<" + prefix + "hasAccessToPC> ?pc}}";
+		// todo: 
+		// check ?pc equals to current pc <-- need to record from the streaming data
+		// if not match, annotate: action isPerformedOnUnassignedPC ?pc.
 	}
 	
 	// update different individuals
