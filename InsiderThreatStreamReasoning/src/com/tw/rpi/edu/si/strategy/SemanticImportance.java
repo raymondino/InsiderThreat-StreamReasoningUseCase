@@ -13,6 +13,7 @@ import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import org.openrdf.query.BindingSet;
 import org.openrdf.query.TupleQueryResult;
 
 import com.complexible.common.rdf.model.Values;
@@ -26,6 +27,7 @@ public class SemanticImportance {
 	private String prefix;
 	private String currentUserId;
 	private String currentPC;
+	private String query;
 	private SnarlClient client;	
 	private LinkedHashMap<String, ZonedDateTime> actionTimePair;
 	private HashMap<String, Double> employeeTrust;
@@ -61,8 +63,15 @@ public class SemanticImportance {
 				String [] parts = data.split(" ");
 				String s = parts[0];
 				String p = parts[1];
-				String o = parts[2];				
-				if(o.contains("http")) { // if object is a url
+				String o = parts[2];	
+				
+				// grab current PC
+				if(p.equals(prefix + "isPerformedOnPC")) {
+					currentPC = o;
+				}				
+				
+				// read the data in
+				if(o.contains("http")) { // if object is a URL
 					client.addStatement(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o)));
 					if(data.charAt(data.length()-1) != '.') { // if data has a time-stamp
 						
@@ -75,7 +84,16 @@ public class SemanticImportance {
 						
 						// put action-timestamp pair into actionTimePair
 						ZonedDateTime timestamp = ZonedDateTime.parse(parts[4]+"-05:00"); // EST time zone
-						actionTimePair.put(o, timestamp);
+						
+						// fire query when every action is read
+						fireQuery();
+						
+						// check if window is full
+						if(timestamp.isAfter(window.getEnd())) { // if window is full
+							evictData();							
+							window.move();
+							actionTimePair.put(o, timestamp);
+						}
 						
 						// constantly update the different action individuals for cardinality reasoning
 						String filePath1 = "data/different-individuals/text1.txt";
@@ -89,17 +107,25 @@ public class SemanticImportance {
 					client.addStatement(Values.statement(Values.iri(s), Values.iri(p), Values.literal(o)));
 				}
 								
-				// unassigned pc annotation
-				String query = "select distinct ?pc "
+				// unassigned PC annotation
+				query = "select distinct ?pc "
 						+ "where { graph <" + prefix + "pc> {"
 						+ "<" + prefix + currentUserId + "> "
 						+ "<" + prefix + "hasAccessToPC> ?pc}}";
 				TupleQueryResult result = client.getANonReasoningConn().select(query).execute();
 				String currentUserAssignedPC = null;
 				while(result.hasNext()) {
-					currentUserAssignedPC = result.next().getValue("pc").toString();
+					currentUserAssignedPC = result.next().getValue("pc").toString();					
 				}
-				System.out.println(currentUserAssignedPC);
+				// if current PC is not the user's assigned pc, continue to check if it's a shared pc
+				if(!currentUserAssignedPC.equals(currentPC)) {
+					query = "ask { graph <" + prefix + "pc> { <" + currentUserAssignedPC +"> a <" + prefix + "SharedPC>.}}";
+					// if currentPC is not an SharedPC, then annotate as:
+					if(!client.getANonReasoningConn().ask(query).execute()) { 
+						client.addStatement(Values.statement(Values.iri(s),Values.iri(prefix + "isPerformedOnUnassignedPC "), Values.iri(currentPC)));
+					}
+				}
+				
 			}			
 		} catch (IOException e) {
 			System.out.println("[ERROR] cannot read the streaming file" + data);
@@ -160,6 +186,51 @@ public class SemanticImportance {
 			} catch (IOException e) { e.printStackTrace();}
 		}
 		try {out.close(); } catch (IOException e) { e.printStackTrace(); }
+	}
+	
+	// fire the query
+	public void fireQuery() {
+		String q1 = "select distinct ?userid ?action where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousLoginAction> }";
+		String q2 = "select distinct ?userid ?action where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousEmailSendAction> }";
+		String q3 = "select distinct ?userid ?action where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousFileCopyAction> }";
+		String q4 = "select distinct ?userid ?action where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousWWWUploadAction> }";
+		String q5 = "select distinct ?userid ?event where {?event a <" + prefix + "DataExfiltrationEvent>. ?userid <" + prefix + "isInvolvedIn> ?event.}";
+		TupleQueryResult result1 = client.getAReasoningConn().select(q1).execute();
+		TupleQueryResult result2 = client.getAReasoningConn().select(q2).execute();
+		TupleQueryResult result3 = client.getAReasoningConn().select(q3).execute();
+		TupleQueryResult result4 = client.getAReasoningConn().select(q4).execute();
+		TupleQueryResult result5 = client.getAReasoningConn().select(q5).execute();
+		while(result1.hasNext()) {
+			BindingSet bs = result1.next();
+			String u = bs.getValue("userid").toString(); // user id
+			String a = bs.getValue("action").toString(); // action
+			String afterhourquery = "ask {<" + a + "> a " + prefix + " AfterHourAction.}";
+			String userAssignedPC = "select ?pc where {graph <" + prefix + "pc> { <" + u + "> <" + prefix + "hasAccessToPC> ?pc}}";
+			
+			System.out.println("[WARNING] suspicious login action detected:");
+			System.out.println("          user id: " + bs.getValue("userid").toString());
+			System.out.println("          action: " + bs.getValue("action").toString());
+			System.out.println("                after hour: " + ());
+			System.out.println("          timestamp: " + actionTimePair.get(bs.getValue("action").toString()));
+			System.out.println("");
+		}
+		while(result2.hasNext()) {
+			
+		}
+		while(result3.hasNext()) {
+			
+		}
+		while(result4.hasNext()) {
+			
+		}
+		while(result4.hasNext()) {
+			
+		}
+	}
+	
+	// evict the data
+	public void evictData() {
+		
 	}
 	
 	
