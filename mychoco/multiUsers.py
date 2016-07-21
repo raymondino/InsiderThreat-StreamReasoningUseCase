@@ -58,7 +58,7 @@ def combineFiles(fileList,outFile):
         outFile.write(firstLines[i])
         firstLines[i] = fileList[i].readline()
 
-def combine():
+def multiUserCombine():
 	fileList = [open('intermediate/multi_users_device.csv'),\
 				open('intermediate/multi_users_email.csv'),\
 				open('intermediate/multi_users_file.csv'),\
@@ -217,7 +217,7 @@ def http(record,outfile):
     print >>outfile, '%shttp_%s %shasContent> "%s" .' %(ex,id,ex,content)
 
 
-def multiUsersAnnotate():
+def multiUserAnnotate():
 	f = open('intermediate/multi_users_aggregated.csv')
 	outfile = open('multi_users_annotation.txt','w')
 	# userID = f.readline().split(',')[3]
@@ -270,3 +270,11 @@ def multiUsersAnnotate():
         #print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .|%s' %(ex,userID,a,ex,tsToStr(timestamp))
 	f.close()
 	outfile.close()
+
+if __name__ == '__main__':
+	multiUserExtract(userList)
+	print 'Extract done.'
+	multiUserCombine()
+	print 'Combine done.'
+	multiUserAnnotate()
+	print 'Annotate done'
