@@ -20,6 +20,7 @@ public class Window {
 	// assessor
 	public ZonedDateTime getStart() { return start; }
 	public ZonedDateTime getEnd() { return end; }
+	public Period getStep() {return step;}
 	
 	// modifier
 	public void setStep(int s) {size = Period.ofDays(s);}
