@@ -1,5 +1,6 @@
 # multiUsers.py
-import globals
+import sys, datetime
+from globals import *
 path = '../data-r6.2/'
 
 #######################

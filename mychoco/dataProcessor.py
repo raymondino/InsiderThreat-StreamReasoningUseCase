@@ -1,12 +1,11 @@
 # dataProcessor.py
 import sys, datetime
 from globals import *
-MAXTIME = datetime.datetime(9999, 12, 31, 23, 59, 59)
 path = '../data-r6.2/'
 
 # Need to change this for each user
-dailyStart = datetime.time(7,27-15,12)
-dailyEnd = datetime.time(17,34+15,48)
+# dailyStart = datetime.time(7,27-15,12)
+# dailyEnd = datetime.time(17,34+15,48)
 
 #
 # returns the index of the line having the earliest timestamp
