@@ -214,3 +214,58 @@ def http(record,outfile):
     else:
         print >>outfile, '%s %s %sneuturalwebsite .' %(record[5],a,ex)
     print >>outfile, '%shttp_%s %shasContent> "%s" .' %(ex,id,ex,content)
+
+
+def multiUsersAnnotate():
+	f = open('intermediate/multi_users_aggregated.csv')
+	outfile = open('multi_users_annotation.txt','w')
+	# userID = f.readline().split(',')[3]
+	# print >>outfile, '%s%s %sisInvolvedIn %s%s-event .' %(ex,userID,ex,ex,userID)
+	# f.seek(0,0)
+	# deviceUsageCounter = 0
+	# isDeviceConnected = False
+	# connectedDevice = ''
+	for record in f:
+	    type = record[:record.find(',')]
+	    if type == 'logon':
+	        record = record.strip().split(',')
+	        # if record[5] == 'Logoff':
+	            # connectedDevice = ''
+	        logon(record,outfile)
+	    elif type == 'device':
+	        record = record.strip().split(',')
+	        # if record[6] == 'Connect':
+	            # deviceUsageCounter += 1
+	            # connectedDevice = record[1][1:len(record[1])-1]  # id of this record
+	        # elif record[6] == 'Disconnect':
+	            # connectedDevice = ''
+	        device(record,outfile)
+	    elif type == 'email':
+	        content = record[record.find('"'):len(record)-1].replace('"','')
+	        record = record[:record.find('"')].split(',')
+	        record.append(content)
+	        email(record,outfile)
+	    elif type == 'file':
+	        content = record[record.find('"'):len(record)-1].replace('"','')
+	        record = record[:record.find('"')].split(',')
+	        record.append(content)
+	        file(record,outfile)
+	        #if connectedDevice:
+	        #    id = record[1][1:len(record[1])-1]
+	        #    timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+            #    print >>outfile, '%s%s %sstartsNoEarlierThanEndingOf %s%s .|%s' %(ex,id,ex,ex,connectedDevice,tsToStr(timestamp))
+	    elif type == 'http':
+	        content = record[record.find('"'):len(record)-1].replace('"','')
+	        record = record[:record.find('"')].split(',')
+	        record.append(content)
+	        http(record,outfile)
+	    else:
+	        print >>outfile, 'unknown type:', type
+	        raise
+
+	# if deviceUsageCounter > usbDriveUsageFrequency[user]:
+	    # timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+	    # print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .' %(ex,userID,a,ex)
+        #print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .|%s' %(ex,userID,a,ex,tsToStr(timestamp))
+	f.close()
+	outfile.close()

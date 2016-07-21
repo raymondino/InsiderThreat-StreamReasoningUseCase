@@ -286,7 +286,7 @@ def annotate(user):
 	        print >>outfile, 'unknown type:', type
 	        raise
 
-	if deviceUsageCounter > usbDriveUsageFrequency:
+	if deviceUsageCounter > usbDriveUsageFrequency[user]:
 	    timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
 	    print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .' %(ex,userID,a,ex)
         #print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .|%s' %(ex,userID,a,ex,tsToStr(timestamp))
