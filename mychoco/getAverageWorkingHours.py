@@ -44,3 +44,5 @@ def getAverageLogoff(user):
 if __name__ == '__main__':
     t = getAverageLogon('ACM2278')
     print t.time()
+    t = getAverageLogoff('ACM2278')
+    print t.time()
