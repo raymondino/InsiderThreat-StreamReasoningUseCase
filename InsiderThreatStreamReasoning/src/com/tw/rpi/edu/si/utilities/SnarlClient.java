@@ -47,7 +47,7 @@ public class SnarlClient {
 				.reasoning(false)
 				.connect();
 
-		System.out.println("[INFO] Connected to " + serverURL + dbName);
+		System.out.println("[INFO] connected to " + serverURL + dbName);
 	}
 	
 	// connection getter
@@ -79,7 +79,7 @@ public class SnarlClient {
 		clearGraph();
 		String delete = "delete{?s ?p ?o} where {?s ?p ?o}";
 		this.aNonReasoningConn.update(delete).execute();
-		System.out.println("[INFO]: the database has been cleaned.");
+		System.out.println("[INFO] the database has been cleaned.");
 	}
 	
 	// drop triplestore

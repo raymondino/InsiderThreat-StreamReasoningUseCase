@@ -14,7 +14,10 @@ public class Window {
 	
 	// constructor
 	public Window() {
-		start = null; end = null;
+		size = Period.ofDays(7);
+		step = Period.ofDays(1);
+		start = ZonedDateTime.parse("2010-01-04T00:00-05:00"); 
+		end = start.plus(size);
 	}
 	
 	// assessor
@@ -23,8 +26,8 @@ public class Window {
 	public Period getStep() {return step;}
 	
 	// modifier
-	public void setStep(int s) {size = Period.ofDays(s);}
-	public void setSize(int s) {step = Period.ofDays(s);}
+	public void setStep(int s) {step = Period.ofDays(s);}
+	public void setSize(int s) {size = Period.ofDays(s); end = start.plus(size);}
 	
 	// function: window moves 1 step forward
 	public void move() { 

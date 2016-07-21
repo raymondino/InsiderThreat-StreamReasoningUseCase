@@ -49,9 +49,7 @@ public class SemanticImportance {
 		path = d; 
 		client = c; 
 		prefix = p; 
-		window = new Window(); // an empty window 
-		window.setSize(7); // set window size to be 7 days
-		window.setStep(1); // set window step to be 1 day
+		window = new Window(); // a default window: size = 7days, step = 1day
 		actionTimePair = new LinkedHashMap<String, ZonedDateTime>();
 		employeeTrust = new HashMap<String, Double>();
 		try {
@@ -66,6 +64,7 @@ public class SemanticImportance {
 	// run function
 	public void run() {
 		// read the streaming data action by action
+		System.out.println("[INFO] reading the data");
 		try {
 			while((data = br.readLine()) != null) {
 				String [] parts = data.split(" ");
@@ -76,6 +75,24 @@ public class SemanticImportance {
 				// grab current PC
 				if(p.equals(prefix + "isPerformedOnPC")) {
 					currentPC = o;
+					// unassigned PC annotation
+					query = "select distinct ?pc "
+							+ "where { graph <" + prefix + "pc> {"
+							+ "<" + prefix + currentUserId + "> "
+							+ "<" + prefix + "hasAccessToPC> ?pc}}";
+					TupleQueryResult result = client.getANonReasoningConn().select(query).execute();
+					String currentUserAssignedPC = null;
+					while(result.hasNext()) {
+						currentUserAssignedPC = result.next().getValue("pc").toString();					
+					}
+					// if current PC is not the user's assigned pc, continue to check if it's a shared pc
+					if(currentUserAssignedPC != null && !currentUserAssignedPC.equals(currentPC)) {
+						query = "ask { graph <" + prefix + "pc> { <" + currentUserAssignedPC +"> a <" + prefix + "SharedPC>.}}";
+						// if currentPC is not an SharedPC, then annotate as:
+						if(!client.getANonReasoningConn().ask(query).execute()) { 
+							client.addStatement(Values.statement(Values.iri(s),Values.iri(prefix + "isPerformedOnUnassignedPC "), Values.iri(currentPC)));
+						}
+					}
 				}				
 				
 				// read the data in
@@ -125,26 +142,6 @@ public class SemanticImportance {
 				else { // if object is a literal
 					client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.literal(o))), currentGraphID);
 				}
-								
-				// unassigned PC annotation
-				query = "select distinct ?pc "
-						+ "where { graph <" + prefix + "pc> {"
-						+ "<" + prefix + currentUserId + "> "
-						+ "<" + prefix + "hasAccessToPC> ?pc}}";
-				TupleQueryResult result = client.getANonReasoningConn().select(query).execute();
-				String currentUserAssignedPC = null;
-				while(result.hasNext()) {
-					currentUserAssignedPC = result.next().getValue("pc").toString();					
-				}
-				// if current PC is not the user's assigned pc, continue to check if it's a shared pc
-				if(!currentUserAssignedPC.equals(currentPC)) {
-					query = "ask { graph <" + prefix + "pc> { <" + currentUserAssignedPC +"> a <" + prefix + "SharedPC>.}}";
-					// if currentPC is not an SharedPC, then annotate as:
-					if(!client.getANonReasoningConn().ask(query).execute()) { 
-						client.addStatement(Values.statement(Values.iri(s),Values.iri(prefix + "isPerformedOnUnassignedPC "), Values.iri(currentPC)));
-					}
-				}
-				
 			}			
 		} catch (IOException e) {
 			System.out.println("[ERROR] cannot read the streaming file" + data);
