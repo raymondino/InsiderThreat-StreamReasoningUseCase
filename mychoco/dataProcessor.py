@@ -49,7 +49,7 @@ def logon(record,outfile):
     print >>outfile, '%s%s-event %shasAction %slogon_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
     print >>outfile, '%slogon_%s %s %s%sAction .' %(ex,id,a,ex,record[5])
     #print >>outfile, '%slogon_%s %shasTimestamp> "%s-05:00"^^<%sdateTime> . %s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
-    if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
+    if timestamp.time() < dailyStartDic[record[3]] or timestamp.time() > dailyEndDic[record[3]]:
         print >>outfile, '%slogon_%s %s %sAfterHourAction .' %(ex,id,a,ex)
     else:
         print >>outfile, '%slogon_%s %s %sInHourAction .' %(ex,id,a,ex)
@@ -62,7 +62,7 @@ def device(record,outfile):
     print >>outfile, '%s%s-event %shasAction %sdevice_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
     print >>outfile, '%sdevice_%s %s %s%sAction .' %(ex,id,a,ex,'Disk'+record[6]+'ion')
     #print >>outfile, '%sdevice_%s %shasTimestamp> "%s-05:00"^^<%sdateTime> . %s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
-    if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
+    if timestamp.time() < dailyStartDic[record[3]] or timestamp.time() > dailyEndDic[record[3]]:
         print >>outfile, '%sdevice_%s %s %sAfterHourAction .' %(ex,id,a,ex)
     else:
         print >>outfile, '%sdevice_%s %s %sInHourAction .' %(ex,id,a,ex)
@@ -81,7 +81,7 @@ def email(record,outfile):
     print >>outfile, '%s%s-event %shasAction %semail_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
     print >>outfile, '%semail_%s %s %sEmail%sAction .' %(ex,id,a,ex,record[9])
     #print >>outfile, '%semail_%s %shasTimestamp> "%s-05:00"^^<%sdateTime> . %s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
-    if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
+    if timestamp.time() < dailyStartDic[record[3]] or timestamp.time() > dailyEndDic[record[3]]:
         print >>outfile, '%semail_%s %s %sAfterHourAction .' %(ex,id,a,ex)
     else:
         print >>outfile, '%semail_%s %s %sInHourAction .' %(ex,id,a,ex)
@@ -137,7 +137,7 @@ def file(record,outfile):
     print >>outfile, '%s%s-event %shasAction %sfile_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
     print >>outfile, '%sfile_%s %s %sFile%sAction .' %(ex,id,a,ex,record[6][5:])
     #print >>outfile, '%sfile_%s %shasTimestamp> "%s-05:00"^^<%sdateTime> . %s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
-    if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
+    if timestamp.time() < dailyStartDic[record[3]] or timestamp.time() > dailyEndDic[record[3]]:
         print >>outfile, '%sfile_%s %s %sAfterHourAction .' %(ex,id,a,ex)
     else:
         print >>outfile, '%sfile_%s %s %sInHourAction .' %(ex,id,a,ex)
@@ -164,7 +164,7 @@ def http(record,outfile):
     print >>outfile, '%s%s-event %shasAction %shttp_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
     print >>outfile, '%shttp_%s %s %s%sAction .' %(ex,id,a,ex,record[6].replace(' ',''))
     #print >>outfile, '%shttp_%s %shasTimestamp> "%s-05:00"^^<%sdateTime> . %s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
-    if timestamp.time() < dailyStart or timestamp.time() > dailyEnd:
+    if timestamp.time() < dailyStartDic[record[3]] or timestamp.time() > dailyEndDic[record[3]]:
         print >>outfile, '%shttp_%s %s %sAfterHourAction .' %(ex,id,a,ex)
     else:
         print >>outfile, '%shttp_%s %s %sInHourAction .' %(ex,id,a,ex)
