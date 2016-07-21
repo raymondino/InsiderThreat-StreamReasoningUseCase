@@ -4,6 +4,7 @@ from globals import *
 path = '../data-r6.2/'
 
 # Average of a user's logon times in the first 10 days -15min
+# returns a datetime.time object
 def getAverageLogon(user):
     inFile = open('intermediate/'+user+'_logon.csv')
     timeList = []
@@ -19,9 +20,11 @@ def getAverageLogon(user):
     avg = sum(ts.hour*3600 + ts.minute*60 + ts.second for ts in timeList)/10
     minutes, seconds = divmod(int(avg), 60)
     hours, minutes = divmod(minutes, 60)
-    return datetime.datetime(1900,1,1,hours,minutes,seconds) + datetime.timedelta(minutes=-15)
+    r = datetime.datetime(1900,1,1,hours,minutes,seconds) + datetime.timedelta(minutes=-15)
+    return r.time()
 
 # Average of a user's logoff times in the first 10 days +15min
+# returns a datetime.time object
 def getAverageLogoff(user):
     inFile = open('intermediate/'+user+'_logon.csv')
     timeList = []
@@ -38,11 +41,10 @@ def getAverageLogoff(user):
     avg = sum(ts.hour*3600 + ts.minute*60 + ts.second for ts in timeList)/10
     minutes, seconds = divmod(int(avg), 60)
     hours, minutes = divmod(minutes, 60)
-    return datetime.datetime(1900,1,1,hours,minutes,seconds) + datetime.timedelta(minutes=15)
+    r = datetime.datetime(1900,1,1,hours,minutes,seconds) + datetime.timedelta(minutes=15)
+    return r.time()
 
 
 if __name__ == '__main__':
-    t = getAverageLogon('ACM2278')
-    print t.time()
-    t = getAverageLogoff('ACM2278')
-    print t.time()
+    print getAverageLogon('ACM2278')
+    print getAverageLogoff('ACM2278')
