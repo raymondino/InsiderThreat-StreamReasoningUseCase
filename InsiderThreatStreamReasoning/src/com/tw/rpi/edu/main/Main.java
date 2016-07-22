@@ -64,7 +64,8 @@ public class Main {
 		client.getANonReasoningConn().begin();
 		try {
 			// ontology
-			client.getANonReasoningConn().add().io().format(RDFFormat.RDFXML)
+			client.getANonReasoningConn().add().io()
+			  .context(Values.iri(prefix+"background")).format(RDFFormat.RDFXML)
 			  .stream(new FileInputStream(ontology));
 			// decoy file info into prefix/decoy graph
 			client.getANonReasoningConn().add().io()

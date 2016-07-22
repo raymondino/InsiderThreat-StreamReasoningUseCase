@@ -49,6 +49,7 @@ public class SemanticImportance {
 		path = d; 
 		client = c; 
 		prefix = p; 
+		currentGraphID = "";
 		window = new Window(); // a default window: size = 7days, step = 1day
 		actionTimePair = new LinkedHashMap<String, ZonedDateTime>();
 		employeeTrust = new HashMap<String, Double>();
@@ -96,8 +97,7 @@ public class SemanticImportance {
 				}				
 				
 				// read the data in
-				if(o.contains("http")) { // if object is a URL					
-					client.addStatement(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o)));
+				if(o.contains("http")) { // if object is a URL	
 					if(data.charAt(data.length()-1) != '.') { // if data has a time-stamp
 						// every action is added to a unique graph
 						currentGraphID = o + "/graph";
@@ -129,6 +129,7 @@ public class SemanticImportance {
 						fw2.close();
 						
 						// fire query when every action is read
+						System.out.println("[info] querying... " + timestamp);
 						fireQuery(files, outFile);
 						
 						// check if window is full
@@ -137,6 +138,12 @@ public class SemanticImportance {
 							window.move();
 							actionTimePair.put(currentGraphID, timestamp);
 						}
+					}
+					else if(!currentGraphID.equals("")) {
+						client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o))),currentGraphID);
+					}					
+					else { // add some data into default graph as they are not required to be in a named graph
+						client.addStatement(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o)));						
 					}
 				}
 				else { // if object is a literal
@@ -151,10 +158,10 @@ public class SemanticImportance {
 	
 	// fire the query
 	public void fireQuery(File[] files, File mergedFile) throws StardogException, FileNotFoundException {
-		String q1 = "select distinct ?userid ?action where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousLoginAction> }";
-		String q2 = "select distinct ?graph ?userid ?action where {graph ?g {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousEmailSendAction> }}";
-		String q3 = "select distinct ?graph ?userid ?action where {graph ?g {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousFileCopyAction> }}";
-		String q4 = "select distinct ?graph ?userid ?action where {graph ?g {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousWWWUploadAction> }}";
+		String q1 = "select distinct ?userid ?action from named <"+prefix+"background> from named <"+currentGraphID+"> where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousLoginAction> }";
+		String q2 = "select distinct ?graph ?userid ?action from named <"+prefix+"background> from named <"+currentGraphID+"> where {graph ?g {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousEmailSendAction> }}";
+		String q3 = "select distinct ?graph ?userid ?action from named <"+prefix+"background> from named <"+currentGraphID+"> where {graph ?g {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousFileCopyAction> }}";
+		String q4 = "select distinct ?graph ?userid ?action from named <"+prefix+"background> from named <"+currentGraphID+"> where {graph ?g {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousWWWUploadAction> }}";
 		TupleQueryResult result1 = client.getAReasoningConn().select(q1).execute();
 		TupleQueryResult result2 = client.getAReasoningConn().select(q2).execute();
 		TupleQueryResult result3 = client.getAReasoningConn().select(q3).execute();
