@@ -178,7 +178,7 @@ def http(record,outfile):
     elif domainName in jobHuntingWebsites:
         print >>outfile, '%s %swhoseDomainNameIsA %sjobhuntingwebsite .' %(record[5],ex,ex)
     else:
-        print >>outfile, '%s %s %sneuturalwebsite .' %(record[5],a,ex)
+        print >>outfile, '%s %s %sneutralwebsite .' %(record[5],a,ex)
     print >>outfile, '%shttp_%s %shasContent> "%s" .' %(ex,id,ex,content)
 
 
