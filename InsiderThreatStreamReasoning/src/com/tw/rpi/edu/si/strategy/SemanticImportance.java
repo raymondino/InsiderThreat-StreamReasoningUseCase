@@ -107,7 +107,7 @@ public class SemanticImportance {
 					if(data.charAt(data.length()-1) != '.') { // if data has a time-stamp				
 						// every action is added to a unique graph
 						lastGraphID = currentGraphID;
-						currentGraphID = o + "/graph";
+						currentGraphID = prefix + "graph/" + o.substring(prefix.length());
 						client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o))),currentGraphID);
 
 						// check if an employee is in the employeeTrust HashMap
@@ -127,24 +127,16 @@ public class SemanticImportance {
 							window_start = true;
 						}
 						
-						// constantly update the different action individuals for cardinality reasoning
+						// create file for different individuals update
 						File[] files = new File[3];
 						files[0] = new File("data/different-individuals/text1.txt");
 						files[1] = new File("data/different-individuals/text2.txt");
 						files[2] = new File("data/different-individuals/text3.txt");
 						File outFile = new File("data/different-individuals/different-individuals.ttl");
-						outFile.delete(); 		
-						
-						FileWriter fw1 = new FileWriter(files[0],true); //true appends the new data
-						FileWriter fw2 = new FileWriter(files[1],true); 
-						fw1.write(String.format("%s a owl:NamedIndividual .\n","<"+o+">"));
-						fw2.write(String.format("   %s\n","<"+o+">"));
-						fw1.close();
-						fw2.close();
 						
 						// fire query when every action is read
-						System.out.println("[info] querying... " + timestamp);
-						fireQuery(files, outFile);
+						System.out.println("[info] querying: " + o.substring(prefix.length()) + " " + timestamp);
+						fireQuery(files, outFile); 
 						
 						// check if window is full
 						if(timestamp.isAfter(window.getEnd())) { // if window is full
@@ -157,7 +149,7 @@ public class SemanticImportance {
 						client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o))),currentGraphID);
 					}					
 					else { // add some data into default graph as they are not required to be in a named graph
-						client.addStatement(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o)));						
+						client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o))), prefix+"actor-event");						
 					}
 				}
 				else { // if object is a literal
@@ -171,7 +163,7 @@ public class SemanticImportance {
 	}
 	
 	// fire the query
-	public void fireQuery(File[] files, File mergedFile) throws StardogException, FileNotFoundException {
+	private void fireQuery(File[] files, File mergedFile) throws StardogException, IOException {
 		if(lastGraphID.equals("")) return;
 		String q1 = "select distinct ?userid ?action from <"+prefix+"background> from <"+lastGraphID+"> where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousLoginAction> }";
 		String q2 = "select distinct ?userid ?action from <"+prefix+"background> from <"+lastGraphID+"> where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousEmailSendAction> }";
@@ -183,6 +175,7 @@ public class SemanticImportance {
 		TupleQueryResult result4 = client.getAReasoningConn().select(q4).execute();
 		while(result1.hasNext()) {
 			BindingSet bs = result1.next();
+			suspiciousActionList.add(lastGraphID);
 			String u = bs.getValue("userid").toString(); // user id
 			String a = bs.getValue("action").toString(); // action
 			String afterhourquery = "ask from <"+ lastGraphID +"> {<" + a + "> a <" + prefix + "AfterHourAction>.}";
@@ -195,6 +188,7 @@ public class SemanticImportance {
 			System.out.println("          PC used: " + currentPC);
 			System.out.println("          PC assigned: " + client.getANonReasoningConn().select(userAssignedPC).execute().next().getValue("pc").toString());
 			System.out.println("          timestamp: " + actionTimePair.get(lastGraphID));
+			updateDiffIndividuals(files, mergedFile, lastGraphID.substring((prefix+"graph/").length()));
 		}
 		while(result2.hasNext()) {
 			BindingSet bs = result2.next();
@@ -202,7 +196,8 @@ public class SemanticImportance {
 			System.out.println("[WARNING] suspicious email send action detected:");
 			System.out.println("          user id: " + bs.getValue("userid").toString());
 			System.out.println("          action: " + bs.getValue("action").toString());
-			System.out.println("          timestamp: " + actionTimePair.get(bs.getValue("action").toString()));
+			System.out.println("          timestamp: " + actionTimePair.get(lastGraphID));
+			updateDiffIndividuals(files, mergedFile, lastGraphID.substring((prefix+"graph/").length()));
 			dataExfiltrationQuery(files, mergedFile);
 		}
 		while(result3.hasNext()) {
@@ -211,7 +206,8 @@ public class SemanticImportance {
 			System.out.println("[WARNING] suspicious file copy action detected:");
 			System.out.println("          user id: " + bs.getValue("userid").toString());
 			System.out.println("          action: " + bs.getValue("action").toString());
-			System.out.println("          timestamp: " + actionTimePair.get(bs.getValue("action").toString()+"/graph"));
+			System.out.println("          timestamp: " + actionTimePair.get(lastGraphID));
+			updateDiffIndividuals(files, mergedFile, lastGraphID.substring((prefix+"graph/").length()));
 			dataExfiltrationQuery(files, mergedFile);
 		}
 		while(result4.hasNext()) {
@@ -220,11 +216,12 @@ public class SemanticImportance {
 			System.out.println("[WARNING] suspicious www upload action detected:");
 			System.out.println("          user id: " + bs.getValue("userid").toString());
 			System.out.println("          action: " + bs.getValue("action").toString());
-			System.out.println("          timestamp: " + actionTimePair.get(bs.getValue("action").toString()+"/graph"));
+			System.out.println("          timestamp: " + actionTimePair.get(lastGraphID));
+			updateDiffIndividuals(files, mergedFile, lastGraphID.substring((prefix+"graph/").length()));
 			dataExfiltrationQuery(files, mergedFile);
 		}
 	}
-	public void dataExfiltrationQuery(File[] files, File mergedFile) throws StardogException, FileNotFoundException {
+	private void dataExfiltrationQuery(File[] files, File mergedFile) throws StardogException, FileNotFoundException {
 		// merge different individual files
 		mergeFiles(files,mergedFile); 
 		// load different individual files to db
@@ -232,24 +229,23 @@ public class SemanticImportance {
 		client.getANonReasoningConn().add().io().context(Values.iri(prefix+"different-individuals")).format(RDFFormat.TURTLE).stream(new FileInputStream("data/different-individuals/different-individuals.ttl"));
 		client.getANonReasoningConn().commit();
 		// construct and execute the query
-//		String q = "select distinct ?userid ";
-//		for(String i:suspiciousActionList) {
-//			q += ("from <" + i + "> ");
-//		}
-//		q += "from <"+prefix+"background> from <"+prefix+"different-individuals> where { ?event a <"+prefix+"DataExfiltrationEvent>. ?userid <"+prefix+"isInvolvedIn> ?event.}";
-		String q = "select distinct ?userid where { ?event a <"+prefix+"DataExfiltrationEvent>. ?userid <"+prefix+"isInvolvedIn> ?event.}";
+		String q = "select distinct ?userid ";
+		for(String i:suspiciousActionList) {
+			q += ("from <" + i + "> ");
+		}
+		q += "from <"+prefix+"background> from <"+prefix+"different-individuals> from <"+prefix+"actor-event> where { ?userid a <"+prefix+"PotentialThreateningInsider>.}";
 		TupleQueryResult result = client.getAReasoningConn().select(q).execute();
 		while(result.hasNext()) {
+			BindingSet bs = result.next();
 			System.out.println("[Threatening] Data Exfiltraion Event Detected!");
-			System.out.println("              potential threatening insider: " + result.next().getValue("userid").toString());			
+			System.out.println("              potential threatening insider: " + bs.getValue("userid").toString());				
 		}
-		
 		// delete different-individuals graph
 		client.getANonReasoningConn().update("drop graph <" + prefix + "different-individuals>").execute();
 	}
 	
 	// evict the data
-	public void evictData() {
+	private void evictData() {
 		Iterator<Entry<String, ZonedDateTime>> itr = actionTimePair.entrySet().iterator();
 		ArrayList<String> toDelete = new ArrayList<String>();
 		while(itr.hasNext()) {
@@ -271,8 +267,22 @@ public class SemanticImportance {
 		}
 	}
 	
-	// merge different individuals file into one turtle file 
-	public static void mergeFiles(File[] files, File mergedFile) {
+	// write different individuals
+	private void updateDiffIndividuals(File[] files, File mergedFile, String action) throws IOException{
+		// constantly update the different action individuals for cardinality reasoning
+
+		mergedFile.delete(); 		
+		
+		FileWriter fw1 = new FileWriter(files[0],true); //true appends the new data
+		FileWriter fw2 = new FileWriter(files[1],true); 
+		fw1.write(String.format("%s a owl:NamedIndividual .\n","<"+prefix + action+">"));
+		fw2.write(String.format("   %s\n","<"+prefix + action+">"));
+		fw1.close();
+		fw2.close();
+	}
+	
+	// merge different individuals file into a single turtle file 
+	private void mergeFiles(File[] files, File mergedFile) {
 		FileWriter fstream = null;
 		BufferedWriter out = null;
 		try {
