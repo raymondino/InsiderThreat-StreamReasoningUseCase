@@ -14,7 +14,7 @@ public class Window {
 	
 	// constructor
 	public Window() {
-		size = Period.ofDays(7);
+		size = Period.ofDays(1);
 		step = Period.ofDays(1);
 	}
 	

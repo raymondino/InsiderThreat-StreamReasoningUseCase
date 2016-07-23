@@ -27,11 +27,10 @@ public class Main {
 	private static String data_scenario5 = "data/MBG3183-annotation.txt";
 	private static String individual_file1 = "data/different-individuals/text1.txt";
 	private static String individual_file2 = "data/different-individuals/text2.txt";
-	private static String individual_file3 = "data/differnet-individuals/text3.txt";
+	private static String individual_file3 = "data/different-individuals/text3.txt";
 	
 	// the client that talks to the back-end Stardog triple-store	
-	private static SnarlClient client = 
-			new SnarlClient(serverURL, "db", username, password);
+	private static SnarlClient client = new SnarlClient(serverURL, "db", username, password);
 
 	// main function
 	public static void main(String[] args) {

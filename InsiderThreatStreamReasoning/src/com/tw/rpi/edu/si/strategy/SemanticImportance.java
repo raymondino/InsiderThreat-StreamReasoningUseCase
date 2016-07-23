@@ -40,12 +40,9 @@ public class SemanticImportance {
 	private Boolean window_start;
 	private SnarlClient client;	
 	private LinkedHashMap<String, ZonedDateTime> actionTimePair;
-	private ArrayList<String> suspiciousActionList;
 	private HashMap<String, Double> employeeTrust;
-	private Window window;
-	
-	// to read data from file for stream simulation
-	private BufferedReader br; 
+	private Window window;	
+	private BufferedReader br; 	// to read data from file for stream simulation
 	
 	// constructor
 	public SemanticImportance(String d, SnarlClient c, String p) {
@@ -54,10 +51,10 @@ public class SemanticImportance {
 		prefix = p; 
 		lastGraphID = "";
 		currentGraphID = "";
-		window = new Window(); // a default window: size = 7days, step = 1day
+		window = new Window(); // a default window: size = 2 days, step = 1day
 		window_start = false;
 		actionTimePair = new LinkedHashMap<String, ZonedDateTime>();
-		suspiciousActionList = new ArrayList<String>();
+		//suspiciousActionList = new ArrayList<String>();
 		employeeTrust = new HashMap<String, Double>();
 		try {
 			this.br = new BufferedReader(new InputStreamReader(
@@ -135,7 +132,7 @@ public class SemanticImportance {
 						File outFile = new File("data/different-individuals/different-individuals.ttl");
 						
 						// fire query when every action is read
-						System.out.println("[info] querying: " + o.substring(prefix.length()) + " " + timestamp);
+						System.out.println("[query] " + o.substring(prefix.length()) + " " + timestamp);
 						fireQuery(files, outFile); 
 						
 						// check if window is full
@@ -165,58 +162,54 @@ public class SemanticImportance {
 	// fire the query
 	private void fireQuery(File[] files, File mergedFile) throws StardogException, IOException {
 		if(lastGraphID.equals("")) return;
-		String q1 = "select distinct ?userid ?action from <"+prefix+"background> from <"+lastGraphID+"> where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousLoginAction> }";
-		String q2 = "select distinct ?userid ?action from <"+prefix+"background> from <"+lastGraphID+"> where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousEmailSendAction> }";
-		String q3 = "select distinct ?userid ?action from <"+prefix+"background> from <"+lastGraphID+"> where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousFileCopyAction> }";
-		String q4 = "select distinct ?userid ?action from <"+prefix+"background> from <"+lastGraphID+"> where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousWWWUploadAction> }";
-		TupleQueryResult result1 = client.getAReasoningConn().select(q1).execute();
-		TupleQueryResult result2 = client.getAReasoningConn().select(q2).execute();
-		TupleQueryResult result3 = client.getAReasoningConn().select(q3).execute();
-		TupleQueryResult result4 = client.getAReasoningConn().select(q4).execute();
-		while(result1.hasNext()) {
-			BindingSet bs = result1.next();
-			suspiciousActionList.add(lastGraphID);
+		String q = "select distinct ?userid ?action from <"+prefix+"background> from <"+lastGraphID+"> where {?action <" + prefix + "hasActor> ?userid. ?action a <" + prefix + "SuspiciousAction>.}";
+		TupleQueryResult r = client.getAReasoningConn().select(q).execute();
+		while(r.hasNext()) {
+			BindingSet bs = r.next();
+			client.getANonReasoningConn().update("add <"+lastGraphID+"> to <"+prefix+"suspicious>").execute();
 			String u = bs.getValue("userid").toString(); // user id
 			String a = bs.getValue("action").toString(); // action
+			System.out.println("[WARNING] suspicious action detected:");
+			System.out.println("          action:      " + bs.getValue("action").toString().substring(prefix.length()));
+			System.out.println("          timestamp:   " + actionTimePair.get(lastGraphID));
+			System.out.println("          user id:     " + bs.getValue("userid").toString().substring(prefix.length()));
+			String statusquery = "select ?name ?role ?team ?supervisor from <"+prefix+actionTimePair.get(lastGraphID).getYear()+"-"+actionTimePair.get(lastGraphID).getMonth().toString()+"> "
+					+ "where {<"+u+"> <"+prefix+"hasName> ?name; <"+prefix + "hasRole> ?role; <"+prefix + "hasSupervisor> ?supervisor.}";
+			TupleQueryResult r1 = client.getANonReasoningConn().select(statusquery).execute();
+			if(r1.hasNext()) {
+				BindingSet bs1 = r1.next();
+				System.out.println("          user name:   " + bs1.getValue("name").toString().substring(prefix.length()));
+				System.out.println("          role:        " + bs1.getValue("role").toString().substring(prefix.length()));
+				System.out.println("          supervisor:  " + bs1.getValue("supervisor").toString().substring(prefix.length()));
+			}
+			else {
+				System.out.println("          this user has already resigned.");
+			}
 			String afterhourquery = "ask from <"+ lastGraphID +"> {<" + a + "> a <" + prefix + "AfterHourAction>.}";
 			String userAssignedPC = "select ?pc where {graph <" + prefix + "pc> { <" + u + "> <" + prefix + "hasAccessToPC> ?pc}}";
-
-			System.out.println("[WARNING] suspicious login action detected:");
-			System.out.println("          user id: " + bs.getValue("userid").toString());
-			System.out.println("          action: " + bs.getValue("action").toString());
-			System.out.println("                after hour: " + (client.getANonReasoningConn().ask(afterhourquery).execute()));
-			System.out.println("          PC used: " + currentPC);
-			System.out.println("          PC assigned: " + client.getANonReasoningConn().select(userAssignedPC).execute().next().getValue("pc").toString());
-			System.out.println("          timestamp: " + actionTimePair.get(lastGraphID));
-			updateDiffIndividuals(files, mergedFile, lastGraphID.substring((prefix+"graph/").length()));
-		}
-		while(result2.hasNext()) {
-			BindingSet bs = result2.next();
-			suspiciousActionList.add(lastGraphID);
-			System.out.println("[WARNING] suspicious email send action detected:");
-			System.out.println("          user id: " + bs.getValue("userid").toString());
-			System.out.println("          action: " + bs.getValue("action").toString());
-			System.out.println("          timestamp: " + actionTimePair.get(lastGraphID));
-			updateDiffIndividuals(files, mergedFile, lastGraphID.substring((prefix+"graph/").length()));
-			dataExfiltrationQuery(files, mergedFile);
-		}
-		while(result3.hasNext()) {
-			BindingSet bs = result3.next();
-			suspiciousActionList.add(lastGraphID);
-			System.out.println("[WARNING] suspicious file copy action detected:");
-			System.out.println("          user id: " + bs.getValue("userid").toString());
-			System.out.println("          action: " + bs.getValue("action").toString());
-			System.out.println("          timestamp: " + actionTimePair.get(lastGraphID));
-			updateDiffIndividuals(files, mergedFile, lastGraphID.substring((prefix+"graph/").length()));
-			dataExfiltrationQuery(files, mergedFile);
-		}
-		while(result4.hasNext()) {
-			BindingSet bs = result4.next();
-			suspiciousActionList.add(lastGraphID);
-			System.out.println("[WARNING] suspicious www upload action detected:");
-			System.out.println("          user id: " + bs.getValue("userid").toString());
-			System.out.println("          action: " + bs.getValue("action").toString());
-			System.out.println("          timestamp: " + actionTimePair.get(lastGraphID));
+			System.out.println("          details:");
+			System.out.println("                  after hour: " + (client.getANonReasoningConn().ask(afterhourquery).execute()));
+			System.out.println("                  PC logon:   " + currentPC.substring(prefix.length()));
+			System.out.println("                  PC assigned:" + client.getANonReasoningConn().select(userAssignedPC).execute().next().getValue("pc").toString().substring(prefix.length()));			
+			if (lastGraphID.contains("email_")) {
+				// from, to, cc, bcc address
+				// attachment : decoy file
+				// acivity: view/send
+			}
+			else if (lastGraphID.contains("http_")) {
+				// url
+				// domain name is a 
+				// activity
+			}
+			else if (lastGraphID.contains("file_")) {
+				// filename
+				// activity
+				// file type: to/from pc/disk
+				// decoy file?
+			}
+			else if (lastGraphID.contains("device_")){
+				// disk name
+			}
 			updateDiffIndividuals(files, mergedFile, lastGraphID.substring((prefix+"graph/").length()));
 			dataExfiltrationQuery(files, mergedFile);
 		}
@@ -230,10 +223,7 @@ public class SemanticImportance {
 		client.getANonReasoningConn().commit();
 		// construct and execute the query
 		String q = "select distinct ?userid ";
-		for(String i:suspiciousActionList) {
-			q += ("from <" + i + "> ");
-		}
-		q += "from <"+prefix+"background> from <"+prefix+"different-individuals> from <"+prefix+"actor-event> where { ?userid a <"+prefix+"PotentialThreateningInsider>.}";
+		q += "from <"+prefix+"suspicious> "+"from <"+prefix+"background> from <"+prefix+"different-individuals> from <"+prefix+"actor-event> where { ?userid a <"+prefix+"PotentialThreateningInsider>.}";
 		TupleQueryResult result = client.getAReasoningConn().select(q).execute();
 		while(result.hasNext()) {
 			BindingSet bs = result.next();
@@ -246,6 +236,7 @@ public class SemanticImportance {
 	
 	// evict the data
 	private void evictData() {
+		System.out.println("[evict]");
 		Iterator<Entry<String, ZonedDateTime>> itr = actionTimePair.entrySet().iterator();
 		ArrayList<String> toDelete = new ArrayList<String>();
 		while(itr.hasNext()) {
@@ -260,6 +251,7 @@ public class SemanticImportance {
 		String dropQuery = "";
 		for(String i:toDelete) {
 			dropQuery += "drop graph <" + i + ">;";
+			actionTimePair.remove(i);
 		}
 		// perform drop query to delete data
 		if(!dropQuery.equals("")) {
@@ -269,10 +261,7 @@ public class SemanticImportance {
 	
 	// write different individuals
 	private void updateDiffIndividuals(File[] files, File mergedFile, String action) throws IOException{
-		// constantly update the different action individuals for cardinality reasoning
-
-		mergedFile.delete(); 		
-		
+		mergedFile.delete();
 		FileWriter fw1 = new FileWriter(files[0],true); //true appends the new data
 		FileWriter fw2 = new FileWriter(files[1],true); 
 		fw1.write(String.format("%s a owl:NamedIndividual .\n","<"+prefix + action+">"));
@@ -288,10 +277,8 @@ public class SemanticImportance {
 		try {
 			fstream = new FileWriter(mergedFile, true);
 			out = new BufferedWriter(fstream);
-		} catch (IOException e1) { e1.printStackTrace(); }
-		
+		} catch (IOException e1) { e1.printStackTrace(); }		
 		for (File f : files) {
-			System.out.println("[INFO]: individual files merging: " + f.getName());
 			FileInputStream fis;
 			try {
 				fis = new FileInputStream(f);

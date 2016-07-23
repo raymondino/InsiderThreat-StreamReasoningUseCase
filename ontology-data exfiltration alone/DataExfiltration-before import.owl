@@ -397,14 +397,6 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Accountant -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Accountant">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Action -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Action">
@@ -433,26 +425,11 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeAssistant -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeAssistant">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeStaff -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeStaff">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier"/>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction"/>
         <rdfs:comment>new class added.  This class describes employee&apos;s actions after working hours. </rdfs:comment>
     </owl:Class>
     
@@ -477,22 +454,6 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Attorney -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Attorney">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ChiefEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ChiefEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/CloudStorageWebsite">
@@ -507,22 +468,6 @@ paceTime.owl)</rdfs:comment>
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PhysicalAsset"/>
         <rdfs:comment>originated from CMU CERT ontology</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ComputerProgrammer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ComputerProgrammer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ComputerScientist -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ComputerScientist">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
     </owl:Class>
     
 
@@ -613,14 +558,6 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Director -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Director">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/DiskConnectionAction -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskConnectionAction">
@@ -635,22 +572,6 @@ paceTime.owl)</rdfs:comment>
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskDisconnectionAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ConnectionAction"/>
         <rdfs:comment>newly added class. describes removable disk disconnects to pc.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Economist -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Economist">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ElectricalEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ElectricalEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
     </owl:Class>
     
 
@@ -709,14 +630,6 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Engineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Engineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Event -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Event">
@@ -729,16 +642,8 @@ paceTime.owl)</rdfs:comment>
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Person"/>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmployee"/>
         <rdfs:comment>newly added class, describes a user who excessively uses the removable disk, compared to his/her normal daily removable disk usage. during data annotation process, a user will be annotated as a ExcessiveRemovableDriverUser if his/her removable disk usage exceeds his/her routine usage.  </rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FieldServiceEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FieldServiceEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
     </owl:Class>
     
 
@@ -809,14 +714,6 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FinancialAnalyst -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FinancialAnalyst">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HacktivistWebsite">
@@ -826,60 +723,11 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HardwareEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HardwareEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HealthSafetyEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HealthSafetyEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HumanResourceSpecialist -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HumanResourceSpecialist">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ITAdmin -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ITAdmin">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-        <rdfs:comment>can have access to any pc</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/InHourAction -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InHourAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier"/>
         <rdfs:comment>newly added class. Describes the during working hours actions. </rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/IndustrialEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/IndustrialEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/InstructionalCoordinator -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InstructionalCoordinator">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
     </owl:Class>
     
 
@@ -916,14 +764,6 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/LabManager -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LabManager">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/LogoffAction -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LogoffAction">
@@ -937,38 +777,6 @@ paceTime.owl)</rdfs:comment>
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LogonAction">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/AccessAction"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Manager -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Manager">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/MaterialsEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/MaterialsEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Mathematician -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Mathematician">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/MechanicalEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/MechanicalEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
     </owl:Class>
     
 
@@ -1017,22 +825,6 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Nurse -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Nurse">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NursePractitioner -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NursePractitioner">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Person -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Person">
@@ -1050,14 +842,6 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Physicist -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Physicist">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/PotentialJobHunter -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PotentialJobHunter">
@@ -1067,7 +851,7 @@ paceTime.owl)</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingWebsite"/>
             </owl:Restriction>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Person"/>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmployee"/>
         <rdfs:comment>newly added class. describes an employee who browsed some job hunting website. It&apos;s not necessary for an employee to be a jobhunter if he browses job-related website, but the system should be able to record it, then fire an alarm if further suspicious events are detected. </rdfs:comment>
     </owl:Class>
     
@@ -1077,50 +861,13 @@ paceTime.owl)</rdfs:comment>
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PotentialThreateningInsider">
         <owl:equivalentClass>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isInvolvedIn"/>
-                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DataExfiltrationEvent"/>
-                    </owl:Restriction>
-                </owl:unionOf>
-            </owl:Class>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isInvolvedIn"/>
+                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/DataExfiltrationEvent"/>
+            </owl:Restriction>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Person"/>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmployee"/>
         <rdfs:comment>newly added class, describes a potential threatening insider. The reason not to name it &quot;a threatening insider&quot; is because we still need human to make the final decision. </rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/President -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/President">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ProductionLineWorker -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ProductionLineWorker">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ProjectManager -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ProjectManager">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/PurchasingClerk -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PurchasingClerk">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
     </owl:Class>
     
 
@@ -1129,30 +876,6 @@ paceTime.owl)</rdfs:comment>
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Role">
         <rdfs:comment>Role class describes the role of an employee, e.g. &quot;ITAdmin&quot;</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Salesman -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Salesman">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Scientist -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Scientist">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SecurityGuard -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SecurityGuard">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
     </owl:Class>
     
 
@@ -1167,62 +890,19 @@ paceTime.owl)</rdfs:comment>
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SoftwareDeveloper -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SoftwareDeveloper">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SoftwareEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SoftwareEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SoftwareQualityEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SoftwareQualityEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Statistician -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Statistician">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/StockroomClerk -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/StockroomClerk">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Supervisor -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Supervisor">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasActor"/>
-                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/PotentialJobHunter"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction"/>
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileCopyAction"/>
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousLoginAction"/>
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction"/>
+                </owl:unionOf>
+            </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ActionModifier"/>
     </owl:Class>
@@ -1266,6 +946,20 @@ paceTime.owl)</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/EmailSendAction"/>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction"/>
         <rdfs:comment>newly added class. describes a suspicious email send action which the email is sent to a non-internal email address. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmployee -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmployee">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isActorOf"/>
+                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Person"/>
     </owl:Class>
     
 
@@ -1374,41 +1068,9 @@ A file copy action is suspicious if 1. it&apos;s an after hour action. 2. a deco
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SystemsEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SystemsEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/TechnicalWriter -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/TechnicalWriter">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Technician -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Technician">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/TemporalThing -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/TemporalThing"/>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/TestEngineer -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/TestEngineer">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
     
 
 
@@ -1443,14 +1105,6 @@ A file copy action is suspicious if 1. it&apos;s an after hour action. 2. a deco
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Unemployee">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Person"/>
         <rdfs:comment>newly added class. describe previous employees who left the job (either resignation, or laid-off). User who is not in current month LDAP list will be annotated as Unemployee</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/VicePresident -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/VicePresident">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
     </owl:Class>
     
 
@@ -1491,14 +1145,6 @@ A file copy action is suspicious if 1. it&apos;s an after hour action. 2. a deco
     
 
 
-    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WebDeveloper -->
-
-    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WebDeveloper">
-        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
-    </owl:Class>
-    
-
-
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/Website -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Website">
@@ -1524,6 +1170,374 @@ A file copy action is suspicious if 1. it&apos;s an after hour action. 2. a deco
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Accountant -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Accountant">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeAssistant -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeAssistant">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeStaff -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AdministrativeStaff">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Attorney -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Attorney">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ChiefEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ChiefEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ComputerProgrammer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ComputerProgrammer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ComputerScientist -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ComputerScientist">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Director -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Director">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Economist -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Economist">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ElectricalEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ElectricalEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Engineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Engineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FieldServiceEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FieldServiceEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/FinancialAnalyst -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FinancialAnalyst">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HardwareEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HardwareEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HealthSafetyEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HealthSafetyEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/HumanResourceSpecialist -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/HumanResourceSpecialist">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ITAdmin -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ITAdmin">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/IndustrialEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/IndustrialEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/InstructionalCoordinator -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/InstructionalCoordinator">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/LabManager -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LabManager">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Manager -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Manager">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/MaterialsEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/MaterialsEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Mathematician -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Mathematician">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/MechanicalEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/MechanicalEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Nurse -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Nurse">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/NursePractitioner -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/NursePractitioner">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Physicist -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Physicist">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/President -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/President">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ProductionLineWorker -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ProductionLineWorker">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/ProjectManager -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/ProjectManager">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/PurchasingClerk -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/PurchasingClerk">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Salesman -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Salesman">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Scientist -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Scientist">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SecurityGuard -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SecurityGuard">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SoftwareDeveloper -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SoftwareDeveloper">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SoftwareEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SoftwareEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SoftwareQualityEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SoftwareQualityEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Statistician -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Statistician">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/StockroomClerk -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/StockroomClerk">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Supervisor -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Supervisor">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SystemsEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SystemsEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/TechnicalWriter -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/TechnicalWriter">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/Technician -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/Technician">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/TestEngineer -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/TestEngineer">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/VicePresident -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/VicePresident">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/WebDeveloper -->
+
+    <owl:NamedIndividual rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WebDeveloper">
+        <rdf:type rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/Role"/>
+    </owl:NamedIndividual>
     
 
 
