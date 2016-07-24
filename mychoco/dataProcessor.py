@@ -149,13 +149,13 @@ def file(record,outfile):
     filename = record[5].replace('\\','_')
     print >>outfile, '%sfile_%s %shasFile %s%s .'%(ex,id,ex,ex,filename)
     if record[7]=='True':
-        print >>outfile, '%sfile_%s_file %s %sFileToRemovableMedia .' %(ex,id,a,ex)
+        print >>outfile, '%s%s %s %sFileToRemovableMedia .' %(ex,filename,a,ex)
     else:
-        print >>outfile, '%sfile_%s_file %s %sNotFileToRemovableMedia .' %(ex,id,a,ex)
+        print >>outfile, '%s%s %s %sNotFileToRemovableMedia .' %(ex,filename,a,ex)
     if record[8]=='True':
-        print >>outfile, '%sfile_%s_file %s %sFileFromRemovableMedia .' %(ex,id,a,ex)
+        print >>outfile, '%s%s %s %sFileFromRemovableMedia .' %(ex,filename,a,ex)
     else:
-        print >>outfile, '%sfile_%s_file %s %sNotFileFromRemovableMedia .' %(ex,id,a,ex)
+        print >>outfile, '%s%s %s %sNotFileFromRemovableMedia .' %(ex,filename,a,ex)
     print >>outfile, '%sfile_%s_file %shasContent> "%s" .' %(ex,id,ex,content)
 
 # http, id, date, user, pc, url, activity, content
