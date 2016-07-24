@@ -182,7 +182,7 @@ def http(record,outfile):
     elif domainName in jobHuntingWebsites:
         print >>outfile, '%s %swhoseDomainNameIsA %sjobhuntingwebsite .' %(record[5],ex,ex)
     else:
-        print >>outfile, '%s %s %sneutralwebsite .' %(record[5],a,ex)
+        print >>outfile, '%s %swhoseDomainNameIsA %sneutralwebsite .' %(record[5],ex,ex)
     print >>outfile, '%shttp_%s %shasContent> "%s" .' %(ex,id,ex,content)
 
 
@@ -297,9 +297,9 @@ if __name__ == '__main__':
 		sys.exit(0)
 
 	userid = sys.argv[1]
-	extract(userid)
+#	extract(userid)
 	print 'Extract done.'
-	combine(userid)
+#	combine(userid)
 	print 'Combine done.'
 	annotate(userid)
 	print 'Annotate done.'

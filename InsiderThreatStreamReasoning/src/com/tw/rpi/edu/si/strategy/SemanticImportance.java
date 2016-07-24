@@ -170,17 +170,25 @@ public class SemanticImportance {
 			String u = bs.getValue("userid").toString(); // user id
 			String a = bs.getValue("action").toString(); // action
 			System.out.println("[WARNING] suspicious action detected:");
-			System.out.println("          action:      " + bs.getValue("action").toString().substring(prefix.length()));
-			System.out.println("          timestamp:   " + actionTimePair.get(lastGraphID));
-			System.out.println("          user id:     " + bs.getValue("userid").toString().substring(prefix.length()));
-			String statusquery = "select ?name ?role ?team ?supervisor from <"+prefix+actionTimePair.get(lastGraphID).getYear()+"-"+actionTimePair.get(lastGraphID).getMonth().toString()+"> "
-					+ "where {<"+u+"> <"+prefix+"hasName> ?name; <"+prefix + "hasRole> ?role; <"+prefix + "hasSupervisor> ?supervisor.}";
+			System.out.println("          action:     " + bs.getValue("action").toString().substring(prefix.length()));
+			System.out.println("          timestamp:  " + actionTimePair.get(lastGraphID));
+			System.out.println("          user id:    " + bs.getValue("userid").toString().substring(prefix.length()));
+			String statusquery = null;
+			if(actionTimePair.get(lastGraphID).getMonthValue() / 10 == 0) {
+				statusquery = "select ?name ?role ?team ?supervisor from <"+prefix+actionTimePair.get(lastGraphID).getYear()+"-0"+actionTimePair.get(lastGraphID).getMonthValue()+"> "
+						+ "where {<"+u+"> <"+prefix+"hasName> ?name; <"+prefix + "hasRole> ?role; <"+prefix+"hasTeam> ?team; <"+prefix + "hasSupervisor> ?supervisor.}";
+			}
+			else {
+				 statusquery = "select ?name ?role ?team ?supervisor from <"+prefix+actionTimePair.get(lastGraphID).getYear()+"-"+actionTimePair.get(lastGraphID).getMonthValue()+"> "
+							+ "where {<"+u+"> <"+prefix+"hasName> ?name; <"+prefix + "hasRole> ?role; <"+prefix+"hasTeam> ?team; <"+prefix + "hasSupervisor> ?supervisor.}";
+			}
 			TupleQueryResult r1 = client.getANonReasoningConn().select(statusquery).execute();
 			if(r1.hasNext()) {
 				BindingSet bs1 = r1.next();
-				System.out.println("          user name:   " + bs1.getValue("name").toString().substring(prefix.length()));
-				System.out.println("          role:        " + bs1.getValue("role").toString().substring(prefix.length()));
-				System.out.println("          supervisor:  " + bs1.getValue("supervisor").toString().substring(prefix.length()));
+				System.out.println("          user name:  " + bs1.getValue("name").toString().substring(prefix.length()));
+				System.out.println("          role:       " + bs1.getValue("role").toString().substring(prefix.length()));
+				System.out.println("          team:       "+bs1.getValue("team").toString());
+				System.out.println("          supervisor: " + bs1.getValue("supervisor").toString().substring(prefix.length()));
 			}
 			else {
 				System.out.println("          this user has already resigned.");
@@ -192,23 +200,111 @@ public class SemanticImportance {
 			System.out.println("                  PC logon:   " + currentPC.substring(prefix.length()));
 			System.out.println("                  PC assigned:" + client.getANonReasoningConn().select(userAssignedPC).execute().next().getValue("pc").toString().substring(prefix.length()));			
 			if (lastGraphID.contains("email_")) {
-				// from, to, cc, bcc address
-				// attachment : decoy file
-				// acivity: view/send
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {?s a ?o.}";
+				String from = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"from> ?o.}";
+				String to = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"to> ?o.}";
+				String cc = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"cc> ?o.}";
+				String bcc = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"bcc> ?o.}";
+				String attachment = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"hasEmailAttachment> ?o.}";
+				TupleQueryResult re = client.getANonReasoningConn().select(from).execute();
+				while(re.hasNext()) {
+					BindingSet x = re.next();
+					System.out.println("                  from        :" + x.getValue("o").toString().substring(prefix.length()));
+				}
+				re = client.getANonReasoningConn().select(to).execute();
+				while(re.hasNext()) {
+					BindingSet x = re.next();
+					System.out.println("                  to          :" + x.getValue("o").toString().substring(prefix.length()));					
+				}
+				re = client.getANonReasoningConn().select(cc).execute();
+				while(re.hasNext()) {
+					BindingSet x = re.next();
+					System.out.println("                  cc          :" + x.getValue("o").toString().substring(prefix.length()));					
+				}
+				re = client.getANonReasoningConn().select(bcc).execute();
+				while(re.hasNext()) {
+					BindingSet x = re.next();
+					System.out.println("                  bcc         :" + x.getValue("o").toString().substring(prefix.length()));					
+				}				
+				re = client.getANonReasoningConn().select(attachment).execute();
+				while(re.hasNext()) {
+					BindingSet x = re.next();
+					System.out.print("                    attachment  :" + x.getValue("o").toString().substring(prefix.length()));
+					if(client.getANonReasoningConn().ask("ask from <"+prefix+"decoy> {<"+x.getBinding("o").toString()+"> a <" + prefix + "DecoyFile>}").execute()) {
+						System.out.println(" <-- a decoy file");						
+					}
+				}
+				re = client.getANonReasoningConn().select(activity).execute();
+				while(re.hasNext()) {
+					BindingSet x = re.next();
+					if(x.getValue("o").toString().contains("Action")) {
+						System.out.println("                  activity:   " + x.getValue("o").toString().substring(prefix.length()));						
+					}
+				}
 			}
 			else if (lastGraphID.contains("http_")) {
-				// url
-				// domain name is a 
-				// activity
+				String url = "select distinct ?url ?dn from <"+lastGraphID+"> where {?s <"+prefix+"hasURL> ?url. ?url <"+prefix+"whoseDomainNameIsA> ?dn.}";
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {?s a ?o.}";
+				TupleQueryResult re = client.getANonReasoningConn().select(url).execute();
+				while(re.hasNext()){
+					BindingSet x = re.next();
+					System.out.println("                url         :" + x.getValue("url").toString());
+					System.out.println("                url domain  :" + x.getBinding("dn").toString().substring(prefix.length()));
+				}
+				re = client.getANonReasoningConn().select(activity).execute();
+				while(re.hasNext()) {
+					BindingSet x = re.next();
+					if(x.getValue("o").toString().contains("WWW")) {
+						System.out.println("                  activity:   " + x.getValue("o").toString().substring(prefix.length()));						
+					}
+				}				
 			}
 			else if (lastGraphID.contains("file_")) {
-				// filename
-				// activity
-				// file type: to/from pc/disk
-				// decoy file?
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {?s a ?o.}";
+				String file = "select distinct ?fn from <"+lastGraphID+"> where {?s <"+prefix+"hasFile> ?fn.}";
+				String filetype = "select distinct ?type from <"+lastGraphID+"> where {?s <"+prefix+"hasFile> ?fn. ?fn a ?type}";
+				TupleQueryResult re = client.getANonReasoningConn().select(file).execute();
+				while(re.hasNext()){
+					BindingSet x = re.next();
+					System.out.print("                    file name :" + x.getValue("fn").toString().substring(prefix.length()));
+					if(client.getANonReasoningConn().ask("ask from <"+prefix+"decoy> {<"+x.getBinding("o").toString()+"> a <" + prefix + "DecoyFile>}").execute()) {
+						System.out.println(" <-- a decoy file");						
+					}
+				}
+				re = client.getANonReasoningConn().select(filetype).execute();
+				while(re.hasNext()){
+					BindingSet x = re.next();
+					String type = x.getValue("type").toString().substring(prefix.length());
+					if(type.equals("NotFileToRemovableMedia")) {
+						System.out.println("                    copied from PC: no");
+					}
+					else if (type.equals("NotFileFromRemovableMedia")) {
+						System.out.println("                    copied from usb drive: no");
+					}
+					else if (type.equals("FileToRemovableMedia")) {
+						System.out.println("                    copied from PC: yes");
+					}
+					else {
+						System.out.println("                    copied from usb drive: yes");
+					}
+				}
+				re = client.getANonReasoningConn().select(activity).execute();
+				while(re.hasNext()) {
+					BindingSet x = re.next();
+					if(x.getValue("o").toString().contains("Action")) {
+						System.out.println("                  activity:   " + x.getValue("o").toString().substring(prefix.length()));						
+					}
+				}
 			}
 			else if (lastGraphID.contains("device_")){
-				// disk name
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {?s a ?o.}";
+				TupleQueryResult re = client.getANonReasoningConn().select(activity).execute();
+				while(re.hasNext()) {
+					BindingSet x = re.next();
+					if(x.getValue("o").toString().contains("Action")) {
+						System.out.println("                  activity:   " + x.getValue("o").toString().substring(prefix.length()));						
+					}
+				}
 			}
 			updateDiffIndividuals(files, mergedFile, lastGraphID.substring((prefix+"graph/").length()));
 			dataExfiltrationQuery(files, mergedFile);
