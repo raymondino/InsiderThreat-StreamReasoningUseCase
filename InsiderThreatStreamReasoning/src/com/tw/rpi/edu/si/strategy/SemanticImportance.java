@@ -169,6 +169,7 @@ public class SemanticImportance {
 			client.getANonReasoningConn().update("add <"+lastGraphID+"> to <"+prefix+"suspicious>").execute();
 			String u = bs.getValue("userid").toString(); // user id
 			String a = bs.getValue("action").toString(); // action
+			System.out.println("*************************************");
 			System.out.println("[WARNING] suspicious action detected:");
 			System.out.println("          action:     " + bs.getValue("action").toString().substring(prefix.length()));
 			System.out.println("          timestamp:  " + actionTimePair.get(lastGraphID));
@@ -200,7 +201,7 @@ public class SemanticImportance {
 			System.out.println("                  PC logon:   " + currentPC.substring(prefix.length()));
 			System.out.println("                  PC assigned:" + client.getANonReasoningConn().select(userAssignedPC).execute().next().getValue("pc").toString().substring(prefix.length()));			
 			if (lastGraphID.contains("email_")) {
-				String activity = "select distinct ?o from <"+lastGraphID+"> where {?s a ?o.}";
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {"+a+" a ?o.}";
 				String from = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"from> ?o.}";
 				String to = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"to> ?o.}";
 				String cc = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"cc> ?o.}";
@@ -230,26 +231,26 @@ public class SemanticImportance {
 				while(re.hasNext()) {
 					BindingSet x = re.next();
 					System.out.print("                    attachment  :" + x.getValue("o").toString().substring(prefix.length()));
-					if(client.getANonReasoningConn().ask("ask from <"+prefix+"decoy> {<"+x.getBinding("o").toString()+"> a <" + prefix + "DecoyFile>}").execute()) {
+					if(client.getANonReasoningConn().ask("ask from <"+prefix+"decoy> {<"+x.getValue("o").toString()+"> a <" + prefix + "DecoyFile>}").execute()) {
 						System.out.println(" <-- a decoy file");						
 					}
 				}
 				re = client.getANonReasoningConn().select(activity).execute();
 				while(re.hasNext()) {
 					BindingSet x = re.next();
-					if(x.getValue("o").toString().contains("Action")) {
+					if(x.getValue("o").toString().contains("Email")) {
 						System.out.println("                  activity:   " + x.getValue("o").toString().substring(prefix.length()));						
 					}
 				}
 			}
 			else if (lastGraphID.contains("http_")) {
 				String url = "select distinct ?url ?dn from <"+lastGraphID+"> where {?s <"+prefix+"hasURL> ?url. ?url <"+prefix+"whoseDomainNameIsA> ?dn.}";
-				String activity = "select distinct ?o from <"+lastGraphID+"> where {?s a ?o.}";
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {"+a+" a ?o.}";
 				TupleQueryResult re = client.getANonReasoningConn().select(url).execute();
 				while(re.hasNext()){
 					BindingSet x = re.next();
-					System.out.println("                url         :" + x.getValue("url").toString());
-					System.out.println("                url domain  :" + x.getBinding("dn").toString().substring(prefix.length()));
+					System.out.println("                  url:        " + x.getValue("url").toString());
+					System.out.println("                  url domain: " + x.getValue("dn").toString().substring(prefix.length()));
 				}
 				re = client.getANonReasoningConn().select(activity).execute();
 				while(re.hasNext()) {
@@ -260,14 +261,14 @@ public class SemanticImportance {
 				}				
 			}
 			else if (lastGraphID.contains("file_")) {
-				String activity = "select distinct ?o from <"+lastGraphID+"> where {?s a ?o.}";
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {"+a+" a ?o.}";
 				String file = "select distinct ?fn from <"+lastGraphID+"> where {?s <"+prefix+"hasFile> ?fn.}";
 				String filetype = "select distinct ?type from <"+lastGraphID+"> where {?s <"+prefix+"hasFile> ?fn. ?fn a ?type}";
 				TupleQueryResult re = client.getANonReasoningConn().select(file).execute();
 				while(re.hasNext()){
 					BindingSet x = re.next();
-					System.out.print("                    file name :" + x.getValue("fn").toString().substring(prefix.length()));
-					if(client.getANonReasoningConn().ask("ask from <"+prefix+"decoy> {<"+x.getBinding("o").toString()+"> a <" + prefix + "DecoyFile>}").execute()) {
+					System.out.println("                  file name :" + x.getValue("fn").toString().substring(prefix.length()));
+					if(client.getANonReasoningConn().ask("ask from <"+prefix+"decoy> {<"+x.getValue("fn").toString()+"> a <" + prefix + "DecoyFile>}").execute()) {
 						System.out.println(" <-- a decoy file");						
 					}
 				}
@@ -276,10 +277,10 @@ public class SemanticImportance {
 					BindingSet x = re.next();
 					String type = x.getValue("type").toString().substring(prefix.length());
 					if(type.equals("NotFileToRemovableMedia")) {
-						System.out.println("                    copied from PC: no");
+						System.out.println("                  copied from PC: no");
 					}
 					else if (type.equals("NotFileFromRemovableMedia")) {
-						System.out.println("                    copied from usb drive: no");
+						System.out.println("                  copied from usb drive: no");
 					}
 					else if (type.equals("FileToRemovableMedia")) {
 						System.out.println("                    copied from PC: yes");
@@ -291,21 +292,23 @@ public class SemanticImportance {
 				re = client.getANonReasoningConn().select(activity).execute();
 				while(re.hasNext()) {
 					BindingSet x = re.next();
-					if(x.getValue("o").toString().contains("Action")) {
+					if(x.getValue("o").toString().contains("File")) {
 						System.out.println("                  activity:   " + x.getValue("o").toString().substring(prefix.length()));						
 					}
 				}
 			}
 			else if (lastGraphID.contains("device_")){
-				String activity = "select distinct ?o from <"+lastGraphID+"> where {?s a ?o.}";
+				System.out.println("                  excessive usb drive user:" + client.getANonReasoningConn().ask("ask from<" + prefix + "> { <"+u+"> a <"+prefix+"ExcessiveRemovableDriveUser>}").execute());
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {"+a+" a ?o.}";
 				TupleQueryResult re = client.getANonReasoningConn().select(activity).execute();
 				while(re.hasNext()) {
 					BindingSet x = re.next();
-					if(x.getValue("o").toString().contains("Action")) {
+					if(x.getValue("o").toString().contains("Disk")) {
 						System.out.println("                  activity:   " + x.getValue("o").toString().substring(prefix.length()));						
 					}
 				}
 			}
+			System.out.println("*************************************");
 			updateDiffIndividuals(files, mergedFile, lastGraphID.substring((prefix+"graph/").length()));
 			dataExfiltrationQuery(files, mergedFile);
 		}
@@ -323,8 +326,14 @@ public class SemanticImportance {
 		TupleQueryResult result = client.getAReasoningConn().select(q).execute();
 		while(result.hasNext()) {
 			BindingSet bs = result.next();
+			System.out.println("*************************************");
+			System.out.println("*************************************");
+			System.out.println("*************************************");
 			System.out.println("[Threatening] Data Exfiltraion Event Detected!");
 			System.out.println("              potential threatening insider: " + bs.getValue("userid").toString());				
+			System.out.println("*************************************");
+			System.out.println("*************************************");
+			System.out.println("*************************************");
 		}
 		// delete different-individuals graph
 		client.getANonReasoningConn().update("drop graph <" + prefix + "different-individuals>").execute();
