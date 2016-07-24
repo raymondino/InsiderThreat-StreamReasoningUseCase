@@ -4,7 +4,8 @@ This use case aims to leverage stream reasoning techniques and the concept of se
 # Dataset
 We use synthesized [dataset](https://www.cert.org/insider-threat/tools/).
 We used r6.2 (dataset released by v6.2 generator)
-A [diagram](https://www.dropbox.com/s/95615yuownzztvi/insider%20threat%20data%20diagram.png?dl=0) shows the overall dataset
+The followed diagram shows the overall dataset.
+![alt text](http://i.imgur.com/GjohGD2.png "CERT dataset files")
 We only provide the link as the size is about 100GB.
 
 # Ontology
@@ -31,6 +32,7 @@ The data and script directry tree is as follows:
 
 # Data Annotation
 Please refer to our [task log](https://docs.google.com/document/d/1ixi-0bNbfmbNqd623x08u2_HILzQXJL5Cz66eBdt5XU/edit?usp=sharing) for all of the details of data annotation, please refer to 6/24/2016 - 6/16/2016 logs.
-
+The following picture shows both the data annotation and ontology diagram. 
+![alt text](http://i.imgur.com/7LF0VnL.png "data annotation and ontology")
 # Stream Reasoning
 to be continued...
