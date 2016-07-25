@@ -274,7 +274,7 @@ def multiUserAnnotate():
 if __name__ == '__main__':
 	# run the file with command: python multiUsers.py
 	# then input the list of userids separated by space when asked, for example:
-	# ACM2278 CMP2946 CDE1846 MBG3183
+	# ACM2278 CMP2946 CDE1846 MBG3183 
 	userList = raw_input("Input list of userid's -->").split()
 	multiUserExtract(userList)
 	print 'Extract done.'
