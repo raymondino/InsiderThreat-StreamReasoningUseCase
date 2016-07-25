@@ -18,7 +18,7 @@ dailyStartDic = {'ACM2278': datetime.time(7,12,12), \
 # Average logoff of first 10 days +15min
 dailyEndDic = {'ACM2278': datetime.time(17,49,48), \
               'CMP2946': datetime.time(18,18,36), \
-              'CDE1846': datetime.time(19,01,24), \
+              'CDE1846': datetime.time(19,1,24), \
               'MBG3183': datetime.time(17,29,54) }
 
 usbDriveUsageFrequency = {'ACM2278': 0, 'CMP2946': 10.2, 'PLJ1771': 0, 'CDE1846': 0, 'MBG3183': 3.7 }
