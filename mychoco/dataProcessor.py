@@ -55,21 +55,22 @@ def logon(record,outfile):
     print >>outfile, '%slogon_%s %shasActor %s%s .' %(ex,id,ex,ex,record[3])
     print >>outfile, '%slogon_%s %sisPerformedOnPC %s%s .' %(ex,id,ex,ex,record[4])
 
-def device(record,outfile,deviceUsageCounter,user, userID):
+def device(record,outfile,deviceUsageCounter):
     id = record[1][1:len(record[1])-1]
+    userID = record[3]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print >>outfile, '%s%s-event %shasAction %sdevice_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
-    if deviceUsageCounter > usbDriveUsageFrequency[user]:
+    if deviceUsageCounter > usbDriveUsageFrequency[userID]:
         timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
         print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .' %(ex,userID,a,ex)
         #print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .|%s' %(ex,userID,a,ex,tsToStr(timestamp))
     print >>outfile, '%sdevice_%s %s %s%sAction .' %(ex,id,a,ex,'Disk'+record[6]+'ion')
     #print >>outfile, '%sdevice_%s %shasTimestamp> "%s-05:00"^^<%sdateTime> . %s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
-    if timestamp.time() < dailyStartDic[record[3]] or timestamp.time() > dailyEndDic[record[3]]:
+    if timestamp.time() < dailyStartDic[userID] or timestamp.time() > dailyEndDic[userID]:
         print >>outfile, '%sdevice_%s %s %sAfterHourAction .' %(ex,id,a,ex)
     else:
         print >>outfile, '%sdevice_%s %s %sInHourAction .' %(ex,id,a,ex)
-    print >>outfile, '%sdevice_%s %shasActor %s%s .' %(ex,id,ex,ex,record[3])
+    print >>outfile, '%sdevice_%s %shasActor %s%s .' %(ex,id,ex,ex,userID)
     print >>outfile, '%sdevice_%s %sisPerformedOnPC %s%s .' %(ex,id,ex,ex,record[4])
     if (record[6]=='Connect'):
         print >>outfile, '%sdevice_%s %sisPerformedWithRemovableDisk %sdevice_%s_disk .' %(ex,id,ex,ex,id)
@@ -245,9 +246,9 @@ def combine(user):
 def annotate(user):
 	f = open('intermediate/'+user+'_aggregated.csv')
 	outfile = open(user+'-annotation.txt','w')
-	userID = f.readline().split(',')[3]
-	print >>outfile, '%s%s %sisInvolvedIn %s%s-event .' %(ex,userID,ex,ex,userID)
-	f.seek(0,0)
+	# userID = f.readline().split(',')[3]
+	print >>outfile, '%s%s %sisInvolvedIn %s%s-event .' %(ex,user,ex,ex,user)
+	# f.seek(0,0)
 	deviceUsageCounter = 0
 	isDeviceConnected = False
 	connectedDevice = ''
@@ -265,7 +266,7 @@ def annotate(user):
 	            connectedDevice = record[1][1:len(record[1])-1]  # id of this record
 	        elif record[6] == 'Disconnect':
 	            connectedDevice = ''
-	        device(record,outfile,deviceUsageCounter,user,userID)
+	        device(record,outfile,deviceUsageCounter)
 	    elif type == 'email':
 	        content = record[record.find('"'):len(record)-1].replace('"','')
 	        record = record[:record.find('"')].split(',')

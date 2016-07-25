@@ -90,10 +90,15 @@ def logon(record,outfile):
     print >>outfile, '%slogon_%s %shasActor %s%s .' %(ex,id,ex,ex,record[3])
     print >>outfile, '%slogon_%s %sisPerformedOnPC %s%s .' %(ex,id,ex,ex,record[4])
 
-def device(record,outfile):
+def device(record,outfile,deviceUsageCounter):
     id = record[1][1:len(record[1])-1]
+    userID = record[3]
     timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
     print >>outfile, '%s%s-event %shasAction %sdevice_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
+    if deviceUsageCounter > usbDriveUsageFrequency[userID]:
+        timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+        print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .' %(ex,userID,a,ex)
+        #print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .|%s' %(ex,userID,a,ex,tsToStr(timestamp))
     print >>outfile, '%sdevice_%s %s %s%sAction .' %(ex,id,a,ex,'Disk'+record[6]+'ion')
     #print >>outfile, '%sdevice_%s %shasTimestamp> "%s-05:00"^^<%sdateTime> . %s' %(ex,id,ex,tsToStr(timestamp),xsd,tsToStr(timestamp))
     if timestamp.time() < dailyStartDic[record[3]] or timestamp.time() > dailyEndDic[record[3]]:
@@ -180,13 +185,13 @@ def file(record,outfile):
     filename = record[5].replace('\\','_')
     print >>outfile, '%sfile_%s %shasFile %s%s .'%(ex,id,ex,ex,filename)
     if record[7]=='True':
-        print >>outfile, '%sfile_%s_file %s %sFileToRemovableMedia .' %(ex,id,a,ex)
+        print >>outfile, '%s%s %s %sFileToRemovableMedia .' %(ex,filename,a,ex)
     else:
-        print >>outfile, '%sfile_%s_file %s %sNotFileToRemovableMedia .' %(ex,id,a,ex)
+        print >>outfile, '%s%s %s %sNotFileToRemovableMedia .' %(ex,filename,a,ex)
     if record[8]=='True':
-        print >>outfile, '%sfile_%s_file %s %sFileFromRemovableMedia .' %(ex,id,a,ex)
+        print >>outfile, '%s%s %s %sFileFromRemovableMedia .' %(ex,filename,a,ex)
     else:
-        print >>outfile, '%sfile_%s_file %s %sNotFileFromRemovableMedia .' %(ex,id,a,ex)
+        print >>outfile, '%s%s %s %sNotFileFromRemovableMedia .' %(ex,filename,a,ex)
     print >>outfile, '%sfile_%s_file %shasContent> "%s" .' %(ex,id,ex,content)
 
 # http, id, date, user, pc, url, activity, content
@@ -213,34 +218,36 @@ def http(record,outfile):
     elif domainName in jobHuntingWebsites:
         print >>outfile, '%s %swhoseDomainNameIsA %sjobhuntingwebsite .' %(record[5],ex,ex)
     else:
-        print >>outfile, '%s %s %sneuturalwebsite .' %(record[5],a,ex)
+        print >>outfile, '%s %swhoseDomainNameIsA %sneutralwebsite .' %(record[5],ex,ex)
     print >>outfile, '%shttp_%s %shasContent> "%s" .' %(ex,id,ex,content)
 
 
-def multiUserAnnotate():
+def multiUserAnnotate(userList):
 	f = open('intermediate/multi_users_aggregated.csv')
 	outfile = open('multi_users_annotation.txt','w')
-	# userID = f.readline().split(',')[3]
-	# print >>outfile, '%s%s %sisInvolvedIn %s%s-event .' %(ex,userID,ex,ex,userID)
-	# f.seek(0,0)
-	# deviceUsageCounter = 0
-	# isDeviceConnected = False
-	# connectedDevice = ''
+	# make a counter dictionary with key = userid, value = (deviceUsageCount, connectedDevice)
+	deviceDic = {}
+	for userID in userList:
+		deviceDic[userID] = {'count':0, 'connectedDevice':''}
+		print >>outfile, '%s%s %sisInvolvedIn %s%s-event .' %(ex,userID,ex,ex,userID)
+
 	for record in f:
 	    type = record[:record.find(',')]
 	    if type == 'logon':
 	        record = record.strip().split(',')
-	        # if record[5] == 'Logoff':
-	            # connectedDevice = ''
+	        if record[5] == 'Logoff':
+	            userID = record[3]
+	            deviceDic[userID]['connectedDevice'] = ''
 	        logon(record,outfile)
 	    elif type == 'device':
 	        record = record.strip().split(',')
-	        # if record[6] == 'Connect':
-	            # deviceUsageCounter += 1
-	            # connectedDevice = record[1][1:len(record[1])-1]  # id of this record
-	        # elif record[6] == 'Disconnect':
-	            # connectedDevice = ''
-	        device(record,outfile)
+	        userID = record[3]
+	        if record[6] == 'Connect':
+	            deviceDic[userID]['count'] += 1
+	            deviceDic[userID]['connectedDevice'] = record[1][1:len(record[1])-1]  # id of this record
+	        elif record[6] == 'Disconnect':
+	            deviceDic[userID]['connectedDevice'] = ''
+	        device(record,outfile,deviceDic[userID]['count'])
 	    elif type == 'email':
 	        content = record[record.find('"'):len(record)-1].replace('"','')
 	        record = record[:record.find('"')].split(',')
@@ -251,10 +258,11 @@ def multiUserAnnotate():
 	        record = record[:record.find('"')].split(',')
 	        record.append(content)
 	        file(record,outfile)
-	        #if connectedDevice:
+			# userID = record[3]
+	        # if deviceDic[userID]['connectedDevice']:
 	        #    id = record[1][1:len(record[1])-1]
 	        #    timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
-	        #    print >>outfile, '%s%s %sstartsNoEarlierThanEndingOf %s%s .|%s' %(ex,id,ex,ex,connectedDevice,tsToStr(timestamp))
+	        #    print >>outfile, '%s%s %sstartsNoEarlierThanEndingOf %s%s .|%s' %(ex,id,ex,ex,deviceDic[userID]['connectedDevice'],tsToStr(timestamp))
 	    elif type == 'http':
 	        content = record[record.find('"'):len(record)-1].replace('"','')
 	        record = record[:record.find('"')].split(',')
@@ -264,21 +272,17 @@ def multiUserAnnotate():
 	        print >>outfile, 'unknown type:', type
 	        raise
 
-	# if deviceUsageCounter > usbDriveUsageFrequency[user]:
-	    # timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
-	    # print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .' %(ex,userID,a,ex)
-        #print >>outfile, '%s%s %s %sExcessiveRemovableDriveUser .|%s' %(ex,userID,a,ex,tsToStr(timestamp))
 	f.close()
 	outfile.close()
 
 if __name__ == '__main__':
 	# run the file with command: python multiUsers.py
 	# then input the list of userids separated by space when asked, for example:
-	# ACM2278 CMP2946 CDE1846 MBG3183 
+	# ACM2278 CMP2946 CDE1846 MBG3183
 	userList = raw_input("Input list of userid's -->").split()
-	multiUserExtract(userList)
+	# multiUserExtract(userList)
 	print 'Extract done.'
-	multiUserCombine()
+	# multiUserCombine()
 	print 'Combine done.'
-	multiUserAnnotate()
+	multiUserAnnotate(userList)
 	print 'Annotate done.'
