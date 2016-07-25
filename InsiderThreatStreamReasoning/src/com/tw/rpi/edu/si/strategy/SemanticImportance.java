@@ -201,7 +201,7 @@ public class SemanticImportance {
 			System.out.println("                  PC logon:   " + currentPC.substring(prefix.length()));
 			System.out.println("                  PC assigned:" + client.getANonReasoningConn().select(userAssignedPC).execute().next().getValue("pc").toString().substring(prefix.length()));			
 			if (lastGraphID.contains("email_")) {
-				String activity = "select distinct ?o from <"+lastGraphID+"> where {"+a+" a ?o.}";
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {<"+a+"> a ?o.}";
 				String from = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"from> ?o.}";
 				String to = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"to> ?o.}";
 				String cc = "select distinct ?o from <"+lastGraphID+"> where {?s <"+prefix+"cc> ?o.}";
@@ -245,7 +245,7 @@ public class SemanticImportance {
 			}
 			else if (lastGraphID.contains("http_")) {
 				String url = "select distinct ?url ?dn from <"+lastGraphID+"> where {?s <"+prefix+"hasURL> ?url. ?url <"+prefix+"whoseDomainNameIsA> ?dn.}";
-				String activity = "select distinct ?o from <"+lastGraphID+"> where {"+a+" a ?o.}";
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {<"+a+"> a ?o.}";
 				TupleQueryResult re = client.getANonReasoningConn().select(url).execute();
 				while(re.hasNext()){
 					BindingSet x = re.next();
@@ -261,7 +261,7 @@ public class SemanticImportance {
 				}				
 			}
 			else if (lastGraphID.contains("file_")) {
-				String activity = "select distinct ?o from <"+lastGraphID+"> where {"+a+" a ?o.}";
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {<"+a+"> a ?o.}";
 				String file = "select distinct ?fn from <"+lastGraphID+"> where {?s <"+prefix+"hasFile> ?fn.}";
 				String filetype = "select distinct ?type from <"+lastGraphID+"> where {?s <"+prefix+"hasFile> ?fn. ?fn a ?type}";
 				TupleQueryResult re = client.getANonReasoningConn().select(file).execute();
@@ -299,7 +299,7 @@ public class SemanticImportance {
 			}
 			else if (lastGraphID.contains("device_")){
 				System.out.println("                  excessive usb drive user:" + client.getANonReasoningConn().ask("ask from<" + prefix + "> { <"+u+"> a <"+prefix+"ExcessiveRemovableDriveUser>}").execute());
-				String activity = "select distinct ?o from <"+lastGraphID+"> where {"+a+" a ?o.}";
+				String activity = "select distinct ?o from <"+lastGraphID+"> where {<"+a+"> a ?o.}";
 				TupleQueryResult re = client.getANonReasoningConn().select(activity).execute();
 				while(re.hasNext()) {
 					BindingSet x = re.next();
@@ -374,7 +374,6 @@ public class SemanticImportance {
 		fw1.close();
 		fw2.close();
 	}
-	
 	// merge different individuals file into a single turtle file 
 	private void mergeFiles(File[] files, File mergedFile) {
 		FileWriter fstream = null;
