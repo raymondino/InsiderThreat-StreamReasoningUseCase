@@ -10,7 +10,7 @@ def multiUserExtractHelper(actionType, userList):
 	outFile = open('intermediate/multi_users_'+actionType+'.csv', 'w')
 	for line in inFile:
 		if line.split(',')[2] in userList:
-			outFile.write(actionType+', '+ line)
+			outFile.write(actionType+','+line)
 	outFile.close()
 	inFile.close()
 	print actionType, 'extract done.'
@@ -21,11 +21,11 @@ def multiUserExtract(userList):
 	usr_file = open('intermediate/multi_users_file.csv', 'w+');
 	usr_email = open('intermediate/multi_users_email.csv', 'w+');
 	usr_http = open('intermediate/multi_users_http.csv', 'w+');
-	multiUserExtractHelper('device')
-	multiUserExtractHelper('logon')
-	multiUserExtractHelper('file')
-	multiUserExtractHelper('email')
-	multiUserExtractHelper('http')
+	multiUserExtractHelper('device',userList)
+	multiUserExtractHelper('logon',userList)
+	multiUserExtractHelper('file',userList)
+	multiUserExtractHelper('email',userList)
+	multiUserExtractHelper('http',userList)
 
 #######################
 # COMBINE
@@ -254,7 +254,7 @@ def multiUserAnnotate():
 	        #if connectedDevice:
 	        #    id = record[1][1:len(record[1])-1]
 	        #    timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
-            #    print >>outfile, '%s%s %sstartsNoEarlierThanEndingOf %s%s .|%s' %(ex,id,ex,ex,connectedDevice,tsToStr(timestamp))
+	        #    print >>outfile, '%s%s %sstartsNoEarlierThanEndingOf %s%s .|%s' %(ex,id,ex,ex,connectedDevice,tsToStr(timestamp))
 	    elif type == 'http':
 	        content = record[record.find('"'):len(record)-1].replace('"','')
 	        record = record[:record.find('"')].split(',')
@@ -272,9 +272,11 @@ def multiUserAnnotate():
 	outfile.close()
 
 if __name__ == '__main__':
+	# ex: ACM2278 CMP2946 CDE1846 MBG3183
+	userList = raw_input("Input list of userid's -->").split()
 	multiUserExtract(userList)
 	print 'Extract done.'
 	multiUserCombine()
 	print 'Combine done.'
 	multiUserAnnotate()
-	print 'Annotate done'
+	print 'Annotate done.'
