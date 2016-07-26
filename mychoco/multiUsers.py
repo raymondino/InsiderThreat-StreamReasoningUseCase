@@ -5,60 +5,64 @@ path = '../data-r6.2/'
 
 #######################
 # EXTRACT
-def multiUserExtractHelper(actionType, userList):
-	inFile = open(path+actionType+'.csv')
-	outFile = open('intermediate/multi_users_'+actionType+'.csv', 'w')
-	for line in inFile:
-		if line.split(',')[2] in userList:
-			outFile.write(actionType+','+line)
-	outFile.close()
-	inFile.close()
-	print actionType, 'extract done.'
+
 
 def multiUserExtract(userList):
+	def multiUserExtractHelper(actionType):
+		inFile = open(path+actionType+'.csv')
+		outFile = open('intermediate/multi_users_'+actionType+'.csv', 'w')
+		for line in inFile:
+			if line.split(',')[2] in userList:
+				outFile.write(actionType+','+line)
+		outFile.close()
+		inFile.close()
+		print actionType, 'extract done.'
+
 	usr_device = open('intermediate/multi_users_device.csv', 'w+');
 	usr_logon = open('intermediate/multi_users_logon.csv', 'w+');
 	usr_file = open('intermediate/multi_users_file.csv', 'w+');
 	usr_email = open('intermediate/multi_users_email.csv', 'w+');
 	usr_http = open('intermediate/multi_users_http.csv', 'w+');
-	multiUserExtractHelper('device',userList)
-	multiUserExtractHelper('logon',userList)
-	multiUserExtractHelper('file',userList)
-	multiUserExtractHelper('email',userList)
-	multiUserExtractHelper('http',userList)
+	multiUserExtractHelper('device')
+	multiUserExtractHelper('logon')
+	multiUserExtractHelper('file')
+	multiUserExtractHelper('email')
+	multiUserExtractHelper('http')
 
 #######################
 # COMBINE
-# returns the index of the line having the earliest timestamp
-def findEarliest(firstLines):
-    minIndex = -1
-    minTime = MAXTIME
-    for i in range(len(firstLines)):
-        if (firstLines[i]):
-            line = firstLines[i].strip().split(',')
-            timestamp = datetime.datetime.strptime(line[2],'%m/%d/%Y %H:%M:%S')
-            if timestamp < minTime:
-                minTime = timestamp
-                minIndex = i
-    return minIndex
 
-def allEmpty(firstLines):
-    for line in firstLines:
-        if line:
-            return False
-    return True
-
-# combines the files in fileList ordered by timestamp of each line and saves the combined file in outFile
-def combineFiles(fileList,outFile):
-    firstLines = []
-    for eachFile in fileList:
-        firstLines.append(eachFile.readline())
-    while not allEmpty(firstLines):
-        i= findEarliest(firstLines)
-        outFile.write(firstLines[i])
-        firstLines[i] = fileList[i].readline()
 
 def multiUserCombine():
+	# returns the index of the line having the earliest timestamp
+	def findEarliest(firstLines):
+	    minIndex = -1
+	    minTime = MAXTIME
+	    for i in range(len(firstLines)):
+	        if (firstLines[i]):
+	            line = firstLines[i].strip().split(',')
+	            timestamp = datetime.datetime.strptime(line[2],'%m/%d/%Y %H:%M:%S')
+	            if timestamp < minTime:
+	                minTime = timestamp
+	                minIndex = i
+	    return minIndex
+
+	def allEmpty(firstLines):
+	    for line in firstLines:
+	        if line:
+	            return False
+	    return True
+
+	# combines the files in fileList ordered by timestamp of each line and saves the combined file in outFile
+	def combineFiles(fileList,outFile):
+	    firstLines = []
+	    for eachFile in fileList:
+	        firstLines.append(eachFile.readline())
+	    while not allEmpty(firstLines):
+	        i= findEarliest(firstLines)
+	        outFile.write(firstLines[i])
+	        firstLines[i] = fileList[i].readline()
+
 	fileList = [open('intermediate/multi_users_device.csv'),\
 				open('intermediate/multi_users_email.csv'),\
 				open('intermediate/multi_users_file.csv'),\
@@ -279,10 +283,18 @@ if __name__ == '__main__':
 	# run the file with command: python multiUsers.py
 	# then input the list of userids separated by space when asked, for example:
 	# ACM2278 CMP2946 CDE1846 MBG3183
-	userList = raw_input("Input list of userid's -->").split()
-	# multiUserExtract(userList)
+
+	if len(sys.argv)<2:
+		print 'USAGE: python multiUsers.py [filename]'
+		sys.exit(0)
+
+	infile = open(sys.argv[1])
+	userList = [line.strip() for line in infile]
+	infile.close()
+
+	multiUserExtract(userList)
 	print 'Extract done.'
-	# multiUserCombine()
+	multiUserCombine()
 	print 'Combine done.'
 	multiUserAnnotate(userList)
 	print 'Annotate done.'

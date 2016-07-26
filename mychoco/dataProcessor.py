@@ -7,35 +7,89 @@ path = '../data-r6.2/'
 # dailyStart = datetime.time(7,27-15,12)
 # dailyEnd = datetime.time(17,34+15,48)
 
-#
-# returns the index of the line having the earliest timestamp
-def findEarliest(firstLines):
-    minIndex = -1
-    minTime = MAXTIME
-    for i in range(len(firstLines)):
-        if (firstLines[i]):
-            line = firstLines[i].strip().split(',')
-            timestamp = datetime.datetime.strptime(line[2],'%m/%d/%Y %H:%M:%S')
-            if timestamp < minTime:
-                minTime = timestamp
-                minIndex = i
-    return minIndex
+def extract(user):
+	usr_device = open('intermediate/'+user+'_device.csv', 'w+');
+	usr_logon = open('intermediate/'+user+'_logon.csv', 'w+');
+	usr_file = open('intermediate/'+user+'_file.csv', 'w+');
+	usr_email = open('intermediate/'+user+'_email.csv', 'w+');
+	usr_http = open('intermediate/'+user+'_http.csv', 'w+');
 
-def allEmpty(firstLines):
-    for line in firstLines:
-        if line:
-            return False
-    return True
+	device = open(path+'device.csv', 'r')
+	for d in device:
+		if d.split(',')[2] == user:
+			usr_device.write('device,' + d);
+	device.close();
+	usr_device.close();
+	print 'Device extract done.'
 
-# combines the files in fileList ordered by timestamp of each line and saves the combined file in outFile
-def combineFiles(fileList,outFile):
-    firstLines = []
-    for eachFile in fileList:
-        firstLines.append(eachFile.readline())
-    while not allEmpty(firstLines):
-        i= findEarliest(firstLines)
-        outFile.write(firstLines[i])
-        firstLines[i] = fileList[i].readline()
+	logon = open(path+'logon.csv', 'r')
+	for l in logon:
+		if l.split(',')[2] == user :
+			usr_logon.write('logon,' + l);
+	logon.close();
+	usr_logon.close();
+	print 'Logon extract done.'
+
+	file = open(path+'file.csv', 'r')
+	for f in file:
+		if f.split(',')[2] == user :
+			usr_file.write('file,' + f);
+	file.close();
+	usr_file.close();
+	print 'File extract done.'
+
+	email = open(path+'email.csv', 'r')
+	for e in email:
+		if e.split(',')[2] == user :
+			usr_email.write('email,' + e);
+	email.close();
+	usr_email.close();
+	print 'Email extract done.'
+
+	http = open(path+'http.csv', 'r')
+	for h in http:
+		if h.split(',')[2] == user :
+			usr_http.write('http,' + h);
+	http.close();
+	usr_http.close();
+	print 'HTTP extract done.'
+
+def combine(user):
+    # combines the files in fileList ordered by timestamp of each line and saves the combined file in outFile
+    def combineFiles(fileList,outFile):#
+        # returns the index of the line having the earliest timestamp
+        def findEarliest(firstLines):
+            minIndex = -1
+            minTime = MAXTIME
+            for i in range(len(firstLines)):
+                if (firstLines[i]):
+                    line = firstLines[i].strip().split(',')
+                    timestamp = datetime.datetime.strptime(line[2],'%m/%d/%Y %H:%M:%S')
+                    if timestamp < minTime:
+                        minTime = timestamp
+                        minIndex = i
+            return minIndex
+        def allEmpty(firstLines):
+            for line in firstLines:
+                if line:
+                    return False
+            return True
+
+        firstLines = []
+        for eachFile in fileList:
+            firstLines.append(eachFile.readline())
+        while not allEmpty(firstLines):
+            i = findEarliest(firstLines)
+            outFile.write(firstLines[i])
+            firstLines[i] = fileList[i].readline()
+
+	fileList = [open('intermediate/'+user+'_device.csv'),open('intermediate/'+user+'_email.csv'),\
+				open('intermediate/'+user+'_file.csv'),open('intermediate/'+user+'_http.csv'),open('intermediate/'+user+'_logon.csv')]
+	outfile = open('intermediate/'+user+'_aggregated.csv','w')
+	combineFiles(fileList,outfile)
+	for f in fileList:
+		f.close()
+	outfile.close()
 
 #
 # converts a timestamp to a string
@@ -187,61 +241,6 @@ def http(record,outfile):
     print >>outfile, '%shttp_%s %shasContent> "%s" .' %(ex,id,ex,content)
 
 
-def extract(user):
-	usr_device = open('intermediate/'+user+'_device.csv', 'w+');
-	usr_logon = open('intermediate/'+user+'_logon.csv', 'w+');
-	usr_file = open('intermediate/'+user+'_file.csv', 'w+');
-	usr_email = open('intermediate/'+user+'_email.csv', 'w+');
-	usr_http = open('intermediate/'+user+'_http.csv', 'w+');
-
-	device = open(path+'device.csv', 'r')
-	for d in device:
-		if d.split(',')[2] == user:
-			usr_device.write('device,' + d);
-	device.close();
-	usr_device.close();
-	print 'Device extract done.'
-
-	logon = open(path+'logon.csv', 'r')
-	for l in logon:
-		if l.split(',')[2] == user :
-			usr_logon.write('logon,' + l);
-	logon.close();
-	usr_logon.close();
-	print 'Logon extract done.'
-
-	file = open(path+'file.csv', 'r')
-	for f in file:
-		if f.split(',')[2] == user :
-			usr_file.write('file,' + f);
-	file.close();
-	usr_file.close();
-	print 'File extract done.'
-
-	email = open(path+'email.csv', 'r')
-	for e in email:
-		if e.split(',')[2] == user :
-			usr_email.write('email,' + e);
-	email.close();
-	usr_email.close();
-	print 'Email extract done.'
-
-	http = open(path+'http.csv', 'r')
-	for h in http:
-		if h.split(',')[2] == user :
-			usr_http.write('http,' + h);
-	http.close();
-	usr_http.close();
-	print 'HTTP extract done.'
-
-def combine(user):
-	fileList = [open('intermediate/'+user+'_device.csv'),open('intermediate/'+user+'_email.csv'),\
-				open('intermediate/'+user+'_file.csv'),open('intermediate/'+user+'_http.csv'),open('intermediate/'+user+'_logon.csv')]
-	outfile = open('intermediate/'+user+'_aggregated.csv','w')
-	combineFiles(fileList,outfile)
-	for f in fileList:
-		f.close()
-	outfile.close()
 
 def annotate(user):
 	f = open('intermediate/'+user+'_aggregated.csv')
@@ -298,9 +297,9 @@ if __name__ == '__main__':
 		sys.exit(0)
 
 	userid = sys.argv[1]
-#	extract(userid)
+	extract(userid)
 	print 'Extract done.'
-#	combine(userid)
+	combine(userid)
 	print 'Combine done.'
 	annotate(userid)
 	print 'Annotate done.'
