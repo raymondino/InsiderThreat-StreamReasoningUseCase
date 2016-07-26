@@ -244,6 +244,7 @@ public class Action implements Comparable<ComparableAction> {
 	public Boolean getFromRemovableMedia() { return fromRemovableMedia; }
 	public String getActivity() { return activity; }
 	public String getContent() { return content; }
+	public Integer getProvenanceScore() { return provenanceScore; }
 
 	@Override
 	public int compareTo(ComparableAction arg0) {
