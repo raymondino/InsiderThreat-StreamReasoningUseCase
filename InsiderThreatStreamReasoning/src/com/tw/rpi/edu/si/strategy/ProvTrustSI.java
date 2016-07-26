@@ -63,7 +63,8 @@ public class ProvTrustSI {
 				
 				// if current data hasn't reach action data
 				if(!loadingActionData) {
-					client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o))), prefix+"actor-event");						
+					client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o))), prefix+"actor-event");	
+					continue;
 				}								
 				// if data comes with a timestamp, then this is a new action
 				if(data.charAt(data.length()-1) != '.') {
@@ -71,7 +72,9 @@ public class ProvTrustSI {
 					// last action info will be fully added into db when current data is read
 					// so we need to construct last action, and add it into the window
 					if(!currentActionGraphID.equals("")) {
-						Action action = new Action(currentActionGraphID, currentActioinTS, users, client);
+						Action action = new Action(currentActionGraphID, currentActioinTS, users, client); 
+						action.setRankByProv(); // rank by provenance
+						//action.setRankByTrust(); // rank by trust
 						window.load(currentActionGraphID, currentActioinTS, action);
 						window.process();
 					}

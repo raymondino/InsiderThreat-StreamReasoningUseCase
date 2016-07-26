@@ -11,10 +11,11 @@ import org.openrdf.query.TupleQueryResult;
 import com.complexible.common.openrdf.model.Models2;
 import com.complexible.common.rdf.model.Values;
 
-public class Action implements Comparable<ComparableAction> {
+public class Action implements Comparable<Action> {
 	private static String prefix = "http://tw.rpi.edu/ontology/DataExfiltration/";
 
 	private String actionID;
+	private String actionGraphID;
 	private ZonedDateTime timestamp;
 	private Boolean afterHourAction; // describes an after hour action
 	private User user;
@@ -35,9 +36,12 @@ public class Action implements Comparable<ComparableAction> {
 	private String content; // http/email/file action content
 	// a score that models the action provenance, the smaller the better
 	private Integer provenanceScore; 
+	private Boolean rankByProv;
+	private Boolean rankByTrust;
 	
 	public Action(String graphID, ZonedDateTime ts, ArrayList<User> users, SnarlClient client) {
 		actionID = "";
+		actionGraphID = graphID;
 		timestamp = ts;
 		afterHourAction = false;
 		user = null;
@@ -68,6 +72,8 @@ public class Action implements Comparable<ComparableAction> {
 		 * 8. file copied to/from disk/pc
 		 */
 		provenanceScore = 0;
+		rankByProv = false;
+		rankByTrust = false;
 		
 		String infoQuery = "select distinct ?action ?userid ?pc from <"+graphID+"> where {?action <"+prefix+"hasActor> ?actor; <"+prefix+"isPerformedOn> ?pc.}";
 		TupleQueryResult result = client.getANonReasoningConn().select(infoQuery).execute();
@@ -225,7 +231,11 @@ public class Action implements Comparable<ComparableAction> {
 		}
 	}
 
+	public void setRankByProv() { rankByProv = true; rankByTrust = false; }
+	public void setRankByTrust() { rankByProv = false; rankByProv = true; }
+	
 	public String getActionID() { return actionID; }
+	public String getActionGraphID() { return actionGraphID; }
 	public ZonedDateTime getTimestamp() { return timestamp; }
 	public Boolean getAfterHourAction() { return afterHourAction; }
 	public User getUser() { return user; }
@@ -245,10 +255,27 @@ public class Action implements Comparable<ComparableAction> {
 	public String getActivity() { return activity; }
 	public String getContent() { return content; }
 	public Integer getProvenanceScore() { return provenanceScore; }
+	public Boolean isRankByProv() { return rankByProv; }
+	public Boolean isRankByTrust() { return rankByProv = true; }
 
 	@Override
-	public int compareTo(ComparableAction arg0) {
-		// TODO Auto-generated method stub
+	public int compareTo(Action a) {
+		// rank by action's provenance score
+		if(rankByProv && !rankByTrust) { // a max heap
+			if(provenanceScore == a.getProvenanceScore()) {
+				return 0;
+			}
+			else
+				return provenanceScore > a.getProvenanceScore() ? -1 : 1;
+		}
+		// rank by action's user's trust score
+		else if(rankByTrust && !rankByProv) { // a min heap
+			if(user.getTrustScore() == a.getUser().getTrustScore()) {
+				return 0;
+			}
+			else 
+				return user.getTrustScore() < a.getUser().getTrustScore() ? -1 : 1;
+		}
 		return 0;
 	}
 }

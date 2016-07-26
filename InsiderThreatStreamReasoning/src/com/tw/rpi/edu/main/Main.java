@@ -10,6 +10,7 @@ import org.openrdf.rio.RDFFormat;
 
 import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.StardogException;
+import com.tw.rpi.edu.si.strategy.ProvTrustSI;
 import com.tw.rpi.edu.si.strategy.SemanticImportance;
 import com.tw.rpi.edu.si.utilities.SnarlClient;
 
@@ -103,8 +104,10 @@ public class Main {
 		String data = data_scenario1;
 		
 		// run:
-		SemanticImportance si = new SemanticImportance(data, client, prefix);
-		si.run();
+		//SemanticImportance si = new SemanticImportance(data, client, prefix);
+		//si.run();
+		ProvTrustSI p = new ProvTrustSI(data, client);
+		p.run();
 		
 		// benchmark writer
 		//PrintWriter metricRecorder = null;		

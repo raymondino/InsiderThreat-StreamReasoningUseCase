@@ -31,10 +31,11 @@ public class Window {
 	private Period step;
 	private ZonedDateTime latestActionTS;
 	private Action latestAction;
-	private String latestActionGraphID;
+	private Action actionBeingQueried;
 	private ZonedDateTime start; // window start
 	private ZonedDateTime end; // window end
 	SnarlClient client;
+	FileWriter writeSuspiciousAction;
 	
 	// pair of action graph id and timestamp
 	private LinkedHashMap<String, ZonedDateTime> content; 
@@ -47,19 +48,21 @@ public class Window {
 		step = Period.ofDays(1);
 		latestActionTS = null;
 		latestAction = null;
-		latestActionGraphID = "";
+		actionBeingQueried = null;
 		content = new LinkedHashMap<String, ZonedDateTime>();
 		actions = new PriorityQueue<Action>();
+		writeSuspiciousAction = null;
 	}	
 	public Window(SnarlClient c) {
 		size = Period.ofDays(7);
 		step = Period.ofDays(1);
 		latestActionTS = null;
 		latestAction = null;
-		latestActionGraphID = "";
+		actionBeingQueried = null;
 		content = new LinkedHashMap<String, ZonedDateTime>();
 		actions = new PriorityQueue<Action> ();
 		client = c;
+		writeSuspiciousAction = null;
 	}
 	
 	// assessor
@@ -72,32 +75,69 @@ public class Window {
 	public void setSize(int s) {size = Period.ofDays(s);end = start.plus(size);}
 	public void setStart(ZonedDateTime s) {start = s; end = start.plus(size);}
 	
+	// function: window loads data
+	public void load(String graphid, ZonedDateTime ts, Action a) {
+		System.out.println("[load]" + a.getActionID() + " - " + ts);
+		latestActionTS = ts;
+		latestAction = a;
+		content.put(graphid, ts);
+		actions.add(a);
+	}
+	
+	// function: window process data
+	public void process() {
+		// if window is not full
+		if(latestActionTS.isBefore(end)) {
+			// write suspicious action list to file
+			File suspiciousActionList = new File("data/result/suspiciousActionList.txt");
+			suspiciousActionList.delete();
+			
+			// if actions are ranked by provenance score
+			if(latestAction.isRankByProv()) {
+				try {
+					writeSuspiciousAction = new FileWriter(suspiciousActionList, true);	
+					writeSuspiciousAction.write("rank by provenance: \n");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				while(actions.peek().getProvenanceScore() > 0) {
+					Action x = actions.poll();
+					System.out.println("[query]" + x.getActionID() + " - " + x.getTimestamp());
+					query(x.getActionGraphID());
+				}
+			}
+			// if actions are ranked by trust score
+			else if (latestAction.isRankByTrust()) {
+				try {
+					writeSuspiciousAction = new FileWriter(suspiciousActionList, true);	
+					writeSuspiciousAction.write("rank by trust: \n");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				while(actions.peek().getProvenanceScore() > 0) {
+					Action x = actions.poll();
+					System.out.println("[query]" + x.getActionID() + " - " + x.getTimestamp());
+					query(x.getActionGraphID());
+				}
+			}
+		}
+		else {
+			System.out.println("[evict]");
+			evict();
+			System.out.println("[window moves]");
+			move();
+		}
+	}
+	
+	// function: window evicts data
 	// function: window moves 1 step forward
 	public void move() { 
 		start = start.plus(step); 
 		end = end.plus(size);
 	} 
-	// function: window loads data
-	public void load(String graphid, ZonedDateTime ts, Action a) {
-		latestActionTS = ts;
-		latestAction = a;
-		latestActionGraphID = graphid;
-		content.put(graphid, ts);
-		actions.add(a);
-	}
-	// function: window process data
-	public void process() {
-		// if window is not full
-		if(latestActionTS.isBefore(end)) {
-			query();
-		}
-		else {
-			// rank
-			evict();
-		}
-	}
-	// function: window evicts data
-	public void evict() {
+	
+	// function: window evicts
+	private void evict() {
 		System.out.println("[evict]");
 		Iterator<Entry<String, ZonedDateTime>> itr = content.entrySet().iterator();
 		ArrayList<String> toDelete = new ArrayList<String>();
@@ -129,58 +169,69 @@ public class Window {
 	}
 	
 	// suspicious action query
-	private void query() {
-		String suspiciousActionQuery = "select distinct ?action from <"+prefix+"background> from <"+latestActionGraphID+"> where {?action a <" + prefix + "SuspiciousAction>.}";
+	private void query(String actionGraphID) {
+		String suspiciousActionQuery = "select distinct ?action from <"+prefix+"background> from <"+actionGraphID+"> where {?action a <" + prefix + "SuspiciousAction>.}";
 		TupleQueryResult result = client.getAReasoningConn().select(suspiciousActionQuery).execute();
-		// if suspiciousActionQuery has result, that means latestAction is a suspicious action
+		for(Action a : actions) {
+			if(a.getActionGraphID().equals(actionGraphID))
+				actionBeingQueried = a;
+		}
+		// if suspiciousActionQuery has result, that means actionBeingQueried is a suspicious action
 		if(result.hasNext()) {
 			// reduce user's trust score
-			latestAction.getUser().reduceTrustScore();
+			actionBeingQueried.getUser().reduceTrustScore();
 			
 			System.out.println("*************************************");
 			System.out.println("[WARNING] suspicious action detected:");
-			System.out.println("          timestamp:  " + latestAction.getTimestamp());
-			System.out.println("          action:     " + latestAction.getActionID());
-			System.out.println("          after hour action: " + latestAction.getAfterHourAction());
-			System.out.println("          activity:  " + latestAction.getActivity());
-			if(latestAction.getActivity().contains("WWW")) {
-				System.out.println("          url:  " + latestAction.getUrl());
-				System.out.println("          url domain type: " + latestAction.getUrlDomainType());				
+			System.out.println("          timestamp:  " + actionBeingQueried.getTimestamp());
+			System.out.println("          action:     " + actionBeingQueried.getActionID());
+			System.out.println("          after hour action: " + actionBeingQueried.getAfterHourAction());
+			System.out.println("          activity:  " + actionBeingQueried.getActivity());
+			if(actionBeingQueried.getActivity().contains("WWW")) {
+				System.out.println("          url:  " + actionBeingQueried.getUrl());
+				System.out.println("          url domain type: " + actionBeingQueried.getUrlDomainType());				
 			}
-			else if (latestAction.getActivity().contains("Email")) {
-				System.out.println("          email from: " + latestAction.getEmailFrom());
-				for(String i: latestAction.getEmailRecipients()) {
+			else if (actionBeingQueried.getActivity().contains("Email")) {
+				System.out.println("          email from: " + actionBeingQueried.getEmailFrom());
+				for(String i: actionBeingQueried.getEmailRecipients()) {
 					System.out.print("          email to: " + i);
 					if(!i.contains("@dtaa.com")) {
 						System.out.print(" (external address)");
 					}
 					System.out.println();
 				}
-				System.out.println("          email attachment: " + latestAction.getEmailAttachment());
-				System.out.println("          email attachment decoy file: " + latestAction.getEmailAttachmentDecoyFile());
+				System.out.println("          email attachment: " + actionBeingQueried.getEmailAttachment());
+				System.out.println("          email attachment decoy file: " + actionBeingQueried.getEmailAttachmentDecoyFile());
 			} 
-			else if (latestAction.getActivity().contains("File")) {
-				System.out.println("          file name: " + latestAction.getFileName());
-				System.out.println("          decoy file: " + latestAction.getFileADecoyFile());
-				System.out.println("          from removable media: " + latestAction.getFromRemovableMedia());
-				System.out.println("          to removable media: " + latestAction.getToRemovableMedia());
+			else if (actionBeingQueried.getActivity().contains("File")) {
+				System.out.println("          file name: " + actionBeingQueried.getFileName());
+				System.out.println("          decoy file: " + actionBeingQueried.getFileADecoyFile());
+				System.out.println("          from removable media: " + actionBeingQueried.getFromRemovableMedia());
+				System.out.println("          to removable media: " + actionBeingQueried.getToRemovableMedia());
 			}
-			System.out.println("          action provenance socre: " + latestAction.getProvenanceScore());
+			System.out.println("          action provenance socre: " + actionBeingQueried.getProvenanceScore());
 			System.out.println();
-			System.out.println("          action performed pc: " + latestAction.getPc());
-			System.out.println("          user assigned pc: " + latestAction.getUser().getPC());
-			System.out.println("          user id:    " + latestAction.getUser().getID());
-			System.out.println("          user name:  " + latestAction.getUser().getName());
-			System.out.println("          user role:  " + latestAction.getUser().getRole());
-			System.out.println("          user team:  " + latestAction.getUser().getTeam());
-			System.out.println("          user supervisor: " + latestAction.getUser().getSupervisor());
-			System.out.println("          user resignation: " + latestAction.getUser().getResinationStatus());
-			System.out.println("          user excessive removable media: " + latestAction.getUser().getExcessiveRemovableDiskUser());
-			System.out.println("          user trust score:    " + latestAction.getUser().getTrustScore());
+			System.out.println("          action performed pc: " + actionBeingQueried.getPc());
+			System.out.println("          user assigned pc: " + actionBeingQueried.getUser().getPC());
+			System.out.println("          user id:    " + actionBeingQueried.getUser().getID());
+			System.out.println("          user name:  " + actionBeingQueried.getUser().getName());
+			System.out.println("          user role:  " + actionBeingQueried.getUser().getRole());
+			System.out.println("          user team:  " + actionBeingQueried.getUser().getTeam());
+			System.out.println("          user supervisor: " + actionBeingQueried.getUser().getSupervisor());
+			System.out.println("          user resignation: " + actionBeingQueried.getUser().getResinationStatus());
+			System.out.println("          user excessive removable media: " + actionBeingQueried.getUser().getExcessiveRemovableDiskUser());
+			System.out.println("          user trust score:    " + actionBeingQueried.getUser().getTrustScore());
 			System.out.println("*************************************");
+			// write suspicious action into a file for benchmark
+			try {
+				this.writeSuspiciousAction.write(String.format("%s - ", actionGraphID.substring(prefix.length())));
+				this.writeSuspiciousAction.write(String.format("%s \n", actionBeingQueried.getTimestamp()));
 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}	
 			// move this action to suspicious action graphs
-			client.getANonReasoningConn().update("add <"+latestActionGraphID+"> to <"+prefix+"suspicious>").execute();
+			client.getANonReasoningConn().update("add <"+actionGraphID+"> to <"+prefix+"suspicious>").execute();
 			dataExfiltraion();
 		}
 	}
@@ -194,18 +245,17 @@ public class Window {
 		files[2] = new File("data/different-individuals/text3.txt");
 		File mergedFile = new File("data/different-individuals/different-individuals.ttl");
 		try {
-			updateDiffIndividuals(files, mergedFile, latestAction.getActionID());
+			updateDiffIndividuals(files, mergedFile, actionBeingQueried.getActionID());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		// merge different individual files
 		mergeFiles(files,mergedFile); 
-		// load different individual files to db
+		// load different individual files to database
 		client.getANonReasoningConn().begin();
 		try {
 			client.getANonReasoningConn().add().io().context(Values.iri(prefix+"different-individuals")).format(RDFFormat.TURTLE).stream(new FileInputStream("data/different-individuals/different-individuals.ttl"));
 		} catch (StardogException | FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		client.getANonReasoningConn().commit();

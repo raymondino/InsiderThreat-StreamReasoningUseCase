@@ -54,6 +54,7 @@ public class User {
 	
 	public void reduceTrustScore() { trustScore -= 0.1;}
 	public void setExcessiveRemovableDiskUser(Boolean flag) { excessiveRemovableDiskUser = flag; }
+
 	
 	public String getID() { return userID; }
 	public String getName() { return userName; }
@@ -64,5 +65,4 @@ public class User {
 	public Boolean getResinationStatus() { return resigned; }
 	public Double getTrustScore() { return trustScore; }
 	public Boolean getExcessiveRemovableDiskUser() { return excessiveRemovableDiskUser; }
-
 }
