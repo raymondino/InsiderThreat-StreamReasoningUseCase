@@ -7,6 +7,17 @@ path = '../data-r6.2/'
 # dailyStart = datetime.time(7,27-15,12)
 # dailyEnd = datetime.time(17,34+15,48)
 
+def getAllUsers():
+    inFile = open(path+'logon.csv')
+    outFile = open('allusers.txt','w')
+    userSet = set()
+    for line in inFile:
+        userSet.add(line.split()[2])
+    for userID in userSet:
+        outFile.write(userID+'\n')
+    inFile.close()
+    outFile.close()    
+
 def extract(user):
 	usr_device = open('intermediate/'+user+'_device.csv', 'w+');
 	usr_logon = open('intermediate/'+user+'_logon.csv', 'w+');
