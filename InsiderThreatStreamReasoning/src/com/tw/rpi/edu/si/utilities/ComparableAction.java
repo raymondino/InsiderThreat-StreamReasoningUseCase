@@ -4,7 +4,7 @@ import java.time.LocalTime;
 
 import org.openrdf.model.Statement;
 
-public class ComparableStatement implements Comparable<ComparableStatement>{
+public class ComparableAction implements Comparable<ComparableAction>{
 	
 	private Statement s;
 	private Integer count;
@@ -12,7 +12,7 @@ public class ComparableStatement implements Comparable<ComparableStatement>{
 	private LocalTime reasoningParticipationTimestamp;
 	private String mode;
 	
-	public ComparableStatement(Statement st, double gts, int c, LocalTime t, String m) {
+	public ComparableAction(Statement st, double gts, int c, LocalTime t, String m) {
 		s = st; 
 		count = c; 
 		generationTimestamp = gts; 
@@ -35,7 +35,7 @@ public class ComparableStatement implements Comparable<ComparableStatement>{
 	public LocalTime getReasoningTimestamp() { if(this.reasoningParticipationTimestamp == null) return LocalTime.MIN; return this.reasoningParticipationTimestamp;}
 
 	@Override
-	public int compareTo(ComparableStatement entry) {
+	public int compareTo(ComparableAction entry) {
 		// order in FIFO
 		if(mode.contains("FIFO")) {
 			if(generationTimestamp == entry.generationTimestamp) {
