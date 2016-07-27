@@ -12,7 +12,7 @@ def getAllUsers():
     outFile = open('allusers.txt','w')
     userSet = set()
     for line in inFile:
-        userSet.add(line.split()[2])
+        userSet.add(line.split(',')[2])
     for userID in userSet:
         outFile.write(userID+'\n')
     inFile.close()
@@ -303,12 +303,15 @@ def annotate(user):
 	outfile.close()
 
 if __name__ == '__main__':
+	# only need to run onece to get all user ids.
+	# getAllUsers()
+
 	if len(sys.argv)<2:
 		print 'USAGE: [filename] [userid]'
 		sys.exit(0)
 
 	userid = sys.argv[1]
-	extract(userid)
+	# extract(userid)
 	print 'Extract done.'
 	combine(userid)
 	print 'Combine done.'

@@ -35,6 +35,8 @@ public class Window {
 	private ZonedDateTime start; // window start
 	private ZonedDateTime end; // window end
 	private Boolean window_start; // flag for window start
+	private long totalActionProcessTime; // total time up till now to process all actions
+	private Integer actionCounter; // total action number so far
 	
 	SnarlClient client;
 	FileWriter writeSuspiciousAction;
@@ -67,6 +69,8 @@ public class Window {
 		client = c;
 		writeSuspiciousAction = null;
 		window_start = false;
+		totalActionProcessTime = (long) 0.0;
+		actionCounter = 0;
 	}
 	
 	// assessor
@@ -76,16 +80,17 @@ public class Window {
 	
 	// modifier
 	public void setStep(int s) {step = Period.ofDays(s);}
-	public void setSize(int s) {size = Period.ofDays(s);end = start.plus(size);}
+	public void setSize(int s) {size = Period.ofDays(s);}
 	public void setStart(ZonedDateTime s) {start = s; end = start.plus(size);}
 	
 	// function: window loads data
 	public void load(String graphid, ZonedDateTime ts, Action a) {
+		actionCounter ++;
 		if(!window_start) {
 			setStart(ts);
 			window_start = true;
 		}
-		System.out.println("[load] " + a.getActionID() + " - " + ts);
+		System.out.print("[load] " + a.getActionID() + " - " + ts + " ");
 		latestActionTS = ts;
 		latestAction = a;
 		content.put(graphid, ts);
@@ -96,7 +101,9 @@ public class Window {
 	public void process() {
 		// if window is not full
 		if(latestActionTS.isBefore(end)) {
-			String filename = "suspiciousActionList_windowSize_" + this.size;
+			// record action process time
+			long actionProcessStartTime = System.currentTimeMillis();
+			String filename = "suspiciousActionList_windowSize-" + this.size.getDays() ;
 			// if actions are ranked by provenance score
 			if(latestAction.isRankByProv()) {
 				try {
@@ -109,7 +116,7 @@ public class Window {
 				}
 				while(actions.peek().getProvenanceScore() > 0) {
 					actionBeingQueried = actions.poll();
-					System.out.println("[query] " + actionBeingQueried.getActionID() + " - " + actionBeingQueried.getTimestamp());
+					System.out.print("[query] ");
 					query(actionBeingQueried.getActionGraphID());
 				}
 			}
@@ -120,16 +127,17 @@ public class Window {
 					File suspiciousActionList = new File("data/result/"+filename +"_trust.txt");
 					suspiciousActionList.delete();
 					writeSuspiciousAction = new FileWriter(suspiciousActionList, true);	
-					writeSuspiciousAction.write("rank by trust: \n");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				while(actions.peek().getProvenanceScore() > 0) {
-					Action x = actions.poll();
-					System.out.println("[query]" + x.getActionID() + " - " + x.getTimestamp());
-					query(x.getActionGraphID());
+				while(actions.peek().getUser().getTrustScore() < 0) {
+					actionBeingQueried = actions.poll();
+					System.out.println("[query] ");
+					query(actionBeingQueried.getActionGraphID());
 				}
 			}
+			totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
+			System.out.println(totalActionProcessTime / actionCounter + " ms");
 		}
 		else {
 			System.out.println("[evict]");
@@ -229,8 +237,8 @@ public class Window {
 			System.out.println("*************************************");
 			// write suspicious action into a file for benchmark
 			try {
-				this.writeSuspiciousAction.write(String.format("%s - ", actionGraphID.substring((prefix+"graph/").length())));
-				this.writeSuspiciousAction.write(String.format("%s - ", actionBeingQueried.getTimestamp()));
+				this.writeSuspiciousAction.write(String.format("%s ,", actionGraphID.substring((prefix+"graph/").length())));
+				this.writeSuspiciousAction.write(String.format("%s , ", actionBeingQueried.getTimestamp()));
 				this.writeSuspiciousAction.write(String.format("%s \n", actionBeingQueried.getUser().getID()));
 				this.writeSuspiciousAction.flush();
 			} catch (IOException e) {

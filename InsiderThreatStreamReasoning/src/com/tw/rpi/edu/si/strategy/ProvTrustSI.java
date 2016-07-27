@@ -27,7 +27,6 @@ public class ProvTrustSI {
 	private String currentActionGraphID; // records current action id
 	private ZonedDateTime currentActioinTS; // records current action timestamp
 	private BufferedReader br; 	// to read data from file for stream simulation
-
 	
 	// constructor
 	public ProvTrustSI(String datapath, SnarlClient c){
