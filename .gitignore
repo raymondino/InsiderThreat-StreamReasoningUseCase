@@ -6,8 +6,7 @@ InsiderThreatStreamReasoning/.gitignore
 InsiderThreatStreamReasoning/.settings
 InsiderThreatStreamReasoning/.classpath
 InsiderThreatStreamReasoning/.project
-InsiderThreatStreamReasoning/data/background/*.nq
-InsiderThreatStreamReasoning/data/background/*.nt
+InsiderThreatStreamReasoning/data/background/
 InsiderThreatStreamReasoning/data/full-dat/*.txt
 InsiderThreatStreamReasoning/data/trimmed-dat/*.txt
 InsiderThreatStreamReasoning/data/*.txt
