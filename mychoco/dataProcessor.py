@@ -16,7 +16,7 @@ def getAllUsers():
     for userID in userSet:
         outFile.write(userID+'\n')
     inFile.close()
-    outFile.close()    
+    outFile.close()
 
 def extract(user):
 	usr_device = open('intermediate/'+user+'_device.csv', 'w+');
@@ -66,26 +66,26 @@ def extract(user):
 	print 'HTTP extract done.'
 
 def combine(user):
+    # returns the index of the line having the earliest timestamp
+    def findEarliest(firstLines):
+        minIndex = -1
+        minTime = MAXTIME
+        for i in range(len(firstLines)):
+            if (firstLines[i]):
+                line = firstLines[i].strip().split(',')
+                timestamp = datetime.datetime.strptime(line[2],'%m/%d/%Y %H:%M:%S')
+                if timestamp < minTime:
+                    minTime = timestamp
+                    minIndex = i
+        return minIndex
+    def allEmpty(firstLines):
+        for line in firstLines:
+            if line:
+                return False
+        return True
+
     # combines the files in fileList ordered by timestamp of each line and saves the combined file in outFile
     def combineFiles(fileList,outFile):#
-        # returns the index of the line having the earliest timestamp
-        def findEarliest(firstLines):
-            minIndex = -1
-            minTime = MAXTIME
-            for i in range(len(firstLines)):
-                if (firstLines[i]):
-                    line = firstLines[i].strip().split(',')
-                    timestamp = datetime.datetime.strptime(line[2],'%m/%d/%Y %H:%M:%S')
-                    if timestamp < minTime:
-                        minTime = timestamp
-                        minIndex = i
-            return minIndex
-        def allEmpty(firstLines):
-            for line in firstLines:
-                if line:
-                    return False
-            return True
-
         firstLines = []
         for eachFile in fileList:
             firstLines.append(eachFile.readline())
@@ -94,13 +94,13 @@ def combine(user):
             outFile.write(firstLines[i])
             firstLines[i] = fileList[i].readline()
 
-	fileList = [open('intermediate/'+user+'_device.csv'),open('intermediate/'+user+'_email.csv'),\
-				open('intermediate/'+user+'_file.csv'),open('intermediate/'+user+'_http.csv'),open('intermediate/'+user+'_logon.csv')]
-	outfile = open('intermediate/'+user+'_aggregated.csv','w')
-	combineFiles(fileList,outfile)
-	for f in fileList:
-		f.close()
-	outfile.close()
+    fileList = [open('intermediate/'+user+'_device.csv'),open('intermediate/'+user+'_email.csv'),\
+    			open('intermediate/'+user+'_file.csv'),open('intermediate/'+user+'_http.csv'),open('intermediate/'+user+'_logon.csv')]
+    outfile = open('intermediate/'+user+'_aggregated.csv','w')
+    combineFiles(fileList,outfile)
+    for f in fileList:
+    	f.close()
+    outfile.close()
 
 #
 # converts a timestamp to a string
