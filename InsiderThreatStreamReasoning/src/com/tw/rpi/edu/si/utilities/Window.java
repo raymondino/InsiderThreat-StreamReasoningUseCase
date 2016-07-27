@@ -34,6 +34,8 @@ public class Window {
 	private Action actionBeingQueried;
 	private ZonedDateTime start; // window start
 	private ZonedDateTime end; // window end
+	private Boolean window_start; // flag for window start
+	
 	SnarlClient client;
 	FileWriter writeSuspiciousAction;
 	
@@ -52,6 +54,7 @@ public class Window {
 		content = new LinkedHashMap<String, ZonedDateTime>();
 		actions = new PriorityQueue<Action>();
 		writeSuspiciousAction = null;
+		window_start = false;
 	}	
 	public Window(SnarlClient c) {
 		size = Period.ofDays(7);
@@ -63,6 +66,7 @@ public class Window {
 		actions = new PriorityQueue<Action> ();
 		client = c;
 		writeSuspiciousAction = null;
+		window_start = false;
 	}
 	
 	// assessor
@@ -77,7 +81,10 @@ public class Window {
 	
 	// function: window loads data
 	public void load(String graphid, ZonedDateTime ts, Action a) {
-		System.out.println("[load]" + a.getActionID() + " - " + ts);
+		if(!window_start) {
+			setStart(ts);
+		}
+		System.out.println("[load] " + a.getActionID() + " - " + ts);
 		latestActionTS = ts;
 		latestAction = a;
 		content.put(graphid, ts);
@@ -101,8 +108,11 @@ public class Window {
 					e.printStackTrace();
 				}
 				while(actions.peek().getProvenanceScore() > 0) {
+//					for(Action a: actions) {
+//						System.out.println("[debug] " + a.getActionID() + " - " + a.getProvenanceScore());
+//					}
 					Action x = actions.poll();
-					System.out.println("[query]" + x.getActionID() + " - " + x.getTimestamp());
+					System.out.println("[query] " + x.getActionID() + " - " + x.getTimestamp());
 					query(x.getActionGraphID());
 				}
 			}

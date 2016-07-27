@@ -1,0 +1,3 @@
+[]
+  a owl:AllDifferent ;
+  owl:distinctMembers (

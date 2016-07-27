@@ -75,7 +75,7 @@ public class Action implements Comparable<Action> {
 		rankByProv = false;
 		rankByTrust = false;
 		
-		String infoQuery = "select distinct ?action ?userid ?pc from <"+graphID+"> where {?action <"+prefix+"hasActor> ?actor; <"+prefix+"isPerformedOn> ?pc.}";
+		String infoQuery = "select distinct ?action ?userid ?pc from <"+graphID+"> where {?action <"+prefix+"hasActor> ?userid; <"+prefix+"isPerformedOnPC> ?pc.}";
 		TupleQueryResult result = client.getANonReasoningConn().select(infoQuery).execute();
 		while(result.hasNext()) {
 			BindingSet bindingset = result.next();

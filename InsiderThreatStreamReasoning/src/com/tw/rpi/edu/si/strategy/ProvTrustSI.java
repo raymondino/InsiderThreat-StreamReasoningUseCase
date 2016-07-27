@@ -48,13 +48,14 @@ public class ProvTrustSI {
 	
 	// run
 	public void run() {
-		// a flag to add data into actor-event graph
-		Boolean loadingActionData = false;
 		// read the streaming data action by action
 		System.out.println("[INFO] reading the data");
 		String data = "";
 		try {
 			while((data = br.readLine()) != null) {
+//				for(User u: users) {
+//					System.out.println("[debug] " + u.getID());					
+//				}
 				// split the data into triples
 				String [] parts = data.split(" ");
 				String s = parts[0];
@@ -62,13 +63,12 @@ public class ProvTrustSI {
 				String o = parts[2];
 				
 				// if current data hasn't reach action data
-				if(!loadingActionData) {
+				if(p.equals(prefix + "isInvolvedIn")) {
 					client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o))), prefix+"actor-event");	
 					continue;
-				}								
+				}		
 				// if data comes with a timestamp, then this is a new action
 				if(data.charAt(data.length()-1) != '.') {
-					loadingActionData = true;
 					// last action info will be fully added into db when current data is read
 					// so we need to construct last action, and add it into the window
 					if(!currentActionGraphID.equals("")) {

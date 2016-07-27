@@ -39,7 +39,7 @@ public class User {
 			BindingSet bindingset = result.next();
 			userName = bindingset.getValue("name").toString().substring(prefix.length());
 			role = bindingset.getValue("role").toString().substring(prefix.length());
-			team = bindingset.getValue("team").toString().substring(prefix.length());
+			team = bindingset.getValue("team").toString();
 			supervisor = bindingset.getValue("supervisor").toString().substring(prefix.length());
 		}
 		result = client.getANonReasoningConn().select("select ?pc where {graph <" + prefix + "pc> { <" + prefix + id + "> <" + prefix + "hasAccessToPC> ?pc}}").execute();
