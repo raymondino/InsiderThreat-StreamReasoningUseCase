@@ -2,7 +2,7 @@ We have trimed the data into 4 segments:
 * 08/17/2010 - 08/25/2010 <- when ACM2278 commits data exfiltration
 * 02/07/2011 - 03/05/2011 <- when CMP2946 commits data exfiltration
 * 02/21/2011 - 04/26/2011 <- when CDE1846 commits data exfiltration
-* 10/21/2010 - 10/13/2010 <- when MBG3183 commits data exfiltration
+* 10/12/2010 - 10/13/2010 <- when MBG3183 commits data exfiltration
 
 The reason to trim the data down is because of the gigantic data size.
 The original data size is ~100G, where most of them are innocent events/actions.
