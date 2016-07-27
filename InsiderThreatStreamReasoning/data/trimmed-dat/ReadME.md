@@ -1,0 +1,1 @@
+We have trimmed the original data to be in the time range between 08/17/2010 to 04/26/2011.
