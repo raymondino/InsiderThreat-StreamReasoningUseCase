@@ -52,7 +52,7 @@ public class User {
 		}
 	}
 	
-	public void reduceTrustScore() { trustScore -= 0.1;}
+	public void reduceTrustScore() { if(trustScore > 0) {trustScore -= 0.1;}}
 	public void setExcessiveRemovableDiskUser(Boolean flag) { excessiveRemovableDiskUser = flag; }
 
 	

@@ -1,3 +1,22 @@
 []
   a owl:AllDifferent ;
   owl:distinctMembers (
+   <http://tw.rpi.edu/ontology/DataExfiltration/logon_G3R8-G0BG91SZ-1111ZKPB>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_S3J0-Y2RK29LO-9897XYOH>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_T0Y7-E7XU22UE-1594FHRM>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_E7K5-L3QU74NG-1400VZBT>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_Y8Y4-Y1FL07AO-8132KZCE>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_X9Y6-B8KQ43SX-1030MEUD>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_D8A4-B3DY41IR-6352QMPP>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_S3V2-X9NM22BJ-6120LTZM>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_S8G1-T8GU76AN-1311LBID>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_W6O8-Q7RL55BJ-5010UZVP>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_X9F9-Z6PG85BS-1546ICDR>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_W1B3-G3NK97FQ-1299CXKW>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_X4J8-A1FM59IZ-7312IIEC>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_Y0A8-W5WN16ZV-6084GGBR>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_R7V3-W3ET84RN-2045AIBA>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_E4X1-P2MS90LG-2210GGGP>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_G1Q8-D1IL67PE-2560YLLV>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_R0T4-W0DF05ZO-6817UDUZ>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_B0L3-N5JD82UP-7345ETAJ>

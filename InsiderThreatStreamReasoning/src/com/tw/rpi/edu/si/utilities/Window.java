@@ -111,9 +111,9 @@ public class Window {
 //					for(Action a: actions) {
 //						System.out.println("[debug] " + a.getActionID() + " - " + a.getProvenanceScore());
 //					}
-					Action x = actions.poll();
-					System.out.println("[query] " + x.getActionID() + " - " + x.getTimestamp());
-					query(x.getActionGraphID());
+					actionBeingQueried = actions.poll();
+					System.out.println("[query] " + actionBeingQueried.getActionID() + " - " + actionBeingQueried.getTimestamp());
+					query(actionBeingQueried.getActionGraphID());
 				}
 			}
 			// if actions are ranked by trust score
@@ -182,10 +182,6 @@ public class Window {
 	private void query(String actionGraphID) {
 		String suspiciousActionQuery = "select distinct ?action from <"+prefix+"background> from <"+actionGraphID+"> where {?action a <" + prefix + "SuspiciousAction>.}";
 		TupleQueryResult result = client.getAReasoningConn().select(suspiciousActionQuery).execute();
-		for(Action a : actions) {
-			if(a.getActionGraphID().equals(actionGraphID))
-				actionBeingQueried = a;
-		}
 		// if suspiciousActionQuery has result, that means actionBeingQueried is a suspicious action
 		if(result.hasNext()) {
 			// reduce user's trust score
@@ -193,12 +189,12 @@ public class Window {
 			
 			System.out.println("*************************************");
 			System.out.println("[WARNING] suspicious action detected:");
-			System.out.println("          timestamp:  " + actionBeingQueried.getTimestamp());
-			System.out.println("          action:     " + actionBeingQueried.getActionID());
+			System.out.println("          timestamp: " + actionBeingQueried.getTimestamp());
+			System.out.println("          action: " + actionBeingQueried.getActionID());
 			System.out.println("          after hour action: " + actionBeingQueried.getAfterHourAction());
-			System.out.println("          activity:  " + actionBeingQueried.getActivity());
+			System.out.println("          activity: " + actionBeingQueried.getActivity());
 			if(actionBeingQueried.getActivity().contains("WWW")) {
-				System.out.println("          url:  " + actionBeingQueried.getUrl());
+				System.out.println("          url: " + actionBeingQueried.getUrl());
 				System.out.println("          url domain type: " + actionBeingQueried.getUrlDomainType());				
 			}
 			else if (actionBeingQueried.getActivity().contains("Email")) {
@@ -223,14 +219,14 @@ public class Window {
 			System.out.println();
 			System.out.println("          action performed pc: " + actionBeingQueried.getPc());
 			System.out.println("          user assigned pc: " + actionBeingQueried.getUser().getPC());
-			System.out.println("          user id:    " + actionBeingQueried.getUser().getID());
-			System.out.println("          user name:  " + actionBeingQueried.getUser().getName());
-			System.out.println("          user role:  " + actionBeingQueried.getUser().getRole());
-			System.out.println("          user team:  " + actionBeingQueried.getUser().getTeam());
+			System.out.println("          user id: " + actionBeingQueried.getUser().getID());
+			System.out.println("          user name: " + actionBeingQueried.getUser().getName());
+			System.out.println("          user role: " + actionBeingQueried.getUser().getRole());
+			System.out.println("          user team: " + actionBeingQueried.getUser().getTeam());
 			System.out.println("          user supervisor: " + actionBeingQueried.getUser().getSupervisor());
 			System.out.println("          user resignation: " + actionBeingQueried.getUser().getResinationStatus());
 			System.out.println("          user excessive removable media: " + actionBeingQueried.getUser().getExcessiveRemovableDiskUser());
-			System.out.println("          user trust score:    " + actionBeingQueried.getUser().getTrustScore());
+			System.out.println("          user trust score: " + actionBeingQueried.getUser().getTrustScore());
 			System.out.println("*************************************");
 			// write suspicious action into a file for benchmark
 			try {

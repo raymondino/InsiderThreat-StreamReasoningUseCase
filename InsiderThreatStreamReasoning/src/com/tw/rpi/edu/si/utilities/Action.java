@@ -118,9 +118,9 @@ public class Action implements Comparable<Action> {
 		} 			
 		// for http action
 		if (actionID.contains("http_")) {
-			String url = "select distinct ?url ?dn from <"+graphID+"> where {?s <"+prefix+"hasURL> ?url. ?url <"+prefix+"whoseDomainNameIsA> ?dn.}";
-			String activity = "select distinct ?o from <"+graphID+"> where {<"+prefix+actionID+"> a ?o.}";
-			TupleQueryResult re = client.getANonReasoningConn().select(url).execute();
+			String urlquery = "select distinct ?url ?dn from <"+graphID+"> where {?s <"+prefix+"hasURL> ?url. ?url <"+prefix+"whoseDomainNameIsA> ?dn.}";
+			String activityquery = "select distinct ?o from <"+graphID+"> where {<"+prefix+actionID+"> a ?o.}";
+			TupleQueryResult re = client.getANonReasoningConn().select(urlquery).execute();
 			while(re.hasNext()){
 				BindingSet x = re.next();
 				url = x.getValue("url").toString();
@@ -129,17 +129,17 @@ public class Action implements Comparable<Action> {
 					provenanceScore++;
 				}
 			}
-			re = client.getANonReasoningConn().select(activity).execute();
+			re = client.getANonReasoningConn().select(activityquery).execute();
 			while(re.hasNext()) {
 				BindingSet x = re.next();
 				if(x.getValue("o").toString().contains("WWW")) {
-					activity = x.getValue("o").toString().substring(prefix.length());
+					this.activity = x.getValue("o").toString().substring(prefix.length());
 				}
 			}		
 		}
 		// for email action
 		else if (actionID.contains("email_")) {
-			String activity = "select distinct ?o from <"+graphID+"> where {<"+prefix+actionID+"> a ?o.}";
+			String activityquery = "select distinct ?o from <"+graphID+"> where {<"+prefix+actionID+"> a ?o.}";
 			String from = "select distinct ?o from <"+graphID+"> where {?s <"+prefix+"from> ?o.}";
 			String to = "select distinct ?o from <"+graphID+"> where {?s <"+prefix+"to> ?o.}";
 			String cc = "select distinct ?o from <"+graphID+"> where {?s <"+prefix+"cc> ?o.}";
@@ -186,17 +186,17 @@ public class Action implements Comparable<Action> {
 					provenanceScore++;
 				}
 			}
-			re = client.getANonReasoningConn().select(activity).execute();
+			re = client.getANonReasoningConn().select(activityquery).execute();
 			while(re.hasNext()) {
 				BindingSet x = re.next();
 				if(x.getValue("o").toString().contains("Email")) {
-					activity = x.getValue("o").toString().substring(prefix.length());
+					this.activity = x.getValue("o").toString().substring(prefix.length());
 				}
 			}
 		}
 		// for file action
 		else if (actionID.contains("file_")) {
-			String activity = "select distinct ?o from <"+graphID+"> where {<"+prefix+actionID+"> a ?o.}";
+			String activityquery = "select distinct ?o from <"+graphID+"> where {<"+prefix+actionID+"> a ?o.}";
 			String file = "select distinct ?fn from <"+graphID+"> where {?s <"+prefix+"hasFile> ?fn.}";
 			String filetype = "select distinct ?type from <"+graphID+"> where {?s <"+prefix+"hasFile> ?fn. ?fn a ?type}";
 			TupleQueryResult re = client.getANonReasoningConn().select(file).execute();
@@ -221,11 +221,11 @@ public class Action implements Comparable<Action> {
 					provenanceScore++;
 				}
 			}
-			re = client.getANonReasoningConn().select(activity).execute();
+			re = client.getANonReasoningConn().select(activityquery).execute();
 			while(re.hasNext()) {
 				BindingSet x = re.next();
 				if(x.getValue("o").toString().contains("File")) {
-					activity = x.getValue("o").toString().substring(prefix.length());						
+					this.activity = x.getValue("o").toString().substring(prefix.length());						
 				}
 			}			
 		}
