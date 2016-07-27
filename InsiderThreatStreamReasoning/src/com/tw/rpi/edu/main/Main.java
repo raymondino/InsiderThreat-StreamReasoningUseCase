@@ -108,12 +108,6 @@ public class Main {
 		//si.run();
 		ProvTrustSI p = new ProvTrustSI(data, client);
 		p.run();
-		
-		// benchmark writer
-		//PrintWriter metricRecorder = null;		
-	
-		// close up
-		//metricRecorder.close();
 		client.cleanUp();
 	}
 }

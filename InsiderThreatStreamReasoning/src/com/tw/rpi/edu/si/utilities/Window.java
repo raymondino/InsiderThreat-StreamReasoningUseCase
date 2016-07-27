@@ -83,6 +83,7 @@ public class Window {
 	public void load(String graphid, ZonedDateTime ts, Action a) {
 		if(!window_start) {
 			setStart(ts);
+			window_start = true;
 		}
 		System.out.println("[load] " + a.getActionID() + " - " + ts);
 		latestActionTS = ts;
@@ -95,22 +96,18 @@ public class Window {
 	public void process() {
 		// if window is not full
 		if(latestActionTS.isBefore(end)) {
-			// write suspicious action list to file
-			File suspiciousActionList = new File("data/result/suspiciousActionList.txt");
-			suspiciousActionList.delete();
-			
+			String filename = "suspiciousActionList_windowSize_" + this.size;
 			// if actions are ranked by provenance score
 			if(latestAction.isRankByProv()) {
 				try {
+					// write suspicious action list to file
+					File suspiciousActionList = new File("data/result/"+filename +"_prov.txt");
+					suspiciousActionList.delete();
 					writeSuspiciousAction = new FileWriter(suspiciousActionList, true);	
-					writeSuspiciousAction.write("rank by provenance: \n");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				while(actions.peek().getProvenanceScore() > 0) {
-//					for(Action a: actions) {
-//						System.out.println("[debug] " + a.getActionID() + " - " + a.getProvenanceScore());
-//					}
 					actionBeingQueried = actions.poll();
 					System.out.println("[query] " + actionBeingQueried.getActionID() + " - " + actionBeingQueried.getTimestamp());
 					query(actionBeingQueried.getActionGraphID());
@@ -119,6 +116,9 @@ public class Window {
 			// if actions are ranked by trust score
 			else if (latestAction.isRankByTrust()) {
 				try {
+					// write suspicious action list to file
+					File suspiciousActionList = new File("data/result/"+filename +"_trust.txt");
+					suspiciousActionList.delete();
 					writeSuspiciousAction = new FileWriter(suspiciousActionList, true);	
 					writeSuspiciousAction.write("rank by trust: \n");
 				} catch (IOException e) {
@@ -143,12 +143,11 @@ public class Window {
 	// function: window moves 1 step forward
 	public void move() { 
 		start = start.plus(step); 
-		end = end.plus(size);
+		end = end.plus(step);
 	} 
 	
 	// function: window evicts
 	private void evict() {
-		System.out.println("[evict]");
 		Iterator<Entry<String, ZonedDateTime>> itr = content.entrySet().iterator();
 		ArrayList<String> toDelete = new ArrayList<String>();
 		while(itr.hasNext()) {
@@ -165,7 +164,7 @@ public class Window {
 			dropQuery += "drop graph <" + i + ">;";
 			content.remove(i);
 			for(Action a:actions) {
-				if(a.getActionID().equals(i.substring(prefix.length()))) {
+				if(a.getActionID().equals(i.substring((prefix+"graph/").length()))) {
 					actions.remove(a);
 					break;
 				}
@@ -230,9 +229,10 @@ public class Window {
 			System.out.println("*************************************");
 			// write suspicious action into a file for benchmark
 			try {
-				this.writeSuspiciousAction.write(String.format("%s - ", actionGraphID.substring(prefix.length())));
-				this.writeSuspiciousAction.write(String.format("%s \n", actionBeingQueried.getTimestamp()));
-
+				this.writeSuspiciousAction.write(String.format("%s - ", actionGraphID.substring((prefix+"graph/").length())));
+				this.writeSuspiciousAction.write(String.format("%s - ", actionBeingQueried.getTimestamp()));
+				this.writeSuspiciousAction.write(String.format("%s \n", actionBeingQueried.getUser().getID()));
+				this.writeSuspiciousAction.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}	
@@ -274,7 +274,7 @@ public class Window {
 			System.out.println("*************************************");
 			System.out.println("*************************************");
 			System.out.println("[Threatening] Data Exfiltraion Event Detected!");
-			System.out.println("              potential threatening insider: " + bs.getValue("userid").toString());				
+			System.out.println("              potential threatening insider: " + bs.getValue("userid").toString().substring(prefix.length()));				
 			System.out.println("*************************************");
 			System.out.println("*************************************");
 			System.out.println("*************************************");

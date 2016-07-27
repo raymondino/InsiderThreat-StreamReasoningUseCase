@@ -19,6 +19,25 @@
 <http://tw.rpi.edu/ontology/DataExfiltration/http_G1Q8-D1IL67PE-2560YLLV> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/http_R0T4-W0DF05ZO-6817UDUZ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/http_B0L3-N5JD82UP-7345ETAJ> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_E1H8-Q7PF02LU-0504MMJE> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_K2W9-D7QO01QB-5411PODX> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_D7P9-J1HI12LH-0466VBZA> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_N1Q1-W2OP56KH-3809GXUD> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_C1S8-K8LS34HL-4153CDBX> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_Q7Q7-M7HM00PX-7817NZTH> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_Q6N2-O4SP74RT-7090GMDO> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_X0M2-U9CE60XH-7203VUXQ> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/device_F0N3-C5GS70QE-4575NRWF> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/file_L8U4-E1KC17HI-2295QTAV> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_E9K0-T0KL12CS-9706ONHN> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/file_Z8S0-I9WK82HT-2702OXHW> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_T2S1-D4NO90IT-7131JYCF> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/file_M3U7-F9ZW51CX-5408MNTW> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_H1P7-O4WO11SJ-6718RXPK> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/file_I1R8-Z2OT23MQ-3906SEYL> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/http_S2J0-W5II68BI-5010XUHO> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/device_E7T1-Z4BN74BJ-2108LJAD> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/logon_C0F6-J3LV50LO-8992SRMS> a owl:NamedIndividual .
 []
   a owl:AllDifferent ;
   owl:distinctMembers (
@@ -41,4 +60,23 @@
    <http://tw.rpi.edu/ontology/DataExfiltration/http_G1Q8-D1IL67PE-2560YLLV>
    <http://tw.rpi.edu/ontology/DataExfiltration/http_R0T4-W0DF05ZO-6817UDUZ>
    <http://tw.rpi.edu/ontology/DataExfiltration/http_B0L3-N5JD82UP-7345ETAJ>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_E1H8-Q7PF02LU-0504MMJE>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_K2W9-D7QO01QB-5411PODX>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_D7P9-J1HI12LH-0466VBZA>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_N1Q1-W2OP56KH-3809GXUD>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_C1S8-K8LS34HL-4153CDBX>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_Q7Q7-M7HM00PX-7817NZTH>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_Q6N2-O4SP74RT-7090GMDO>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_X0M2-U9CE60XH-7203VUXQ>
+   <http://tw.rpi.edu/ontology/DataExfiltration/device_F0N3-C5GS70QE-4575NRWF>
+   <http://tw.rpi.edu/ontology/DataExfiltration/file_L8U4-E1KC17HI-2295QTAV>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_E9K0-T0KL12CS-9706ONHN>
+   <http://tw.rpi.edu/ontology/DataExfiltration/file_Z8S0-I9WK82HT-2702OXHW>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_T2S1-D4NO90IT-7131JYCF>
+   <http://tw.rpi.edu/ontology/DataExfiltration/file_M3U7-F9ZW51CX-5408MNTW>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_H1P7-O4WO11SJ-6718RXPK>
+   <http://tw.rpi.edu/ontology/DataExfiltration/file_I1R8-Z2OT23MQ-3906SEYL>
+   <http://tw.rpi.edu/ontology/DataExfiltration/http_S2J0-W5II68BI-5010XUHO>
+   <http://tw.rpi.edu/ontology/DataExfiltration/device_E7T1-Z4BN74BJ-2108LJAD>
+   <http://tw.rpi.edu/ontology/DataExfiltration/logon_C0F6-J3LV50LO-8992SRMS>
  ) .

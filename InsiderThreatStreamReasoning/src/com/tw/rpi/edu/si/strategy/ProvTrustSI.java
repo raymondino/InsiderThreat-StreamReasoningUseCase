@@ -34,6 +34,7 @@ public class ProvTrustSI {
 		client = c;
 		// a default window: size = 7 days, step = 1 day
 		window = new Window(c);
+		window.setSize(2); // set size = 2 days
 		currentActionGraphID = "";
 		currentActioinTS = null;
 		users = new ArrayList<User>();
@@ -53,10 +54,6 @@ public class ProvTrustSI {
 		String data = "";
 		try {
 			while((data = br.readLine()) != null) {
-//				for(User u: users) {
-//					System.out.println("[debug] " + u.getID());					
-//				}
-				// split the data into triples
 				String [] parts = data.split(" ");
 				String s = parts[0];
 				String p = parts[1];
