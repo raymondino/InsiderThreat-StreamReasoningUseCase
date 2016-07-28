@@ -13,4 +13,3 @@ InsiderThreatStreamReasoning/data/trimmed-dat/*.pyc
 InsiderThreatStreamReasoning/data/trimmed-dat/
 InsiderThreatStreamReasoning/data/*.txt
 ontology-data exfiltration alone/catalog-v001.xml
-fileTrimmer/
