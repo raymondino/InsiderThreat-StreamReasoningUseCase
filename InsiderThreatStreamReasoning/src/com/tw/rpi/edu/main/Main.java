@@ -101,7 +101,7 @@ public class Main {
 		System.out.println("[INFO] background ontology loaded ... ");
 		
 		// streaming file
-		String data = data_scenario1;
+		String data = data_scenario2;
 		
 		// run:
 		//SemanticImportance si = new SemanticImportance(data, client, prefix);
