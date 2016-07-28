@@ -6,13 +6,11 @@ InsiderThreatStreamReasoning/.settings
 InsiderThreatStreamReasoning/.classpath
 InsiderThreatStreamReasoning/.project
 InsiderThreatStreamReasoning/data/background/
+InsiderThreatStreamReasoning/data/different-individuals/*.*
 InsiderThreatStreamReasoning/data/trimmed-dat/*.txt
 InsiderThreatStreamReasoning/data/trimmed-dat/*.py
 InsiderThreatStreamReasoning/data/trimmed-dat/*.pyc
-InsiderThreatStreamReasoning/data/trimmed-dat/20100817-20100825/
-InsiderThreatStreamReasoning/data/trimmed-dat/20101012-20101013/
-InsiderThreatStreamReasoning/data/trimmed-dat/20110207-20110305/
-InsiderThreatStreamReasoning/data/trimmed-dat/20110221-20110426/
+InsiderThreatStreamReasoning/data/trimmed-dat/
 InsiderThreatStreamReasoning/data/*.txt
 ontology-data exfiltration alone/catalog-v001.xml
 fileTrimmer/
