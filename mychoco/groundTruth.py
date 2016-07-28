@@ -13,7 +13,7 @@ def groundTruth(filename):
     inFile.seek(0)
     for line in inFile:
         line = line.split(',')
-        actionID = line[1][1:len(line[1])-1]
+        actionID = line[0]+'_'+line[1][1:len(line[1])-1]
         timestamp = tsToStr(datetime.datetime.strptime(line[2],'%m/%d/%Y %H:%M:%S'))+'-05:00'
         userID = line[3]
         outFile.write(','.join([actionID,timestamp,userID])+'\n')
