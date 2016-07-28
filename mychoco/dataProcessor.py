@@ -161,31 +161,31 @@ def email(record,outfile):
         for item in toList:
             print >>outfile, '%semail_%s %sto %s%s .'%(ex,id,ex,ex,item)
             if item[item.find('@'):] == '@dtaa.com':
-                print >>outfile, '%semail_%s %s %sInternalEmailAddress .' %(ex,item,a,ex)
+                print >>outfile, '%s%s %s %sInternalEmailAddress .' %(ex,item,a,ex)
             else:
-                print >>outfile, '%semail_%s %s %sNotInternalEmailAddress .' %(ex,item,a,ex)
+                print >>outfile, '%s%s %s %sNotInternalEmailAddress .' %(ex,item,a,ex)
     if record[6]:
         ccList = record[6].split(';')
         for item in ccList:
             print >>outfile, '%semail_%s %scc %s%s .'%(ex,id,ex,ex,item)
             if item[item.find('@'):] == '@dtaa.com':
-                print >>outfile, '%semail_%s %s %sInternalEmailAddress .' %(ex,item,a,ex)
+                print >>outfile, '%s%s %s %sInternalEmailAddress .' %(ex,item,a,ex)
             else:
-                print >>outfile, '%semail_%s %s %sNotInternalEmailAddress .' %(ex,item,a,ex)
+                print >>outfile, '%s%s %s %sNotInternalEmailAddress .' %(ex,item,a,ex)
     if record[7]:
         bccList = record[7].split(';')
         for item in bccList:
             print >>outfile, '%semail_%s %sbcc %s%s .'%(ex,id,ex,ex,item)
             if item[item.find('@'):] == '@dtaa.com':
-                print >>outfile, '%semail_%s %s %sInternalEmailAddress .' %(ex,item,a,ex)
+                print >>outfile, '%s%s %s %sInternalEmailAddress .' %(ex,item,a,ex)
             else:
-                print >>outfile, '%semail_%s %s %sNotInternalEmailAddress .' %(ex,item,a,ex)
+                print >>outfile, '%s%s %s %sNotInternalEmailAddress .' %(ex,item,a,ex)
 
     print >>outfile, '%semail_%s %sfrom %s%s .'%(ex,id,ex,ex,record[8])
     if record[8][record[8].find('@'):] == '@dtaa.com':
-        print >>outfile, '%semail_%s %s %sInternalEmailAddress .' %(ex,record[8],a,ex)
+        print >>outfile, '%s%s %s %sInternalEmailAddress .' %(ex,record[8],a,ex)
     else:
-        print >>outfile, '%semail_%s %s %sNotInternalEmailAddress .' %(ex,record[8],a,ex)
+        print >>outfile, '%s%s %s %sNotInternalEmailAddress .' %(ex,record[8],a,ex)
 
     print >>outfile, '%semail_%s %shasEmailSize> "%s bytes" .'%(ex,id,ex,record[10])
     if record[11]:
