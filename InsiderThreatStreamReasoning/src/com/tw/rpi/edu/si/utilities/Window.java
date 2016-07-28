@@ -187,6 +187,11 @@ public class Window {
 	
 	// suspicious action query
 	private void query(String actionGraphID) {
+		String jobHuntingActionQuery = "ask from <"+prefix+"background> from <"+actionGraphID+"> where {?action a <" + prefix + "JobHuntingAction>.}";
+		if(client.getAReasoningConn().ask(jobHuntingActionQuery).execute()) {
+			actionBeingQueried.getUser().reduceTrustScore();
+			System.out.println("job hunting action detected, user trust score reduced by 0.1 :-)");
+		} 
 		String suspiciousActionQuery = "select distinct ?action from <"+prefix+"background> from <"+actionGraphID+"> where {?action a <" + prefix + "SuspiciousAction>.}";
 		TupleQueryResult result = client.getAReasoningConn().select(suspiciousActionQuery).execute();
 		// if suspiciousActionQuery has result, that means actionBeingQueried is a suspicious action
