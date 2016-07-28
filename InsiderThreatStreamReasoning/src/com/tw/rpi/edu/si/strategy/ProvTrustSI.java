@@ -33,7 +33,7 @@ public class ProvTrustSI {
 		client = c;
 		// a default window: size = 7 days, step = 1 day
 		window = new Window(c);
-		window.setSize(2); // set size = 2 days
+		window.setSize(1); 
 		currentActionGraphID = "";
 		currentActioinTS = null;
 		users = new ArrayList<User>();

@@ -137,9 +137,10 @@ public class Window {
 				}
 			}
 			totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
-			System.out.println(totalActionProcessTime / actionCounter + " ms");
+			System.out.println(totalActionProcessTime / actionCounter + "ms");
 		}
 		else {
+			System.out.println();
 			System.out.println("[evict]");
 			evict();
 			System.out.println("[window moves]");
@@ -190,7 +191,7 @@ public class Window {
 		String jobHuntingActionQuery = "ask from <"+prefix+"background> from <"+actionGraphID+"> where {?action a <" + prefix + "JobHuntingAction>.}";
 		if(client.getAReasoningConn().ask(jobHuntingActionQuery).execute()) {
 			actionBeingQueried.getUser().reduceTrustScore();
-			System.out.println("job hunting action detected, user trust score reduced by 0.1 :-)");
+			System.out.print("job hunting action detected ");
 		} 
 		String suspiciousActionQuery = "select distinct ?action from <"+prefix+"background> from <"+actionGraphID+"> where {?action a <" + prefix + "SuspiciousAction>.}";
 		TupleQueryResult result = client.getAReasoningConn().select(suspiciousActionQuery).execute();
@@ -198,7 +199,7 @@ public class Window {
 		if(result.hasNext()) {
 			// reduce user's trust score
 			actionBeingQueried.getUser().reduceTrustScore();
-			
+			System.out.println();
 			System.out.println("*************************************");
 			System.out.println("[WARNING] suspicious action detected:");
 			System.out.println("          timestamp: " + actionBeingQueried.getTimestamp());
@@ -239,7 +240,7 @@ public class Window {
 			System.out.println("          user resignation: " + actionBeingQueried.getUser().getResinationStatus());
 			System.out.println("          user excessive removable media: " + actionBeingQueried.getUser().getExcessiveRemovableDiskUser());
 			System.out.println("          user trust score: " + actionBeingQueried.getUser().getTrustScore());
-			System.out.println("*************************************");
+			System.out.print("************************************* ");
 			// write suspicious action into a file for benchmark
 			try {
 				this.writeSuspiciousAction.write(String.format("%s ,", actionGraphID.substring((prefix+"graph/").length())));
@@ -283,6 +284,7 @@ public class Window {
 		TupleQueryResult result = client.getAReasoningConn().select(q).execute();
 		while(result.hasNext()) {
 			BindingSet bs = result.next();
+			System.out.println();
 			System.out.println("*************************************");
 			System.out.println("*************************************");
 			System.out.println("*************************************");
@@ -290,7 +292,7 @@ public class Window {
 			System.out.println("              potential threatening insider: " + bs.getValue("userid").toString().substring(prefix.length()));				
 			System.out.println("*************************************");
 			System.out.println("*************************************");
-			System.out.println("*************************************");
+			System.out.print("************************************* ");
 		}
 		// delete different-individuals graph
 		client.getANonReasoningConn().update("drop graph <" + prefix + "different-individuals>").execute();
