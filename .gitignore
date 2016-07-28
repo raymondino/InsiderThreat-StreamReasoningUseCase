@@ -6,7 +6,7 @@ InsiderThreatStreamReasoning/.settings
 InsiderThreatStreamReasoning/.classpath
 InsiderThreatStreamReasoning/.project
 InsiderThreatStreamReasoning/data/background/
-InsiderThreatStreamReasoning/data/different-individuals/*.*
+InsiderThreatStreamReasoning/data/different-individuals/*.txt
 InsiderThreatStreamReasoning/data/trimmed-dat/*.txt
 InsiderThreatStreamReasoning/data/trimmed-dat/*.py
 InsiderThreatStreamReasoning/data/trimmed-dat/*.pyc
