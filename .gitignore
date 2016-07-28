@@ -5,11 +5,5 @@ InsiderThreatStreamReasoning/bin
 InsiderThreatStreamReasoning/.settings
 InsiderThreatStreamReasoning/.classpath
 InsiderThreatStreamReasoning/.project
-InsiderThreatStreamReasoning/data/background/
-InsiderThreatStreamReasoning/data/different-individuals/*.txt
-InsiderThreatStreamReasoning/data/trimmed-dat/*.txt
-InsiderThreatStreamReasoning/data/trimmed-dat/*.py
-InsiderThreatStreamReasoning/data/trimmed-dat/*.pyc
 InsiderThreatStreamReasoning/data/trimmed-dat/
-InsiderThreatStreamReasoning/data/*.txt
 ontology-data exfiltration alone/catalog-v001.xml
