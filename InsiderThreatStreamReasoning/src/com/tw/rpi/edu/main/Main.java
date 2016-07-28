@@ -20,7 +20,9 @@ public class Main {
 	private static String username = "admin";
 	private static String password = "admin";
 	private static String prefix = "http://tw.rpi.edu/ontology/DataExfiltration/";
-	private static String ontology = "D:/Research/github/InsiderThreatUseCase/ontology-data exfiltration alone/DataExfiltration-before import.owl";
+//	private static String ontology = "D:/Research/github/InsiderThreatUseCase/ontology-data exfiltration alone/DataExfiltration-before import.owl";
+//  private static String ontology = "/data/InsiderThreat-StreamReasoningUseCase/ontology-data exfiltration alone/DataExfiltration-before import.owl";
+	private static String ontology = "C:/Users/Rui/Documents/GitHub/InsiderThreat-StreamReasoningUseCase/ontology-data exfiltration alone/DataExfiltration-before import.owl";
 	private static String background = "data/background/";
 	private static String data_scenario1 = "data/ACM2278-annotation.txt";
 	private static String data_scenario2 = "data/CMP2946-annotation.txt";

@@ -4,123 +4,46 @@
 <http://tw.rpi.edu/ontology/DataExfiltration/email_Y8E8-I7EQ59BH-0961CJMZ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_D1M3-X1ZE94ET-6154SNUB> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_D1Z4-D4GW77FH-8911CRHT> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_D1Z4-D4GW77FH-8911CRHT> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_R9R8-I7AA04XD-1482JWAN> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_R9R8-I7AA04XD-1482JWAN> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_M1T1-Q9VQ79UM-4774YIYE> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_M1T1-Q9VQ79UM-4774YIYE> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_B0Z6-M5RI00QY-7169VPZZ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_B0Z6-M5RI00QY-7169VPZZ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_U0E0-U2UH89HE-0609BIZL> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_U0E0-U2UH89HE-0609BIZL> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_L3Y4-T1RA53JD-2609SEDJ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_L3Y4-T1RA53JD-2609SEDJ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_X1T2-O8PH81PI-7700ZTET> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_X1T2-O8PH81PI-7700ZTET> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_B2Z3-M5GL31UY-5419TMAP> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_B2Z3-M5GL31UY-5419TMAP> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_V3Q7-G4GA96SH-1124GPXQ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_V3Q7-G4GA96SH-1124GPXQ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_J8H1-G7RK50MZ-1007NUKM> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_S0W2-K3OT37LU-7752DLIA> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_J8H1-G7RK50MZ-1007NUKM> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_S0W2-K3OT37LU-7752DLIA> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_L1T8-Y6US93JG-9314DUZV> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_L1T8-Y6US93JG-9314DUZV> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_H5Z2-H7OA04TN-3245TTQS> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_H5Z2-H7OA04TN-3245TTQS> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_H8G1-O1AK34FI-7501ZZOF> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_H8G1-O1AK34FI-7501ZZOF> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_Q4Y0-R4MR80YS-2532KEKF> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Q4Y0-R4MR80YS-2532KEKF> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Z1I7-O4AG79TE-7771NHAQ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_Z1I7-O4AG79TE-7771NHAQ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_R7L1-I9LA04KL-5489UIGL> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_R7L1-I9LA04KL-5489UIGL> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_S2F0-F4VK90LP-8904RZYL> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_S2F0-F4VK90LP-8904RZYL> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_T8Z1-N1OW98YZ-8422PPGR> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_T8Z1-N1OW98YZ-8422PPGR> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Z9A7-R0KC70NA-5320CZVY> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_Z9A7-R0KC70NA-5320CZVY> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_X3B5-C4DH81YQ-1776HMAT> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_X3B5-C4DH81YQ-1776HMAT> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_W1R0-F0TI97ZR-7100GZQT> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_W1R0-F0TI97ZR-7100GZQT> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_I6U3-G0OS83NE-2111KVBX> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_I6U3-G0OS83NE-2111KVBX> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_X6D9-J5VN98YT-5393EUEY> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_X6D9-J5VN98YT-5393EUEY> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_N3I8-Z1OT70LR-6336XXRH> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_N3I8-Z1OT70LR-6336XXRH> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_S1Q2-F0MG71ZG-7510SPNE> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_S1Q2-F0MG71ZG-7510SPNE> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_N7E5-T9CE77AI-2890NGNU> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_N7E5-T9CE77AI-2890NGNU> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Y5R3-K4AT18BI-8007MNEZ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_Y5R3-K4AT18BI-8007MNEZ> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_S1Y0-X3UB63ZN-8592PODQ> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_S1Y0-X3UB63ZN-8592PODQ> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Y1F0-O5BK87WQ-6266RGWX> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_Y1F0-O5BK87WQ-6266RGWX> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_U8F3-X3JP12YJ-9029IJVY> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_U8F3-X3JP12YJ-9029IJVY> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_I6E8-J6ND31NL-0702AWJM> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_I6E8-J6ND31NL-0702AWJM> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_F5Z0-P6ZC94HK-8180LLTY> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_F5Z0-P6ZC94HK-8180LLTY> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_L1K4-K7OL21DF-3403IOHR> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_L1K4-K7OL21DF-3403IOHR> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_B6V8-V8EI67RS-8413DSKL> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_B6V8-V8EI67RS-8413DSKL> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_O9C4-S1YO57LC-5500VLBU> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_O9C4-S1YO57LC-5500VLBU> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_J1V0-B0HO61YN-1473LZDM> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_J1V0-B0HO61YN-1473LZDM> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_A0M8-D6TR33IM-3574BDMH> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_A0M8-D6TR33IM-3574BDMH> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_T0G0-T8YD50EO-1094CJIF> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_T0G0-T8YD50EO-1094CJIF> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_H5R9-D6AT63EH-6921IURU> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_H5R9-D6AT63EH-6921IURU> a owl:NamedIndividual .
 <http://tw.rpi.edu/ontology/DataExfiltration/email_E6D7-V2CG43HQ-9895WIVX> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_E6D7-V2CG43HQ-9895WIVX> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_R3J3-M1LE48YR-2202DQCU> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_R3J3-M1LE48YR-2202DQCU> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_U2S6-P5NT73EQ-3162GQHK> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_U2S6-P5NT73EQ-3162GQHK> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_A2S7-I1UZ32MS-0793DAWR> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_A2S7-I1UZ32MS-0793DAWR> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Q5Q7-C9AF20AO-9314HZGV> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Q5Q7-C9AF20AO-9314HZGV> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_S7R7-B4TM59KR-0414GMAW> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_S7R7-B4TM59KR-0414GMAW> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_O6T2-E7NJ83PN-0251FRDX> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_O6T2-E7NJ83PN-0251FRDX> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_L5A4-F7QC74VJ-4503LRPK> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_L5A4-F7QC74VJ-4503LRPK> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_A9L8-Z7PS14XJ-4736VDHP> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_A9L8-Z7PS14XJ-4736VDHP> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_O9K2-O8BI97CR-8081ZRLV> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_O9K2-O8BI97CR-8081ZRLV> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_X1V0-B5ES95CH-6463ZMTY> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_X1V0-B5ES95CH-6463ZMTY> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_D0I4-L8TR65OU-8139GAHD> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_D0I4-L8TR65OU-8139GAHD> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Z7L6-X7VU64VG-9189FKAL> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Z7L6-X7VU64VG-9189FKAL> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_G8P4-L3KZ68JL-5507RQNN> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_G8P4-L3KZ68JL-5507RQNN> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_W8L5-T9AH40TG-5987ZGYF> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_W8L5-T9AH40TG-5987ZGYF> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_C6S7-B2KO73XR-3612XVJI> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_C6S7-B2KO73XR-3612XVJI> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_P8T8-Q7MQ93OT-8390ANEC> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_P8T8-Q7MQ93OT-8390ANEC> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Y8M6-S1MC76DI-3142IEEV> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_Y8M6-S1MC76DI-3142IEEV> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_K6S0-J1YG63DZ-2560ADBT> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_K6S0-J1YG63DZ-2560ADBT> a owl:NamedIndividual .
 []
   a owl:AllDifferent ;
   owl:distinctMembers (
@@ -128,121 +51,44 @@
    <http://tw.rpi.edu/ontology/DataExfiltration/email_Y8E8-I7EQ59BH-0961CJMZ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_D1M3-X1ZE94ET-6154SNUB>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_D1Z4-D4GW77FH-8911CRHT>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_D1Z4-D4GW77FH-8911CRHT>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_R9R8-I7AA04XD-1482JWAN>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_R9R8-I7AA04XD-1482JWAN>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_M1T1-Q9VQ79UM-4774YIYE>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_M1T1-Q9VQ79UM-4774YIYE>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_B0Z6-M5RI00QY-7169VPZZ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_B0Z6-M5RI00QY-7169VPZZ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_U0E0-U2UH89HE-0609BIZL>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_U0E0-U2UH89HE-0609BIZL>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_L3Y4-T1RA53JD-2609SEDJ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_L3Y4-T1RA53JD-2609SEDJ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_X1T2-O8PH81PI-7700ZTET>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_X1T2-O8PH81PI-7700ZTET>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_B2Z3-M5GL31UY-5419TMAP>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_B2Z3-M5GL31UY-5419TMAP>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_V3Q7-G4GA96SH-1124GPXQ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_V3Q7-G4GA96SH-1124GPXQ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_J8H1-G7RK50MZ-1007NUKM>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_S0W2-K3OT37LU-7752DLIA>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_J8H1-G7RK50MZ-1007NUKM>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_S0W2-K3OT37LU-7752DLIA>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_L1T8-Y6US93JG-9314DUZV>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_L1T8-Y6US93JG-9314DUZV>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_H5Z2-H7OA04TN-3245TTQS>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_H5Z2-H7OA04TN-3245TTQS>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_H8G1-O1AK34FI-7501ZZOF>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_H8G1-O1AK34FI-7501ZZOF>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_Q4Y0-R4MR80YS-2532KEKF>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Q4Y0-R4MR80YS-2532KEKF>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Z1I7-O4AG79TE-7771NHAQ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_Z1I7-O4AG79TE-7771NHAQ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_R7L1-I9LA04KL-5489UIGL>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_R7L1-I9LA04KL-5489UIGL>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_S2F0-F4VK90LP-8904RZYL>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_S2F0-F4VK90LP-8904RZYL>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_T8Z1-N1OW98YZ-8422PPGR>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_T8Z1-N1OW98YZ-8422PPGR>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Z9A7-R0KC70NA-5320CZVY>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_Z9A7-R0KC70NA-5320CZVY>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_X3B5-C4DH81YQ-1776HMAT>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_X3B5-C4DH81YQ-1776HMAT>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_W1R0-F0TI97ZR-7100GZQT>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_W1R0-F0TI97ZR-7100GZQT>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_I6U3-G0OS83NE-2111KVBX>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_I6U3-G0OS83NE-2111KVBX>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_X6D9-J5VN98YT-5393EUEY>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_X6D9-J5VN98YT-5393EUEY>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_N3I8-Z1OT70LR-6336XXRH>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_N3I8-Z1OT70LR-6336XXRH>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_S1Q2-F0MG71ZG-7510SPNE>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_S1Q2-F0MG71ZG-7510SPNE>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_N7E5-T9CE77AI-2890NGNU>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_N7E5-T9CE77AI-2890NGNU>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Y5R3-K4AT18BI-8007MNEZ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_Y5R3-K4AT18BI-8007MNEZ>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_S1Y0-X3UB63ZN-8592PODQ>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_S1Y0-X3UB63ZN-8592PODQ>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Y1F0-O5BK87WQ-6266RGWX>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_Y1F0-O5BK87WQ-6266RGWX>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_U8F3-X3JP12YJ-9029IJVY>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_U8F3-X3JP12YJ-9029IJVY>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_I6E8-J6ND31NL-0702AWJM>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_I6E8-J6ND31NL-0702AWJM>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_F5Z0-P6ZC94HK-8180LLTY>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_F5Z0-P6ZC94HK-8180LLTY>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_L1K4-K7OL21DF-3403IOHR>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_L1K4-K7OL21DF-3403IOHR>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_B6V8-V8EI67RS-8413DSKL>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_B6V8-V8EI67RS-8413DSKL>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_O9C4-S1YO57LC-5500VLBU>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_O9C4-S1YO57LC-5500VLBU>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_J1V0-B0HO61YN-1473LZDM>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_J1V0-B0HO61YN-1473LZDM>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_A0M8-D6TR33IM-3574BDMH>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_A0M8-D6TR33IM-3574BDMH>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_T0G0-T8YD50EO-1094CJIF>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_T0G0-T8YD50EO-1094CJIF>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_H5R9-D6AT63EH-6921IURU>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_H5R9-D6AT63EH-6921IURU>
    <http://tw.rpi.edu/ontology/DataExfiltration/email_E6D7-V2CG43HQ-9895WIVX>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_E6D7-V2CG43HQ-9895WIVX>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_R3J3-M1LE48YR-2202DQCU>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_R3J3-M1LE48YR-2202DQCU>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_U2S6-P5NT73EQ-3162GQHK>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_U2S6-P5NT73EQ-3162GQHK>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_A2S7-I1UZ32MS-0793DAWR>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_A2S7-I1UZ32MS-0793DAWR>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Q5Q7-C9AF20AO-9314HZGV>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Q5Q7-C9AF20AO-9314HZGV>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_S7R7-B4TM59KR-0414GMAW>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_S7R7-B4TM59KR-0414GMAW>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_O6T2-E7NJ83PN-0251FRDX>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_O6T2-E7NJ83PN-0251FRDX>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_L5A4-F7QC74VJ-4503LRPK>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_L5A4-F7QC74VJ-4503LRPK>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_A9L8-Z7PS14XJ-4736VDHP>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_A9L8-Z7PS14XJ-4736VDHP>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_O9K2-O8BI97CR-8081ZRLV>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_O9K2-O8BI97CR-8081ZRLV>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_X1V0-B5ES95CH-6463ZMTY>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_X1V0-B5ES95CH-6463ZMTY>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_D0I4-L8TR65OU-8139GAHD>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_D0I4-L8TR65OU-8139GAHD>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Z7L6-X7VU64VG-9189FKAL>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Z7L6-X7VU64VG-9189FKAL>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_G8P4-L3KZ68JL-5507RQNN>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_G8P4-L3KZ68JL-5507RQNN>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_W8L5-T9AH40TG-5987ZGYF>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_W8L5-T9AH40TG-5987ZGYF>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_C6S7-B2KO73XR-3612XVJI>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_C6S7-B2KO73XR-3612XVJI>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_P8T8-Q7MQ93OT-8390ANEC>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_P8T8-Q7MQ93OT-8390ANEC>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Y8M6-S1MC76DI-3142IEEV>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_Y8M6-S1MC76DI-3142IEEV>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_K6S0-J1YG63DZ-2560ADBT>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_K6S0-J1YG63DZ-2560ADBT>
  ) .

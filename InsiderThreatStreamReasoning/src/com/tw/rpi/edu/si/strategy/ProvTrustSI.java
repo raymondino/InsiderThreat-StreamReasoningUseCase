@@ -72,7 +72,13 @@ public class ProvTrustSI {
 						action.setRankByProv(); // rank by provenance
 						//action.setRankByTrust(); // rank by trust
 						window.load(currentActionGraphID, currentActioinTS, action);
-						window.process();
+						try {
+							window.process();
+						}
+						catch (Exception e) {
+							System.out.print("EXCEPTION!!!!!");
+							System.out.println(action.getActionID());
+						}
 					}
 					currentActionGraphID = prefix + "graph/" + o.substring(prefix.length());
 					currentActioinTS = ZonedDateTime.parse(parts[4]+"-05:00"); // EST time zone
