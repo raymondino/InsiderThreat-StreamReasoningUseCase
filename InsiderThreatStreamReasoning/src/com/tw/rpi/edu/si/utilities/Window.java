@@ -243,8 +243,8 @@ public class Window {
 			System.out.print("************************************* ");
 			// write suspicious action into a file for benchmark
 			try {
-				this.writeSuspiciousAction.write(String.format("%s ,", actionGraphID.substring((prefix+"graph/").length())));
-				this.writeSuspiciousAction.write(String.format("%s , ", actionBeingQueried.getTimestamp()));
+				this.writeSuspiciousAction.write(String.format("%s,", actionGraphID.substring((prefix+"graph/").length())));
+				this.writeSuspiciousAction.write(String.format("%s, ", actionBeingQueried.getTimestamp()));
 				this.writeSuspiciousAction.write(String.format("%s \n", actionBeingQueried.getUser().getID()));
 				this.writeSuspiciousAction.flush();
 			} catch (IOException e) {
