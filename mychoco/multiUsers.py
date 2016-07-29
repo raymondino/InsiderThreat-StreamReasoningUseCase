@@ -5,8 +5,6 @@ path = '../data-r6.2/'
 
 #######################
 # EXTRACT
-
-
 def multiUserExtract(userList):
 	def multiUserExtractHelper(actionType):
 		inFile = open(path+actionType+'.csv')
@@ -214,7 +212,8 @@ def http(record,outfile):
     print >>outfile, '%shttp_%s %shasActor %s%s .' %(ex,id,ex,ex,record[3])
     print >>outfile, '%shttp_%s %sisPerformedOnPC %s%s .' %(ex,id,ex,ex,record[4])
     print >>outfile, '%shttp_%s %shasURL %s .' %(ex,id,ex,record[5])
-    domainName = record[5][:record[5].find('/',7)+1]
+    parsedURL = urlparse(record[5])
+    domainName = parsedURL.scheme + '://' + parsedURL.netloc + '/'
     if domainName in cloudStorageWebsites:
         print >>outfile, '%s %swhoseDomainNameIsA %scloudstoragewebsite .' %(record[5],ex,ex)
     elif domainName in hacktivistWebsites:
@@ -280,9 +279,6 @@ def multiUserAnnotate(userList):
 	outfile.close()
 
 if __name__ == '__main__':
-	# run the file with command: python multiUsers.py
-	# then input the list of userids separated by space when asked, for example:
-	# ACM2278 CMP2946 CDE1846 MBG3183
 
 	if len(sys.argv)<2:
 		print 'USAGE: python multiUsers.py [filename]'

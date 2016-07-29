@@ -1,5 +1,6 @@
 # dataProcessor.py
 import sys, datetime
+from urlparse import urlparse
 from globals import *
 path = '../data-r6.2/'
 
@@ -240,7 +241,8 @@ def http(record,outfile):
     print >>outfile, '%shttp_%s %shasActor %s%s .' %(ex,id,ex,ex,record[3])
     print >>outfile, '%shttp_%s %sisPerformedOnPC %s%s .' %(ex,id,ex,ex,record[4])
     print >>outfile, '%shttp_%s %shasURL %s .' %(ex,id,ex,record[5])
-    domainName = record[5][:record[5].find('/',7)+1]
+    parsedURL = urlparse(record[5])
+    domainName = parsedURL.scheme + '://' + parsedURL.netloc + '/'
     if domainName in cloudStorageWebsites:
         print >>outfile, '%s %swhoseDomainNameIsA %scloudstoragewebsite .' %(record[5],ex,ex)
     elif domainName in hacktivistWebsites:
