@@ -258,7 +258,7 @@ def getAverageUSBUsage(userList):
             # print line[5]
             if userID in userList and line[5] == 'Connect' and ts.date() in usageDic[userID].keys():
                 usageDic[userID][ts.date()] += 1
-                print userID, ts.date()
+                # print userID, ts.date()
 
     # calculate the average
     for userID in usageDic.keys():
