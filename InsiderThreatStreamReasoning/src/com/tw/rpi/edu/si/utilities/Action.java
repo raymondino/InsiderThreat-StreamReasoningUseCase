@@ -199,6 +199,7 @@ public class Action implements Comparable<Action> {
 			String activityquery = "select distinct ?o from <"+graphID+"> where {<"+prefix+actionID+"> a ?o.}";
 			String file = "select distinct ?fn from <"+graphID+"> where {?s <"+prefix+"hasFile> ?fn.}";
 			String filetype = "select distinct ?type from <"+graphID+"> where {?s <"+prefix+"hasFile> ?fn. ?fn a ?type}";
+			String contextquery = "ask from <"+graphID+"> from <"+prefix+"suspicious> where {<"+prefix+actionID+"> <"+prefix+"startsNoEarlierThanEndingOf> ?a. ?a a <"+prefix+"SuspiciousAction>}";
 			TupleQueryResult re = client.getANonReasoningConn().select(file).execute();
 			while(re.hasNext()){
 				BindingSet x = re.next();
@@ -227,7 +228,11 @@ public class Action implements Comparable<Action> {
 				if(x.getValue("o").toString().contains("File")) {
 					this.activity = x.getValue("o").toString().substring(prefix.length());						
 				}
-			}			
+			}
+			re = client.getAReasoningConn().select(contextquery).execute();
+			while(re.hasNext()) {
+				provenanceScore++;
+			}
 		}
 	}
 

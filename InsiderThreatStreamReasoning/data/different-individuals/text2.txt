@@ -1,9 +1,3 @@
 []
   a owl:AllDifferent ;
   owl:distinctMembers (
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH>
