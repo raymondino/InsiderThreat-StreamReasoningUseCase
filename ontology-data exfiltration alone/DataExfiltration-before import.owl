@@ -992,7 +992,13 @@ paceTime.owl)</rdfs:comment>
                     </owl:Class>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileCopyAction"/>
+                                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileDeleteAction"/>
+                                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileOpenAction"/>
+                                </owl:unionOf>
+                            </owl:Class>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC"/>
                                 <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC"/>
@@ -1049,15 +1055,33 @@ A file copy action is suspicious if 1. it&apos;s an after hour action. 2. a deco
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousRemovableDeviceUsageAction">
         <owl:equivalentClass>
             <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                <owl:unionOf rdf:parseType="Collection">
                     <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskConnectionAction"/>
-                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskDisconnectionAction"/>
-                        </owl:unionOf>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskConnectionAction"/>
+                                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskDisconnectionAction"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:intersectionOf>
                     </owl:Class>
-                </owl:intersectionOf>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskConnectionAction"/>
+                                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/DiskDisconnectionAction"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnUnassignedPC"/>
+                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction"/>
@@ -1090,6 +1114,21 @@ A file copy action is suspicious if 1. it&apos;s an after hour action. 2. a deco
                                         </owl:unionOf>
                                     </owl:Class>
                                 </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWDownloadAction"/>
+                                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWUploadAction"/>
+                                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/WWWVisitAction"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnUnassignedPC"/>
+                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC"/>
                             </owl:Restriction>
                         </owl:intersectionOf>
                     </owl:Class>

@@ -1,18 +1,10 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 <http://tw.rpi.edu/ontology/DataExfiltration/> a owl:Ontology .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ> a owl:NamedIndividual .
-<http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/logon_S4I2-N2NJ20NQ-8516CQST> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/email_U4B0-W5NB89YV-8111RGOM> a owl:NamedIndividual .
 []
   a owl:AllDifferent ;
   owl:distinctMembers (
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ>
-   <http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH>
+   <http://tw.rpi.edu/ontology/DataExfiltration/logon_S4I2-N2NJ20NQ-8516CQST>
+   <http://tw.rpi.edu/ontology/DataExfiltration/email_U4B0-W5NB89YV-8111RGOM>
  ) .

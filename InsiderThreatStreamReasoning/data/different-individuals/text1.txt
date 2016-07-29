@@ -1,2 +1,4 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 <http://tw.rpi.edu/ontology/DataExfiltration/> a owl:Ontology .
+<http://tw.rpi.edu/ontology/DataExfiltration/logon_S4I2-N2NJ20NQ-8516CQST> a owl:NamedIndividual .
+<http://tw.rpi.edu/ontology/DataExfiltration/email_U4B0-W5NB89YV-8111RGOM> a owl:NamedIndividual .
