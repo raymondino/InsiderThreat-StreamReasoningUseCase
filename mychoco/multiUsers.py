@@ -2,8 +2,138 @@
 import sys, datetime
 from urlparse import urlparse
 from globals import *
-from background import *
 path = '../data-r6.2/'
+
+# returns a tuple (AverageLogonTime, AverageLogoffTime) where the two elements are dictionaries
+# with keys being the userids, values being the average logon/logoff time of that user
+def getRoutineHours(userList):
+    def allDone(dic):
+        for userID in userList:
+            if userID not in dic.keys():
+                return False
+            if len(dic[userID])<10:
+                return False
+        return True
+
+    def averageTime(timeList):
+        avg = sum(ts.hour*3600 + ts.minute*60 + ts.second for ts in timeList)/len(timeList)
+        minutes, seconds = divmod(int(avg), 60)
+        hours, minutes = divmod(minutes, 60)
+        r = datetime.datetime(1900,1,1,hours,minutes,seconds) # + datetime.timedelta(minutes=15)
+        return r
+
+    def getAverageLogon():
+        logonTimesDic = {}
+        with open('../data-r6.2/logon.csv') as inFile:
+            while not allDone(logonTimesDic):
+                line = inFile.readline()
+                if not line:
+                    print 'File ended before completing.'
+                    # for u in logonTimesDic.keys():
+                    #     print u, len(logonTimesDic[u])
+                    inFile.close()
+                    return
+
+                line = line.strip().split(',')
+                userID = line[2]
+                # print line
+                if userID in userList and line[4] == 'Logon':
+                    ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
+                    if userID in logonTimesDic.keys():
+                        if len(logonTimesDic[userID]) < 10:
+                            if ts.date() in logonTimesDic[userID].keys():
+                                pass
+                            else:
+                                logonTimesDic[userID][ts.date()] = ts.time()
+                    # the user does not exist in the dic
+                    else:
+                        logonTimesDic[userID] = {}
+                        logonTimesDic[userID][ts.date()] = ts.time()
+            # calculate the average for each userID
+            for userID in logonTimesDic.keys():
+                logonTimesDic[userID] = (averageTime(logonTimesDic[userID].values()) \
+                                        + datetime.timedelta(minutes=-15)).time()
+        return logonTimesDic
+
+    def getAverageLogoff():
+        logoffTimesDic = {}
+        with open('../data-r6.2/logon.csv') as inFile:
+            while not allDone(logoffTimesDic):
+                line = inFile.readline()
+                if not line:
+                    print 'File ended before completing.'
+                    # for u in logoffTimesDic.keys():
+                    #     print u, len(logoffTimesDic[u])
+                    inFile.close()
+                    return
+
+                line = line.strip().split(',')
+                userID = line[2]
+                # print line
+                if userID in userList and line[4] == 'Logoff':
+                    ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
+                    if userID in logoffTimesDic.keys():
+                        if len(logoffTimesDic[userID]) < 10:
+                            logoffTimesDic[userID][ts.date()] = ts.time()
+                    # the user does not exist in the dic
+                    else:
+                        logoffTimesDic[userID] = {}
+                        logoffTimesDic[userID][ts.date()] = ts.time()
+            # calculate the average for each userID
+            for userID in logoffTimesDic.keys():
+                logoffTimesDic[userID] = (averageTime(logoffTimesDic[userID].values())\
+                                        + datetime.timedelta(minutes=15)).time()
+        return logoffTimesDic
+
+    return getAverageLogon(),getAverageLogoff()
+
+
+def getAverageUSBUsage(userList):
+    def allDone(dic):
+        for userID in userList:
+            if len(dic[userID])<10:
+                return False
+        return True
+
+    usageDic = dict((userID,{}) for userID in userList)
+    # get 10 logon days for each user
+    with open('../data-r6.2/logon.csv') as logonFile:
+        while not allDone(usageDic):
+            line = logonFile.readline()
+            if not line:
+                print 'File ended before completing.'
+                # for u in logoffTimesDic.keys():
+                #     print u, len(logoffTimesDic[u])
+                logonFile.close()
+                return
+            line = line.strip().split(',')
+            userID = line[2]
+            if userID in userList and len(usageDic[userID]) < 10:
+                # usageDic[userID][date] = count
+                ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
+                usageDic[userID][ts.date()] = 0
+
+    maxdate = max([max(usageDic[userID].keys()) for userID in userList])
+    # count number of device connect for each day
+    with open('../data-r6.2/device.csv') as deviceFile:
+        deviceFile.readline()
+        for line in deviceFile:
+            # print line
+            line = line.strip().split(',')
+            ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
+            if ts.date() > maxdate:
+                break
+            userID = line[2]
+            # print line[5]
+            if userID in userList and line[5] == 'Connect' and ts.date() in usageDic[userID].keys():
+                usageDic[userID][ts.date()] += 1
+                # print userID, ts.date()
+
+    # calculate the average
+    for userID in usageDic.keys():
+        usageDic[userID] = sum(usageDic[userID].values())/10.0
+    return usageDic
+
 
 #######################
 # EXTRACT
