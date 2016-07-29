@@ -267,17 +267,17 @@ def getAverageUSBUsage(userList):
 
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
     # decoyFileToRDF()
     # ldapToRDF()
     # PCannotation()
 
-    userList = ['ACM2278','MBG3183','CDE1846','CMP2946']
+    # userList = ['ACM2278','MBG3183','CDE1846','CMP2946']
     # To user getRoutineHours:
-    logonHoursDic, logoffHoursDic = getRoutineHours(userList)
-    for userID in userList:
-        print userID, 'has routine logon time:', logonHoursDic[userID]
-        print '        has routine logoff time:', logoffHoursDic[userID]
+    # logonHoursDic, logoffHoursDic = getRoutineHours(userList)
+    # for userID in userList:
+        # print userID, 'has routine logon time:', logonHoursDic[userID]
+        # print '        has routine logoff time:', logoffHoursDic[userID]
 
     # To user getAverageUSBUsage:
-    print getAverageUSBUsage(userList)
+    # print getAverageUSBUsage(userList)

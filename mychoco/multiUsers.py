@@ -9,7 +9,8 @@ path = '../data-r6.2/'
 # EXTRACT
 def multiUserExtract(userList):
 	def multiUserExtractHelper(actionType):
-		inFile = open(path+actionType+'.csv')
+		# inFile = open(path+actionType+'.csv')
+		inFile = open(path+'1-ACM2278/'+actionType+'.csv')
 		outFile = open('intermediate/multi_users_'+actionType+'.csv', 'w')
 		for line in inFile:
 			if line.split(',')[2] in userList:
@@ -73,8 +74,6 @@ def multiUserCombine():
 	for f in fileList:
 		f.close()
 	outfile.close()
-
-
 
 
 def multiUserAnnotate(userList, dailyStartDic, dailyEndDic, usbDriveUsageFrequency):
