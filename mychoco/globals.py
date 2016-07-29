@@ -21,4 +21,4 @@ dailyEndDic = {'ACM2278': datetime.time(17,49,48), \
               'CDE1846': datetime.time(19,1,24), \
               'MBG3183': datetime.time(17,29,54) }
 
-usbDriveUsageFrequency = {'ACM2278': 0, 'CMP2946': 10.2, 'PLJ1771': 0, 'CDE1846': 0, 'MBG3183': 3.7 }
+usbDriveUsageFrequency = {'ACM2278': 0, 'CMP2946': 5.1, 'PLJ1771': 0, 'CDE1846': 0, 'MBG3183': 1.9 }

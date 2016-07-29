@@ -219,12 +219,65 @@ def getRoutineHours(userList):
     return getAverageLogon(),getAverageLogoff()
 
 
-def getAverageUSBUsage(user):
-    pass
+def getAverageUSBUsage(userList):
+    def allDone(dic):
+        for userID in userList:
+            if len(dic[userID])<10:
+                return False
+        return True
+
+    usageDic = dict((userID,{}) for userID in userList)
+    # get 10 logon days for each user
+    with open('../data-r6.2/logon.csv') as logonFile:
+        while not allDone(usageDic):
+            line = logonFile.readline()
+            if not line:
+                print 'File ended before completing.'
+                # for u in logoffTimesDic.keys():
+                #     print u, len(logoffTimesDic[u])
+                logonFile.close()
+                return
+            line = line.strip().split(',')
+            userID = line[2]
+            if userID in userList and len(usageDic[userID]) < 10:
+                # usageDic[userID][date] = count
+                ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
+                usageDic[userID][ts.date()] = 0
+
+    maxdate = max([max(usageDic[userID].keys()) for userID in userList])
+    # count number of device connect for each day
+    with open('../data-r6.2/device.csv') as deviceFile:
+        deviceFile.readline()
+        for line in deviceFile:
+            # print line
+            line = line.strip().split(',')
+            ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
+            if ts.date() > maxdate:
+                break
+            userID = line[2]
+            # print line[5]
+            if userID in userList and line[5] == 'Connect' and ts.date() in usageDic[userID].keys():
+                usageDic[userID][ts.date()] += 1
+                print userID, ts.date()
+
+    # calculate the average
+    for userID in usageDic.keys():
+        usageDic[userID] = sum(usageDic[userID].values())/10.0
+    return usageDic
+
+
 
 if __name__ == '__main__':
     # decoyFileToRDF()
     # ldapToRDF()
     # PCannotation()
-    print getRoutineHours(['ACM2278','MBG3183','CDE1846','CMP2946'])
-    # print getAverageLogoff(['ACM2278'])
+
+    userList = ['ACM2278','MBG3183','CDE1846','CMP2946']
+    # To user getRoutineHours:
+    logonHoursDic, logoffHoursDic = getRoutineHours(userList)
+    for userID in userList:
+        print userID, 'has routine logon time:', logonHoursDic[userID]
+        print '        has routine logoff time:', logoffHoursDic[userID]
+
+    # To user getAverageUSBUsage:
+    print getAverageUSBUsage(userList)

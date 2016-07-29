@@ -1,5 +1,6 @@
 # multiUsers.py
 import sys, datetime
+from urlparse import urlparse
 from globals import *
 path = '../data-r6.2/'
 
@@ -234,6 +235,7 @@ def multiUserAnnotate(userList):
 		deviceDic[userID] = {'count':0, 'connectedDevice':''}
 		print >>outfile, '%s%s %sisInvolvedIn %s%s-event .' %(ex,userID,ex,ex,userID)
 
+	currentTS = '' # current timestamp
 	for record in f:
 	    type = record[:record.find(',')]
 	    if type == 'logon':
@@ -243,8 +245,15 @@ def multiUserAnnotate(userList):
 	            deviceDic[userID]['connectedDevice'] = ''
 	        logon(record,outfile)
 	    elif type == 'device':
-	        record = record.strip().split(',')
-	        userID = record[3]
+			# set the count to zero each day
+	    	record = record.strip().split(',')
+	    	userID = record[3]
+
+	    	if record[2][:record[2].find(' ')] != currentTS:
+	    		currentTS = record[2][:record[2].find(' ')]
+	    		for x in deviceDic.keys():
+	    			deviceDic[x][count] = 0
+
 	        if record[6] == 'Connect':
 	            deviceDic[userID]['count'] += 1
 	            deviceDic[userID]['connectedDevice'] = record[1][1:len(record[1])-1]  # id of this record
@@ -261,11 +270,13 @@ def multiUserAnnotate(userList):
 	        record = record[:record.find('"')].split(',')
 	        record.append(content)
 	        file(record,outfile)
-			# userID = record[3]
-	        # if deviceDic[userID]['connectedDevice']:
-	        #    id = record[1][1:len(record[1])-1]
-	        #    timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
-	        #    print >>outfile, '%s%s %sstartsNoEarlierThanEndingOf %s%s .|%s' %(ex,id,ex,ex,deviceDic[userID]['connectedDevice'],tsToStr(timestamp))
+
+	    	userID = record[3]
+	        if deviceDic[userID]['connectedDevice']:
+	    		id = record[1][1:len(record[1])-1]
+	    		timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
+	    		print >>outfile, '%sfile_%s %sstartsNoEarlierThanEndingOf %sdevice_%s .|%s' \
+									%(ex,id,ex,ex,deviceDic[userID]['connectedDevice'],tsToStr(timestamp))
 	    elif type == 'http':
 	        content = record[record.find('"'):len(record)-1].replace('"','')
 	        record = record[:record.find('"')].split(',')
@@ -288,7 +299,7 @@ if __name__ == '__main__':
 	userList = [line.strip() for line in infile]
 	infile.close()
 
-	multiUserExtract(userList)
+	# multiUserExtract(userList)
 	print 'Extract done.'
 	multiUserCombine()
 	print 'Combine done.'
