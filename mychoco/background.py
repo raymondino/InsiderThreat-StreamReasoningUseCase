@@ -1,5 +1,5 @@
 # background.py
-import os
+import os,sys,datetime
 from globals import *
 path = '../data-r6.2/'
 
@@ -135,7 +135,96 @@ def PCannotation():
     infile.close()
     outfile.close()
 
+# returns a tuple (AverageLogonTime, AverageLogoffTime) where the two elements are dictionaries
+# with keys being the userids, values being the average logon/logoff time of that user
+def getRoutineHours(userList):
+    def allDone(dic):
+        for userID in userList:
+            if userID not in dic.keys():
+                return False
+            if len(dic[userID])<10:
+                return False
+        return True
+
+    def averageTime(timeList):
+        avg = sum(ts.hour*3600 + ts.minute*60 + ts.second for ts in timeList)/len(timeList)
+        minutes, seconds = divmod(int(avg), 60)
+        hours, minutes = divmod(minutes, 60)
+        r = datetime.datetime(1900,1,1,hours,minutes,seconds) # + datetime.timedelta(minutes=15)
+        return r
+
+    def getAverageLogon():
+        logonTimesDic = {}
+        with open('../data-r6.2/logon.csv') as inFile:
+            while not allDone(logonTimesDic):
+                line = inFile.readline()
+                if not line:
+                    print 'File ended before completing.'
+                    # for u in logonTimesDic.keys():
+                    #     print u, len(logonTimesDic[u])
+                    inFile.close()
+                    return
+
+                line = line.strip().split(',')
+                userID = line[2]
+                # print line
+                if userID in userList and line[4] == 'Logon':
+                    ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
+                    if userID in logonTimesDic.keys():
+                        if len(logonTimesDic[userID]) < 10:
+                            if ts.date() in logonTimesDic[userID].keys():
+                                pass
+                            else:
+                                logonTimesDic[userID][ts.date()] = ts.time()
+                    # the user does not exist in the dic
+                    else:
+                        logonTimesDic[userID] = {}
+                        logonTimesDic[userID][ts.date()] = ts.time()
+            # calculate the average for each userID
+            for userID in logonTimesDic.keys():
+                logonTimesDic[userID] = (averageTime(logonTimesDic[userID].values()) \
+                                        + datetime.timedelta(minutes=-15)).time()
+        return logonTimesDic
+
+    def getAverageLogoff():
+        logoffTimesDic = {}
+        with open('../data-r6.2/logon.csv') as inFile:
+            while not allDone(logoffTimesDic):
+                line = inFile.readline()
+                if not line:
+                    print 'File ended before completing.'
+                    # for u in logoffTimesDic.keys():
+                    #     print u, len(logoffTimesDic[u])
+                    inFile.close()
+                    return
+
+                line = line.strip().split(',')
+                userID = line[2]
+                # print line
+                if userID in userList and line[4] == 'Logoff':
+                    ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
+                    if userID in logoffTimesDic.keys():
+                        if len(logoffTimesDic[userID]) < 10:
+                            logoffTimesDic[userID][ts.date()] = ts.time()
+                    # the user does not exist in the dic
+                    else:
+                        logoffTimesDic[userID] = {}
+                        logoffTimesDic[userID][ts.date()] = ts.time()
+            # calculate the average for each userID
+            for userID in logoffTimesDic.keys():
+                logoffTimesDic[userID] = (averageTime(logoffTimesDic[userID].values())\
+                                        + datetime.timedelta(minutes=15)).time()
+        return logoffTimesDic
+
+    return getAverageLogon(),getAverageLogoff()
+
+
+def getAverageUSBUsage(user):
+    pass
+
 if __name__ == '__main__':
-    decoyFileToRDF()
-    ldapToRDF()
-    PCannotation()
+    # decoyFileToRDF()
+    # ldapToRDF()
+    # PCannotation()
+    print getRoutineHours(['ACM2278','MBG3183','CDE1846','CMP2946'])
+    # print getAverageLogoff(['ACM2278'])
