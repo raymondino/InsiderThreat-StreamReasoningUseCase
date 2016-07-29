@@ -114,7 +114,7 @@ public class Window {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				while(actions.peek().getProvenanceScore() > 0) {
+				while(actions.size() > 0 && actions.peek().getProvenanceScore() > 0) {
 					actionBeingQueried = actions.poll();
 					System.out.print("[query] ");
 					query(actionBeingQueried.getActionGraphID());
@@ -238,7 +238,7 @@ public class Window {
 			System.out.println("          user team: " + actionBeingQueried.getUser().getTeam());
 			System.out.println("          user supervisor: " + actionBeingQueried.getUser().getSupervisor());
 			System.out.println("          user resignation: " + actionBeingQueried.getUser().getResinationStatus());
-			System.out.println("          user excessive removable media: " + actionBeingQueried.getUser().getExcessiveRemovableDiskUser());
+			System.out.println("          user excessive removable media user: " + actionBeingQueried.getUser().getExcessiveRemovableDiskUser());
 			System.out.println("          user trust score: " + actionBeingQueried.getUser().getTrustScore());
 			System.out.print("************************************* ");
 			// write suspicious action into a file for benchmark

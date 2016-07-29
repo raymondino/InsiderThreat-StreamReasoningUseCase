@@ -76,7 +76,8 @@ public class ProvTrustSI {
 							window.process();
 						}
 						catch (Exception e) {
-							System.out.print("EXCEPTION!!!!!");
+							System.out.println();
+							System.out.print("[EXCEPTION] ");
 							System.out.println(action.getActionID());
 						}
 					}

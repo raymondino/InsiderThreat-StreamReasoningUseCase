@@ -1050,6 +1050,36 @@ A file copy action is suspicious if 1. it&apos;s an after hour action. 2. a deco
     
 
 
+    <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousLogoffAction -->
+
+    <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousLogoffAction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AfterHourAction"/>
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LogoffAction"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/LogoffAction"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC"/>
+                                <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/LogoffAction"/>
+        <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousAction"/>
+    </owl:Class>
+    
+
+
     <!-- http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousRemovableDeviceUsageAction -->
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousRemovableDeviceUsageAction">
@@ -1081,6 +1111,10 @@ A file copy action is suspicious if 1. it&apos;s an after hour action. 2. a deco
                             </owl:Restriction>
                         </owl:intersectionOf>
                     </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasActor"/>
+                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ExcessiveRemovableDriveUser"/>
+                    </owl:Restriction>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>

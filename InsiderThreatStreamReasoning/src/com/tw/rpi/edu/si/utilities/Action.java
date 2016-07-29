@@ -95,7 +95,7 @@ public class Action implements Comparable<Action> {
 				user = new User(bindingset.getValue("userid").toString().substring(prefix.length()), ts, client);
 				users.add(user);
 			}
-			if(client.getANonReasoningConn().ask("ask from<" + prefix + "> { <"+prefix + user.getID()+"> a <"+prefix+"ExcessiveRemovableDriveUser>}").execute()) {
+			if(client.getANonReasoningConn().ask("ask from<" + graphID + "> { <"+prefix + user.getID()+"> a <"+prefix+"ExcessiveRemovableDriveUser>}").execute()) {
 				user.setExcessiveRemovableDiskUser(true);
 				provenanceScore++;
 			}
@@ -229,9 +229,19 @@ public class Action implements Comparable<Action> {
 					this.activity = x.getValue("o").toString().substring(prefix.length());						
 				}
 			}
-			re = client.getAReasoningConn().select(contextquery).execute();
-			while(re.hasNext()) {
+			if(client.getAReasoningConn().ask(contextquery).execute()){
 				provenanceScore++;
+			}
+		}
+		// for device action
+		else if(actionID.contains("device_")) {
+			String activityquery = "select distinct ?o from <"+graphID+"> where {<"+prefix+actionID+"> a ?o.}";
+			TupleQueryResult re = client.getANonReasoningConn().select(activityquery).execute();
+			while(re.hasNext()) {
+				BindingSet x = re.next();
+				if(x.getValue("o").toString().contains("Disk")) {
+					this.activity = x.getValue("o").toString().substring(prefix.length());						
+				}
 			}
 		}
 	}
