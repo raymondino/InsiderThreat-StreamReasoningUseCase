@@ -19,6 +19,7 @@ public class User {
 	private Boolean resigned; // true for resignation, false for at work
 	private Double trustScore;
 	private Boolean excessiveRemovableDiskUser;
+	private Boolean potentialThreateningInsider;
 	
 	private String statusquery;
 	
@@ -50,10 +51,12 @@ public class User {
 		if(userName.equals("")) {
 			resigned = true;
 		}
+		potentialThreateningInsider = false;
 	}
 	
 	public void reduceTrustScore() { if(trustScore > 0) {trustScore -= 0.1;}}
 	public void setExcessiveRemovableDiskUser(Boolean flag) { excessiveRemovableDiskUser = flag; }
+	public void setPotentialThreateningInsider() { potentialThreateningInsider = true;}
 
 	
 	public String getID() { return userID; }
@@ -65,4 +68,5 @@ public class User {
 	public Boolean getResinationStatus() { return resigned; }
 	public Double getTrustScore() { return trustScore; }
 	public Boolean getExcessiveRemovableDiskUser() { return excessiveRemovableDiskUser; }
+	public Boolean getPotentialThreateningInsider() { return potentialThreateningInsider;}
 }

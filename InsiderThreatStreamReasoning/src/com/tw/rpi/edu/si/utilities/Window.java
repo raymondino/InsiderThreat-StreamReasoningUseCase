@@ -244,7 +244,7 @@ public class Window {
 			// write suspicious action into a file for benchmark
 			try {
 				this.writeSuspiciousAction.write(String.format("%s,", actionGraphID.substring((prefix+"graph/").length())));
-				this.writeSuspiciousAction.write(String.format("%s, ", actionBeingQueried.getTimestamp()));
+				this.writeSuspiciousAction.write(String.format("%s,", actionBeingQueried.getTimestamp()));
 				this.writeSuspiciousAction.write(String.format("%s \n", actionBeingQueried.getUser().getID()));
 				this.writeSuspiciousAction.flush();
 			} catch (IOException e) {
@@ -258,6 +258,18 @@ public class Window {
 	
 	// data exfiltration query
 	private void dataExfiltraion() {
+		if(actionBeingQueried.getUser().getPotentialThreateningInsider()) {
+			System.out.println();
+			System.out.println("*************************************");
+			System.out.println("*************************************");
+			System.out.println("*************************************");
+			System.out.println("[Threatening] Data Exfiltraion Event Detected!");
+			System.out.println("              potential threatening insider: " + actionBeingQueried.getUser().getID());				
+			System.out.println("*************************************");
+			System.out.println("*************************************");
+			System.out.print("************************************* ");
+			return;
+		}
 		// create file for different individuals update
 		File[] files = new File[3];
 		files[0] = new File("data/different-individuals/text1.txt");
@@ -293,6 +305,7 @@ public class Window {
 			System.out.println("*************************************");
 			System.out.println("*************************************");
 			System.out.print("************************************* ");
+			actionBeingQueried.getUser().setPotentialThreateningInsider();
 		}
 		// delete different-individuals graph
 		client.getANonReasoningConn().update("drop graph <" + prefix + "different-individuals>").execute();
