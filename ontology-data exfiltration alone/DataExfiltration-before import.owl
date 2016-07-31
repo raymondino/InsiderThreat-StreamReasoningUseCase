@@ -895,6 +895,7 @@ paceTime.owl)</rdfs:comment>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/JobHuntingAction"/>
                     <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction"/>
                     <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileAction"/>
                     <rdf:Description rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousLoginAction"/>
