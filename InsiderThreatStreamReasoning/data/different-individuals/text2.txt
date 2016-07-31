@@ -1,4 +1,0 @@
-[]
-  a owl:AllDifferent ;
-  owl:distinctMembers (
-   <http://tw.rpi.edu/ontology/DataExfiltration/http_L4X5-P3EF56ZU-2313CAFW>
