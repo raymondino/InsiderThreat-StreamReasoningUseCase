@@ -6,8 +6,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
@@ -27,6 +29,9 @@ public class ProvTrustSI {
 	private String currentActionGraphID; // records current action id
 	private ZonedDateTime currentActioinTS; // records current action timestamp
 	private BufferedReader br; 	// to read data from file for stream simulation
+	private Boolean SIprov; // SI: rank by provenance
+	private Boolean SItrust; // SI: rank by trust
+	private PrintWriter metricwriter; // output the results
 	
 	// constructor
 	public ProvTrustSI(String datapath, SnarlClient c){
@@ -38,16 +43,38 @@ public class ProvTrustSI {
 		currentActioinTS = null;
 		users = new ArrayList<User>();
 		try {
-			this.br = new BufferedReader(new InputStreamReader(
-					new FileInputStream(new File(datapath))));
+			this.br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(datapath))));
 		} catch (FileNotFoundException e1) {
 			System.out.println("[ERROR]: streaming data path is invalid:" + datapath);
 			e1.printStackTrace();
+		}
+		
+		// semantic importance setup
+		SIprov = true;
+		SItrust = false;
+//	    SIprov = false;
+//	    SItrust = true;
+		
+		// setup file for suspicious actions result
+		String resultPath = "suspiciousActionList_windowSize-" + window.getSize().getDays() ;
+		if(SIprov) {
+			resultPath = "data/result/"+resultPath +"_prov.txt";	
+		}
+		else {
+			resultPath = "data/result/"+resultPath +"_trust.txt";
+		}
+		try {
+			File suspiciousActionList = new File(resultPath);
+			suspiciousActionList.delete();
+			metricwriter = new PrintWriter(resultPath, "UTF-8");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
 	// run
 	public void run() {
+		window.setMetricWriter(metricwriter);
 		// read the streaming data action by action
 		System.out.println("[INFO] reading the data");
 		String data = "";
@@ -69,8 +96,8 @@ public class ProvTrustSI {
 					// so we need to construct last action, and add it into the window
 					if(!currentActionGraphID.equals("")) {
 						Action action = new Action(currentActionGraphID, currentActioinTS, users, client); 
-						action.setRankByProv(); // rank by provenance
-						//action.setRankByTrust(); // rank by trust
+						if(SIprov) { action.setRankByProv();} // rank by provenance
+						if(SItrust) { action.setRankByProv();} // rank by trust
 						window.load(currentActionGraphID, currentActioinTS, action);
 						try {
 							window.process();
@@ -79,6 +106,7 @@ public class ProvTrustSI {
 							System.out.println();
 							System.out.print("[EXCEPTION] ");
 							System.out.println(action.getActionID());
+							metricwriter.flush();
 							e.printStackTrace();
 						}
 					}
@@ -95,8 +123,7 @@ public class ProvTrustSI {
 					client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.literal(o))), currentActionGraphID);
 				}
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			metricwriter.close();
+		} catch (IOException e) { e.printStackTrace(); }
 	}
 }
