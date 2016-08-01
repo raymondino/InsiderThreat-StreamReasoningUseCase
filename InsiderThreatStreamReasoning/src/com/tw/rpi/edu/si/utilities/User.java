@@ -17,7 +17,7 @@ public class User {
 	private String team;
 	private String supervisor;
 	private Boolean resigned; // true for resignation, false for at work
-	private Double trustScore;
+	private Integer trustScore;
 	private Boolean excessiveRemovableDiskUser;
 	private Boolean potentialThreateningInsider;
 	
@@ -26,8 +26,8 @@ public class User {
 	public User(String id, ZonedDateTime actionTS, SnarlClient client) {
 		userID = id;
 		userName = "";
-		// initially, every employee has 1.0 trust score
-		trustScore = 1.0;
+		// initially, every employee has 100 trust score
+		trustScore = 100;
 		// construct status query based on the action timestamp
 		if(actionTS.getMonthValue() / 10 == 0) {
 			statusquery = "select ?name ?role ?team ?supervisor from <"+prefix+actionTS.getYear()+"-0"+actionTS.getMonthValue()+"> where {<"+prefix+id+"> <"+prefix+"hasName> ?name; <"+prefix + "hasRole> ?role; <"+prefix+"hasTeam> ?team; <"+prefix + "hasSupervisor> ?supervisor.}";
@@ -54,7 +54,7 @@ public class User {
 		potentialThreateningInsider = false;
 	}
 	
-	public void reduceTrustScore() { if(trustScore > 0) {trustScore -= 0.1;}}
+	public void reduceTrustScore() { if(trustScore > 0) {trustScore -= 1;}}
 	public void setExcessiveRemovableDiskUser(Boolean flag) { excessiveRemovableDiskUser = flag; }
 	public void setPotentialThreateningInsider() { potentialThreateningInsider = true;}
 
@@ -66,7 +66,7 @@ public class User {
 	public String getTeam() { return team; }
 	public String getSupervisor() { return supervisor; }
 	public Boolean getResinationStatus() { return resigned; }
-	public Double getTrustScore() { return trustScore; }
+	public Integer getTrustScore() { return trustScore; }
 	public Boolean getExcessiveRemovableDiskUser() { return excessiveRemovableDiskUser; }
 	public Boolean getPotentialThreateningInsider() { return potentialThreateningInsider;}
 }

@@ -511,15 +511,15 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_F6A4-Q7FN13NQ-2099MNNL http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_F6A4-Q7FN13NQ-2099MNNL http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_F6A4-Q7FN13NQ-2099MNNL http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_F6A4-Q7FN13NQ-2099MNNL http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/George.Z.Estrada@lockheedmartin.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_George.Z.Estrada@lockheedmartin.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/George.Z.Estrada@lockheedmartin.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_F6A4-Q7FN13NQ-2099MNNL http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Signe.Hedwig.Sampson@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Signe.Hedwig.Sampson@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Signe.Hedwig.Sampson@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_F6A4-Q7FN13NQ-2099MNNL http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Faith.Fleur.Parrish@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Faith.Fleur.Parrish@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Faith.Fleur.Parrish@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_F6A4-Q7FN13NQ-2099MNNL http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_F6A4-Q7FN13NQ-2099MNNL http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Graham.Harlan.Thornton@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Graham.Harlan.Thornton@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Graham.Harlan.Thornton@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_F6A4-Q7FN13NQ-2099MNNL http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "32667 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_F6A4-Q7FN13NQ-2099MNNL http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "Despite_the_species'_persistent_lack_of_reproductive_success,_in_the_early_1980s_some_conservation_organizations_began_a_captive_breeding_program_for_the_Sumatran_Rhinoceros._The_rhino_is_also_known_to_be_vulnerable_to_the_blood_disease_surra_which_can_be_spread_by_horse-flies_carrying_parasitic_trypanosomes;_in_2004,_all_five_rhinos_at_the_Sumatran_Rhinoceros_Conservation_Centre_died_over_an_18-day_period_after_becoming_infected_by_the_disease." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/email_K4T1-X9EL29QH-0816MMNC . 2010-10-12T14:13:06
@@ -528,13 +528,13 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_K4T1-X9EL29QH-0816MMNC http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_K4T1-X9EL29QH-0816MMNC http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K4T1-X9EL29QH-0816MMNC http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K4T1-X9EL29QH-0816MMNC http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/John.Ivor.Pope@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_John.Ivor.Pope@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/John.Ivor.Pope@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K4T1-X9EL29QH-0816MMNC http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Signe.Hedwig.Sampson@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Signe.Hedwig.Sampson@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Signe.Hedwig.Sampson@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K4T1-X9EL29QH-0816MMNC http://tw.rpi.edu/ontology/DataExfiltration/bcc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K4T1-X9EL29QH-0816MMNC http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K4T1-X9EL29QH-0816MMNC http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "18529 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K4T1-X9EL29QH-0816MMNC http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "The_first_documented_Sumatran_Rhinoceros_was_shot_{convert|16|km|mi}_outside_Fort_Marlborough,_near_the_west_coast_of_Sumatra,_in_1793._In_1972,_the_only_Sumatran_Rhino_remaining_in_captivity_died_at_the_Copenhagen_Zoo._Rhino-oil,_a_concoction_made_from_leaving_a_rhino's_skull_in_coconut_oil_for_several_weeks,_may_be_used_to_treat_skin_diseases." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/http_U3V1-P4ZM96XO-1247PXTH . 2010-10-12T14:14:05
@@ -551,11 +551,11 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_K7U6-B6OY38CQ-9940XMXX http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_K7U6-B6OY38CQ-9940XMXX http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K7U6-B6OY38CQ-9940XMXX http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K7U6-B6OY38CQ-9940XMXX http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Vanna.Phyllis.Solomon@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Vanna.Phyllis.Solomon@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Vanna.Phyllis.Solomon@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K7U6-B6OY38CQ-9940XMXX http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K7U6-B6OY38CQ-9940XMXX http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K7U6-B6OY38CQ-9940XMXX http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "361278 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_K7U6-B6OY38CQ-9940XMXX http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment http://tw.rpi.edu/ontology/DataExfiltration/C:_76RM563_MVWVU6QU.txt .
 http://tw.rpi.edu/ontology/DataExfiltration/attachment1 http://tw.rpi.edu/ontology/DataExfiltration/hasSize> "297512 bytes" .
@@ -568,11 +568,11 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Larissa_Mooney@juno.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Larissa_Mooney@juno.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Larissa_Mooney@juno.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF http://tw.rpi.edu/ontology/DataExfiltration/bcc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "132087 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_O9E5-W1LC77EE-8360ACVF http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment http://tw.rpi.edu/ontology/DataExfiltration/C:_88nLH61_G8421ICB.doc .
 http://tw.rpi.edu/ontology/DataExfiltration/attachment1 http://tw.rpi.edu/ontology/DataExfiltration/hasSize> "111565 bytes" .
@@ -592,13 +592,13 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_R1X2-X3XD69LO-0823WGWJ http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_R1X2-X3XD69LO-0823WGWJ http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_R1X2-X3XD69LO-0823WGWJ http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_R1X2-X3XD69LO-0823WGWJ http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Caldwell.Baxter.Calderon@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Caldwell.Baxter.Calderon@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Caldwell.Baxter.Calderon@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_R1X2-X3XD69LO-0823WGWJ http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Malcolm.Elton.Battle@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Malcolm.Elton.Battle@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Malcolm.Elton.Battle@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_R1X2-X3XD69LO-0823WGWJ http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_R1X2-X3XD69LO-0823WGWJ http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Travis.Reed.Whitney@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Travis.Reed.Whitney@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Travis.Reed.Whitney@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_R1X2-X3XD69LO-0823WGWJ http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "23217 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_R1X2-X3XD69LO-0823WGWJ http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "According_to_The_New_York_Times,_People_wrote_in_demanding_to_know_how_the_Bureau_of_the_Mint_had_discovered_that_Joe_Stalin_had_a_middle_name._The_Franklin_half_dollar_is_a_coin_that_was_struck_by_the_United_States_Mint_(Mint)_from_1948_to_1963._Franklin_had_opposed_putting_portraits_on_coins;_he_advocated_putting_proverbs_on_coins_about_which_the_holder_could_profit_through_reflection." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA . 2010-10-12T14:15:06
@@ -607,11 +607,11 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA http://tw.rpi.edu/ontology/DataExfiltration/bcc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "20053 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_A5Q3-X6LZ55JO-3538ZDYA http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "The_new_dam_would_create_a_lake_50_miles_(80_km)_long,_and_one_arm_would_extend_to_Monte_Ne._Spectators_attended_the_planned_explosion,_but_it_was_stopped_just_in_time_by_COE_attorney_David_Waid._Each_room_had_a_doorway_to_the_outside_and_the_hotel_was_surrounded_with_wide_porches." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/http_I9N0-I5IF01EP-2583WPHY . 2010-10-12T14:15:20
@@ -628,15 +628,15 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/CCB4@charter.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_CCB4@charter.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/CCB4@charter.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Faith.F.Parrish@optonline.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Faith.F.Parrish@optonline.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Faith.F.Parrish@optonline.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/MEB546@charter.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_MEB546@charter.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/MEB546@charter.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "1403271 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T2I2-M6ER47UZ-7231DUBF http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment http://tw.rpi.edu/ontology/DataExfiltration/C:_0YFFSIB4.doc .
 http://tw.rpi.edu/ontology/DataExfiltration/attachment1 http://tw.rpi.edu/ontology/DataExfiltration/hasSize> "1368204 bytes" .
@@ -656,13 +656,13 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/BNC889@cox.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_BNC889@cox.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/BNC889@cox.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY http://tw.rpi.edu/ontology/DataExfiltration/bcc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "36036 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M8Q4-H1SB45ZI-3198KBHY http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "We_recruit_and_hire_the_best_and_the_brightest_from_top_colleges,_and_68%_of_our_recruits_are_engineers_and_scientists._Inspired_imagination_and_achievement._Applicants_work_as_a_part_of_a_team_using_analytical_expertise_to_develop_independent_estimates,_reviews,_and_other_analytical_products." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/email_M7C8-G8QL66AJ-9166GNHR . 2010-10-12T14:17:15
@@ -671,9 +671,9 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_M7C8-G8QL66AJ-9166GNHR http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_M7C8-G8QL66AJ-9166GNHR http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M7C8-G8QL66AJ-9166GNHR http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M7C8-G8QL66AJ-9166GNHR http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/John.Ivor.Pope@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_John.Ivor.Pope@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/John.Ivor.Pope@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M7C8-G8QL66AJ-9166GNHR http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M7C8-G8QL66AJ-9166GNHR http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "1377086 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M7C8-G8QL66AJ-9166GNHR http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment http://tw.rpi.edu/ontology/DataExfiltration/C:_869Zjq8_VLIV3WE8.doc .
 http://tw.rpi.edu/ontology/DataExfiltration/attachment1 http://tw.rpi.edu/ontology/DataExfiltration/hasSize> "1355127 bytes" .
@@ -1134,11 +1134,11 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ http://tw.rpi.edu/ontology/DataExfiltration/bcc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "57893 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M9L3-N3CR29HT-9100IWZZ http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "Lorimier_proposed_recruiting_a_force_of_Indians_to_launch_an_attack_on_Continental_forces_at_Montreal_from_the_west._Lorimier_was_at_first_only_able_to_immediately_raise_40_warriors,_but_was_joined_on_the_way_by_another_40._Various_companies_profited_from_the_attention_surrounding_Knut_by_developing_themed_products_such_as_ringtones_and_cuddly_toys._Knut's_role_at_the_Berlin_Zoo_was_to_have_included_his_becoming_an_attractive_stud_for_other_zoos_in_order_to_help_preserve_his_species." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL . 2010-10-13T09:33:16
@@ -1147,17 +1147,17 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Thornton-Graham@juno.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Thornton-Graham@juno.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Thornton-Graham@juno.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/TOS17@aol.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_TOS17@aol.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/TOS17@aol.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Faith.F.Parrish@optonline.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Faith.F.Parrish@optonline.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Faith.F.Parrish@optonline.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Vanna_P_Solomon@optonline.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Vanna_P_Solomon@optonline.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Vanna_P_Solomon@optonline.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Signe_H_Sampson@juno.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Signe_H_Sampson@juno.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Signe_H_Sampson@juno.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "425868 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_X5O1-F4FN88HD-4371XHWL http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment http://tw.rpi.edu/ontology/DataExfiltration/C:_SHS3176_PAPLF2XX.doc .
 http://tw.rpi.edu/ontology/DataExfiltration/attachment1 http://tw.rpi.edu/ontology/DataExfiltration/hasSize> "397757 bytes" .
@@ -1168,17 +1168,17 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/BNC889@cox.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_BNC889@cox.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/BNC889@cox.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Christian_Pratt@juno.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Christian_Pratt@juno.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Christian_Pratt@juno.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Stephen.F.Montoya@yahoo.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Stephen.F.Montoya@yahoo.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Stephen.F.Montoya@yahoo.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Thornton-Graham@juno.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Thornton-Graham@juno.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Thornton-Graham@juno.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "38024 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_B0P1-D1MF53CN-6521RXWH http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "Sherburne_landed_about_100_of_his_men_at_Quinze-Chenes,_about_{convert|16|km|mi|0}_from_The_Cedars._In_the_meantime,_General_Arnold_gathered_most_of_the_few_remaining_forces_in_Montreal,_and_sent_requests_to_the_outposts_around_the_city_for_additional_troops._The_fur_trade_was_economically_important_to_the_city,_and_its_absence_affected_both_supporters_and_opponents_of_the_American_cause._As_a_result,_the_German_Environment_Minister_Sigmar_Gabriel_officially_adopted_Knut_as_the_mascot_for_a_conference_on_endangered_species_to_be_held_in_Bonn_in_2008._The_first_2,400_produced_toys,_which_sold_exclusively_at_the_Berlin_Zoo,_sold_out_in_only_four_days." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/email_P4B3-L7VG60BI-4705BIPZ . 2010-10-13T09:36:28
@@ -1187,11 +1187,11 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_P4B3-L7VG60BI-4705BIPZ http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_P4B3-L7VG60BI-4705BIPZ http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_P4B3-L7VG60BI-4705BIPZ http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_P4B3-L7VG60BI-4705BIPZ http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/BNC889@cox.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_BNC889@cox.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/BNC889@cox.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_P4B3-L7VG60BI-4705BIPZ http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_P4B3-L7VG60BI-4705BIPZ http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_P4B3-L7VG60BI-4705BIPZ http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "36036 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_P4B3-L7VG60BI-4705BIPZ http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "We_recruit_and_hire_the_best_and_the_brightest_from_top_colleges,_and_68%_of_our_recruits_are_engineers_and_scientists._Inspired_imagination_and_achievement._Applicants_work_as_a_part_of_a_team_using_analytical_expertise_to_develop_independent_estimates,_reviews,_and_other_analytical_products." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/email_T1A2-I1TI33GF-6810XHND . 2010-10-13T09:37:34
@@ -1200,11 +1200,11 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_T1A2-I1TI33GF-6810XHND http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_T1A2-I1TI33GF-6810XHND http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T1A2-I1TI33GF-6810XHND http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T1A2-I1TI33GF-6810XHND http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/BNC889@cox.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_BNC889@cox.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/BNC889@cox.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T1A2-I1TI33GF-6810XHND http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T1A2-I1TI33GF-6810XHND http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T1A2-I1TI33GF-6810XHND http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "36036 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_T1A2-I1TI33GF-6810XHND http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "We_recruit_and_hire_the_best_and_the_brightest_from_top_colleges,_and_68%_of_our_recruits_are_engineers_and_scientists._Inspired_imagination_and_achievement._Applicants_work_as_a_part_of_a_team_using_analytical_expertise_to_develop_independent_estimates,_reviews,_and_other_analytical_products." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/http_M7F0-I9UT13GM-6576MARI . 2010-10-13T09:44:14
@@ -1261,15 +1261,15 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_M3P9-T6QS44UU-2113MXOY http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_M3P9-T6QS44UU-2113MXOY http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M3P9-T6QS44UU-2113MXOY http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M3P9-T6QS44UU-2113MXOY http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Kai.Willow.Crosby@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Kai.Willow.Crosby@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Kai.Willow.Crosby@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M3P9-T6QS44UU-2113MXOY http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M3P9-T6QS44UU-2113MXOY http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Ulla.Miriam.Hodge@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Ulla.Miriam.Hodge@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Ulla.Miriam.Hodge@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M3P9-T6QS44UU-2113MXOY http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Ashley-Camden@northropgrumman.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Ashley-Camden@northropgrumman.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Ashley-Camden@northropgrumman.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M3P9-T6QS44UU-2113MXOY http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Courtney.Shafira.Ward@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Courtney.Shafira.Ward@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Courtney.Shafira.Ward@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M3P9-T6QS44UU-2113MXOY http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "15485 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_M3P9-T6QS44UU-2113MXOY http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "Rowland_Mason_Ordish_designed_an_Ordish-Lefeuvre_Principle_bridge_to_comply_with_the_Act's_specifications,_of_a_similar_design_to_his_nearby_Albert_Bridge._A_utilitarian_structure_made_of_mismatched_materials_purchased_for_cheapness,_the_response_to_the_new_bridge_was_unenthusiastic;_the_Illustrated_London_News_remarked_at_the_time_of_its_opening_that_No_attempt_has_been_made_to_produce_architectural_effect,_the_structure_being_substantial_rather_than_ornamental._In_1864,_it_was_expected_that_the_newly_formed_Hammersmith_and_City_Railway_would_build_its_western_terminus_on_the_north_bank_of_the_river_between_Chelsea_and_Fulham._Although_Wandsworth_Town_railway_station,_near_the_southern_end_of_the_bridge,_had_provided_direct_connections_to_central_London_since_1846,_the_lack_of_rail_connections_opening_on_the_north_bank_meant_the_area_on_the_Fulham_side_remained_undeveloped,_and_bridge_usage_was_low._Although_Wandsworth_Bridge_is_one_of_the_busiest_bridges_in_London,_carrying_over_50,000_vehicles_daily,_it_has_been_described_as_probably_the_least_noteworthy_bridge_in_London." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/http_V2T6-C5IX01SM-9752MXBM . 2010-10-13T10:11:44
@@ -1294,15 +1294,15 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_E5P3-Z6JT10BR-0013CMPH http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_E5P3-Z6JT10BR-0013CMPH http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_E5P3-Z6JT10BR-0013CMPH http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_E5P3-Z6JT10BR-0013CMPH http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/CCB4@charter.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_CCB4@charter.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/CCB4@charter.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_E5P3-Z6JT10BR-0013CMPH http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Faith.F.Parrish@optonline.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Faith.F.Parrish@optonline.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Faith.F.Parrish@optonline.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_E5P3-Z6JT10BR-0013CMPH http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/MEB546@charter.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_MEB546@charter.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/MEB546@charter.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_E5P3-Z6JT10BR-0013CMPH http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_E5P3-Z6JT10BR-0013CMPH http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_E5P3-Z6JT10BR-0013CMPH http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "1403271 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_E5P3-Z6JT10BR-0013CMPH http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment http://tw.rpi.edu/ontology/DataExfiltration/C:_0YFFSIB4.doc .
 http://tw.rpi.edu/ontology/DataExfiltration/attachment1 http://tw.rpi.edu/ontology/DataExfiltration/hasSize> "1368204 bytes" .
@@ -1329,9 +1329,9 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_J1F9-I2WK99AJ-4591UECV http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_J1F9-I2WK99AJ-4591UECV http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_J1F9-I2WK99AJ-4591UECV http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_J1F9-I2WK99AJ-4591UECV http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Whitney-Travis@verizon.net http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_J1F9-I2WK99AJ-4591UECV http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.B.Gentry@netzero.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_J1F9-I2WK99AJ-4591UECV http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "20053 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_J1F9-I2WK99AJ-4591UECV http://tw.rpi.edu/ontology/DataExfiltration/hasContent> "The_new_dam_would_create_a_lake_50_miles_(80_km)_long,_and_one_arm_would_extend_to_Monte_Ne._Spectators_attended_the_planned_explosion,_but_it_was_stopped_just_in_time_by_COE_attorney_David_Waid._Each_room_had_a_doorway_to_the_outside_and_the_hotel_was_surrounded_with_wide_porches." .
 http://tw.rpi.edu/ontology/DataExfiltration/MBG3183-event http://tw.rpi.edu/ontology/DataExfiltration/hasAction http://tw.rpi.edu/ontology/DataExfiltration/http_H3Z3-Y9WZ18YZ-4587RNIM . 2010-10-13T10:37:40
@@ -1640,15 +1640,15 @@ http://tw.rpi.edu/ontology/DataExfiltration/email_C9R7-G9PS28IS-1194NITT http://
 http://tw.rpi.edu/ontology/DataExfiltration/email_C9R7-G9PS28IS-1194NITT http://tw.rpi.edu/ontology/DataExfiltration/hasActor http://tw.rpi.edu/ontology/DataExfiltration/MBG3183 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_C9R7-G9PS28IS-1194NITT http://tw.rpi.edu/ontology/DataExfiltration/isPerformedOnPC http://tw.rpi.edu/ontology/DataExfiltration/PC-3906 .
 http://tw.rpi.edu/ontology/DataExfiltration/email_C9R7-G9PS28IS-1194NITT http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Vanna.Phyllis.Solomon@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Vanna.Phyllis.Solomon@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Vanna.Phyllis.Solomon@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_C9R7-G9PS28IS-1194NITT http://tw.rpi.edu/ontology/DataExfiltration/to http://tw.rpi.edu/ontology/DataExfiltration/Barrett.Nigel.Coffey@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Barrett.Nigel.Coffey@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Barrett.Nigel.Coffey@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_C9R7-G9PS28IS-1194NITT http://tw.rpi.edu/ontology/DataExfiltration/cc http://tw.rpi.edu/ontology/DataExfiltration/Caldwell.Baxter.Calderon@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Caldwell.Baxter.Calderon@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Caldwell.Baxter.Calderon@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_C9R7-G9PS28IS-1194NITT http://tw.rpi.edu/ontology/DataExfiltration/bcc http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_C9R7-G9PS28IS-1194NITT http://tw.rpi.edu/ontology/DataExfiltration/from http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com .
-http://tw.rpi.edu/ontology/DataExfiltration/email_Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
+http://tw.rpi.edu/ontology/DataExfiltration/Murphy.Benjamin.Gentry@dtaa.com http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://tw.rpi.edu/ontology/DataExfiltration/InternalEmailAddress .
 http://tw.rpi.edu/ontology/DataExfiltration/email_C9R7-G9PS28IS-1194NITT http://tw.rpi.edu/ontology/DataExfiltration/hasEmailSize> "950704 bytes" .
 http://tw.rpi.edu/ontology/DataExfiltration/email_C9R7-G9PS28IS-1194NITT http://tw.rpi.edu/ontology/DataExfiltration/hasEmailAttachment http://tw.rpi.edu/ontology/DataExfiltration/C:_88nLH61_H7DWO05D.pdf .
 http://tw.rpi.edu/ontology/DataExfiltration/attachment1 http://tw.rpi.edu/ontology/DataExfiltration/hasSize> "930508 bytes" .

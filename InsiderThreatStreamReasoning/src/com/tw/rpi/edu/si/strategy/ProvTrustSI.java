@@ -79,6 +79,7 @@ public class ProvTrustSI {
 							System.out.println();
 							System.out.print("[EXCEPTION] ");
 							System.out.println(action.getActionID());
+							e.printStackTrace();
 						}
 					}
 					currentActionGraphID = prefix + "graph/" + o.substring(prefix.length());

@@ -275,10 +275,20 @@ public class Action implements Comparable<Action> {
 
 	@Override
 	public int compareTo(Action a) {
-		// rank by action's provenance score
+		// rank by action's provenance score, then by trust
 		if(rankByProv && !rankByTrust) { // a max heap
 			if(provenanceScore == a.getProvenanceScore()) {
-				return 0;
+				if(user.getTrustScore() >= 50 && a.user.getTrustScore() >= 50)
+					return 0;
+				else if(user.getTrustScore() < 50 && a.user.getTrustScore() >= 50) {
+					return -1;
+				}
+				else if (user.getTrustScore() >= 50 && a.user.getTrustScore() < 50) {
+					return 1;
+				}
+				else {
+					return user.getTrustScore() < a.user.getTrustScore() ? -1 : 1;
+				}
 			}
 			else
 				return provenanceScore > a.getProvenanceScore() ? -1 : 1;

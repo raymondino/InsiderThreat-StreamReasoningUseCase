@@ -9,18 +9,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.Period;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Set;
 import java.util.Map.Entry;
 
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.rio.RDFFormat;
 
+import com.complexible.common.rdf.model.StardogValueFactory.RDF;
+import com.complexible.common.openrdf.model.Models2;
 import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.StardogException;
 
@@ -32,11 +36,14 @@ public class Window {
 	private ZonedDateTime latestActionTS;
 	private Action latestAction;
 	private Action actionBeingQueried;
+	private ZonedDateTime endOfDay; // end of day
+	private ZonedDateTime lastEndOfDay; // last end of day
 	private ZonedDateTime start; // window start
 	private ZonedDateTime end; // window end
 	private Boolean window_start; // flag for window start
 	private long totalActionProcessTime; // total time up till now to process all actions
 	private Integer actionCounter; // total action number so far
+	private LinkedHashMap<String, String> suspiciousDeviceListAtTheEndOfDay;
 	
 	SnarlClient client;
 	FileWriter writeSuspiciousAction;
@@ -57,6 +64,7 @@ public class Window {
 		actions = new PriorityQueue<Action>();
 		writeSuspiciousAction = null;
 		window_start = false;
+		suspiciousDeviceListAtTheEndOfDay = new LinkedHashMap<String, String> ();
 	}	
 	public Window(SnarlClient c) {
 		size = Period.ofDays(7);
@@ -71,6 +79,7 @@ public class Window {
 		window_start = false;
 		totalActionProcessTime = (long) 0.0;
 		actionCounter = 0;
+		suspiciousDeviceListAtTheEndOfDay = new LinkedHashMap<String, String> ();
 	}
 	
 	// assessor
@@ -81,7 +90,8 @@ public class Window {
 	// modifier
 	public void setStep(int s) {step = Period.ofDays(s);}
 	public void setSize(int s) {size = Period.ofDays(s);}
-	public void setStart(ZonedDateTime s) {start = s; end = start.plus(size);}
+	public void setStart(ZonedDateTime s) {start = s; end = start.plus(size); lastEndOfDay = start; endOfDay = ZonedDateTime.of(start.getYear(), start.getMonthValue(), start.getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern"));}
+	private void updateEndOfDay(ZonedDateTime s) {endOfDay = ZonedDateTime.of(s.getYear(), s.getMonthValue(), s.getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern"));}
 	
 	// function: window loads data
 	public void load(String graphid, ZonedDateTime ts, Action a) {
@@ -99,6 +109,33 @@ public class Window {
 	
 	// function: window process data
 	public void process() {
+		// check suspicious device actions at the end of every day
+		if(latestAction.getUser().getExcessiveRemovableDiskUser() && latestActionTS.isAfter(endOfDay)) {
+			// add ExcessiveRemovableDriveUser info into actor-event graph
+			client.addModel(Models2.newModel(Values.statement(Values.iri(prefix+latestAction.getUser().getID()),RDF.TYPE, Values.iri(prefix+"ExcessiveRemovableDriveUser"))), prefix+"actor-event");
+			// form device action query
+			String fromGraph = "from <" + prefix + "background> from <" + prefix + "actor-event> ";
+			for(Action a: actions) {
+				ZonedDateTime aTS = a.getTimestamp();
+				// we only need to query today's device actions
+				if((aTS.isAfter(lastEndOfDay)) && (aTS.isBefore(endOfDay)) && a.getActionID().contains("device")) {
+					fromGraph += ("from <" + prefix + "graph/" + a.getActionID() + "> ");
+				}
+			}
+			String deviceQuery = "select distinct ?action ?actor " + fromGraph + "where { ?action a <" + prefix + "SuspiciousAction>. ?action <"+prefix+"hasActor> ?actor}";
+			TupleQueryResult result = client.getAReasoningConn().select(deviceQuery).execute();
+			while(result.hasNext()) {
+				BindingSet bs = result.next();
+				suspiciousDeviceListAtTheEndOfDay.put(bs.getValue("action").toString().substring(prefix.length()), bs.getValue("actor").toString().substring(prefix.length()));
+			}
+			// delete ExcessiveRemovableDriveUser from actor-event graph
+			String deleteData =  "delete data { graph <"+prefix+"actor-event> {<"+prefix+latestAction.getUser().getID()+"> a <"+prefix+"ExcessiveRemovableDriveUser>}}";
+			client.getANonReasoningConn().update(deleteData);
+			// update the new end of day
+			lastEndOfDay = endOfDay;
+			updateEndOfDay(latestActionTS);
+		}		
+		
 		// if window is not full
 		if(latestActionTS.isBefore(end)) {
 			// record action process time
@@ -114,10 +151,16 @@ public class Window {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				while(actions.size() > 0 && actions.peek().getProvenanceScore() > 0) {
+				while(actions.size() > 0 && (
+					  actions.peek().getProvenanceScore() > 0 || (
+					  actions.peek().getProvenanceScore() == 0 && 
+					  actions.peek().getUser().getTrustScore() < 50))) {
 					actionBeingQueried = actions.poll();
 					System.out.print("[query] ");
 					query(actionBeingQueried.getActionGraphID());
+				}
+				if(actions.size() == 0) {
+					System.out.println("[debug] actions list in window is empty.");
 				}
 			}
 			// if actions are ranked by trust score
@@ -228,7 +271,7 @@ public class Window {
 				System.out.println("          from removable media: " + actionBeingQueried.getFromRemovableMedia());
 				System.out.println("          to removable media: " + actionBeingQueried.getToRemovableMedia());
 			}
-			System.out.println("          action provenance socre: " + actionBeingQueried.getProvenanceScore());
+			System.out.println("          action provenance score: " + actionBeingQueried.getProvenanceScore());
 			System.out.println();
 			System.out.println("          action performed pc: " + actionBeingQueried.getPc());
 			System.out.println("          user assigned pc: " + actionBeingQueried.getUser().getPC());
@@ -246,6 +289,15 @@ public class Window {
 				this.writeSuspiciousAction.write(String.format("%s,", actionGraphID.substring((prefix+"graph/").length())));
 				this.writeSuspiciousAction.write(String.format("%s,", actionBeingQueried.getTimestamp()));
 				this.writeSuspiciousAction.write(String.format("%s \n", actionBeingQueried.getUser().getID()));
+				if(suspiciousDeviceListAtTheEndOfDay.size() != 0) {
+					Set<String> keys = suspiciousDeviceListAtTheEndOfDay.keySet();
+					for(String k:keys) {
+						// didn't output timestamp for end of day suspicious device action, I can do it but I am lazy.
+						this.writeSuspiciousAction.write(String.format("%s, ,", k)); 
+						this.writeSuspiciousAction.write(String.format("%s \n", suspiciousDeviceListAtTheEndOfDay.get(k)));
+					}
+					this.suspiciousDeviceListAtTheEndOfDay.clear();
+				}
 				this.writeSuspiciousAction.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
