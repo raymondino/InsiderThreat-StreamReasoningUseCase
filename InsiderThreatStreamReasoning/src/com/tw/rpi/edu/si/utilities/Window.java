@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -46,7 +47,7 @@ public class Window {
 	private LinkedHashMap<String, String> suspiciousDeviceListAtTheEndOfDay;
 	
 	SnarlClient client;
-	FileWriter writeSuspiciousAction;
+	PrintWriter writeSuspiciousAction;
 	
 	// pair of action graph id and timestamp
 	private LinkedHashMap<String, ZonedDateTime> content; 
@@ -147,7 +148,7 @@ public class Window {
 					// write suspicious action list to file
 					File suspiciousActionList = new File("data/result/"+filename +"_prov.txt");
 					suspiciousActionList.delete();
-					writeSuspiciousAction = new FileWriter(suspiciousActionList, true);	
+					writeSuspiciousAction = new PrintWriter(new BufferedWriter(new FileWriter(suspiciousActionList)));	
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -169,7 +170,7 @@ public class Window {
 					// write suspicious action list to file
 					File suspiciousActionList = new File("data/result/"+filename +"_trust.txt");
 					suspiciousActionList.delete();
-					writeSuspiciousAction = new FileWriter(suspiciousActionList, true);	
+					writeSuspiciousAction = new PrintWriter(new BufferedWriter(new FileWriter(suspiciousActionList)));	
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -284,24 +285,16 @@ public class Window {
 			System.out.println("          user excessive removable media user: " + actionBeingQueried.getUser().getExcessiveRemovableDiskUser());
 			System.out.println("          user trust score: " + actionBeingQueried.getUser().getTrustScore());
 			System.out.print("************************************* ");
-			// write suspicious action into a file for benchmark
-			try {
-				this.writeSuspiciousAction.write(String.format("%s,", actionGraphID.substring((prefix+"graph/").length())));
-				this.writeSuspiciousAction.write(String.format("%s,", actionBeingQueried.getTimestamp()));
-				this.writeSuspiciousAction.write(String.format("%s \n", actionBeingQueried.getUser().getID()));
-				if(suspiciousDeviceListAtTheEndOfDay.size() != 0) {
-					Set<String> keys = suspiciousDeviceListAtTheEndOfDay.keySet();
-					for(String k:keys) {
-						// didn't output timestamp for end of day suspicious device action, I can do it but I am lazy.
-						this.writeSuspiciousAction.write(String.format("%s, ,", k)); 
-						this.writeSuspiciousAction.write(String.format("%s \n", suspiciousDeviceListAtTheEndOfDay.get(k)));
-					}
-					this.suspiciousDeviceListAtTheEndOfDay.clear();
+			this.writeSuspiciousAction.println(actionGraphID.substring((prefix+"graph/").length()) + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID());
+			if(suspiciousDeviceListAtTheEndOfDay.size() != 0) {
+				Set<String> keys = suspiciousDeviceListAtTheEndOfDay.keySet();
+				for(String k:keys) {
+					// didn't output timestamp for end of day suspicious device action, I can do it but I am lazy.
+					this.writeSuspiciousAction.println(k + ",," + suspiciousDeviceListAtTheEndOfDay.get(k));
 				}
-				this.writeSuspiciousAction.flush();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}	
+			}
+			this.writeSuspiciousAction.flush();
+			this.suspiciousDeviceListAtTheEndOfDay.clear();	
 			// move this action to suspicious action graphs
 			client.getANonReasoningConn().update("add <"+actionGraphID+"> to <"+prefix+"suspicious>").execute();
 			dataExfiltraion();
