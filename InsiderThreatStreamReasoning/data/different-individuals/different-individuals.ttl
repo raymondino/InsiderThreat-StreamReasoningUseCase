@@ -1,8 +1,0 @@
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-<http://tw.rpi.edu/ontology/DataExfiltration/> a owl:Ontology .
-<http://tw.rpi.edu/ontology/DataExfiltration/http_L4X5-P3EF56ZU-2313CAFW> a owl:NamedIndividual .
-[]
-  a owl:AllDifferent ;
-  owl:distinctMembers (
-   <http://tw.rpi.edu/ontology/DataExfiltration/http_L4X5-P3EF56ZU-2313CAFW>
- ) .

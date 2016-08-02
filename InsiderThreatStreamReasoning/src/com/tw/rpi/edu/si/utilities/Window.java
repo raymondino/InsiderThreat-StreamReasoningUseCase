@@ -88,7 +88,8 @@ public class Window {
 	
 	// modifier
 	public void setStep(int s) {step = Period.ofDays(s);}
-	public void setSize(int s) {size = Period.ofDays(s);}
+	public void setWeeklySize(int s) {size = Period.ofDays(s);}
+	public void setMonthlySize(int s) {size = Period.ofMonths(s);}
 	public void setStart(ZonedDateTime s) {start = s; end = start.plus(size); lastEndOfDay = start; endOfDay = ZonedDateTime.of(start.getYear(), start.getMonthValue(), start.getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern"));}
 	private void updateEndOfDay(ZonedDateTime s) {endOfDay = ZonedDateTime.of(s.getYear(), s.getMonthValue(), s.getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern"));}
 	public void setMetricWriter(PrintWriter pw) { this.writeSuspiciousAction = pw;}
@@ -117,6 +118,7 @@ public class Window {
 			String fromGraph = "from <" + prefix + "background> from <" + prefix + "actor-event> ";
 			for(Action a: actions) {
 				ZonedDateTime aTS = a.getTimestamp();
+				System.out.println(a.getActionID() + " *** " + aTS);
 				// we only need to query today's device actions
 				if((aTS.isAfter(lastEndOfDay)) && (aTS.isBefore(endOfDay)) && a.getActionID().contains("device")) {
 					fromGraph += ("from <" + prefix + "graph/" + a.getActionID() + "> ");
@@ -133,6 +135,9 @@ public class Window {
 			client.getANonReasoningConn().update(deleteData);
 			// update the new end of day
 			lastEndOfDay = endOfDay;
+		}
+		// update endOfDay everyday
+		if(latestActionTS.isAfter(endOfDay)) {
 			updateEndOfDay(latestActionTS);
 		}
 		// if window is not full
@@ -141,24 +146,42 @@ public class Window {
 			long actionProcessStartTime = System.currentTimeMillis();
 			// if actions are ranked by provenance score
 			if(latestAction.isRankByProv()) {
-				while(actions.size() > 0 && (
-					  actions.peek().getProvenanceScore() > 0 || (
-					  actions.peek().getProvenanceScore() == 0 && 
-					  actions.peek().getUser().getTrustScore() < 50))) {
+//				for(Action a:actions) {
+//					System.out.println("[debug] " + a.getActionID() + "-" + a.getProvenanceScore() + "- "+ a.getUser().getID() + "-" + a.getUser().getTrustScore());
+//				}
+				while(actions.size() > 0 && actions.peek().getProvenanceScore() > 0) {
 					actionBeingQueried = actions.poll();
-					System.out.print("[query] ");
-					query(actionBeingQueried.getActionGraphID());
-				}
-				if(actions.size() == 0) {
-					System.out.println("[debug] actions list in window is empty.");
+					System.out.print("[prov][query] ");
+					if(query(actionBeingQueried.getActionGraphID())) {
+						totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
+						writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
+					}
 				}
 			}
 			// if actions are ranked by trust score
-			else if (latestAction.isRankByTrust()) {
-				while(actions.peek().getUser().getTrustScore() < 0) {
-					actionBeingQueried = actions.poll();
-					System.out.println("[query] ");
-					query(actionBeingQueried.getActionGraphID());
+			else if (latestAction.isRankByProvTrust()) {
+//				for(Action a:actions) {
+//					System.out.println("[debug] " + a.getActionID() + "-" + a.getUser().getID() + "-" + a.getUser().getTrustScore());
+//				}
+				while(actions.size() > 0 && (
+					  actions.peek().getProvenanceScore() > 0 || (
+					  actions.peek().getProvenanceScore() == 0 && 
+				      actions.peek().getUser().getTrustScore() < 50))) {
+						actionBeingQueried = actions.poll();
+						System.out.print("[prov,trust][query] ");
+						if(query(actionBeingQueried.getActionGraphID())) {
+							totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
+							writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
+						}
+					}
+			}
+			// if no SI is used
+			else {
+				System.out.print("[no SI][query] ");
+				actionBeingQueried = actions.peek();
+				if(query(actionBeingQueried.getActionGraphID())) {
+					totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
+					writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
 				}
 			}
 			totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
@@ -212,10 +235,9 @@ public class Window {
 	}
 	
 	// suspicious action query
-	private void query(String actionGraphID) {
+	private boolean query(String actionGraphID) {
 		String jobHuntingActionQuery = "ask from <"+prefix+"background> from <"+actionGraphID+"> where {?action a <" + prefix + "JobHuntingAction>.}";
 		if(client.getAReasoningConn().ask(jobHuntingActionQuery).execute()) {
-			actionBeingQueried.getUser().reduceTrustScore();
 			System.out.print("job hunting action detected ");
 		} 
 		String suspiciousActionQuery = "select distinct ?action from <"+prefix+"background> from <"+actionGraphID+"> where {?action a <" + prefix + "SuspiciousAction>.}";
@@ -266,7 +288,6 @@ public class Window {
 			System.out.println("          user excessive removable media user: " + actionBeingQueried.getUser().getExcessiveRemovableDiskUser());
 			System.out.println("          user trust score: " + actionBeingQueried.getUser().getTrustScore());
 			System.out.print("************************************* ");
-			this.writeSuspiciousAction.println(actionGraphID.substring((prefix+"graph/").length()) + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID());
 			if(otherSuspiciousActionsAtTheEndOfDay.size() != 0) {
 				Set<String> keys = otherSuspiciousActionsAtTheEndOfDay.keySet();
 				for(String k:keys) {
@@ -274,12 +295,15 @@ public class Window {
 					this.writeSuspiciousAction.println(k + ",," + otherSuspiciousActionsAtTheEndOfDay.get(k));
 				}
 			}
+			this.writeSuspiciousAction.print(actionGraphID.substring((prefix+"graph/").length()) + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + ",");
 			this.writeSuspiciousAction.flush();
 			this.otherSuspiciousActionsAtTheEndOfDay.clear();	
 			// move this action to suspicious action graphs
 			client.getANonReasoningConn().update("add <"+actionGraphID+"> to <"+prefix+"suspicious>").execute();
 			dataExfiltraion();
+			return true;
 		}
+		return false;
 	}
 	
 	// data exfiltration query

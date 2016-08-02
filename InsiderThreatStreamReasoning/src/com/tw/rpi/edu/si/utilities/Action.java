@@ -37,7 +37,7 @@ public class Action implements Comparable<Action> {
 	// a score that models the action provenance, the smaller the better
 	private Integer provenanceScore; 
 	private Boolean rankByProv;
-	private Boolean rankByTrust;
+	private Boolean rankByProvTrust;
 	
 	public Action(String graphID, ZonedDateTime ts, ArrayList<User> users, SnarlClient client) {
 		actionID = "";
@@ -73,7 +73,7 @@ public class Action implements Comparable<Action> {
 		 */
 		provenanceScore = 0;
 		rankByProv = false;
-		rankByTrust = false;
+		rankByProvTrust = false;
 		
 		String infoQuery = "select distinct ?action ?userid ?pc from <"+graphID+"> where {?action <"+prefix+"hasActor> ?userid; <"+prefix+"isPerformedOnPC> ?pc.}";
 		TupleQueryResult result = client.getANonReasoningConn().select(infoQuery).execute();
@@ -246,8 +246,8 @@ public class Action implements Comparable<Action> {
 		}
 	}
 
-	public void setRankByProv() { rankByProv = true; rankByTrust = false; }
-	public void setRankByTrust() { rankByProv = false; rankByProv = true; }
+	public void setRankByProv() { rankByProv = true; rankByProvTrust = false; }
+	public void setRankByProvTrust() { rankByProv = false; rankByProvTrust = true; }
 	
 	public String getActionID() { return actionID; }
 	public String getActionGraphID() { return actionGraphID; }
@@ -271,12 +271,20 @@ public class Action implements Comparable<Action> {
 	public String getContent() { return content; }
 	public Integer getProvenanceScore() { return provenanceScore; }
 	public Boolean isRankByProv() { return rankByProv; }
-	public Boolean isRankByTrust() { return rankByProv = true; }
+	public Boolean isRankByProvTrust() { return rankByProvTrust; }
 
 	@Override
 	public int compareTo(Action a) {
 		// rank by action's provenance score, then by trust
-		if(rankByProv && !rankByTrust) { // a max heap
+		if(rankByProv && !rankByProvTrust) { // a max heap
+			if(provenanceScore == a.getProvenanceScore()) {
+				return 0;
+			}
+			else
+				return provenanceScore > a.getProvenanceScore() ? -1 : 1;
+		}
+		// rank by provenance score then action's user's trust score
+		else if(rankByProvTrust && !rankByProv) { // a min heap
 			if(provenanceScore == a.getProvenanceScore()) {
 				if(user.getTrustScore() >= 50 && a.user.getTrustScore() >= 50)
 					return 0;
@@ -293,15 +301,15 @@ public class Action implements Comparable<Action> {
 			else
 				return provenanceScore > a.getProvenanceScore() ? -1 : 1;
 		}
-		// rank by action's user's trust score
-		else if(rankByTrust && !rankByProv) { // a min heap
-			if(user.getTrustScore() == a.getUser().getTrustScore()) {
+		// if no SI is specified, rank by timestamp, latest on top
+		else {
+			if(timestamp.equals(a.timestamp)) {
 				return 0;
 			}
-			else 
-				return user.getTrustScore() < a.getUser().getTrustScore() ? -1 : 1;
+			else {
+				return timestamp.isAfter(a.timestamp) ? -1 : 1;
+			}
 		}
-		return 0;
 	}
 }
 

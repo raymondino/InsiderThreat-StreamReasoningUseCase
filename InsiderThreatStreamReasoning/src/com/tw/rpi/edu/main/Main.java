@@ -5,13 +5,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 import org.openrdf.rio.RDFFormat;
 
 import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.StardogException;
 import com.tw.rpi.edu.si.strategy.ProvTrustSI;
-import com.tw.rpi.edu.si.strategy.SemanticImportance;
 import com.tw.rpi.edu.si.utilities.SnarlClient;
 
 public class Main {
@@ -24,10 +24,6 @@ public class Main {
 //  private static String ontology = "/data/InsiderThreat-StreamReasoningUseCase/ontology-data exfiltration alone/DataExfiltration-before import.owl";
 	private static String ontology = "C:/Users/Rui/Documents/GitHub/InsiderThreat-StreamReasoningUseCase/ontology-data exfiltration alone/DataExfiltration-before import.owl";
 	private static String background = "data/background/";
-	private static String data_scenario1 = "data/ACM2278-annotation.txt";
-	private static String data_scenario2 = "data/CMP2946-annotation.txt";
-	private static String data_scenario4 = "data/CDE1846-annotation.txt";
-	private static String data_scenario5 = "data/MBG3183-annotation.txt";
 	private static String individual_file1 = "data/different-individuals/text1.txt";
 	private static String individual_file2 = "data/different-individuals/text2.txt";
 	private static String individual_file3 = "data/different-individuals/text3.txt";
@@ -102,14 +98,84 @@ public class Main {
 		client.getANonReasoningConn().commit();
 		System.out.println("[INFO] background ontology loaded ... ");
 		
-		// streaming file
-		String data = data_scenario2;
+		// streaming files contain 1 user each
+		ArrayList<String> streamingData1 = new ArrayList<String>();
+		streamingData1.add("data/streamingdata-1user/ACM2278-annotation.txt");
+		streamingData1.add("data/streamingdata-1user/CMP2946-annotation.txt");
+		streamingData1.add("data/streamingdata-1user/CDE1846-annotation.txt");
+		streamingData1.add("data/streamingdata-1user/MBG3183-annotation.txt");
+
+		// streaming files contain 10 users each
+		ArrayList<String> streamingData10 = new ArrayList<String>();
+		streamingData10.add("data/streamingdata-10user/ACM2278-annotation.txt");
+		streamingData10.add("data/streamingdata-10user/CMP2946-annotation.txt");
+		streamingData10.add("data/streamingdata-10user/CDE1846-annotation.txt");
+		streamingData10.add("data/streamingdata-10user/MBG3183-annotation.txt");
 		
-		// run:
-		//SemanticImportance si = new SemanticImportance(data, client, prefix);
-		//si.run();
-		ProvTrustSI p = new ProvTrustSI(data, client);
-		p.run();
+		// streaming files contain 100 users each
+		ArrayList<String> streamingData100 = new ArrayList<String>();
+		streamingData100.add("data/streamingdata-100user/ACM2278-annotation.txt");
+		streamingData100.add("data/streamingdata-100user/CMP2946-annotation.txt");
+		streamingData100.add("data/streamingdata-100user/CDE1846-annotation.txt");
+		streamingData100.add("data/streamingdata-100user/MBG3183-annotation.txt");
+		
+		// streaming files contain 1000 users each
+		ArrayList<String> streamingData1000 = new ArrayList<String>();
+		streamingData1000.add("data/streamingdata-1000user/ACM2278-annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/CMP2946-annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/CDE1846-annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/MBG3183-annotation.txt");
+		
+		// window size
+		ArrayList<Integer> windowSizes = new ArrayList<Integer>();
+		windowSizes.add(1); // 1 day
+		windowSizes.add(7); // 1 week
+		windowSizes.add(28); // 1 month
+		
+		// run benchmark
+		for(String s:streamingData1) {
+			for(Integer w:windowSizes) {
+				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1);
+				prov.run();
+				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1);
+				trust.run();
+				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1);
+				nothing.run();
+			}
+		}
+		
+		for(String s:streamingData10) {
+			for(Integer w:windowSizes) {
+				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 10);
+				prov.run();
+				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 10);
+				trust.run();
+				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 10);
+				nothing.run();
+			}
+		}
+		
+		for(String s:streamingData100) {
+			for(Integer w:windowSizes) {
+				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 100);
+				prov.run();
+				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 100);
+				trust.run();
+				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 100);
+				nothing.run();
+			}
+		}
+		
+		for(String s:streamingData1000) {
+			for(Integer w:windowSizes) {
+				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1000);
+				prov.run();
+				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1000);
+				trust.run();
+				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1000);
+				nothing.run();
+			}
+		}
 		client.cleanUp();
 	}
 }

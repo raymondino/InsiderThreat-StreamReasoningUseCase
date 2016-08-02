@@ -1,3 +1,8 @@
+/*
+ * This class is deprecated. 
+ */
+
+
 package com.tw.rpi.edu.si.strategy;
 
 import java.io.BufferedReader;

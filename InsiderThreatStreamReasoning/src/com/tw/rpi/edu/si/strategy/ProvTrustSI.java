@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -30,15 +29,20 @@ public class ProvTrustSI {
 	private ZonedDateTime currentActioinTS; // records current action timestamp
 	private BufferedReader br; 	// to read data from file for stream simulation
 	private Boolean SIprov; // SI: rank by provenance
-	private Boolean SItrust; // SI: rank by trust
+	private Boolean SIprovtrust; // SI: rank by trust
 	private PrintWriter metricwriter; // output the results
 	
 	// constructor
-	public ProvTrustSI(String datapath, SnarlClient c){
+	public ProvTrustSI(String datapath, SnarlClient c, String mode, int windowSize, int userNumber){
 		client = c;
 		// a default window: size = 7 days, step = 1 day
 		window = new Window(c);
-		window.setSize(1); 
+		if(windowSize > 7) {
+			window.setMonthlySize((int) windowSize / 28); // 28 days as a month
+		}
+		else {
+			window.setWeeklySize(windowSize);
+		}
 		currentActionGraphID = "";
 		currentActioinTS = null;
 		users = new ArrayList<User>();
@@ -48,20 +52,28 @@ public class ProvTrustSI {
 			System.out.println("[ERROR]: streaming data path is invalid:" + datapath);
 			e1.printStackTrace();
 		}
-		
+		SIprov = false;
+		SIprovtrust = false;
 		// semantic importance setup
-		SIprov = true;
-		SItrust = false;
-//	    SIprov = false;
-//	    SItrust = true;
+		if(mode.equals("[prov]")) {
+			SIprov = true;
+			SIprovtrust = false;			
+		}
+		else if(mode.equals("[prov,trust]")) {
+		    SIprov = false;
+		    SIprovtrust = true;			
+		}
 		
 		// setup file for suspicious actions result
-		String resultPath = "suspiciousActionList_windowSize-" + window.getSize().getDays() ;
+		String resultPath = "suspiciousActionList_windowSize-" + window.getSize().getDays() +"_user#-" + userNumber + datapath.substring(datapath.length()-22, datapath.length()-15);
 		if(SIprov) {
 			resultPath = "data/result/"+resultPath +"_prov.txt";	
 		}
+		else if(SIprovtrust){
+			resultPath = "data/result/"+resultPath +"_prov-trust.txt";
+		}
 		else {
-			resultPath = "data/result/"+resultPath +"_trust.txt";
+			resultPath = "data/result/"+resultPath+"_noSI.txt";
 		}
 		try {
 			File suspiciousActionList = new File(resultPath);
@@ -97,7 +109,7 @@ public class ProvTrustSI {
 					if(!currentActionGraphID.equals("")) {
 						Action action = new Action(currentActionGraphID, currentActioinTS, users, client); 
 						if(SIprov) { action.setRankByProv();} // rank by provenance
-						if(SItrust) { action.setRankByProv();} // rank by trust
+						if(SIprovtrust) { action.setRankByProvTrust();} // rank by trust
 						window.load(currentActionGraphID, currentActioinTS, action);
 						try {
 							window.process();
