@@ -7,5 +7,12 @@ InsiderThreatStreamReasoning/.classpath
 InsiderThreatStreamReasoning/.project
 InsiderThreatStreamReasoning/data/trimmed-dat/
 InsiderThreatStreamReasoning/data/precision calculation/
-InsiderThreatStreamReasoning/data/different-individuals/*.txt
+InsiderThreatStreamReasoning/data/different-individuals/text1.txt
+InsiderThreatStreamReasoning/data/different-individuals/text2.txt
+InsiderThreatStreamReasoning/data/different-individuals/text3.txt
+InsiderThreatStreamReasoning/data/different-individuals/different-individuals.ttl
+InsiderThreatStreamReasoning/data/different-individuals/streamingdata-1user/*.txt
+InsiderThreatStreamReasoning/data/different-individuals/streamingdata-10user/*.txt
+InsiderThreatStreamReasoning/data/different-individuals/streamingdata-100user/*.txt
+InsiderThreatStreamReasoning/data/different-individuals/streamingdata-1000user/*.txt
 ontology-data exfiltration alone/catalog-v001.xml
