@@ -100,31 +100,31 @@ public class Main {
 		
 		// streaming files contain 1 user each
 		ArrayList<String> streamingData1 = new ArrayList<String>();
-		streamingData1.add("data/streamingdata-1user/ACM2278-annotation.txt");
-		streamingData1.add("data/streamingdata-1user/CMP2946-annotation.txt");
-		streamingData1.add("data/streamingdata-1user/CDE1846-annotation.txt");
-		streamingData1.add("data/streamingdata-1user/MBG3183-annotation.txt");
+		streamingData1.add("data/streamingdata-1user/ACM2278-1userlist_annotation.txt");
+		streamingData1.add("data/streamingdata-1user/CMP2946-1userlist_annotation.txt");
+		streamingData1.add("data/streamingdata-1user/CDE1846-1userlist_annotation.txt");
+		streamingData1.add("data/streamingdata-1user/MBG3183-1userlist_annotation.txt");
 
 		// streaming files contain 10 users each
 		ArrayList<String> streamingData10 = new ArrayList<String>();
-		streamingData10.add("data/streamingdata-10user/ACM2278-annotation.txt");
-		streamingData10.add("data/streamingdata-10user/CMP2946-annotation.txt");
-		streamingData10.add("data/streamingdata-10user/CDE1846-annotation.txt");
-		streamingData10.add("data/streamingdata-10user/MBG3183-annotation.txt");
+		streamingData10.add("data/streamingdata-10user/ACM2278-10userlist_annotation.txt");
+		streamingData10.add("data/streamingdata-10user/CMP2946-10userlist_annotation.txt");
+		streamingData10.add("data/streamingdata-10user/CDE1846-10userlist_annotation.txt");
+		streamingData10.add("data/streamingdata-10user/MBG3183-10userlist_annotation.txt");
 		
 		// streaming files contain 100 users each
 		ArrayList<String> streamingData100 = new ArrayList<String>();
-		streamingData100.add("data/streamingdata-100user/ACM2278-annotation.txt");
-		streamingData100.add("data/streamingdata-100user/CMP2946-annotation.txt");
-		streamingData100.add("data/streamingdata-100user/CDE1846-annotation.txt");
-		streamingData100.add("data/streamingdata-100user/MBG3183-annotation.txt");
+		streamingData100.add("data/streamingdata-100user/ACM2278-100userlist_annotation.txt");
+		streamingData100.add("data/streamingdata-100user/CMP2946-100userlist_annotation.txt");
+		streamingData100.add("data/streamingdata-100user/CDE1846-100userlist_annotation.txt");
+		streamingData100.add("data/streamingdata-100user/MBG3183-100userlist_annotation.txt");
 		
 		// streaming files contain 1000 users each
 		ArrayList<String> streamingData1000 = new ArrayList<String>();
-		streamingData1000.add("data/streamingdata-1000user/ACM2278-annotation.txt");
-		streamingData1000.add("data/streamingdata-1000user/CMP2946-annotation.txt");
-		streamingData1000.add("data/streamingdata-1000user/CDE1846-annotation.txt");
-		streamingData1000.add("data/streamingdata-1000user/MBG3183-annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/ACM2278-1000userlist_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/CMP2946-1000userlist_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/CDE1846-1000userlist_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/MBG3183-1000userlist_annotation.txt");
 		
 		// window size
 		ArrayList<Integer> windowSizes = new ArrayList<Integer>();

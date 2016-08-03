@@ -3,7 +3,8 @@ import sys, datetime
 from urlparse import urlparse
 from globals import *
 path = '../data-r6.2/'
-#subPath = '1-ACM2278/'
+file_name = sys.argv[1]
+subPath = '1-ACM2278/'
 #subPath = '2-CMP2946/'
 #subPath = '4-CDE1846/'
 #subPath = '5-MBG3183/'
@@ -368,7 +369,7 @@ def multiUserAnnotate(userList, dailyStartDic, dailyEndDic, usbDriveUsageFrequen
 
 
 	f = open('intermediate/multi_users_aggregated.csv')
-	outfile = open(subPath + '_annotation.txt','w')
+	outfile = open(file_name + '_annotation.txt','w')
 	# make a counter dictionary with key = userid, value = (deviceUsageCount, connectedDevice)
 	deviceDic = {}
 	for userID in userList:
