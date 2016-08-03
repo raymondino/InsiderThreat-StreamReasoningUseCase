@@ -118,7 +118,6 @@ public class Window {
 			String fromGraph = "from <" + prefix + "background> from <" + prefix + "actor-event> ";
 			for(Action a: actions) {
 				ZonedDateTime aTS = a.getTimestamp();
-				System.out.println(a.getActionID() + " *** " + aTS);
 				// we only need to query today's device actions
 				if((aTS.isAfter(lastEndOfDay)) && (aTS.isBefore(endOfDay)) && a.getActionID().contains("device")) {
 					fromGraph += ("from <" + prefix + "graph/" + a.getActionID() + "> ");
