@@ -65,7 +65,7 @@ public class ProvTrustSI {
 		}
 		
 		// setup file for suspicious actions result
-		String resultPath = "suspiciousActionList_windowSize-" + window.getSize().getDays() +"_user#-" + userNumber + datapath.substring(datapath.length()-22, datapath.length()-15);
+		String resultPath = "suspiciousActionList_windowSize-" + window.getSize().getDays() +"_user#-" + userNumber +'_'+ datapath.substring(datapath.length()-22, datapath.length()-15);
 		if(SIprov) {
 			resultPath = "data/result/"+resultPath +"_prov.txt";	
 		}
