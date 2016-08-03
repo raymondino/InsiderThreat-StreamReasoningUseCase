@@ -3,6 +3,10 @@ import sys, datetime
 from urlparse import urlparse
 from globals import *
 path = '../data-r6.2/'
+#subPath = '1-ACM2278/'
+subPath = '2-CMP2946/'
+#subPath = '4-CDE1846/'
+#subPath = '5-MBG3183/'
 
 # returns a tuple (AverageLogonTime, AverageLogoffTime) where the two elements are dictionaries
 # with keys being the userids, values being the average logon/logoff time of that user
@@ -140,7 +144,7 @@ def getAverageUSBUsage(userList):
 def multiUserExtract(userList):
 	def multiUserExtractHelper(actionType):
 		# inFile = open(path+actionType+'.csv')
-		inFile = open(path+'1-ACM2278/'+actionType+'.csv')
+		inFile = open(path+subPath+actionType+'.csv')
 		outFile = open('intermediate/multi_users_'+actionType+'.csv', 'w')
 		for line in inFile:
 			if line.split(',')[2] in userList:
@@ -355,7 +359,10 @@ def multiUserAnnotate(userList, dailyStartDic, dailyEndDic, usbDriveUsageFrequen
 		elif domainName in jobHuntingWebsites:
 			print >>outfile, '%s %swhoseDomainNameIsA %sjobhuntingwebsite .' %(record[5],ex,ex)
 		else:
-			print >>outfile, '%s %swhoseDomainNameIsA %sneutralwebsite .' %(record[5],ex,ex)
+			if '/jobs/' in parsedURL.path or '/hotjobs/' in parsedURL.path:
+				print >>outfile, '%s %swhoseDomainNameIsA %sjobhuntingwebsite .' %(record[5],ex,ex)
+			else:
+				print >>outfile, '%s %swhoseDomainNameIsA %sneutralwebsite .' %(record[5],ex,ex)
 		print >>outfile, '%shttp_%s %shasContent> "%s" .' %(ex,id,ex,content)
 
 
