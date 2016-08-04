@@ -498,18 +498,18 @@ paceTime.owl)</rdfs:comment>
                 <owl:unionOf rdf:parseType="Collection">
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
-                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction"/>
-                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
                         <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileAction"/>
-                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
                         <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction"/>
-                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">5</owl:minQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
+                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction"/>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">10</owl:minQualifiedCardinality>
                     </owl:Restriction>
                 </owl:unionOf>
             </owl:Class>
