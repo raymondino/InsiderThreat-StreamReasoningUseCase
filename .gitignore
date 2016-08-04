@@ -11,6 +11,10 @@ InsiderThreatStreamReasoning/data/different-individuals/text1.txt
 InsiderThreatStreamReasoning/data/different-individuals/text2.txt
 InsiderThreatStreamReasoning/data/different-individuals/text3.txt
 InsiderThreatStreamReasoning/data/different-individuals/different-individuals.ttl
+InsiderThreatStreamReasoning/data/streamingdata-1user/old/
+InsiderThreatStreamReasoning/data/streamingdata-10user/old/
+InsiderThreatStreamReasoning/data/streamingdata-100user/old/
+InsiderThreatStreamReasoning/data/streamingdata-1000user/old/
 InsiderThreatStreamReasoning/data/streamingdata-1user/1userlist-ACM2278_annotation.txt
 InsiderThreatStreamReasoning/data/streamingdata-1user/1userlist-CDE1846_annotation.txt
 InsiderThreatStreamReasoning/data/streamingdata-1user/1userlist-CMP2946_annotation.txt
