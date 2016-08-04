@@ -156,7 +156,7 @@ public class Window {
 					if(actionBeingQueried.getAfterHourAction() && actionBeingQueried.getProvenanceScore() == 1) {
 						actionBeingQueried.getUser().reduceTrustScore();
 						System.out.print("<- after hour ");	
-						this.writeSuspiciousAction.print(actionBeingQueried.getActionID() + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + ",");
+						this.writeSuspiciousAction.print(actionBeingQueried.getActionID() + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + "," + actionBeingQueried.getUser().getPotentialThreateningInsider() + ",");
 						totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
 						writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
 						continue;
@@ -201,7 +201,10 @@ public class Window {
 			// if no SI is used
 			else {
 				System.out.print("[no SI][query] ");
-				actionBeingQueried = actions.peek();
+				for(Action a:actions) {
+					System.out.println(a.getActionID() + " " + a.getTimestamp());
+				}
+				actionBeingQueried = actions.poll();
 				// ITAdmins are OK
 				if(actionBeingQueried.getUser().getRole().equals("ITAdmin")) {
 					System.out.print("<- ITAdmin ");
@@ -214,7 +217,7 @@ public class Window {
 					totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
 					writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
 				}
-				// process every actions
+				// process every action
 				else if(query(actionBeingQueried.getActionGraphID())) {
 					totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
 					writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");

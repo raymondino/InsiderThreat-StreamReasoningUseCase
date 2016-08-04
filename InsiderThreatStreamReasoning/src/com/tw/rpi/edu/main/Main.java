@@ -209,10 +209,10 @@ public class Main {
 		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
 		 			continue;
 		 		}
-		 		client.emptyDB(); loadBackground();
-		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); prov.run();
-		 		client.emptyDB(); loadBackground();
-		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1); trust.run();
+//		 		client.emptyDB(); loadBackground();
+//		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); prov.run();
+//		 		client.emptyDB(); loadBackground();
+//		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1); trust.run();
 		 		client.emptyDB(); loadBackground();
 		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1); nothing.run();
 		 	}

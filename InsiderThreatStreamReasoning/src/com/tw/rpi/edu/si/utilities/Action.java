@@ -276,7 +276,7 @@ public class Action implements Comparable<Action> {
 	@Override
 	public int compareTo(Action a) {
 		// rank by action's provenance score, then by trust
-		if(rankByProv && !rankByProvTrust) { // a max heap
+		if(rankByProv && !rankByProvTrust) { 
 			if(provenanceScore == a.getProvenanceScore()) {
 				return 0;
 			}
@@ -284,7 +284,7 @@ public class Action implements Comparable<Action> {
 				return provenanceScore > a.getProvenanceScore() ? -1 : 1;
 		}
 		// rank by provenance score then action's user's trust score
-		else if(rankByProvTrust && !rankByProv) { // a min heap
+		else if(rankByProvTrust && !rankByProv) { 
 			if(provenanceScore == a.getProvenanceScore()) {
 				if(user.getTrustScore() >= 50 && a.user.getTrustScore() >= 50)
 					return 0;
