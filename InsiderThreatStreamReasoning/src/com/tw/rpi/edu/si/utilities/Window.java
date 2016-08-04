@@ -293,12 +293,12 @@ public class Window {
 					// didn't output timestamp for end of day suspicious device action, I can do it but I am lazy.
 					this.writeSuspiciousAction.println(k + ",," + otherSuspiciousActionsAtTheEndOfDay.get(k));
 				}
+				this.otherSuspiciousActionsAtTheEndOfDay.clear();	
 			}
 			this.writeSuspiciousAction.print(actionGraphID.substring((prefix+"graph/").length()) + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + ",");
 			this.writeSuspiciousAction.flush();
-			this.otherSuspiciousActionsAtTheEndOfDay.clear();	
 			// move this action to suspicious action graphs
-			client.getANonReasoningConn().update("add <"+actionGraphID+"> to <"+prefix+"suspicious>").execute();
+			client.getANonReasoningConn().update("add <"+actionGraphID+"> to <"+prefix+"suspicious>").execute(); 
 			dataExfiltraion();
 			return true;
 		}

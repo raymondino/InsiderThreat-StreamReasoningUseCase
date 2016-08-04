@@ -929,6 +929,10 @@ paceTime.owl)</rdfs:comment>
                                         <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
                                     </owl:Restriction>
                                     <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/from"/>
+                                        <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
                                         <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/to"/>
                                         <owl:someValuesFrom rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotInternalEmailAddress"/>
                                     </owl:Restriction>
