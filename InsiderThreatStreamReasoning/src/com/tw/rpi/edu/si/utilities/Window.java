@@ -185,7 +185,7 @@ public class Window {
 						if(actionBeingQueried.getAfterHourAction() && actionBeingQueried.getProvenanceScore() == 1) {
 							actionBeingQueried.getUser().reduceTrustScore();
 							System.out.print("<- after hour ");	
-							this.writeSuspiciousAction.print(actionBeingQueried.getActionID() + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + ",");
+							this.writeSuspiciousAction.print(actionBeingQueried.getActionID() + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + "," + actionBeingQueried.getUser().getPotentialThreateningInsider() + ",");
 							totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
 							writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
 							continue;
@@ -213,7 +213,7 @@ public class Window {
 				else if(actionBeingQueried.getAfterHourAction() && actionBeingQueried.getProvenanceScore() == 1) {
 					actionBeingQueried.getUser().reduceTrustScore();
 					System.out.print("<- after hour ");	
-					this.writeSuspiciousAction.print(actionBeingQueried.getActionID() + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + ",");
+					this.writeSuspiciousAction.print(actionBeingQueried.getActionID() + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + "," + actionBeingQueried.getUser().getPotentialThreateningInsider() + ",");
 					totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
 					writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
 				}
@@ -335,7 +335,7 @@ public class Window {
 				}
 				this.otherSuspiciousActionsAtTheEndOfDay.clear();	
 			}
-			this.writeSuspiciousAction.print(actionGraphID.substring((prefix+"graph/").length()) + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + ",");
+			this.writeSuspiciousAction.print(actionGraphID.substring((prefix+"graph/").length()) + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + "," + actionBeingQueried.getUser().getPotentialThreateningInsider() + ",");
 			this.writeSuspiciousAction.flush();
 			// move this action to suspicious action graphs
 			client.getANonReasoningConn().update("add <"+actionGraphID+"> to <"+prefix+"suspicious>").execute(); 
