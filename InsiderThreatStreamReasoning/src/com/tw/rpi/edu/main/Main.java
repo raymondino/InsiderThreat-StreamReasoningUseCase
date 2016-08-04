@@ -183,20 +183,20 @@ public class Main {
 		 streamingData10.add("data/streamingdata-10user/10userlist-CDE1846_annotation.txt");
 		 streamingData10.add("data/streamingdata-10user/10userlist-MBG3183_annotation.txt");
 		
-//		 // streaming files contain 100 users each
-//		 ArrayList<String> streamingData100 = new ArrayList<String>();
-//		 streamingData100.add("data/streamingdata-100user/100userlist-ACM2278_annotation.txt");
-//		 streamingData100.add("data/streamingdata-100user/100userlist-CMP2946_annotation.txt");
-//		 streamingData100.add("data/streamingdata-100user/100userlist-CDE1846_annotation.txt");
-//		 streamingData100.add("data/streamingdata-100user/100userlist-MBG3183_annotation.txt");
+		 // streaming files contain 100 users each
+		 ArrayList<String> streamingData100 = new ArrayList<String>();
+		 streamingData100.add("data/streamingdata-100user/100userlist-ACM2278_annotation.txt");
+		 streamingData100.add("data/streamingdata-100user/100userlist-CMP2946_annotation.txt");
+		 streamingData100.add("data/streamingdata-100user/100userlist-CDE1846_annotation.txt");
+		 streamingData100.add("data/streamingdata-100user/100userlist-MBG3183_annotation.txt");
 		
 		// streaming files contain 1000 users each
-//		ArrayList<String> streamingData1000 = new ArrayList<String>();
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-ACM2278_annotation.txt");
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-CMP2946_annotation.txt");
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-CDE1846_annotation.txt");
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-MBG3183_annotation.txt");
-//		
+		ArrayList<String> streamingData1000 = new ArrayList<String>();
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-ACM2278_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-CMP2946_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-CDE1846_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-MBG3183_annotation.txt");
+
 		// window size
 		ArrayList<Integer> windowSizes = new ArrayList<Integer>();
 		windowSizes.add(1); // 1 day
@@ -209,10 +209,10 @@ public class Main {
 		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
 		 			continue;
 		 		}
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); prov.run();
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1); trust.run();
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); prov.run();
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1); trust.run();
 		 		client.emptyDB(); loadBackground();
 		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1); nothing.run();
 		 	}
@@ -232,33 +232,33 @@ public class Main {
 		 	}
 		 }
 		
-//		 for(String s:streamingData100) {
-//		 	for(Integer w:windowSizes) {
-//		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
-//		 			continue;
-//		 		}				
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 100); prov.run();
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 100); trust.run();
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 100); nothing.run();
-//		 	}
-//		 }
+		 for(String s:streamingData100) {
+		 	for(Integer w:windowSizes) {
+		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
+		 			continue;
+		 		}				
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 100); prov.run();
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 100); trust.run();
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 100); nothing.run();
+		 	}
+		 }
 		
-//		for(String s:streamingData1000) {
-//			for(Integer w:windowSizes) {
-//				if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
-//					continue;
-//				}				
-//				client.emptyDB(); loadBackground();
-//				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1000); prov.run();
-//				client.emptyDB(); loadBackground();
-//				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1000); trust.run();
-//				client.emptyDB(); loadBackground();
-//				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1000); nothing.run();
-//			}
-//		}
+		for(String s:streamingData1000) {
+			for(Integer w:windowSizes) {
+				if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
+					continue;
+				}				
+				client.emptyDB(); loadBackground();
+				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1000); prov.run();
+				client.emptyDB(); loadBackground();
+				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1000); trust.run();
+				client.emptyDB(); loadBackground();
+				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1000); nothing.run();
+			}
+		}
 		client.cleanUp();
 	}
 	
