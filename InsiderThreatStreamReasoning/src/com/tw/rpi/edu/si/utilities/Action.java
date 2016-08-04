@@ -112,7 +112,7 @@ public class Action implements Comparable<Action> {
 			else {
 				unassignedPC = true;
 				// if it is an unassigned pc, add this statement into the action graph
-				client.addModel(Models2.newModel(Values.statement(Values.iri(prefix+user.getID()),Values.iri(prefix + "isPerformedOnUnassignedPC "), Values.iri(prefix+pc))), graphID);
+				client.addModel(Models2.newModel(Values.statement(Values.iri(prefix+actionID),Values.iri(prefix + "isPerformedOnUnassignedPC "), Values.iri(prefix+pc))), graphID);
 				provenanceScore++;
 			}
 		} 			

@@ -143,13 +143,22 @@ public class Window {
 		if(latestActionTS.isBefore(end)) {
 			// record action process time
 			long actionProcessStartTime = System.currentTimeMillis();
-			// if actions are ranked by provenance score
+			// if actions are ranked by [prov]
 			if(latestAction.isRankByProv()) {
-//				for(Action a:actions) {
-//					System.out.println("[debug] " + a.getActionID() + "-" + a.getProvenanceScore() + "- "+ a.getUser().getID() + "-" + a.getUser().getTrustScore());
-//				}
 				while(actions.size() > 0 && actions.peek().getProvenanceScore() > 0) {
 					actionBeingQueried = actions.poll();
+					// ITAdmins are OK
+					if(actionBeingQueried.getUser().getRole().equals("ITAdmin")) {
+						System.out.print("<- ITAdmin ");
+						continue;
+					}
+					// do not process an action that is only after hour
+					if(actionBeingQueried.getAfterHourAction() && actionBeingQueried.getProvenanceScore() == 1) {
+						actionBeingQueried.getUser().reduceTrustScore();
+						System.out.print("<- after hour ");	
+						continue;
+					}
+					// process suspicious-looking actions
 					System.out.print("[prov][query] ");
 					if(query(actionBeingQueried.getActionGraphID())) {
 						totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
@@ -157,16 +166,24 @@ public class Window {
 					}
 				}
 			}
-			// if actions are ranked by trust score
+			// if actions are ranked by [prov, trust]
 			else if (latestAction.isRankByProvTrust()) {
-//				for(Action a:actions) {
-//					System.out.println("[debug] " + a.getActionID() + "-" + a.getUser().getID() + "-" + a.getUser().getTrustScore());
-//				}
 				while(actions.size() > 0 && (
 					  actions.peek().getProvenanceScore() > 0 || (
 					  actions.peek().getProvenanceScore() == 0 && 
 				      actions.peek().getUser().getTrustScore() < 50))) {
 						actionBeingQueried = actions.poll();
+						// ITAdmins are OK
+						if(actionBeingQueried.getUser().getRole().equals("ITAdmin")) {
+							System.out.print("<- ITAdmin ");
+							continue;
+						}
+						// do not process an action that is only after hour
+						if(actionBeingQueried.getAfterHourAction() && actionBeingQueried.getProvenanceScore() == 1) {
+							actionBeingQueried.getUser().reduceTrustScore();
+							continue;
+						}
+						// process suspicious-looking actions
 						System.out.print("[prov,trust][query] ");
 						if(query(actionBeingQueried.getActionGraphID())) {
 							totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
@@ -178,7 +195,11 @@ public class Window {
 			else {
 				System.out.print("[no SI][query] ");
 				actionBeingQueried = actions.peek();
-				if(query(actionBeingQueried.getActionGraphID())) {
+				// ITAdmins are OK
+				if(actionBeingQueried.getUser().getRole().equals("ITAdmin")) {
+					System.out.print("<- ITAdmin ");
+				}
+				else if(query(actionBeingQueried.getActionGraphID())) {
 					totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
 					writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
 				}
@@ -341,20 +362,18 @@ public class Window {
 		}
 		client.getANonReasoningConn().commit();
 		// construct and execute the query
-		String q = "select distinct ?userid from <"+prefix+"suspicious> "+"from <"+prefix+"background> from <"+prefix+"different-individuals> from <"+prefix+"actor-event> where { ?userid a <"+prefix+"PotentialThreateningInsider>.}";
-		TupleQueryResult result = client.getAReasoningConn().select(q).execute();
-		while(result.hasNext()) {
-			BindingSet bs = result.next();
+		String q = "ask from <"+prefix+"suspicious> "+"from <"+prefix+"background> from <"+prefix+"different-individuals> from <"+prefix+"actor-event> where { <"+prefix+actionBeingQueried.getUser().getID()+"> a <"+prefix+"PotentialThreateningInsider>.}";
+		if(client.getAReasoningConn().ask(q).execute()) {
 			System.out.println();
 			System.out.println("*************************************");
 			System.out.println("*************************************");
 			System.out.println("*************************************");
 			System.out.println("[Threatening] Data Exfiltraion Event Detected!");
-			System.out.println("              potential threatening insider: " + bs.getValue("userid").toString().substring(prefix.length()));				
+			System.out.println("              potential threatening insider: " + actionBeingQueried.getUser().getID());				
 			System.out.println("*************************************");
 			System.out.println("*************************************");
 			System.out.print("************************************* ");
-			actionBeingQueried.getUser().setPotentialThreateningInsider();
+			actionBeingQueried.getUser().setPotentialThreateningInsider();			
 		}
 		// delete different-individuals graph
 		client.getANonReasoningConn().update("drop graph <" + prefix + "different-individuals>").execute();
