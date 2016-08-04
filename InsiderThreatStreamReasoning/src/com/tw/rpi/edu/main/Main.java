@@ -224,11 +224,11 @@ public class Main {
 					continue;
 				}				
 				client.emptyDB(); loadBackground();
-				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); prov.run();
+				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 10); prov.run();
 				client.emptyDB(); loadBackground();
-				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1); trust.run();
+				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 10); trust.run();
 				client.emptyDB(); loadBackground();
-				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1); nothing.run();
+				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 10); nothing.run();
 			}
 		}
 		
@@ -238,11 +238,11 @@ public class Main {
 					continue;
 				}				
 				client.emptyDB(); loadBackground();
-				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); prov.run();
+				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 100); prov.run();
 				client.emptyDB(); loadBackground();
-				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1); trust.run();
+				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 100); trust.run();
 				client.emptyDB(); loadBackground();
-				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1); nothing.run();
+				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 100); nothing.run();
 			}
 		}
 		
@@ -252,11 +252,11 @@ public class Main {
 					continue;
 				}				
 				client.emptyDB(); loadBackground();
-				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); prov.run();
+				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1000); prov.run();
 				client.emptyDB(); loadBackground();
-				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1); trust.run();
+				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1000); trust.run();
 				client.emptyDB(); loadBackground();
-				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1); nothing.run();
+				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1000); nothing.run();
 			}
 		}
 		client.cleanUp();
