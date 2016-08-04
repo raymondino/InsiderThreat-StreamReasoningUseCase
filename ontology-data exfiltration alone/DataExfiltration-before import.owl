@@ -447,7 +447,6 @@ paceTime.owl)</rdfs:comment>
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/AssignedPC">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/ComputerAsset"/>
         <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SharedPC"/>
-        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/UnassignedPC"/>
         <rdfs:comment>newly aded class. * 4k users, each with an assigned PC</rdfs:comment>
     </owl:Class>
     
@@ -678,7 +677,6 @@ paceTime.owl)</rdfs:comment>
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileFromRemovableMedia">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
-        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileFromRemovableMedia"/>
         <rdfs:comment>newly added class, describes a file that is from removable disk. </rdfs:comment>
     </owl:Class>
     
@@ -697,7 +695,6 @@ paceTime.owl)</rdfs:comment>
 
     <owl:Class rdf:about="http://tw.rpi.edu/ontology/DataExfiltration/FileToRemovableMedia">
         <rdfs:subClassOf rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/FileAsset"/>
-        <owl:disjointWith rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/NotFileToRemovableMedia"/>
         <rdfs:comment>newly added class, describes a file that is to  removable disk. </rdfs:comment>
     </owl:Class>
     

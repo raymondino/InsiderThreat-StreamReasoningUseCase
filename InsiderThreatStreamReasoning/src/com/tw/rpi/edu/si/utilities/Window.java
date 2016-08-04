@@ -152,10 +152,13 @@ public class Window {
 						System.out.print("<- ITAdmin ");
 						continue;
 					}
-					// do not process an action that is only after hour
+					// do not need to process an action that is only after hour
 					if(actionBeingQueried.getAfterHourAction() && actionBeingQueried.getProvenanceScore() == 1) {
 						actionBeingQueried.getUser().reduceTrustScore();
 						System.out.print("<- after hour ");	
+						this.writeSuspiciousAction.print(actionBeingQueried.getActionID() + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + ",");
+						totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
+						writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
 						continue;
 					}
 					// process suspicious-looking actions
@@ -178,9 +181,13 @@ public class Window {
 							System.out.print("<- ITAdmin ");
 							continue;
 						}
-						// do not process an action that is only after hour
+						// do not need to process an action that is only after hour
 						if(actionBeingQueried.getAfterHourAction() && actionBeingQueried.getProvenanceScore() == 1) {
 							actionBeingQueried.getUser().reduceTrustScore();
+							System.out.print("<- after hour ");	
+							this.writeSuspiciousAction.print(actionBeingQueried.getActionID() + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + ",");
+							totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
+							writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
 							continue;
 						}
 						// process suspicious-looking actions
@@ -199,6 +206,15 @@ public class Window {
 				if(actionBeingQueried.getUser().getRole().equals("ITAdmin")) {
 					System.out.print("<- ITAdmin ");
 				}
+				// do not need to process an action that is only after hour
+				else if(actionBeingQueried.getAfterHourAction() && actionBeingQueried.getProvenanceScore() == 1) {
+					actionBeingQueried.getUser().reduceTrustScore();
+					System.out.print("<- after hour ");	
+					this.writeSuspiciousAction.print(actionBeingQueried.getActionID() + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + ",");
+					totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
+					writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
+				}
+				// process every actions
 				else if(query(actionBeingQueried.getActionGraphID())) {
 					totalActionProcessTime += (System.currentTimeMillis() - actionProcessStartTime);
 					writeSuspiciousAction.println(totalActionProcessTime / actionCounter + "ms");
