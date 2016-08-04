@@ -146,7 +146,7 @@ def multiUserExtract(userList):
 	def multiUserExtractHelper(actionType):
 		# inFile = open(path+actionType+'.csv')
 		inFile = open(path+subPath+actionType+'.csv')
-		outFile = open('intermediate/'+filename+'_'+actionType+'.csv', 'w')
+		outFile = open('intermediate/'+file_name+'_'+actionType+'.csv', 'w')
 		for line in inFile:
 			if line.split(',')[2] in userList:
 				outFile.write(actionType+','+line)
@@ -154,11 +154,11 @@ def multiUserExtract(userList):
 		inFile.close()
 		print actionType, 'extract done.'
 
-	usr_device = open('intermediate/'+filename+'_device.csv', 'w+');
-	usr_logon = open('intermediate/'+filename+'_logon.csv', 'w+');
-	usr_file = open('intermediate/'+filename+'_file.csv', 'w+');
-	usr_email = open('intermediate/'+filename+'_email.csv', 'w+');
-	usr_http = open('intermediate/'+filename+'_http.csv', 'w+');
+	usr_device = open('intermediate/'+file_name+'_device.csv', 'w+');
+	usr_logon = open('intermediate/'+file_name+'_logon.csv', 'w+');
+	usr_file = open('intermediate/'+file_name+'_file.csv', 'w+');
+	usr_email = open('intermediate/'+file_name+'_email.csv', 'w+');
+	usr_http = open('intermediate/'+file_name+'_http.csv', 'w+');
 	multiUserExtractHelper('device')
 	multiUserExtractHelper('logon')
 	multiUserExtractHelper('file')
@@ -197,12 +197,12 @@ def multiUserCombine():
 			outFile.write(firstLines[i])
 			firstLines[i] = fileList[i].readline()
 
-	fileList = [open('intermediate/'+filename+'_device.csv'),\
-				open('intermediate/'+filename+'_email.csv'),\
-				open('intermediate/'+filename+'_file.csv'),\
-				open('intermediate/'+filename+'_http.csv'),\
-				open('intermediate/'+filename+'_logon.csv')]
-	outfile = open('intermediate/'+filename+'_aggregated.csv','w')
+	fileList = [open('intermediate/'+file_name+'_device.csv'),\
+				open('intermediate/'+file_name+'_email.csv'),\
+				open('intermediate/'+file_name+'_file.csv'),\
+				open('intermediate/'+file_name+'_http.csv'),\
+				open('intermediate/'+file_name+'_logon.csv')]
+	outfile = open('intermediate/'+file_name+'_aggregated.csv','w')
 	combineFiles(fileList,outfile)
 	for f in fileList:
 		f.close()
@@ -366,7 +366,7 @@ def multiUserAnnotate(userList, dailyStartDic, dailyEndDic, usbDriveUsageFrequen
 
 
 
-	f = open('intermediate/'+filename+'_aggregated.csv')
+	f = open('intermediate/'+file_name+'_aggregated.csv')
 	outfile = open(file_name + '_annotation.txt','w')
 	# make a counter dictionary with key = userid, value = (deviceUsageCount, connectedDevice)
 	deviceDic = {}
