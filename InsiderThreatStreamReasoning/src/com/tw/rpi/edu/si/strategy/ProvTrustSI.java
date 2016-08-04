@@ -38,7 +38,7 @@ public class ProvTrustSI {
 		// a default window: size = 7 days, step = 1 day
 		window = new Window(c);
 		if(windowSize > 7) {
-			window.setMonthlySize((int) windowSize / 28); // 28 days as a month
+			window.setMonthlySize(windowSize / 28); // 28 days as a month
 		}
 		else {
 			window.setWeeklySize(windowSize);
@@ -65,7 +65,7 @@ public class ProvTrustSI {
 		}
 		
 		// setup file for suspicious actions result
-		String resultPath = "suspiciousActionList_windowSize-" + window.getSize().getDays() +"_user#-" + userNumber +'_'+ datapath.substring(datapath.length()-22, datapath.length()-15);
+		String resultPath = "bench_ws-" + window.getSize() +"_u-" + userNumber +'_'+ datapath.substring(datapath.length()-22, datapath.length()-15);
 		if(SIprov) {
 			resultPath = "data/result/"+resultPath +"_prov.txt";	
 		}
