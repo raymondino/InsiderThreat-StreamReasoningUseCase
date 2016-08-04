@@ -16,7 +16,7 @@ def getRoutineHours(userList):
         for userID in userList:
             if userID not in dic.keys():
                 return False
-            if len(dic[userID])<10:
+            if len(dic[userID]) < 20: # 20 is 4 weeks w/ 5 days per week
                 return False
         return True
 
@@ -29,7 +29,7 @@ def getRoutineHours(userList):
 
     def getAverageLogon():
         logonTimesDic = {}
-        with open('../data-r6.2/logon.csv') as inFile:
+        with open(path+'logon.csv') as inFile:
             while not allDone(logonTimesDic):
                 line = inFile.readline()
                 if not line:
@@ -45,7 +45,7 @@ def getRoutineHours(userList):
                 if userID in userList and line[4] == 'Logon':
                     ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
                     if userID in logonTimesDic.keys():
-                        if len(logonTimesDic[userID]) < 10:
+                        if len(logonTimesDic[userID]) < 20: # 20 is 4 weeks w/ 5 days per week
                             if ts.date() in logonTimesDic[userID].keys():
                                 pass
                             else:
@@ -62,7 +62,7 @@ def getRoutineHours(userList):
 
     def getAverageLogoff():
         logoffTimesDic = {}
-        with open('../data-r6.2/logon.csv') as inFile:
+        with open(path+'logon.csv') as inFile:
             while not allDone(logoffTimesDic):
                 line = inFile.readline()
                 if not line:
@@ -78,7 +78,7 @@ def getRoutineHours(userList):
                 if userID in userList and line[4] == 'Logoff':
                     ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
                     if userID in logoffTimesDic.keys():
-                        if len(logoffTimesDic[userID]) < 10:
+                        if len(logoffTimesDic[userID]) < 20: # 20 is 4 weeks w/ 5 days per week
                             logoffTimesDic[userID][ts.date()] = ts.time()
                     # the user does not exist in the dic
                     else:
@@ -96,13 +96,13 @@ def getRoutineHours(userList):
 def getAverageUSBUsage(userList):
     def allDone(dic):
         for userID in userList:
-            if len(dic[userID])<10:
+            if len(dic[userID]) < 20: # 20 is 4 weeks w/ 5 days per week
                 return False
         return True
 
     usageDic = dict((userID,{}) for userID in userList)
-    # get 10 logon days for each user
-    with open('../data-r6.2/logon.csv') as logonFile:
+    # get 20 logon days for each user
+    with open(path+'logon.csv') as logonFile:
         while not allDone(usageDic):
             line = logonFile.readline()
             if not line:
@@ -113,14 +113,14 @@ def getAverageUSBUsage(userList):
                 return
             line = line.strip().split(',')
             userID = line[2]
-            if userID in userList and len(usageDic[userID]) < 10:
+            if userID in userList and len(usageDic[userID]) < 20: # 20 is 4 weeks w/ 5 days per week
                 # usageDic[userID][date] = count
                 ts = datetime.datetime.strptime(line[1],'%m/%d/%Y %H:%M:%S')
                 usageDic[userID][ts.date()] = 0
 
     maxdate = max([max(usageDic[userID].keys()) for userID in userList])
     # count number of device connect for each day
-    with open('../data-r6.2/device.csv') as deviceFile:
+    with open(path+'device.csv') as deviceFile:
         deviceFile.readline()
         for line in deviceFile:
             # print line
@@ -136,7 +136,7 @@ def getAverageUSBUsage(userList):
 
     # calculate the average
     for userID in usageDic.keys():
-        usageDic[userID] = sum(usageDic[userID].values())/10.0
+        usageDic[userID] = sum(usageDic[userID].values())/20.0
     return usageDic
 
 
@@ -146,7 +146,7 @@ def multiUserExtract(userList):
 	def multiUserExtractHelper(actionType):
 		# inFile = open(path+actionType+'.csv')
 		inFile = open(path+subPath+actionType+'.csv')
-		outFile = open('intermediate/multi_users_'+actionType+'.csv', 'w')
+		outFile = open('intermediate/'+filename+'_'+actionType+'.csv', 'w')
 		for line in inFile:
 			if line.split(',')[2] in userList:
 				outFile.write(actionType+','+line)
@@ -154,11 +154,11 @@ def multiUserExtract(userList):
 		inFile.close()
 		print actionType, 'extract done.'
 
-	usr_device = open('intermediate/multi_users_device.csv', 'w+');
-	usr_logon = open('intermediate/multi_users_logon.csv', 'w+');
-	usr_file = open('intermediate/multi_users_file.csv', 'w+');
-	usr_email = open('intermediate/multi_users_email.csv', 'w+');
-	usr_http = open('intermediate/multi_users_http.csv', 'w+');
+	usr_device = open('intermediate/'+filename+'_device.csv', 'w+');
+	usr_logon = open('intermediate/'+filename+'_logon.csv', 'w+');
+	usr_file = open('intermediate/'+filename+'_file.csv', 'w+');
+	usr_email = open('intermediate/'+filename+'_email.csv', 'w+');
+	usr_http = open('intermediate/'+filename+'_http.csv', 'w+');
 	multiUserExtractHelper('device')
 	multiUserExtractHelper('logon')
 	multiUserExtractHelper('file')
@@ -167,8 +167,6 @@ def multiUserExtract(userList):
 
 #######################
 # COMBINE
-
-
 def multiUserCombine():
 	# returns the index of the line having the earliest timestamp
 	def findEarliest(firstLines):
@@ -199,12 +197,12 @@ def multiUserCombine():
 			outFile.write(firstLines[i])
 			firstLines[i] = fileList[i].readline()
 
-	fileList = [open('intermediate/multi_users_device.csv'),\
-				open('intermediate/multi_users_email.csv'),\
-				open('intermediate/multi_users_file.csv'),\
-				open('intermediate/multi_users_http.csv'),\
-				open('intermediate/multi_users_logon.csv')]
-	outfile = open('intermediate/multi_users_aggregated.csv','w')
+	fileList = [open('intermediate/'+filename+'_device.csv'),\
+				open('intermediate/'+filename+'_email.csv'),\
+				open('intermediate/'+filename+'_file.csv'),\
+				open('intermediate/'+filename+'_http.csv'),\
+				open('intermediate/'+filename+'_logon.csv')]
+	outfile = open('intermediate/'+filename+'_aggregated.csv','w')
 	combineFiles(fileList,outfile)
 	for f in fileList:
 		f.close()
@@ -250,12 +248,12 @@ def multiUserAnnotate(userList, dailyStartDic, dailyEndDic, usbDriveUsageFrequen
 		print >>outfile, '%sdevice_%s %sisPerformedOnPC %s%s .' %(ex,id,ex,ex,record[4])
 		if (record[6]=='Connect'):
 			print >>outfile, '%sdevice_%s %sisPerformedWithRemovableDisk %sdevice_%s_disk .' %(ex,id,ex,ex,id)
-			print >>outfile, '%sdevice_%s_disk %shasFileTree> "%s" .' %(ex,id,ex,record[5].replace('\\','_'))
+			#print >>outfile, '%sdevice_%s_disk %shasFileTree> "%s" .' %(ex,id,ex,record[5].replace('\\','_'))
 
 	# email, id, date, user, pc, to, cc, bcc, from, activity, size, attachment, content
 	#	0,	1,	2,	3,	4,  5,  6,  7,	8,		9,	10,		11
 	def email(record,outfile):
-		content = record[-1].replace(' ', '_');
+		#content = record[-1].replace(' ', '_');
 		id = record[1][1:len(record[1])-1]
 		timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
 		print >>outfile, '%s%s-event %shasAction %semail_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
@@ -303,15 +301,15 @@ def multiUserAnnotate(userList, dailyStartDic, dailyEndDic, usbDriveUsageFrequen
 			attachmentList = record[11].split(';')
 			for i in range(len(attachmentList)):
 					filename = attachmentList[i][:attachmentList[i].find('(')].replace('\\','_')
-					attachmentSize = attachmentList[i][attachmentList[i].find('(')+1:item.find(')')]
+					#attachmentSize = attachmentList[i][attachmentList[i].find('(')+1:item.find(')')]
 					print >>outfile, '%semail_%s %shasEmailAttachment %s%s .'%(ex,id,ex,ex,filename)
-					print >>outfile, '%sattachment%s %shasSize> "%s bytes" .'%(ex,str(i+1),ex,attachmentSize)
-		print >>outfile, '%semail_%s %shasContent> "%s" .'%(ex,id,ex,content)
+					#print >>outfile, '%sattachment%s %shasSize> "%s bytes" .'%(ex,str(i+1),ex,attachmentSize)
+		#print >>outfile, '%semail_%s %shasContent> "%s" .'%(ex,id,ex,content)
 
 	# file, id, date, user, pc, filename, activity, to_removable_media, from_removable_media, content
 	#	0,  1,	2,	3,	4,	5,			6,					7,					8,					9
 	def file(record,outfile):
-		content = record[-1].replace(' ','_')
+		#content = record[-1].replace(' ','_')
 		id = record[1][1:len(record[1])-1]
 		timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
 		print >>outfile, '%s%s-event %shasAction %sfile_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
@@ -333,12 +331,12 @@ def multiUserAnnotate(userList, dailyStartDic, dailyEndDic, usbDriveUsageFrequen
 			print >>outfile, '%s%s %s %sFileFromRemovableMedia .' %(ex,filename,a,ex)
 		else:
 			print >>outfile, '%s%s %s %sNotFileFromRemovableMedia .' %(ex,filename,a,ex)
-		print >>outfile, '%sfile_%s_file %shasContent> "%s" .' %(ex,id,ex,content)
+		#print >>outfile, '%sfile_%s_file %shasContent> "%s" .' %(ex,id,ex,content)
 
 	# http, id, date, user, pc, url, activity, content
 	#  0,	1,	2,	3,	4,	5,	6,		7
 	def http(record,outfile):
-		content = record[-1].replace(' ', '_')
+		#content = record[-1].replace(' ', '_')
 		id = record[1][1:len(record[1])-1]
 		timestamp = datetime.datetime.strptime(record[2],'%m/%d/%Y %H:%M:%S')
 		print >>outfile, '%s%s-event %shasAction %shttp_%s . %s' %(ex,record[3],ex,ex,id,tsToStr(timestamp))
@@ -364,11 +362,11 @@ def multiUserAnnotate(userList, dailyStartDic, dailyEndDic, usbDriveUsageFrequen
 				print >>outfile, '%s %swhoseDomainNameIsA %sjobhuntingwebsite .' %(record[5],ex,ex)
 			else:
 				print >>outfile, '%s %swhoseDomainNameIsA %sneutralwebsite .' %(record[5],ex,ex)
-		print >>outfile, '%shttp_%s %shasContent> "%s" .' %(ex,id,ex,content)
+		#print >>outfile, '%shttp_%s %shasContent> "%s" .' %(ex,id,ex,content)
 
 
 
-	f = open('intermediate/multi_users_aggregated.csv')
+	f = open('intermediate/'+filename+'_aggregated.csv')
 	outfile = open(file_name + '_annotation.txt','w')
 	# make a counter dictionary with key = userid, value = (deviceUsageCount, connectedDevice)
 	deviceDic = {}
@@ -402,14 +400,14 @@ def multiUserAnnotate(userList, dailyStartDic, dailyEndDic, usbDriveUsageFrequen
 				deviceDic[userID]['connectedDevice'] = ''
 			device(record,outfile,deviceDic[userID]['count'])
 		elif type == 'email':
-			content = record[record.find('"'):len(record)-1].replace('"','')
+			#content = record[record.find('"'):len(record)-1].replace('"','')
 			record = record[:record.find('"')].split(',')
-			record.append(content)
+			#record.append(content)
 			email(record,outfile)
 		elif type == 'file':
-			content = record[record.find('"'):len(record)-1].replace('"','')
+			#content = record[record.find('"'):len(record)-1].replace('"','')
 			record = record[:record.find('"')].split(',')
-			record.append(content)
+			#record.append(content)
 			file(record,outfile)
 
 			userID = record[3]
@@ -419,9 +417,9 @@ def multiUserAnnotate(userList, dailyStartDic, dailyEndDic, usbDriveUsageFrequen
 				print >>outfile, '%sfile_%s %sstartsNoEarlierThanEndingOf %sdevice_%s .' \
 									%(ex,id,ex,ex,deviceDic[userID]['connectedDevice'])
 		elif type == 'http':
-			content = record[record.find('"'):len(record)-1].replace('"','')
+			#content = record[record.find('"'):len(record)-1].replace('"','')
 			record = record[:record.find('"')].split(',')
-			record.append(content)
+			#record.append(content)
 			http(record,outfile)
 		else:
 			print >>outfile, 'unknown type:', type
