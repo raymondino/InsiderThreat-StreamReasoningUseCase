@@ -334,7 +334,6 @@ public class Window {
 				this.otherSuspiciousActionsAtTheEndOfDay.clear();	
 			}
 			this.writeSuspiciousAction.print(actionGraphID.substring((prefix+"graph/").length()) + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + "," + actionBeingQueried.getUser().getPotentialThreateningInsider() + ",");
-			this.writeSuspiciousAction.flush();
 			// move this action to suspicious action graphs
 			client.getANonReasoningConn().update("add <"+actionGraphID+"> to <"+prefix+"suspicious>").execute(); 
 			dataExfiltraion();

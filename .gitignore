@@ -1,6 +1,6 @@
 .metadata/
 .recommenders/
-RemoteSystemsTempFiles
+RemoteSystemsTempFiles/
 InsiderThreatStreamReasoning/bin
 InsiderThreatStreamReasoning/.settings
 InsiderThreatStreamReasoning/.classpath
