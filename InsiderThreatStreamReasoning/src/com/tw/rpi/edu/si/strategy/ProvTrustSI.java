@@ -153,7 +153,7 @@ public class ProvTrustSI {
 		int actionCounter = 0; // counts how many actions are read
 		String data = "";
 		try {
-			while((data = br.readLine()) != null && actionCounter < 10000) { // read 10000 actions at one time
+			while((data = br.readLine()) != null && actionCounter < 1000) { // read 1000 actions at one time
 				if(data.charAt(data.length()-1) != '.') {
 					actionCounter++;
 				}

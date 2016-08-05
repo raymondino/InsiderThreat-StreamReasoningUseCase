@@ -95,7 +95,9 @@ public class Window {
 		end = ZonedDateTime.of((start.plus(size)).getYear(), (start.plus(size)).getMonthValue(), (start.plus(size)).getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern")); 
 		lastEndOfDay = start; 
 		endOfDay = ZonedDateTime.of(start.getYear(), start.getMonthValue(), start.getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern"));}
-	private void updateEndOfDay(ZonedDateTime s) {endOfDay = ZonedDateTime.of(s.getYear(), s.getMonthValue(), s.getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern"));}
+	private void updateEndOfDay(ZonedDateTime s) {
+		lastEndOfDay = endOfDay;
+		endOfDay = ZonedDateTime.of(s.getYear(), s.getMonthValue(), s.getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern"));}
 	public void setMetricWriter(PrintWriter pw) { this.writeSuspiciousAction = pw;}
 	
 	// function: window loads data
@@ -136,8 +138,6 @@ public class Window {
 			// delete ExcessiveRemovableDriveUser from actor-event graph
 			String deleteData =  "delete data { graph <"+prefix+"actor-event> {<"+prefix+latestAction.getUser().getID()+"> a <"+prefix+"ExcessiveRemovableDriveUser>}}";
 			client.getANonReasoningConn().update(deleteData);
-			// update the new end of day
-			lastEndOfDay = endOfDay;
 		}
 		// update endOfDay everyday
 		if(latestActionTS.isAfter(endOfDay)) {
