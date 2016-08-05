@@ -90,7 +90,11 @@ public class Window {
 	public void setStep(int s) {step = Period.ofDays(s);}
 	public void setWeeklySize(int s) {size = Period.ofDays(s);}
 	public void setMonthlySize(int s) {size = Period.ofMonths(s);}
-	public void setStart(ZonedDateTime s) {start = s; end = start.plus(size); lastEndOfDay = start; endOfDay = ZonedDateTime.of(start.getYear(), start.getMonthValue(), start.getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern"));}
+	public void setStart(ZonedDateTime s) {
+		start = s; 
+		end = ZonedDateTime.of((start.plus(size)).getYear(), (start.plus(size)).getMonthValue(), (start.plus(size)).getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern")); 
+		lastEndOfDay = start; 
+		endOfDay = ZonedDateTime.of(start.getYear(), start.getMonthValue(), start.getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern"));}
 	private void updateEndOfDay(ZonedDateTime s) {endOfDay = ZonedDateTime.of(s.getYear(), s.getMonthValue(), s.getDayOfMonth(), 23, 59, 59, 0, ZoneId.of("US/Eastern"));}
 	public void setMetricWriter(PrintWriter pw) { this.writeSuspiciousAction = pw;}
 	
@@ -334,6 +338,7 @@ public class Window {
 				this.otherSuspiciousActionsAtTheEndOfDay.clear();	
 			}
 			this.writeSuspiciousAction.print(actionGraphID.substring((prefix+"graph/").length()) + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + "," + actionBeingQueried.getUser().getPotentialThreateningInsider() + ",");
+			this.writeSuspiciousAction.flush();
 			// move this action to suspicious action graphs
 			client.getANonReasoningConn().update("add <"+actionGraphID+"> to <"+prefix+"suspicious>").execute(); 
 			dataExfiltraion();

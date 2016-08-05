@@ -146,55 +146,6 @@ public class ProvTrustSI {
 		}
 		metricwriter.flush();
 		metricwriter.close();
-
-//		String data = "";
-//		try {
-//			while((data = br.readLine()) != null) {
-//				String [] parts = data.split(" ");
-//				String s = parts[0];
-//				String p = parts[1];
-//				String o = parts[2];
-//				
-//				// if current data hasn't reach action data
-//				if(p.equals(prefix + "isInvolvedIn")) {
-//					client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o))), prefix+"actor-event");	
-//					continue;
-//				}		
-//				// if data comes with a timestamp, then this is a new action
-//				if(data.charAt(data.length()-1) != '.') {
-//					// last action info will be fully added into db when current data is read
-//					// so we need to construct last action, and add it into the window
-//					if(!currentActionGraphID.equals("")) {
-//						Action action = new Action(currentActionGraphID, currentActioinTS, users, client); 
-//						if(SIprov) { action.setRankByProv();} // rank by provenance
-//						if(SIprovtrust) { action.setRankByProvTrust();} // rank by trust
-//						window.load(currentActionGraphID, currentActioinTS, action);
-//						try {
-//							window.process();
-//						}
-//						catch (Exception e) {
-//							System.out.println();
-//							System.out.print("[EXCEPTION] ");
-//							System.out.println(action.getActionID());
-//							metricwriter.flush();
-//							e.printStackTrace();
-//						}
-//					}
-//					currentActionGraphID = prefix + "graph/" + o.substring(prefix.length());
-//					currentActioinTS = ZonedDateTime.parse(parts[4]+"-05:00"); // EST time zone
-//					client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o))), currentActionGraphID);					
-//					continue;
-//				}
-//				// keep loading data of one action
-//				if(o.contains("http")) { // if o is a url
-//					client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.iri(o))), currentActionGraphID);
-//				}
-//				else { // if o is a literal
-//					client.addModel(Models2.newModel(Values.statement(Values.iri(s), Values.iri(p), Values.literal(o))), currentActionGraphID);
-//				}
-//			}
-//			metricwriter.close();
-//		} catch (IOException e) { e.printStackTrace(); }
 	}
 	
 	// data buffer to boost disk-reading speed
@@ -202,7 +153,7 @@ public class ProvTrustSI {
 		int actionCounter = 0; // counts how many actions are read
 		String data = "";
 		try {
-			while((data = br.readLine()) != null && actionCounter < 100000 ) { // read 100000 actions at one time
+			while((data = br.readLine()) != null && actionCounter < 10000) { // read 10000 actions at one time
 				if(data.charAt(data.length()-1) != '.') {
 					actionCounter++;
 				}

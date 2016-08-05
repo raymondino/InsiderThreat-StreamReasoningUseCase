@@ -63,111 +63,10 @@ public class Main {
 			e.printStackTrace(); 
 		}
 		
-		// // ACM2278 date range: 8/18/2010 - 8/24/2010
-		// ArrayList<String> ACM2278streamingdata = new ArrayList<String>();
-		// ACM2278streamingdata.add("data/streamingdata-1user/1userlist-ACM2278_annotation.txt");
-		// ACM2278streamingdata.add("data/streamingdata-10user/10userlist-ACM2278_annotation.txt");
-		// ACM2278streamingdata.add("data/streamingdata-100user/100userlist-ACM2278_annotation.txt");
-		// ACM2278streamingdata.add("data/streamingdata-1000user/1000userlist-ACM2278_annotation.txt");
-
-		// // CMP2946 data range: 2/2/2011 - 3/30/2011
-		// ArrayList<String> CMP2946streamingdata = new ArrayList<String>();
-		// CMP2946streamingdata.add("data/streamingdata-1user/1userlist-CMP2946_annotation.txt");
-		// CMP2946streamingdata.add("data/streamingdata-10user/10userlist-CMP2946_annotation.txt");
-		// CMP2946streamingdata.add("data/streamingdata-100user/100userlist-CMP2946_annotation.txt");
-		// CMP2946streamingdata.add("data/streamingdata-1000user/1000userlist-CMP2946_annotation.txt");
-
-		// // CDE1846 data range: 2/21/2011 - 4/25/2011
-		// ArrayList<String> CDE1846streamingdata = new ArrayList<String>();
-		// CDE1846streamingdata.add("data/streamingdata-1user/1userlist-CDE1846_annotation.txt");
-		// CDE1846streamingdata.add("data/streamingdata-10user/10userlist-CDE1846_annotation.txt");
-		// CDE1846streamingdata.add("data/streamingdata-100user/100userlist-CDE1846_annotation.txt");
-		// CDE1846streamingdata.add("data/streamingdata-1000user/1000userlist-CDE1846_annotation.txt");
-
-		// // MBG3183 data range: 10/12/2010 - 10/13/2010
-		// ArrayList<String> MBG3183streamingdata = new ArrayList<String>();
-		// MBG3183streamingdata.add("data/streamingdata-1user/1userlist-MBG3183_annotation.txt");
-		// MBG3183streamingdata.add("data/streamingdata-10user/10userlist-MBG3183_annotation.txt");
-		// MBG3183streamingdata.add("data/streamingdata-100user/100userlist-MBG3183_annotation.txt");
-		// MBG3183streamingdata.add("data/streamingdata-1000user/1000userlist-MBG3183_annotation.txt");
-
-		// // window size = 1 day bench
-		// for(String s:ACM2278streamingdata) {
-		// 	int users = 1;
-		// 	if(s.contains("1000")) {users = 1000; }
-		// 	else if(s.contains("100")) {users = 100;}
-		// 	else if(s.contains("10")) {users = 10;}
-		// 	ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", 1, users); prov.run();
-		// 	ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", 1, users); trust.run();
-		// 	ProvTrustSI nothing = new ProvTrustSI(s, client, "", 1, users); nothing.run();
-		// }
-		// for(String s:MBG3183streamingdata) {
-		// 	int users = 1;
-		// 	if(s.contains("1000")) {users = 1000; }
-		// 	else if(s.contains("100")) {users = 100;}
-		// 	else if(s.contains("10")) {users = 10;}
-		// 	ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", 1, users); prov.run();
-		// 	ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", 1, users); trust.run();
-		// 	ProvTrustSI nothing = new ProvTrustSI(s, client, "", 1, users); nothing.run();
-		// }
-		// for(String s:CMP2946streamingdata) {
-		// 	int users = 1;
-		// 	if(s.contains("1000")) {users = 1000; }
-		// 	else if(s.contains("100")) {users = 100;}
-		// 	else if(s.contains("10")) {users = 10;}
-		// 	ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", 1, users); prov.run();
-		// 	ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", 1, users); trust.run();
-		// 	ProvTrustSI nothing = new ProvTrustSI(s, client, "", 1, users); nothing.run();		
-		// }
-		// for(String s:CDE1846streamingdata) {
-		// 	int users = 1;
-		// 	if(s.contains("1000")) {users = 1000; }
-		// 	else if(s.contains("100")) {users = 100;}
-		// 	else if(s.contains("10")) {users = 10;}
-		// 	ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", 1, users); prov.run();
-		// 	ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", 1, users); trust.run();
-		// 	ProvTrustSI nothing = new ProvTrustSI(s, client, "", 1, users); nothing.run();		
-		// }
-
-		// // window size = 7 days bench
-		// for(String s:CMP2946streamingdata) {
-		// 	int users = 1;
-		// 	if(s.contains("1000")) {users = 1000; }
-		// 	else if(s.contains("100")) {users = 100;}
-		// 	else if(s.contains("10")) {users = 10;}
-		// 	ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", 7, users); prov.run();
-		// 	ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", 7, users); trust.run();
-		// 	ProvTrustSI nothing = new ProvTrustSI(s, client, "", 7, users); nothing.run();		
-		// }
-		// for(String s:CDE1846streamingdata) {
-		// 	int users = 1;
-		// 	if(s.contains("1000")) {users = 1000; }
-		// 	else if(s.contains("100")) {users = 100;}
-		// 	else if(s.contains("10")) {users = 10;}
-		// 	ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", 7, users); prov.run();
-		// 	ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", 7, users); trust.run();
-		// 	ProvTrustSI nothing = new ProvTrustSI(s, client, "", 7, users); nothing.run();		
-		// }
-
-		// // window size = 1 month bench
-		// for(String s:CMP2946streamingdata) {
-		// 	int users = 1;
-		// 	if(s.contains("1000")) {users = 1000; }
-		// 	else if(s.contains("100")) {users = 100;}
-		// 	else if(s.contains("10")) {users = 10;}
-		// 	ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", 28, users); prov.run();
-		// 	ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", 28, users); trust.run();
-		// 	ProvTrustSI nothing = new ProvTrustSI(s, client, "", 28, users); nothing.run();		
-		// }
-		// for(String s:CDE1846streamingdata) {
-		// 	int users = 1;
-		// 	if(s.contains("1000")) {users = 1000; }
-		// 	else if(s.contains("100")) {users = 100;}
-		// 	else if(s.contains("10")) {users = 10;}
-		// 	ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", 28, users); prov.run();
-		// 	ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", 28, users); trust.run();
-		// 	ProvTrustSI nothing = new ProvTrustSI(s, client, "", 28, users); nothing.run();		
-		// }
+		// ACM2278 date range: 8/18/2010 - 8/24/2010
+		// CMP2946 data range: 2/2/2011 - 3/30/2011
+		// CDE1846 data range: 2/21/2011 - 4/25/2011
+		// MBG3183 data range: 10/12/2010 - 10/13/2010
 
 		// streaming files contain 1 user each
 		ArrayList<String> streamingData1 = new ArrayList<String>();
@@ -177,25 +76,25 @@ public class Main {
 //		streamingData1.add("data/streamingdata-1user/1userlist-CDE1846_annotation.txt");
 
 		// streaming files contain 10 users each
-//		ArrayList<String> streamingData10 = new ArrayList<String>();
-//		streamingData10.add("data/streamingdata-10user/10userlist-MBG3183_annotation.txt");
-//		streamingData10.add("data/streamingdata-10user/10userlist-ACM2278_annotation.txt");
-//		streamingData10.add("data/streamingdata-10user/10userlist-CMP2946_annotation.txt");
-//		streamingData10.add("data/streamingdata-10user/10userlist-CDE1846_annotation.txt");
-//
-//		// streaming files contain 100 users each
-//		ArrayList<String> streamingData100 = new ArrayList<String>();
-//		streamingData100.add("data/streamingdata-100user/100userlist-MBG3183_annotation.txt");
-//		streamingData100.add("data/streamingdata-100user/100userlist-ACM2278_annotation.txt");
-//		streamingData100.add("data/streamingdata-100user/100userlist-CMP2946_annotation.txt");
-//		streamingData100.add("data/streamingdata-100user/100userlist-CDE1846_annotation.txt");
-//
-//		// streaming files contain 1000 users each
-//		ArrayList<String> streamingData1000 = new ArrayList<String>();
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-MBG3183_annotation.txt");
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-ACM2278_annotation.txt");
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-CMP2946_annotation.txt");
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-CDE1846_annotation.txt");
+		ArrayList<String> streamingData10 = new ArrayList<String>();
+		streamingData10.add("data/streamingdata-10user/10userlist-MBG3183_annotation.txt");
+		streamingData10.add("data/streamingdata-10user/10userlist-ACM2278_annotation.txt");
+		streamingData10.add("data/streamingdata-10user/10userlist-CMP2946_annotation.txt");
+		streamingData10.add("data/streamingdata-10user/10userlist-CDE1846_annotation.txt");
+
+		// streaming files contain 100 users each
+		ArrayList<String> streamingData100 = new ArrayList<String>();
+		streamingData100.add("data/streamingdata-100user/100userlist-MBG3183_annotation.txt");
+		streamingData100.add("data/streamingdata-100user/100userlist-ACM2278_annotation.txt");
+		streamingData100.add("data/streamingdata-100user/100userlist-CMP2946_annotation.txt");
+		streamingData100.add("data/streamingdata-100user/100userlist-CDE1846_annotation.txt");
+
+		// streaming files contain 1000 users each
+		ArrayList<String> streamingData1000 = new ArrayList<String>();
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-MBG3183_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-ACM2278_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-CMP2946_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-CDE1846_annotation.txt");
 
 		// window size
 		ArrayList<Integer> windowSizes = new ArrayList<Integer>();
@@ -209,14 +108,13 @@ public class Main {
 		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
 		 			continue;
 		 		}
-		 		client.emptyDB(); 
-		 		loadBackground();
-		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); 
-		 		prov.run();
+//		 		client.emptyDB(); loadBackground();
+//		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); 
+//		 		prov.run();
 		 		client.emptyDB(); loadBackground();
 		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1); trust.run();
-		 		client.emptyDB(); loadBackground();
-		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1); nothing.run();
+//		 		client.emptyDB(); loadBackground();
+//		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1); nothing.run();
 		 	}
 		 }
 		
