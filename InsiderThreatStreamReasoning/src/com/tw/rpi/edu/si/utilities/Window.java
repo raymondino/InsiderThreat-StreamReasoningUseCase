@@ -110,8 +110,8 @@ public class Window {
 	
 	// function: window process data
 	public void process() {
-		// check suspicious device actions at the end of every day
-		if(latestAction.getUser().getExcessiveRemovableDiskUser() && latestActionTS.isAfter(endOfDay)) {
+		// [prov, trust] checks suspicious device actions at the end of every day
+		if(latestAction.isRankByProvTrust() && latestAction.getUser().getExcessiveRemovableDiskUser() && latestActionTS.isAfter(endOfDay)) {
 			// add ExcessiveRemovableDriveUser info into actor-event graph
 			client.addModel(Models2.newModel(Values.statement(Values.iri(prefix+latestAction.getUser().getID()),RDF.TYPE, Values.iri(prefix+"ExcessiveRemovableDriveUser"))), prefix+"actor-event");
 			// form device action query
@@ -171,6 +171,7 @@ public class Window {
 			}
 			// if actions are ranked by [prov, trust]
 			else if (latestAction.isRankByProvTrust()) {
+				// continue to process
 				while(actions.size() > 0 && (
 					  actions.peek().getProvenanceScore() > 0 || (
 					  actions.peek().getProvenanceScore() == 0 && 
