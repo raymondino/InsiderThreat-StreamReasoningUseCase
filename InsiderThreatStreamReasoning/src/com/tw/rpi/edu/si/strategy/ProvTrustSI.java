@@ -153,18 +153,36 @@ public class ProvTrustSI {
 		int actionCounter = 0; // counts how many actions are read
 		String data = "";
 		try {
-			while((data = br.readLine()) != null && actionCounter < 1000) { // read 1000 actions at one time
+			while((data = br.readLine()) != null && actionCounter < 2000) { // read 2000 actions at one time
 				if(data.charAt(data.length()-1) != '.') {
 					actionCounter++;
 				}
 				databuffer.add(data);				
 			}
 			if(actionCounter == 0) {
+				System.out.println("#############################");
+				System.out.println("#############################");
+				System.out.println("#############################");
+				System.out.println("#############################");		
+				System.out.println("[debug] end of streaming file");
+				System.out.println("#############################");
+				System.out.println("#############################");
+				System.out.println("#############################");
+				System.out.println("#############################");
 				return false;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("#############################");
+		System.out.println("#############################");
+		System.out.println("#############################");
+		System.out.println("#############################");		
+		System.out.println("[debug] 2000 actions buffered");
+		System.out.println("#############################");
+		System.out.println("#############################");
+		System.out.println("#############################");
+		System.out.println("#############################");
 		return true;
 	}
 }

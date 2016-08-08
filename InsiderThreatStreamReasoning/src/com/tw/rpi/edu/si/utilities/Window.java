@@ -44,6 +44,7 @@ public class Window {
 	private Boolean window_start; // flag for window start
 	private long totalActionProcessTime; // total time up till now to process all actions
 	private Integer actionCounter; // total action number so far
+	private ArrayList<Action> suspiciousDailyActionCandidateList; // contains suspicious actions candidates within one day
 	private LinkedHashMap<String, String> otherSuspiciousActionsAtTheEndOfDay;	
 	private SnarlClient client;
 	private PrintWriter writeSuspiciousAction;
@@ -64,6 +65,7 @@ public class Window {
 		actions = new PriorityQueue<Action>();
 		window_start = false;
 		otherSuspiciousActionsAtTheEndOfDay = new LinkedHashMap<String, String> ();
+		suspiciousDailyActionCandidateList = new ArrayList<Action>();
 	}	
 	public Window(SnarlClient c) {
 		size = Period.ofDays(7);
@@ -78,6 +80,7 @@ public class Window {
 		totalActionProcessTime = (long) 0.0;
 		actionCounter = 0;
 		otherSuspiciousActionsAtTheEndOfDay = new LinkedHashMap<String, String> ();
+		suspiciousDailyActionCandidateList = new ArrayList<Action>();
 	}
 	
 	// assessor
@@ -116,13 +119,14 @@ public class Window {
 	
 	// function: window process data
 	public void process() {
+		System.out.print(actions.size() + " ");		
 		// [prov, trust] checks suspicious device actions at the end of every day
 		if(latestAction.isRankByProvTrust() && latestAction.getUser().getExcessiveRemovableDiskUser() && latestActionTS.isAfter(endOfDay)) {
 			// add ExcessiveRemovableDriveUser info into actor-event graph
 			client.addModel(Models2.newModel(Values.statement(Values.iri(prefix+latestAction.getUser().getID()),RDF.TYPE, Values.iri(prefix+"ExcessiveRemovableDriveUser"))), prefix+"actor-event");
 			// form device action query
 			String fromGraph = "from <" + prefix + "background> from <" + prefix + "actor-event> ";
-			for(Action a: actions) {
+			for(Action a: suspiciousDailyActionCandidateList) {
 				ZonedDateTime aTS = a.getTimestamp();
 				// we only need to query today's device actions
 				if((aTS.isAfter(lastEndOfDay)) && (aTS.isBefore(endOfDay)) && a.getActionID().contains("device")) {
@@ -142,6 +146,7 @@ public class Window {
 		// update endOfDay everyday
 		if(latestActionTS.isAfter(endOfDay)) {
 			updateEndOfDay(latestActionTS);
+			suspiciousDailyActionCandidateList.clear(); // clear daily candidate list
 		}
 		// if window is not full
 		if(latestActionTS.isBefore(end)) {
@@ -151,6 +156,7 @@ public class Window {
 			if(latestAction.isRankByProv()) {
 				while(actions.size() > 0 && actions.peek().getProvenanceScore() > 0) {
 					actionBeingQueried = actions.poll();
+					suspiciousDailyActionCandidateList.add(actionBeingQueried); // add this action into the candidate list
 					// ITAdmins are OK
 					if(actionBeingQueried.getUser().getRole().equals("ITAdmin")) {
 						System.out.print("<- ITAdmin ");
@@ -181,6 +187,7 @@ public class Window {
 					  actions.peek().getProvenanceScore() == 0 && 
 				      actions.peek().getUser().getTrustScore() < 50))) {
 						actionBeingQueried = actions.poll();
+						suspiciousDailyActionCandidateList.add(actionBeingQueried); // add this action into the candidate list
 						// ITAdmins are OK
 						if(actionBeingQueried.getUser().getRole().equals("ITAdmin")) {
 							System.out.print("<- ITAdmin ");
@@ -232,6 +239,7 @@ public class Window {
 			System.out.println();
 			System.out.println("[evict]");
 			evict();
+			
 			System.out.println("[window moves]");
 			move();
 		}
@@ -250,7 +258,7 @@ public class Window {
 		ArrayList<String> toDelete = new ArrayList<String>();
 		while(itr.hasNext()) {
 			Map.Entry<String, ZonedDateTime> entry = itr.next();
-			if(entry.getValue().isAfter(start.plus(step))) {
+			if(entry.getValue().isAfter(end)) {
 				break;
 			}
 			else {
