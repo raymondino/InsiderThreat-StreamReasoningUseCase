@@ -495,21 +495,52 @@ paceTime.owl)</rdfs:comment>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
-                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileAction"/>
-                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
-                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction"/>
-                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">5</owl:minQualifiedCardinality>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
-                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction"/>
-                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">10</owl:minQualifiedCardinality>
-                    </owl:Restriction>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
+                                                <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction"/>
+                                                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">10</owl:minQualifiedCardinality>
+                                            </owl:Restriction>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
+                                                <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousEmailSendAction"/>
+                                                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">10000</owl:maxQualifiedCardinality>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
+                                        <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction"/>
+                                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">10000</owl:maxQualifiedCardinality>
+                                    </owl:Restriction>
+                                </owl:unionOf>
+                            </owl:Class>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
+                                <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousWWWUploadAction"/>
+                                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">5</owl:minQualifiedCardinality>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
+                                <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileAction"/>
+                                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/hasAction"/>
+                                <owl:onClass rdf:resource="http://tw.rpi.edu/ontology/DataExfiltration/SuspiciousFileAction"/>
+                                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">10000</owl:maxQualifiedCardinality>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>

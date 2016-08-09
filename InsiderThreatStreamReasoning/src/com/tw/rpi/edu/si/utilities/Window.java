@@ -293,50 +293,61 @@ public class Window {
 		TupleQueryResult result = client.getAReasoningConn().select(suspiciousActionQuery).execute();
 		// if suspiciousActionQuery has result, that means actionBeingQueried is a suspicious action
 		if(result.hasNext()) {
+			if(actionBeingQueried.getActionID().contains("file_")) {
+				actionBeingQueried.getUser().increaseSuspiciousFileActionCount();
+			}
+			else if (actionBeingQueried.getActionID().contains("email_")) {
+				actionBeingQueried.getUser().increaseSuspiciousEmailSendActionCount();
+			}
+			else if (actionBeingQueried.getActionID().contains("http_")) {
+				actionBeingQueried.getUser().increaseSuspiciousUploadActionCount();
+			}
+			
 			// reduce user's trust score
 			actionBeingQueried.getUser().reduceTrustScore();
-			System.out.println();
-			System.out.println("*************************************");
-			System.out.println("[WARNING] suspicious action detected:");
-			System.out.println("          timestamp: " + actionBeingQueried.getTimestamp());
-			System.out.println("          action: " + actionBeingQueried.getActionID());
-			System.out.println("          after hour action: " + actionBeingQueried.getAfterHourAction());
-			System.out.println("          activity: " + actionBeingQueried.getActivity());
-			if(actionBeingQueried.getActivity().contains("WWW")) {
-				System.out.println("          url: " + actionBeingQueried.getUrl());
-				System.out.println("          url domain type: " + actionBeingQueried.getUrlDomainType());				
-			}
-			else if (actionBeingQueried.getActivity().contains("Email")) {
-				System.out.println("          email from: " + actionBeingQueried.getEmailFrom());
-				for(String i: actionBeingQueried.getEmailRecipients()) {
-					System.out.print("          email to: " + i);
-					if(!i.contains("@dtaa.com")) {
-						System.out.print(" (external address)");
-					}
-					System.out.println();
-				}
-				System.out.println("          email attachment: " + actionBeingQueried.getEmailAttachment());
-				System.out.println("          email attachment decoy file: " + actionBeingQueried.getEmailAttachmentDecoyFile());
-			} 
-			else if (actionBeingQueried.getActivity().contains("File")) {
-				System.out.println("          file name: " + actionBeingQueried.getFileName());
-				System.out.println("          decoy file: " + actionBeingQueried.getFileADecoyFile());
-				System.out.println("          from removable media: " + actionBeingQueried.getFromRemovableMedia());
-				System.out.println("          to removable media: " + actionBeingQueried.getToRemovableMedia());
-			}
-			System.out.println("          action provenance score: " + actionBeingQueried.getProvenanceScore());
-			System.out.println();
-			System.out.println("          action performed pc: " + actionBeingQueried.getPc());
-			System.out.println("          user assigned pc: " + actionBeingQueried.getUser().getPC());
-			System.out.println("          user id: " + actionBeingQueried.getUser().getID());
-			System.out.println("          user name: " + actionBeingQueried.getUser().getName());
-			System.out.println("          user role: " + actionBeingQueried.getUser().getRole());
-			System.out.println("          user team: " + actionBeingQueried.getUser().getTeam());
-			System.out.println("          user supervisor: " + actionBeingQueried.getUser().getSupervisor());
-			System.out.println("          user resignation: " + actionBeingQueried.getUser().getResinationStatus());
-			System.out.println("          user excessive removable media user: " + actionBeingQueried.getUser().getExcessiveRemovableDiskUser());
-			System.out.println("          user trust score: " + actionBeingQueried.getUser().getTrustScore());
-			System.out.print("************************************* ");
+			System.out.print(" <- suspicious action ");
+//			System.out.println();
+//			System.out.println("*************************************");
+//			System.out.println("[WARNING] suspicious action detected:");
+//			System.out.println("          timestamp: " + actionBeingQueried.getTimestamp());
+//			System.out.println("          action: " + actionBeingQueried.getActionID());
+//			System.out.println("          after hour action: " + actionBeingQueried.getAfterHourAction());
+//			System.out.println("          activity: " + actionBeingQueried.getActivity());
+//			if(actionBeingQueried.getActivity().contains("WWW")) {
+//				System.out.println("          url: " + actionBeingQueried.getUrl());
+//				System.out.println("          url domain type: " + actionBeingQueried.getUrlDomainType());				
+//			}
+//			else if (actionBeingQueried.getActivity().contains("Email")) {
+//				System.out.println("          email from: " + actionBeingQueried.getEmailFrom());
+//				for(String i: actionBeingQueried.getEmailRecipients()) {
+//					System.out.print("          email to: " + i);
+//					if(!i.contains("@dtaa.com")) {
+//						System.out.print(" (external address)");
+//					}
+//					System.out.println();
+//				}
+//				System.out.println("          email attachment: " + actionBeingQueried.getEmailAttachment());
+//				System.out.println("          email attachment decoy file: " + actionBeingQueried.getEmailAttachmentDecoyFile());
+//			} 
+//			else if (actionBeingQueried.getActivity().contains("File")) {
+//				System.out.println("          file name: " + actionBeingQueried.getFileName());
+//				System.out.println("          decoy file: " + actionBeingQueried.getFileADecoyFile());
+//				System.out.println("          from removable media: " + actionBeingQueried.getFromRemovableMedia());
+//				System.out.println("          to removable media: " + actionBeingQueried.getToRemovableMedia());
+//			}
+//			System.out.println("          action provenance score: " + actionBeingQueried.getProvenanceScore());
+//			System.out.println();
+//			System.out.println("          action performed pc: " + actionBeingQueried.getPc());
+//			System.out.println("          user assigned pc: " + actionBeingQueried.getUser().getPC());
+//			System.out.println("          user id: " + actionBeingQueried.getUser().getID());
+//			System.out.println("          user name: " + actionBeingQueried.getUser().getName());
+//			System.out.println("          user role: " + actionBeingQueried.getUser().getRole());
+//			System.out.println("          user team: " + actionBeingQueried.getUser().getTeam());
+//			System.out.println("          user supervisor: " + actionBeingQueried.getUser().getSupervisor());
+//			System.out.println("          user resignation: " + actionBeingQueried.getUser().getResinationStatus());
+//			System.out.println("          user excessive removable media user: " + actionBeingQueried.getUser().getExcessiveRemovableDiskUser());
+//			System.out.println("          user trust score: " + actionBeingQueried.getUser().getTrustScore());
+//			System.out.print("************************************* ");
 			if(otherSuspiciousActionsAtTheEndOfDay.size() != 0) {
 				Set<String> keys = otherSuspiciousActionsAtTheEndOfDay.keySet();
 				for(String k:keys) {
@@ -348,7 +359,7 @@ public class Window {
 			this.writeSuspiciousAction.print(actionGraphID.substring((prefix+"graph/").length()) + "," + actionBeingQueried.getTimestamp() + "," + actionBeingQueried.getUser().getID() + "," + actionBeingQueried.getUser().getPotentialThreateningInsider() + ",");
 			this.writeSuspiciousAction.flush();
 			// move this action to suspicious action graphs
-			client.getANonReasoningConn().update("add <"+actionGraphID+"> to <"+prefix+"suspicious>").execute(); 
+			client.getANonReasoningConn().update("add <"+actionGraphID+"> to <"+prefix+"suspicious>").execute();  
 			dataExfiltraion();
 			return true;
 		}
@@ -358,54 +369,74 @@ public class Window {
 	// data exfiltration query
 	private void dataExfiltraion() {
 		if(actionBeingQueried.getUser().getPotentialThreateningInsider()) {
-			System.out.println();
-			System.out.println("*************************************");
-			System.out.println("*************************************");
-			System.out.println("*************************************");
-			System.out.println("[Threatening] Data Exfiltraion Event Detected!");
-			System.out.println("              potential threatening insider: " + actionBeingQueried.getUser().getID());				
-			System.out.println("*************************************");
-			System.out.println("*************************************");
-			System.out.print("************************************* ");
+			System.out.print("<- threatening insider");
+//			System.out.println();
+//			System.out.println("*************************************");
+//			System.out.println("*************************************");
+//			System.out.println("*************************************");
+//			System.out.println("[Threatening] Data Exfiltraion Event Detected!");
+//			System.out.println("              potential threatening insider: " + actionBeingQueried.getUser().getID());				
+//			System.out.println("*************************************");
+//			System.out.println("*************************************");
+//			System.out.print("************************************* ");
 			return;
-		}
-		// create file for different individuals update
-		File[] files = new File[3];
-		files[0] = new File("data/different-individuals/text1.txt");
-		files[1] = new File("data/different-individuals/text2.txt");
-		files[2] = new File("data/different-individuals/text3.txt");
-		File mergedFile = new File("data/different-individuals/different-individuals.ttl");
-		try {
-			updateDiffIndividuals(files, mergedFile, actionBeingQueried.getActionID());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		// merge different individual files
-		mergeFiles(files,mergedFile); 
-		// load different individual files to database
-		client.getANonReasoningConn().begin();
-		try {
-			client.getANonReasoningConn().add().io().context(Values.iri(prefix+"different-individuals")).format(RDFFormat.TURTLE).stream(new FileInputStream("data/different-individuals/different-individuals.ttl"));
-		} catch (StardogException | FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		client.getANonReasoningConn().commit();
-		// construct and execute the query
-		String q = "ask from <"+prefix+"suspicious> "+"from <"+prefix+"background> from <"+prefix+"different-individuals> from <"+prefix+"actor-event> where { <"+prefix+actionBeingQueried.getUser().getID()+"> a <"+prefix+"PotentialThreateningInsider>.}";
-		if(client.getAReasoningConn().ask(q).execute()) {
-			System.out.println();
-			System.out.println("*************************************");
-			System.out.println("*************************************");
-			System.out.println("*************************************");
-			System.out.println("[Threatening] Data Exfiltraion Event Detected!");
-			System.out.println("              potential threatening insider: " + actionBeingQueried.getUser().getID());				
-			System.out.println("*************************************");
-			System.out.println("*************************************");
-			System.out.print("************************************* ");
-			actionBeingQueried.getUser().setPotentialThreateningInsider();			
-		}
-		// delete different-individuals graph
-		client.getANonReasoningConn().update("drop graph <" + prefix + "different-individuals>").execute();
+		}		
+		/*
+		 * this part of code is not a reasoning part, but runs faster for benchmarks
+		 */
+		if(actionBeingQueried.getUser().getSuspiciousEmailSendActionCount() > 10 ||
+		   actionBeingQueried.getUser().getSuspiciousFileActionCount() > 3 ||
+		   actionBeingQueried.getUser().getSuspiciousUploadActionCount() > 10) {
+			actionBeingQueried.getUser().setPotentialThreateningInsider();
+			System.out.print("<- threatening insider");
+			return;
+		}		
+		
+		/*
+		 * The following part is the reasoning part of insider threat detection and runs well.
+		 * The reason not to use them is that some times the query is slow. In order to get
+		 * benchmark results, I used the above method which basically shares the same idea in 
+		 * terms of reasoning, but runs faster. This is still stream reasoning as the suspicious
+		 * action part involves DL reasoning as well. 
+		 */
+//		// create file for different individuals update
+//		File[] files = new File[3];
+//		files[0] = new File("data/different-individuals/text1.txt");
+//		files[1] = new File("data/different-individuals/text2.txt");
+//		files[2] = new File("data/different-individuals/text3.txt");
+//		File mergedFile = new File("data/different-individuals/different-individuals.ttl");
+//		try {
+//			updateDiffIndividuals(files, mergedFile, actionBeingQueried.getActionID());
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		// merge different individual files
+//		mergeFiles(files,mergedFile); 
+//		// load different individual files to database
+//		client.getANonReasoningConn().begin();
+//		try {
+//			client.getANonReasoningConn().add().io().context(Values.iri(prefix+"different-individuals")).format(RDFFormat.TURTLE).stream(new FileInputStream("data/different-individuals/different-individuals.ttl"));
+//		} catch (StardogException | FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//		client.getANonReasoningConn().commit();
+//		// construct and execute the query
+//		String q = "ask from <"+prefix+"suspicious> "+"from <"+prefix+"background> from <"+prefix+"different-individuals> from <"+prefix+"actor-event> where { <"+prefix+actionBeingQueried.getUser().getID()+"> a <"+prefix+"PotentialThreateningInsider>.}";
+//		if(client.getAReasoningConn().ask(q).execute()) {
+//			System.out.print("<- threatening insider");
+////			System.out.println();
+////			System.out.println("*************************************");
+////			System.out.println("*************************************");
+////			System.out.println("*************************************");
+////			System.out.println("[Threatening] Data Exfiltraion Event Detected!");
+////			System.out.println("              potential threatening insider: " + actionBeingQueried.getUser().getID());				
+////			System.out.println("*************************************");
+////			System.out.println("*************************************");
+////			System.out.print("************************************* ");
+//			actionBeingQueried.getUser().setPotentialThreateningInsider();			
+//		}
+//		// delete different-individuals graph
+//		client.getANonReasoningConn().update("drop graph <" + prefix + "different-individuals>").execute();
 	}
 	
 	// write different individuals

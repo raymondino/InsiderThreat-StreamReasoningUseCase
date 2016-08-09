@@ -21,6 +21,10 @@ public class User {
 	private Boolean excessiveRemovableDiskUser;
 	private Boolean potentialThreateningInsider;
 	
+	private int suspiciousEmailSendActionCount;
+	private int suspiciousFileActionCount;
+	private int suspiciousWWWUploadActionCount;
+	
 	private String statusquery;
 	
 	public User(String id, ZonedDateTime actionTS, SnarlClient client) {
@@ -52,11 +56,17 @@ public class User {
 			resigned = true;
 		}
 		potentialThreateningInsider = false;
+		suspiciousEmailSendActionCount = 0;
+		suspiciousFileActionCount = 0;
+		suspiciousWWWUploadActionCount = 0;
 	}
 	
 	public void reduceTrustScore() { if(trustScore > 0) {trustScore -= 1;}}
 	public void setExcessiveRemovableDiskUser(Boolean flag) { excessiveRemovableDiskUser = flag; }
 	public void setPotentialThreateningInsider() { potentialThreateningInsider = true;}
+	public void increaseSuspiciousEmailSendActionCount() {suspiciousEmailSendActionCount++;}
+	public void increaseSuspiciousFileActionCount() {suspiciousFileActionCount++;}
+	public void increaseSuspiciousUploadActionCount() {suspiciousWWWUploadActionCount++;}
 
 	
 	public String getID() { return userID; }
@@ -69,4 +79,7 @@ public class User {
 	public Integer getTrustScore() { return trustScore; }
 	public Boolean getExcessiveRemovableDiskUser() { return excessiveRemovableDiskUser; }
 	public Boolean getPotentialThreateningInsider() { return potentialThreateningInsider;}
+	public Integer getSuspiciousEmailSendActionCount() {return suspiciousEmailSendActionCount;}
+	public Integer getSuspiciousFileActionCount() {return suspiciousFileActionCount;}
+	public Integer getSuspiciousUploadActionCount() {return suspiciousWWWUploadActionCount;}
 }
