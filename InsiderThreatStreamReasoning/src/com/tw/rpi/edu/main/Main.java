@@ -89,51 +89,51 @@ public class Main {
 //		 	}
 //		}
 
-		// window size
-		ArrayList<Integer> windowSizes = new ArrayList<Integer>();
-		windowSizes.add(1); // 1 day
-//		windowSizes.add(7); // 1 week
-//		windowSizes.add(28); // 1 month		
-		
 		// streaming files contain 10 users each
 		ArrayList<String> streamingData10 = new ArrayList<String>();
 //		streamingData10.add("data/streamingdata-10user/10userlist-MBG3183_annotation.txt");
-		streamingData10.add("data/streamingdata-10user/10userlist-ACM2278_annotation.txt");
+//		streamingData10.add("data/streamingdata-10user/10userlist-ACM2278_annotation.txt");
 //		streamingData10.add("data/streamingdata-10user/10userlist-CMP2946_annotation.txt");
 //		streamingData10.add("data/streamingdata-10user/10userlist-CDE1846_annotation.txt");		
-		for(String s:streamingData10) {
-		 	for(Integer w:windowSizes) {
-		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
-		 			continue;
-		 		}				
-		 		client.emptyDB(); loadBackground();
-		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 10); prov.run();
-		 		client.emptyDB(); loadBackground();
-		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 10); trust.run();
-		 		client.emptyDB(); loadBackground();
-		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 10); nothing.run();
-		 	}
-		}
-//
-//		// streaming files contain 100 users each
-//		ArrayList<String> streamingData100 = new ArrayList<String>();
-//		streamingData100.add("data/streamingdata-100user/100userlist-MBG3183_annotation.txt");
-//		streamingData100.add("data/streamingdata-100user/100userlist-ACM2278_annotation.txt");
-//		streamingData100.add("data/streamingdata-100user/100userlist-CMP2946_annotation.txt");
-//		streamingData100.add("data/streamingdata-100user/100userlist-CDE1846_annotation.txt");
-//		for(String s:streamingData100) {
+//		for(String s:streamingData10) {
 //		 	for(Integer w:windowSizes) {
 //		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
 //		 			continue;
 //		 		}				
 //		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 100); prov.run();
+//		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 10); prov.run();
 //		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 100); trust.run();
+//		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 10); trust.run();
 //		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 100); nothing.run();
+//		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 10); nothing.run();
 //		 	}
 //		}
+		
+		// window size
+		ArrayList<Integer> windowSizes = new ArrayList<Integer>();
+		windowSizes.add(1); // 1 day
+//		windowSizes.add(7); // 1 week
+//		windowSizes.add(28); // 1 month	
+		
+//		// streaming files contain 100 users each
+		ArrayList<String> streamingData100 = new ArrayList<String>();
+		streamingData100.add("data/streamingdata-100user/100userlist-MBG3183_annotation.txt");
+		streamingData100.add("data/streamingdata-100user/100userlist-ACM2278_annotation.txt");
+		streamingData100.add("data/streamingdata-100user/100userlist-CMP2946_annotation.txt");
+		streamingData100.add("data/streamingdata-100user/100userlist-CDE1846_annotation.txt");
+		for(String s:streamingData100) {
+		 	for(Integer w:windowSizes) {
+		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
+		 			continue;
+		 		}				
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 100); prov.run();
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 100); trust.run();
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 100); nothing.run();
+		 	}
+		}
 //		
 //		// streaming files contain 1000 users each
 //		ArrayList<String> streamingData1000 = new ArrayList<String>();
