@@ -36,4 +36,4 @@ The following picture shows both the data annotation and ontology diagram.
 ![alt text](http://i.imgur.com/aoAqtVU.png "data annotation and ontology")
 
 # Install and Run
-
+see InsiderThreatStreamReasoning/README.md for instructions.
