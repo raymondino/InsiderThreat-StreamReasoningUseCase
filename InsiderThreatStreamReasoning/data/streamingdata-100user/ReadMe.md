@@ -1,4 +1,7 @@
 \InsiderThreatStreamReasoning\data\streamingdata-100user directory contains 
-* 5 streaming data
+* 4 streaming data
 * each streaming data happens during its corresponding data exfiltration period
 * each streaming data contains 10 user, including 1 threatening insider, 99 innocent employees
+
+# unleash the data
+extract 100userlist.tar.gz into the same directory, do not change file names.
