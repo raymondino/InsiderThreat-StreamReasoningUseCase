@@ -32,4 +32,5 @@ InsiderThreatStreamReasoning/data/streamingdata-1000user/1000userlist-CMP2946_an
 InsiderThreatStreamReasoning/data/streamingdata-1000user/1000userlist-MBG3183_annotation.txt
 InsiderThreatStreamReasoning/${sys:stardog.home}/
 InsiderThreatStreamReasoning/.swp
-ontology-data exfiltration alone/catalog-v001.xml
+ontology-data_exfiltration_alone/catalog-v001.xml
+ontology-original_CERT_ontology/catalog-v001.xml
