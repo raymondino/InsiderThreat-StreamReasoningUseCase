@@ -20,9 +20,7 @@ public class Main {
 	private static String username = "admin";
 	private static String password = "admin";
 	private static String prefix = "http://tw.rpi.edu/ontology/DataExfiltration/";
-	// private static String ontology = "D:/Research/github/InsiderThreat-StreamReasoningUseCase/ontology-data exfiltration alone/DataExfiltration-before import.owl";
-    // private static String ontology = "/data/InsiderThreat-StreamReasoningUseCase/ontology-data exfiltration alone/DataExfiltration-before import.owl";
-	private static String ontology = "C:/Users/Rui/Documents/GitHub/InsiderThreat-StreamReasoningUseCase/ontology-data exfiltration alone/DataExfiltration-before import.owl";
+    private static String ontology = "../ontology-data_exfiltration_alone/DataExfiltration-before import.owl";
 	private static String background = "data/background/";
 	private static String individual_file1 = "data/different-individuals/text1.txt";
 	private static String individual_file2 = "data/different-individuals/text2.txt";
@@ -67,55 +65,55 @@ public class Main {
 		// CMP2946 data range: 2/2/2011 - 3/30/2011
 		// CDE1846 data range: 2/21/2011 - 4/25/2011
 		// MBG3183 data range: 10/12/2010 - 10/13/2010
-		
-//		// streaming files contain 1 user each
-//		ArrayList<String> streamingData1 = new ArrayList<String>();
-//		streamingData1.add("data/streamingdata-1user/1userlist-MBG3183_annotation.txt");
-//		streamingData1.add("data/streamingdata-1user/1userlist-ACM2278_annotation.txt");		
-//		streamingData1.add("data/streamingdata-1user/1userlist-CMP2946_annotation.txt");
-//		streamingData1.add("data/streamingdata-1user/1userlist-CDE1846_annotation.txt");		
-//		for(String s:streamingData1) {
-//		 	for(Integer w:windowSizes) {
-//		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
-//		 			continue;
-//		 		}
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1); trust.run();
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); 
-//		 		prov.run();
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1); nothing.run();
-//		 	}
-//		}
 
-		// streaming files contain 10 users each
-		ArrayList<String> streamingData10 = new ArrayList<String>();
-//		streamingData10.add("data/streamingdata-10user/10userlist-MBG3183_annotation.txt");
-//		streamingData10.add("data/streamingdata-10user/10userlist-ACM2278_annotation.txt");
-//		streamingData10.add("data/streamingdata-10user/10userlist-CMP2946_annotation.txt");
-//		streamingData10.add("data/streamingdata-10user/10userlist-CDE1846_annotation.txt");		
-//		for(String s:streamingData10) {
-//		 	for(Integer w:windowSizes) {
-//		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
-//		 			continue;
-//		 		}				
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 10); prov.run();
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 10); trust.run();
-//		 		client.emptyDB(); loadBackground();
-//		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 10); nothing.run();
-//		 	}
-//		}
-		
 		// window size
 		ArrayList<Integer> windowSizes = new ArrayList<Integer>();
 		windowSizes.add(1); // 1 day
-//		windowSizes.add(7); // 1 week
-//		windowSizes.add(28); // 1 month	
+		windowSizes.add(7); // 1 week
+		windowSizes.add(28); // 1 month	
 		
-//		// streaming files contain 100 users each
+		// streaming files contain 1 user each
+		ArrayList<String> streamingData1 = new ArrayList<String>();
+		streamingData1.add("data/streamingdata-1user/1userlist-MBG3183_annotation.txt");
+		streamingData1.add("data/streamingdata-1user/1userlist-ACM2278_annotation.txt");		
+		streamingData1.add("data/streamingdata-1user/1userlist-CMP2946_annotation.txt");
+		streamingData1.add("data/streamingdata-1user/1userlist-CDE1846_annotation.txt");		
+		for(String s:streamingData1) {
+		 	for(Integer w:windowSizes) {
+		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
+		 			continue;
+		 		}
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1); trust.run();
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1); 
+		 		prov.run();
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1); nothing.run();
+		 	}
+		}
+
+		// streaming files contain 10 users each
+		ArrayList<String> streamingData10 = new ArrayList<String>();
+		streamingData10.add("data/streamingdata-10user/10userlist-MBG3183_annotation.txt");
+		streamingData10.add("data/streamingdata-10user/10userlist-ACM2278_annotation.txt");
+		streamingData10.add("data/streamingdata-10user/10userlist-CMP2946_annotation.txt");
+		streamingData10.add("data/streamingdata-10user/10userlist-CDE1846_annotation.txt");		
+		for(String s:streamingData10) {
+		 	for(Integer w:windowSizes) {
+		 		if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
+		 			continue;
+		 		}				
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 10); prov.run();
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 10); trust.run();
+		 		client.emptyDB(); loadBackground();
+		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 10); nothing.run();
+		 	}
+		}
+		
+		// streaming files contain 100 users each
 		ArrayList<String> streamingData100 = new ArrayList<String>();
 		streamingData100.add("data/streamingdata-100user/100userlist-MBG3183_annotation.txt");
 		streamingData100.add("data/streamingdata-100user/100userlist-ACM2278_annotation.txt");
@@ -134,26 +132,26 @@ public class Main {
 		 		ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 100); nothing.run();
 		 	}
 		}
-//		
-//		// streaming files contain 1000 users each
-//		ArrayList<String> streamingData1000 = new ArrayList<String>();
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-MBG3183_annotation.txt");
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-ACM2278_annotation.txt");
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-CMP2946_annotation.txt");
-//		streamingData1000.add("data/streamingdata-1000user/1000userlist-CDE1846_annotation.txt");
-//		for(String s:streamingData1000) {
-//			for(Integer w:windowSizes) {
-//				if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
-//					continue;
-//				}				
-//				client.emptyDB(); loadBackground();
-//				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1000); prov.run();
-//				client.emptyDB(); loadBackground();
-//				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1000); trust.run();
-//				client.emptyDB(); loadBackground();
-//				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1000); nothing.run();
-//			}
-//		}
+		
+		// streaming files contain 1000 users each
+		ArrayList<String> streamingData1000 = new ArrayList<String>();
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-MBG3183_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-ACM2278_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-CMP2946_annotation.txt");
+		streamingData1000.add("data/streamingdata-1000user/1000userlist-CDE1846_annotation.txt");
+		for(String s:streamingData1000) {
+			for(Integer w:windowSizes) {
+				if((w == 7 || w == 28) && (s.contains("ACM2278") || s.contains("MBG3183"))) {
+					continue;
+				}				
+				client.emptyDB(); loadBackground();
+				ProvTrustSI prov = new ProvTrustSI(s, client, "[prov]", w, 1000); prov.run();
+				client.emptyDB(); loadBackground();
+				ProvTrustSI trust = new ProvTrustSI(s, client, "[prov,trust]", w, 1000); trust.run();
+				client.emptyDB(); loadBackground();
+				ProvTrustSI nothing = new ProvTrustSI(s, client, "", w, 1000); nothing.run();
+			}
+		}
 		client.cleanUp();
 	}
 	
@@ -170,24 +168,24 @@ public class Main {
 			client.getANonReasoningConn().add().io().context(Values.iri(prefix+"pc")).format(RDFFormat.N3).stream(new FileInputStream(background+"pc.nt"));
 			// LDAP info
 			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010_08-2011_04.nq"));
-//			 client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2009-12.nq"));
-//			 client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-01.nq"));
-//			 client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-02.nq"));
-//			 client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-03.nq"));
-//			 client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-04.nq"));
-//			 client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-05.nq"));
-//			 client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-06.nq"));
-//			 client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-07.nq"));
-//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-08.nq"));
-//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-09.nq"));
-//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-10.nq"));
-//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-11.nq"));
-//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-12.nq"));
-//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2011-01.nq"));
-//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2011-02.nq"));
-//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2011-03.nq"));
-//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2011-04.nq"));
-//			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2011-05.nq"));			
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2009-12.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-01.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-02.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-03.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-04.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-05.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-06.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-07.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-08.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-09.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-10.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-11.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2010-12.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2011-01.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2011-02.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2011-03.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2011-04.nq"));
+			client.getANonReasoningConn().add().io().format(RDFFormat.NQUADS).stream(new FileInputStream(background+"2011-05.nq"));			
 		} catch (StardogException | FileNotFoundException e) {
 			System.out.println("[ERROR] background loading failed");
 			e.printStackTrace();
